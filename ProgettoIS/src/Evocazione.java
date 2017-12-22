@@ -10,7 +10,7 @@ public class Evocazione {
 			System.out.println("Evoca progetto");
 			System.out.println("hefr");
 			
-
+			System.out.println("Hello World!!");
 	}
 
 }
