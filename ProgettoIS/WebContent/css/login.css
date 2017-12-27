@@ -1,0 +1,192 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#wrap {
+  margin: 0 auto 30px;
+}
+
+#regbar {
+  height: 67px;
+  background: #34495e;
+}
+
+#navthing {
+  margin-left: 50px;
+}
+
+h2 {
+  padding: 20px;
+  color: #ecf0f1;
+}
+
+fieldset {   
+  border: none;
+    font-size: 13px;
+}
+
+.login {
+  position: absolute;
+  width: auto;
+  display: none;
+}
+
+.arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 15px solid #ECF0F1;
+  left: 10%;
+  position: absolute;
+  top: -10px;
+}
+
+.formholder {
+  background: #ecf0f1;
+  width: auto;
+  border-radius: 5px;
+  padding-top: 5px;
+}
+
+.formholder input[type="email"], .formholder input[type="password"] {
+  padding: 7px 5px;
+  margin: 10px 0;
+  width: 96%;
+  display: block;
+  font-size: 12px;
+  border-radius: 5px;
+  border: none;
+  -webkit-transition: 0.3s linear;
+  -moz-transition: 0.3s linear;
+  -o-transition: 0.3s linear;
+  transition: 0.3s linear;
+}
+
+.formholder input[type="email"]:focus, .formholder input[type="password"]:focus {
+  outline: none;
+  box-shadow: 0 0 1px 1px #1abc9c;
+}
+
+.formholder input[type="submit"] {
+  background: #1abc9c;
+  padding: 10px;
+  font-size: 12px;
+  display: block;
+  width: 100%;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.formholder input[type="submit"]:hover {
+  background: #1bc6a4;
+}
+
+.randompad {
+  padding: 10px;
+}
+
+.green {
+  color: #1abc9c;
+}
+
+a {
+  color: #000000;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #1abc9c;
+}
+
+.register {
+  position: absolute;
+  right: 10px;
+  width: 450px;
+  display: none;
+}
+
+.arrow-up2 {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-bottom: 15px solid #ECF0F1;
+  left: 20%;
+  position: absolute;
+  top: -10px;
+}
+
+.formholder2 {
+  background: #ecf0f1;
+  width: auto;
+  border-radius: 5px;
+  padding-top: 5px;
+  left:auto;
+}
+
+.formholder2 input[type="nome"], .formholder2 input[type="cognome"], .formholder2 input[type="password"], .formholder2 input[type="codfisc"], .formholder2 input[type="matricola"], .formholder2 input[type="date"], .formholder2 input[type="piva"], .formholder2 input[type="telefono"] {
+  padding: 7px 5px;
+  margin: 10px 2px 0;
+  width: 48%;
+  /*display: block;*/
+  font-size: 15px;
+  border-radius: 5px;
+  border: none;
+  -webkit-transition: 0.3s linear;
+  -moz-transition: 0.3s linear;
+  -o-transition: 0.3s linear;
+  transition: 0.3s linear;
+}
+
+.formholder2 input[type="email"], .formholder2 input[type="azienda"], .formholder2 input[type="sede"] {
+  padding: 7px 5px;
+  margin: 10px 2px 0;
+  width: 98%;
+  display: block;
+  font-size: 15px;
+  border-radius: 5px;
+  border: none;
+  -webkit-transition: 0.3s linear;
+  -moz-transition: 0.3s linear;
+  -o-transition: 0.3s linear;
+  transition: 0.3s linear;
+}
+    
+.formholder2 input[type="nome"]:focus, .formholder2 input[type="cognome"]:focus, .formholder2 input[type="password"]:focus, .formholder2 input[type="email"]:focus, .formholder2 input[type="codfisc"]:focus, .formholder2 input[type="matricola"]:focus, .formholder2 input[type="date"]:focus, .formholder2 input[type="azienda"]:focus, .formholder2 input[type="piva"]:focus, .formholder2 input[type="telefono"]:focus, .formholder2 input[type="sede"]:focus {
+  outline: none;
+  box-shadow: 0 0 1px 1px #1abc9c;
+}
+
+.tipo{
+   outline: none;
+  box-shadow: 0 0 1px 1px #1abc9c; 
+}
+
+.formholder2 input[type="submit"] {
+  background: #1abc9c;
+  padding: 10px;
+  font-size: 12px;
+  display: block;
+  width: 100%;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.reg1 {
+    position:relative;
+}
+
+.reg2 {
+    position: absolute;
+    visibility:hidden;
+    top:-1px;
+}
