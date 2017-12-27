@@ -23,8 +23,8 @@ public class UtenteDao {
 			con = DBConnection.createConnection();
 			String query = "insert into studente(matricola,nome,cognome,password,codiceFiscale,email,dataNascita,luogoNascita) values (123,NULL,NULL,?,NULL,?,NULL,NULL)"; 
 			preparedStatement = con.prepareStatement(query); 
-			preparedStatement.setString(1,email);
-			preparedStatement.setString(2,password);
+			preparedStatement.setString(1, email);
+			preparedStatement.setString(2, password);
 
 			int i = preparedStatement.executeUpdate();
 
