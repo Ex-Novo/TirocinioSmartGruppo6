@@ -8,6 +8,6 @@
 	</classpathentry>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/proci/Desktop/Server Tomact/apache-tomcat-9.0.0.M21/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="/Users/annamariarosanova/Desktop/apache-tomcat-9.0.2/lib/servlet-api.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
