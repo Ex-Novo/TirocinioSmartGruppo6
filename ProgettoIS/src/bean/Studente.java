@@ -9,7 +9,7 @@ public class Studente {
 	private String password;
 	private String codiceFiscale;
 	private String email;
-	private Date dataNascita;
+	private String dataNascita;
 	private String luogoNascita;
 	
 	public String getMatricola() {
@@ -48,10 +48,10 @@ public class Studente {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Date getDataNascita() {
+	public String getDataNascita() {
 		return dataNascita;
 	}
-	public void setDataNascita(Date dataNascita) {
+	public void setDataNascita(String dataNascita) {
 		this.dataNascita = dataNascita;
 	}
 	public String getLuogoNascita() {

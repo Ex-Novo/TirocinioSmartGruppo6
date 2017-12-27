@@ -7,8 +7,13 @@ public class Azienda {
 	private String email;
 	private String password;
 	private String telefono;
+	private String sede;
 	
 	
+	
+	public void setSede(String sede) {
+		this.sede = sede;
+	}
 	public String getP_iva() {
 		return p_iva;
 	}
@@ -44,6 +49,9 @@ public class Azienda {
 	}
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
+	}
+	public String getSede() {
+		return sede;
 	}
 	
 	
