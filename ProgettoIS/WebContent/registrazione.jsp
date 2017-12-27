@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<form action="registrazioneControl" method="post">
+		Enter username : <input type="text" name="username"> <BR>
+		Enter password : <input type="password" name="password"> <BR>
+		<input type="submit" />
+	</form>
 </body>
 </html>
