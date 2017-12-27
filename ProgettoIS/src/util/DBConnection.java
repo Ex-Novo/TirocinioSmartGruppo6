@@ -7,10 +7,6 @@ public class DBConnection {
 	public static Connection createConnection()
 	{
 		Connection con = null;
-		String url = "jdbc:mysql://localhost:3306/tirociniosmart"; //MySQL URL followed by the database name
-		String username = "root"; //MySQL username
-		String password = "root"; //MySQL password
-
 		try 
 		{
 			try 
@@ -22,7 +18,7 @@ public class DBConnection {
 				e.printStackTrace();
 			}
 
-			con = DriverManager.getConnection(url, username, password); //attempting to connect to MySQL database
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tirociniosmart", "root", "root"); //attempting to connect to MySQL database
 			System.out.println("Printing connection object "+con);
 		} 
 		catch (Exception e) 
