@@ -32,7 +32,7 @@
 <!-- Custom styles for this template -->
 <link href="css/freelancer.min.css" rel="stylesheet">
 <link href="css/login.css" rel="stylesheet">
-<script type="text/javascript" src="/loginValidation.js"></script>
+<script type="text/javascript" src="js/loginValidation.js"></script>
 </head>
 
 <body id="page-top">
