@@ -60,16 +60,16 @@
 						<div class="formholder">
 							<div class="randompad">
 								<fieldset>
-									<form action="">
-										<input type="radio" name="tipo" value="Studente">
-										Studente <input type="radio" name="tipo" value="Azienda">
-										Azienda <input type="radio" name="tipo" value="Didattica">
-										Didattica
+									<form action="LoginControl" method="post">
+										<input type="radio" name="tipo" value="Studente">Studente 
+										<input type="radio" name="tipo" value="Azienda">Azienda 
+										<input type="radio" name="tipo" value="Didattica">Didattica
+										
+										<br> <label name="email">Email</label> <input type="email" name="email" />
+										<label name="password">Password</label> <input type="password" name="password" />
+										<input type="submit" value="Login" /><br> <a href="">Hai dimenticato la password?</a>
 									</form>
-									<br> <label name="email">Email</label> <input type="email" />
-									<label name="password">Password</label> <input type="password" />
-									<input type="submit" value="Login" /><br> <a href="">Hai
-										dimenticato la password?</a>
+									
 
 								</fieldset>
 							</div>

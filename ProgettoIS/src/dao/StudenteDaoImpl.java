@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -9,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import bean.Azienda;
 import bean.Studente;
 import util.DBConnection;
 
@@ -17,8 +19,7 @@ public class StudenteDaoImpl implements StudenteDaoInterface {
 	@Override
 	public boolean registerUser(Studente user)
 	{
-		
-
+	
 		String matricola = user.getMatricola();
 		String nome = user.getNome();
 		String cognome = user.getCognome();
@@ -69,7 +70,44 @@ public class StudenteDaoImpl implements StudenteDaoInterface {
 		}
 
 		return false;  //ritorna false se non è riuscita
+    }
+	
+	
+	@Override
+	public boolean loginUser(Studente user)
+	{
+		
+		boolean status = false;
+		String email = user.getEmail();
+		String password = user.getPassword();
+	
+		Connection con = null;
+		PreparedStatement preparedStatement = null;
+		
+		try
+		{
+			
+			con = DBConnection.createConnection();
+			String query = "SELECT * FROM studente WHERE email = ? AND password = ?";
+			
+			preparedStatement = con.prepareStatement(query); 
+			
+			preparedStatement.setString(1, email);
+			preparedStatement.setString(2, password);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			status=rs.next();
+			
+			con.close();
+		}
+		
+		catch(SQLException e)
+		{
 
-
+			e.printStackTrace();
+		}
+		
+		return status;
 	}
 }

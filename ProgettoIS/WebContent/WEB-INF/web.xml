@@ -5,4 +5,8 @@
     <servlet-name>RegistrazioneControl</servlet-name>
     <servlet-class>control.RegistrazioneControl</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>LoginControl</servlet-name>
+    <servlet-class>control.LoginControl</servlet-class>
+  </servlet>
 </web-app>

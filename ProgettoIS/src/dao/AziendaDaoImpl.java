@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import bean.Azienda;
@@ -52,5 +53,43 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 		return false;  //ritorna false se non è riuscita
 	}
 	
+	@Override
+	public boolean loginUser(Azienda user)
+	{
+		boolean status = false;
+		String email = user.getEmail();
+		String password = user.getPassword();
+		
+		Connection con = null;
+		PreparedStatement preparedStatement = null;
+		
+		try
+		{
+			
+			con = DBConnection.createConnection();
+			String query = "SELECT * FROM azienda WHERE email = ? AND password = ?";
+			preparedStatement = con.prepareStatement(query); 
+			
+			preparedStatement.setString(1, email);
+			preparedStatement.setString(2, password);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			status=rs.next();
+			
+			con.close();
+		}
+		
+		catch(SQLException e)
+		{
+
+			e.printStackTrace();
+		}
+		
+		return status;
+	}
 
 }
+	
+
+
