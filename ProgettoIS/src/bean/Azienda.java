@@ -1,4 +1,4 @@
-package src.bean;
+package bean;
 
 public class Azienda {
 	private String p_iva;
