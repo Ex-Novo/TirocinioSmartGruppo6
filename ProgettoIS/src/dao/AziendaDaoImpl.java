@@ -19,6 +19,7 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 		String password = user.getPassword();
 		String sede = user.getSede();
 		String telefono = user.getTelefono();
+		String tutorAz = user.getTutorAziendale();
 		
 		Connection con = null;
 		PreparedStatement preparedStatement = null;
@@ -26,10 +27,10 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 		try
 		{
 			con = DBConnection.createConnection();
-			String query = "insert into azienda(nome,nome,cognome,password,codiceFiscale,email,dataNasc) values (?,?,?,?,?,?,?,?)"; 
+			String query = "insert into azienda(p_iva,nomeAzienda,email,password,sede,telefono) values (?,?,?,?,?,?)"; 
 			preparedStatement = con.prepareStatement(query); 
-			preparedStatement.setString(1, nomeAzienda);
-			preparedStatement.setString(2, partitaIva);
+			preparedStatement.setString(1, partitaIva);
+			preparedStatement.setString(2, nomeAzienda);
 			preparedStatement.setString(3, email);
 			preparedStatement.setString(4, password);
 			preparedStatement.setString(5, sede);

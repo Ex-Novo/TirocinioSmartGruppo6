@@ -17,6 +17,7 @@ public class StudenteDaoImpl implements StudenteDaoInterface {
 	@Override
 	public boolean registerUser(Studente user)
 	{
+		
 
 		String matricola = user.getMatricola();
 		String nome = user.getNome();
@@ -41,18 +42,19 @@ public class StudenteDaoImpl implements StudenteDaoInterface {
 			preparedStatement.setString(4, password);
 			preparedStatement.setString(5, codiceFiscale);
 			preparedStatement.setString(6, email);
+			preparedStatement.setString(7, dataNascita);
+			preparedStatement.setString(8, luogoNascita);
+			/*
 			DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
 			Date date;
 			try {
 				date = format.parse(dataNascita);
-				preparedStatement.setDate(7,(java.sql.Date) date);
+				
 			} catch (ParseException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
-			}
+			} */
 			
-			preparedStatement.setString(8, luogoNascita);
-
 			int i = preparedStatement.executeUpdate();
 
 			if (i!=0){  // ritorna true se l'operazione è riuscita

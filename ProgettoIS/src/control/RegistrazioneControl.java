@@ -31,9 +31,11 @@ public class RegistrazioneControl extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String userType = request.getParameter("type");
-
-		if(userType == "Studente"){
+		PrintWriter out = response.getWriter();
+		
+		String userType = request.getParameter("tipo");
+		out.println(userType);
+		if(userType.equals("Studente")){
 			
 			String matricola = request.getParameter("matricola");
 			String nome = request.getParameter("nome");
@@ -60,17 +62,18 @@ public class RegistrazioneControl extends HttpServlet {
 			boolean userRegistered = studenteDao.registerUser(user);
 
 			if(userRegistered){
+				
+				out.println("Registrazione riuscita. Ora puoi effettuare l'accesso");
 				request.getRequestDispatcher("home.jsp").forward(request, response);
 			}
 			else{
-				PrintWriter out = response.getWriter();
 
 				out.println("Registrazione non riuscita. Riprova!");
-				request.getRequestDispatcher("registrazione.jsp").forward(request, response);
+				request.getRequestDispatcher("home.jsp").forward(request, response);
 			}
 		}
 		
-		else if(userType == "Azienda"){
+		else if(userType.equals("Azienda")){
 			
 			String nomeAzienda = request.getParameter("nomeAzienda");
 			String partitaIva = request.getParameter("partitaIva");
@@ -93,15 +96,19 @@ public class RegistrazioneControl extends HttpServlet {
 			boolean userRegistered = aziendaDao.registerUser(user);
 			
 			if(userRegistered){
+				
+				out.println("Registrazione riuscita. Ora puoi effettuare l'accesso");
 				request.getRequestDispatcher("home.jsp").forward(request, response);
 			}
 			else{
-				PrintWriter out = response.getWriter();
-
+				
 				out.println("Registrazione non riuscita. Riprova!!");
-				request.getRequestDispatcher("registrazione.jsp").forward(request, response);
+				request.getRequestDispatcher("home.jsp").forward(request, response);
 			}
 			
+		}
+		else{
+			out.println("errore");
 		}
 
 	}
