@@ -28,13 +28,17 @@ public class RegistrazioneControl extends HttpServlet {
 
 	}
 
-
+    /**
+     * Prende il parametro per controllare il tipo di utente da registrare e a seconda se è uno Studente o Azienda istanzia il bean.
+     * Subito dopo istanzia l'interfaccia dao e l'implementazione dell'interfaccia per eseguire le query e ritorna un risoltato a seconda se
+     * l'operazione è riuscita oppure no.
+     */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		PrintWriter out = response.getWriter();
 		
 		String userType = request.getParameter("tipo");
-		out.println(userType);
+		
 		if(userType.equals("Studente")){
 			
 			String matricola = request.getParameter("matricola");

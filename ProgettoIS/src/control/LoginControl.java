@@ -30,6 +30,10 @@ public class LoginControl extends HttpServlet {
         
     }
 
+    /**
+     * Prende il tipo di utente che vuole loggarsi e a seconda del tipo istanzia il bean e il dao e esegui la query. 
+     * Ritorna true se il login avviene con successo
+     */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		PrintWriter out = response.getWriter();
@@ -47,10 +51,11 @@ public class LoginControl extends HttpServlet {
 			
 			StudenteDaoInterface studenteDao = new StudenteDaoImpl();
 			
-			boolean logUser = studenteDao.loginUser(user);
+			boolean logUser = studenteDao.loginUser(user); //true se la query è andata a buon fine
 			
 			if(logUser){
-			
+			    
+				// creazione della sessione utente
 				HttpSession session = request.getSession(true);
 				session.setAttribute("email", email);         
 				session.setAttribute("password",password);
@@ -77,9 +82,11 @@ public class LoginControl extends HttpServlet {
 			
 			AziendaDaoInterface aziendaDao = new AziendaDaoImpl();
 			
-			boolean logUser = aziendaDao.loginUser(user);
+			boolean logUser = aziendaDao.loginUser(user); //true se la query è andata a buon fine
 			
 			if(logUser){
+				
+				// creazione della sessione utente
 				HttpSession session = request.getSession(true);
 				session.setAttribute("email", email);         
 				session.setAttribute("password",password);
@@ -102,9 +109,11 @@ public class LoginControl extends HttpServlet {
 
         	DidatticaDaoInterface didatticaDao = new DidatticaDaoImpl();
 
-        	boolean logUser = didatticaDao.loginUser(user);
+        	boolean logUser = didatticaDao.loginUser(user); //true se la query è andata a buon fine
 
         	if(logUser){
+        		
+        		// creazione della sessione utente
         		HttpSession session = request.getSession(true);
         		session.setAttribute("email", email);         
         		session.setAttribute("password",password);

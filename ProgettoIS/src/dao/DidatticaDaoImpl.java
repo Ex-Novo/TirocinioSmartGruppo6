@@ -10,6 +10,10 @@ import util.DBConnection;
 
 public class DidatticaDaoImpl implements DidatticaDaoInterface {
 	
+	
+	/**
+	 * Il metodo prende i parametri di login dal bean dell'user ed effettua la connessione al db. Se la query è riuscita ritorna status = true.
+	 */
 	@Override
 	public boolean loginUser(Didattica user)
 	{
@@ -32,7 +36,7 @@ public class DidatticaDaoImpl implements DidatticaDaoInterface {
 			
 			ResultSet rs = preparedStatement.executeQuery();
 			
-			status=rs.next();
+			status=rs.next(); //ritorna true se trova l'utente
 			
 			con.close();
 		}

@@ -11,6 +11,11 @@ import util.DBConnection;
 
 public class AziendaDaoImpl implements AziendaDaoInterface{
 	
+	
+	/**
+	 * Il metodo registerUser prende i parametri dal bean e richiama il metodo di DBConnection per connettersi al database, per poi effettuare la query di inserimento.
+	 * Ritorna true se l'inserimento è andato a buon fine
+	 */
 	@Override
 	public boolean registerUser(Azienda user)
 	{
@@ -20,7 +25,6 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 		String password = user.getPassword();
 		String sede = user.getSede();
 		String telefono = user.getTelefono();
-		String tutorAz = user.getTutorAziendale();
 		
 		Connection con = null;
 		PreparedStatement preparedStatement = null;
@@ -53,6 +57,9 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 		return false;  //ritorna false se non è riuscita
 	}
 	
+	/**
+	 * Il metodo prende i parametri di login dal bean dell'user ed effettua la connessione al db. Se la query è riuscita ritorna status = true.
+	 */
 	@Override
 	public boolean loginUser(Azienda user)
 	{
@@ -75,7 +82,7 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 			
 			ResultSet rs = preparedStatement.executeQuery();
 			
-			status=rs.next();
+			status=rs.next(); //ritorna true se trova l'utente
 			
 			con.close();
 		}

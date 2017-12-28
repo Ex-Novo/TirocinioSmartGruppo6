@@ -4,18 +4,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
-import bean.Azienda;
 import bean.Studente;
 import util.DBConnection;
 
 public class StudenteDaoImpl implements StudenteDaoInterface {
 
+	/**
+	 * Il metodo registerUser prende i parametri dal bean e richiama il metodo di DBConnection per connettersi al database, per poi effettuare la query di inserimento.
+	 * Ritorna true se l'inserimento è andato a buon fine
+	 */
 	@Override
 	public boolean registerUser(Studente user)
 	{
@@ -45,16 +43,6 @@ public class StudenteDaoImpl implements StudenteDaoInterface {
 			preparedStatement.setString(6, email);
 			preparedStatement.setString(7, dataNascita);
 			preparedStatement.setString(8, luogoNascita);
-			/*
-			DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ENGLISH);
-			Date date;
-			try {
-				date = format.parse(dataNascita);
-				
-			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} */
 			
 			int i = preparedStatement.executeUpdate();
 
@@ -72,7 +60,9 @@ public class StudenteDaoImpl implements StudenteDaoInterface {
 		return false;  //ritorna false se non è riuscita
     }
 	
-	
+	/**
+	 * Il metodo prende i parametri di login dal bean dell'user ed effettua la connessione al db. Se la query è riuscita ritorna status = true.
+	 */
 	@Override
 	public boolean loginUser(Studente user)
 	{
@@ -97,7 +87,7 @@ public class StudenteDaoImpl implements StudenteDaoInterface {
 			
 			ResultSet rs = preparedStatement.executeQuery();
 			
-			status=rs.next();
+			status=rs.next();  // ritorna true se utente trovato
 			
 			con.close();
 		}
