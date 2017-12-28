@@ -28,15 +28,20 @@ public class UtenteDao {
 
 			int i = preparedStatement.executeUpdate();
 
-			if (i!=0)  // ritorna true se l'operazione è riuscita
+			if (i!=0){  // ritorna true se l'operazione è riuscita
+				con.close();
 				return true; 
+			}
 		}
 		catch(SQLException e)
 		{
+			
 			e.printStackTrace();
 		}
-
+		
 		return false;  //ritorna false se non è riuscita
+		
+		
 	}
 	
 
