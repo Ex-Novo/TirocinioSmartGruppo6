@@ -32,6 +32,7 @@
 <!-- Custom styles for this template -->
 <link href="css/freelancer.min.css" rel="stylesheet">
 <link href="css/login.css" rel="stylesheet">
+<script type="text/javascript" src="/loginValidation.js"></script>
 </head>
 
 <body id="page-top">
@@ -60,7 +61,7 @@
 						<div class="formholder">
 							<div class="randompad">
 								<fieldset>
-									<form action="LoginControl" method="post">
+									<form action="LoginControl" onSubmit="return loginValidation(this);" method="post">
 										<input type="radio" name="tipo" value="Studente">Studente 
 										<input type="radio" name="tipo" value="Azienda">Azienda 
 										<input type="radio" name="tipo" value="Didattica">Didattica
