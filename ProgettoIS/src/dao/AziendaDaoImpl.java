@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import bean.Azienda;
 
@@ -96,6 +97,55 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 		return status;
 	}
 
+	
+	public ArrayList<Azienda> getAziende() {
+		
+		Connection con = null;
+		PreparedStatement preparedStatement = null;
+		ArrayList<Azienda> aziende = new ArrayList<Azienda>();
+		
+		try
+		{
+			
+			con = DBConnection.createConnection();
+			String query = "SELECT * FROM azienda";
+			preparedStatement = con.prepareStatement(query); 
+			
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()) {
+				
+				Azienda azienda = new Azienda();
+				
+				/*insert into azienda(p_iva,nomeAzienda,email,password,sede,telefono)*/
+				
+				azienda.setP_iva(rs.getString(1));
+				azienda.setNomeAzienda(rs.getString(2));
+				azienda.setTutorAziendale(rs.getString(3));
+				azienda.setEmail(rs.getString(4));
+				azienda.setPassword(rs.getString(5));
+				azienda.setSede(rs.getString(6));
+				azienda.setTelefono(rs.getString(7));
+
+				
+				aziende.add(azienda);
+				
+				return aziende;
+			}
+			
+			con.close();
+		}
+		
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+		
+		return aziende;
+	}
+	
 }
 	
 

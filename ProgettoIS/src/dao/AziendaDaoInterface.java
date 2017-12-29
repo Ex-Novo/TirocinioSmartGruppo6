@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.ArrayList;
+
 import bean.Azienda;
 
 public interface AziendaDaoInterface {
@@ -13,5 +15,7 @@ public interface AziendaDaoInterface {
 	 * controllo login
 	 */
 	public boolean loginUser(Azienda user);
+	
+	public ArrayList<Azienda> getAziende();
 
 }

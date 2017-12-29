@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
+import bean.Azienda;
 import bean.Studente;
 import util.DBConnection;
 
@@ -100,4 +102,56 @@ public class StudenteDaoImpl implements StudenteDaoInterface {
 		
 		return status;
 	}
+
+	@Override
+	public ArrayList<Studente> getStudenti() {
+			
+			Connection con = null;
+			PreparedStatement preparedStatement = null;
+			ArrayList<Studente> studenti = new ArrayList<Studente>();
+			
+			try
+			{
+				
+				con = DBConnection.createConnection();
+				String query = "SELECT * FROM studente";
+				preparedStatement = con.prepareStatement(query); 
+				
+				
+				ResultSet rs = preparedStatement.executeQuery();
+				
+				while(rs.next()) {
+					
+					Studente studente = new Studente();
+					
+					/*insert into studente(matricola,nome,cognome,password,
+							codiceFiscale,email,dataNascita,luogoNascita) */
+					
+					studente.setMatricola(rs.getString(1));
+					studente.setNome(rs.getString(2));
+					studente.setCognome(rs.getString(3));
+					studente.setPassword(rs.getString(4));
+					studente.setCodiceFiscale(rs.getString(5));
+					studente.setEmail(rs.getString(6));
+					studente.setDataNascita(""+ rs.getDate(7));
+					studente.setLuogoNascita(rs.getString(8));
+
+					
+					studenti.add(studente);
+					
+					return studenti;
+				}
+				
+				con.close();
+			}
+			
+			catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+			
+			
+			return studenti;
+		}
+
 }
