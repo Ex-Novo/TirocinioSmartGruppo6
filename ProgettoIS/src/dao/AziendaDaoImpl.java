@@ -130,7 +130,7 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 
 				aziende.add(azienda);
 				
-				return aziende;
+				
 			}
 			
 			con.close();
@@ -180,7 +180,6 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 
 				aziende.add(azienda);
 				
-				return aziende;
 			}
 			
 			con.close();

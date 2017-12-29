@@ -143,7 +143,7 @@ public class StudenteDaoImpl implements StudenteDaoInterface {
 					
 					studenti.add(studente);
 					
-					return studenti;
+				
 				}
 				
 				con.close();
