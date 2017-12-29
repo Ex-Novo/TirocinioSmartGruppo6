@@ -39,7 +39,6 @@ function regValidation(form){
 		var codicefiscale = form.codiceFiscale.value;
 		var luogoNascita = form.luogoNascita.value;
 		
-		
 
 		var letters = /^[A-Za-z]+$/;
 		if(name==""){ //se il campo nome è vuoto
@@ -75,6 +74,21 @@ function regValidation(form){
 			
 			alert("Il campo matricola deve avere solo caratteri numerici / Il campo matricola non può essere vuoto");
 			form.matricola.focus();
+			return false;
+		}
+		
+		var cfFormat=/[A-Za-z0-9]+/;
+		if(!codiceFiscale.match(cfFormat)){
+			
+			alert("Formato codice fiscale non consentito");
+			form.codiceFiscale.focus();
+			return false;
+		}
+		
+		if(codiceFiscale==""){
+			
+			alert("Inserire il codice fiscale");
+			form.codiceFiscale.focus();
 			return false;
 		}
 
