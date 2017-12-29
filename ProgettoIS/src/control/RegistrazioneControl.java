@@ -105,18 +105,19 @@ public class RegistrazioneControl extends HttpServlet {
 			
 			if(userRegistered){
 				
-				out.println("Registrazione riuscita. Ora puoi effettuare l'accesso");
-				request.getRequestDispatcher("home.jsp").forward(request, response);
+				out.println("<script>");
+				out.println("alert('Registrazione riuscita. Ora puoi effettuare l'accesso')");
+				out.println("window.history.back()");
+				out.println("</script>");
 			}
 			else{
 				
-				out.println("Registrazione non riuscita. Riprova!!");
-				request.getRequestDispatcher("home.jsp").forward(request, response);
+				out.println("<script>");
+				out.println("alert('Registrazione non riuscita. Riprova!')");
+				out.println("window.history.back()");
+				out.println("</script>");
 			}
 			
-		}
-		else{
-			out.println("errore");
 		}
 
 	}

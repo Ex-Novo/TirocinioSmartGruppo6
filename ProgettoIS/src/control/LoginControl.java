@@ -60,13 +60,15 @@ public class LoginControl extends HttpServlet {
 				session.setAttribute("email", email);         
 				session.setAttribute("password",password);
 				
+				out.println("<script>");
+				out.println("alert('Utente loggato')");
+				out.println("window.history.back()");
+				out.println("</script>");
 			
-				out.println("Loggato");
-			
-				//request.getRequestDispatcher("home.jsp").forward(request, response);
+				
 			}
 			
-			else if(!logUser){
+			else if(!logUser){ // login errato
 				
 				
 				out.println("<script>");
@@ -95,11 +97,14 @@ public class LoginControl extends HttpServlet {
 				session.setAttribute("password",password);
 				
 			
-				out.println("Loggato");
+				out.println("<script>");
+				out.println("alert('Utente loggato')");
+				out.println("window.history.back()");
+				out.println("</script>");
 				
 			}
 			
-			else{
+			else{ //login errato
 				out.println("<script>");
 				out.println("alert('Utente non trovato')");
 				out.println("window.history.back()");
@@ -123,13 +128,15 @@ public class LoginControl extends HttpServlet {
         		HttpSession session = request.getSession(true);
         		session.setAttribute("email", email);         
         		session.setAttribute("password",password);
-
-
-        		out.println("Loggato");
+        		
+        		out.println("<script>");
+				out.println("alert('Utente loggato')");
+				out.println("window.history.back()");
+				out.println("</script>");
 
         	}
 
-        	else{
+        	else{ //login errato
         		out.println("<script>");
 				out.println("alert('Utente non trovato')");
 				out.println("window.history.back()");

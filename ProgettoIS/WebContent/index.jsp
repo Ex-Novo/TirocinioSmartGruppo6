@@ -87,26 +87,13 @@
 							<div class="randompad">
 								<fieldset>
 
-
-
-									<!-- <label name="nome">Nome</label> -->
-
-									<!--<input type="radio" name="regtipo" value="Studente" checked="checked"> Studente
-                                                <input type="radio" name="regtipo" value="Azienda"> Azienda -->
-
 									<form action="RegistrazioneControl" onSubmit="return regValidation(this);" method="post" id="A" style="position: relative">
 										<input type="hidden" name="tipo" value="Studente"  />
 										<input type="nome" name="nome" placeholder="Nome" /> 
 										<input type="cognome" name="cognome" placeholder="Cognome" />
-										<!-- <label name="cognome">Cognome</label>
-                                                
-                                        <!-- <label name="nome">Email</label>-->
 										<input type="email" name="email" placeholder="Email" />
-										<!-- <label name="cognome">Cognome</label>-->
 										<input type="password" name="password" placeholder="Password" />
-										<!-- <label name="password">Password</label>-->
-										<input type="password" placeholder="Conferma Password" />
-										<!-- <label name="password">Conferma Password</label>-->
+										<input type="password" name="confermaPsw" placeholder="Conferma Password" />
 										<input type="codicefiscale" name="codiceFiscale" placeholder="Codice Fiscale" /> 
 										<input type="matricola" name="matricola" placeholder="Matricola" /> 
 										<input type="date" name="dataNascita"/> 
@@ -121,9 +108,7 @@
 										<input type="piva" name="partitaIva" placeholder="Partita Iva" /> 
 										<input type="telefono" name="telefono" placeholder="Numero di telefono" /> 
 										<input type="password" name="password" placeholder="Password" />
-										<!-- <label name="password">Password</label>-->
-										<input type="password" placeholder="Conferma Password" />
-										<!-- <label name="password">Conferma Password</label>-->
+										<input type="password" name="confermaPsw" placeholder="Conferma Password" />
 										<input type="submit" value="Registrati" />
 									</form>
 									<br>
