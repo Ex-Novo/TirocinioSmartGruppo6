@@ -23,5 +23,11 @@ public interface AziendaDaoInterface {
 	 * @return ritorna la lista delle aziende registrate
 	 */
 	public ArrayList<Azienda> getAziende();
+	
+	/**
+	 * Effettua una query nel database per cercare tutti le aziende convenzionate
+	 * @return ritorna la lista delle aziende convenzionate
+	 */
+	public ArrayList<Azienda> getAziendeConvenzionate();
 
 }

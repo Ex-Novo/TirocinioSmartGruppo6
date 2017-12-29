@@ -98,6 +98,54 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 	}
 
 	/**
+	 * Il metodo restituisce la lista completa delle aziende convenzionate presenti nel DB. 
+	 * Istanzia un bean per ogni azienda e la aggiunge all'arraylist da restituire
+	 */
+	@Override
+	public ArrayList<Azienda> getAziendeConvenzionate() {
+		
+		Connection con = null;
+		PreparedStatement preparedStatement = null;
+		ArrayList<Azienda> aziende = new ArrayList<Azienda>();
+		
+		try
+		{
+			
+			con = DBConnection.createConnection();
+			String query = "SELECT	azienda.nomeAzienda,azienda.email,azienda.telefono,azienda.sede FROM convenzione INNER JOIN azienda ON convenzione.p_iva = azienda.p_iva where convenzione.stato = 'accettata'";
+			preparedStatement = con.prepareStatement(query); 
+			
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()) {
+				
+				Azienda azienda = new Azienda();
+				
+				
+				azienda.setNomeAzienda(rs.getString(1));			
+				azienda.setEmail(rs.getString(2));
+				azienda.setTelefono(rs.getString(3));
+				azienda.setEmail(rs.getString(4));
+
+				aziende.add(azienda);
+				
+				return aziende;
+			}
+			
+			con.close();
+		}
+		
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+		
+		return aziende;
+	}
+	
+	/**
 	 * Il metodo restituisce la lista completa delle aziende presenti nel DB. 
 	 * Istanzia un bean per ogni azienda e la aggiunge all'arraylist da restituire
 	 */
