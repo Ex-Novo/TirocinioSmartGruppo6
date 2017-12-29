@@ -69,7 +69,10 @@ public class LoginControl extends HttpServlet {
 			else if(!logUser){
 				
 				
-				out.println("No");
+				out.println("<script>");
+				out.println("alert('Utente non trovato')");
+				out.println("window.history.back()");
+				out.println("</script>");
 			}
 		}
 		
@@ -97,7 +100,10 @@ public class LoginControl extends HttpServlet {
 			}
 			
 			else{
-				out.println("No");
+				out.println("<script>");
+				out.println("alert('Utente non trovato')");
+				out.println("window.history.back()");
+				out.println("</script>");
 			}
 		}
         
@@ -124,7 +130,10 @@ public class LoginControl extends HttpServlet {
         	}
 
         	else{
-        		out.println("No");
+        		out.println("<script>");
+				out.println("alert('Utente non trovato')");
+				out.println("window.history.back()");
+				out.println("</script>");
         	}
 		}
 		

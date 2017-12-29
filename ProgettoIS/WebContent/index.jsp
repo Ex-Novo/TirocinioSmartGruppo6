@@ -32,7 +32,9 @@
 <!-- Custom styles for this template -->
 <link href="css/freelancer.min.css" rel="stylesheet">
 <link href="css/login.css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/loginValidation.js"></script>
+<script type="text/javascript" src="js/regValidation.js"></script>
 </head>
 
 <body id="page-top">
@@ -62,7 +64,7 @@
 							<div class="randompad">
 								<fieldset>
 									<form action="LoginControl" onSubmit="return loginValidation(this);" method="post">
-										<input type="radio" name="tipo" value="Studente">Studente 
+										<input type="radio" name="tipo" checked="checked" value="Studente">Studente 
 										<input type="radio" name="tipo" value="Azienda">Azienda 
 										<input type="radio" name="tipo" value="Didattica">Didattica
 										
@@ -92,7 +94,7 @@
 									<!--<input type="radio" name="regtipo" value="Studente" checked="checked"> Studente
                                                 <input type="radio" name="regtipo" value="Azienda"> Azienda -->
 
-									<form action="RegistrazioneControl" method="post" id="A" style="position: relative">
+									<form action="RegistrazioneControl" onSubmit="return regValidation(this);" method="post" id="A" style="position: relative">
 										<input type="hidden" name="tipo" value="Studente"  />
 										<input type="nome" name="nome" placeholder="Nome" /> 
 										<input type="cognome" name="cognome" placeholder="Cognome" />
@@ -111,10 +113,8 @@
 										<input type="luogoNascita" name="luogoNascita" placeholder="Luogo di Nascita" />
 										<input type="submit" value="Registrati" />
 									</form>
-									<form action="RegistrazioneControl" method="post" id="B" style="visibility: hidden; position: absolute; top: -1px">
+									<form action="RegistrazioneControl" onSubmit="return regValidation(this);" method="post" id="B" style="visibility: hidden; position: absolute; top: -1px">
 										<input type="hidden" name="tipo" value="Azienda"  />
-										<input type="nome" name="nome" placeholder="Nome" /> 
-										<input type="cognome" name="cognome" placeholder="Cognome" /> 
 										<input type="azienda" name="nomeAzienda" placeholder="Nome Azienda" /> 
 										<input type="sede" name="sede" placeholder="Sede" /> 
 										<input type="email" name="email" placeholder="Email" />
