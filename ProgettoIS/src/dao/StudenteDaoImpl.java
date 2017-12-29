@@ -103,6 +103,10 @@ public class StudenteDaoImpl implements StudenteDaoInterface {
 		return status;
 	}
 
+	/**
+	 * Il metodo restituisce la lista completa degli studenti presenti nel DB. 
+	 * Istanzia un bean per ogni studente e lo aggiunge all'arraylist da restituire
+	 */
 	@Override
 	public ArrayList<Studente> getStudenti() {
 			

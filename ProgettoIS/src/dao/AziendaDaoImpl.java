@@ -97,7 +97,11 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 		return status;
 	}
 
-	
+	/**
+	 * Il metodo restituisce la lista completa delle aziende presenti nel DB. 
+	 * Istanzia un bean per ogni azienda e la aggiunge all'arraylist da restituire
+	 */
+	@Override
 	public ArrayList<Azienda> getAziende() {
 		
 		Connection con = null;
@@ -118,8 +122,6 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 				
 				Azienda azienda = new Azienda();
 				
-				/*insert into azienda(p_iva,nomeAzienda,email,password,sede,telefono)*/
-				
 				azienda.setP_iva(rs.getString(1));
 				azienda.setNomeAzienda(rs.getString(2));
 				azienda.setTutorAziendale(rs.getString(3));
@@ -128,7 +130,6 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 				azienda.setSede(rs.getString(6));
 				azienda.setTelefono(rs.getString(7));
 
-				
 				aziende.add(azienda);
 				
 				return aziende;
