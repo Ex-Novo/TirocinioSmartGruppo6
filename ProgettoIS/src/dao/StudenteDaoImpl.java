@@ -168,10 +168,9 @@ public class StudenteDaoImpl implements StudenteDaoInterface {
 			String query = "SELECT * FROM studente WHERE email = ?";
 			preparedStatement = con.prepareStatement(query); 
 			
-			
-			ResultSet rs = preparedStatement.executeQuery();
 			preparedStatement.setString(1, email);
 			
+			ResultSet rs = preparedStatement.executeQuery();
 			while(rs.next()) {
 				
 				studente.setMatricola(rs.getString(1));
@@ -215,10 +214,8 @@ public class StudenteDaoImpl implements StudenteDaoInterface {
 				String query = "SELECT studente.matricola, studente.nome , studente.cognome , studente.codiceFiscale ,studente.email ,studente.dataNascita ,studente.luogoNascita FROM (((studente INNER JOIN richiestatirocinio on studente.matricola=richiestatirocinio.matricola)INNER JOIN tirocinio on richiestatirocinio.idTirocinio=tirocinio.idTirocinio) INNER JOIN azienda on tirocinio.p_iva=azienda.p_iva) WHERE azienda.p_iva= ?";
 				preparedStatement = con.prepareStatement(query); 
 				
-				
-				ResultSet rs = preparedStatement.executeQuery();
 				preparedStatement.setString(1, p);
-				
+				ResultSet rs = preparedStatement.executeQuery();
 				while(rs.next()) {
 					
 					Studente studente = new Studente();

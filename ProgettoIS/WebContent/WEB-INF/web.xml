@@ -9,4 +9,9 @@
     <servlet-name>LoginControl</servlet-name>
     <servlet-class>control.LoginControl</servlet-class>
   </servlet>
+  
+  <servlet>
+    <servlet-name>ViewProfileControl</servlet-name>
+    <servlet-class>control.ViewProfileControl</servlet-class>
+  </servlet>
 </web-app>

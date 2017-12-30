@@ -209,9 +209,8 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 			String query = "SELECT * FROM azienda WHERE email = ?";
 			preparedStatement = con.prepareStatement(query); 
 			
-			
-			ResultSet rs = preparedStatement.executeQuery();
 			preparedStatement.setString(1, email);
+			ResultSet rs = preparedStatement.executeQuery();
 			
 			while(rs.next()) {
 				

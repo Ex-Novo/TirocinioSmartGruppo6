@@ -165,12 +165,12 @@
 					readonly="readonly" type="cognome" name="cognome"
 					value="<%=bean.getCognome() %>" /><br> <label>EMAIL:
 				</label><input readonly="readonly" type="email" name="email"
-					valure="<%=bean.getEmail() %> " /><br> <label>CODICE
+					value="<%=bean.getEmail() %> " /><br> <label>CODICE
 					FISCALE: </label><input readonly="readonly" type="codicefiscale"
 					name="codiceFiscale" value=<%=bean.getCodiceFiscale() %> /> <br>
 				<label>MATRICOLA: </label><input readonly="readonly"
 					type="matricola" name="matricola"
-					valure="<%=bean.getMatricola() %>" /> <br> <label>DATA
+					value="<%=bean.getMatricola() %>" /> <br> <label>DATA
 					NASCITA: </label><input readonly="readonly" type="date" name="dataNascita"
 					value="<%=bean.getDataNascita() %>" /><br> <label>LUOGO
 					NASCITA: </label><input readonly="readonly" type="luogoNascita"
@@ -182,7 +182,7 @@
 			%>
 
 			<form action="" method="post" id="B"
-				style="visibility: hidden; position: absolute">
+				position: absolute">
 				<label>NOME AZIENDA: </label><input readonly="readonly"
 					type="azienda" name="nomeAzienda"
 					value="<%=bean.getNomeAzienda() %>" /> <br> <label>SEDE:
@@ -192,7 +192,7 @@
 					value="<%=bean.getEmail() %>" /><br> <label>PARTITA
 					IVA: </label><input readonly="readonly" type="piva" name="partitaIva"
 					value="<%=bean.getP_iva()%>" /> <br> <label>TELEFONO:
-				</label><input readonly="readonly" type="telefono" name="telefono" /> <br>
+				</label><input readonly="readonly" type="telefono" name="telefono" value="<%=bean.getTelefono() %>" /> <br>
 			</form>
 			<%
 				} 
