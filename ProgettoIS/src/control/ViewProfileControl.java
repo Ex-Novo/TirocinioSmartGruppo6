@@ -35,7 +35,6 @@ public class ViewProfileControl extends HttpServlet {
 		String email = (String) session.getAttribute("email");
 		
 		
-		
 		if(tipoUtente.equals("Studente")){
 			
 			StudenteDaoInterface studenteDao = new StudenteDaoImpl();
