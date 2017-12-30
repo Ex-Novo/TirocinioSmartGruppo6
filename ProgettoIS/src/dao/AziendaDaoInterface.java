@@ -3,6 +3,7 @@ package dao;
 import java.util.ArrayList;
 
 import bean.Azienda;
+import bean.Studente;
 
 public interface AziendaDaoInterface {
 	
@@ -29,5 +30,12 @@ public interface AziendaDaoInterface {
 	 * @return ritorna la lista delle aziende convenzionate
 	 */
 	public ArrayList<Azienda> getAziendeConvenzionate();
+	
+	/**
+	 * Effettua una query nel database con l'email dell'azienda per trovare le informazioni associate da
+	 * inserire nel profilo.
+	 * @return ritorna un istanza del bean azienda
+	 */
+	public Azienda getAziendaByEmail(String email);
 
 }

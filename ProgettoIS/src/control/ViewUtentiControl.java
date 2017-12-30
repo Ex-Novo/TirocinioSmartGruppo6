@@ -52,7 +52,7 @@ public class ViewUtentiControl extends HttpServlet {
 		request.setAttribute("aziende", aziende);
 		request.setAttribute("studenti", studenti);
 		
-		/* Crea lista */
+		/* Reindirizza alla jsp dove visualizza la lista */
 		getServletConfig().getServletContext().getRequestDispatcher("/ListaUtenti.jsp").forward(request, response);
 		
 	}

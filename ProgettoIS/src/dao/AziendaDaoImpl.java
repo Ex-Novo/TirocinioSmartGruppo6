@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import bean.Azienda;
-
+import bean.Studente;
 import util.DBConnection;
 
 public class AziendaDaoImpl implements AziendaDaoInterface{
@@ -192,6 +192,51 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 		
 		
 		return aziende;
+	}
+	
+	/**
+	 * Il metodo ritorna un istanza di azienda trovata dall'email passata come parametro.
+	 */
+	@Override
+	public Azienda getAziendaByEmail(String email) {
+		
+		Connection con = null;
+		PreparedStatement preparedStatement = null;
+		
+		Azienda azienda = new Azienda();
+		try
+		{
+			
+			con = DBConnection.createConnection();
+			String query = "SELECT * FROM azienda WHERE email = ?";
+			preparedStatement = con.prepareStatement(query); 
+			
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			preparedStatement.setString(1, email);
+			
+			while(rs.next()) {
+				
+				azienda.setP_iva(rs.getString(1));
+				azienda.setNomeAzienda(rs.getString(2));
+				azienda.setTutorAziendale(rs.getString(3));
+				azienda.setEmail(rs.getString(4));
+				azienda.setPassword(rs.getString(5));
+				azienda.setSede(rs.getString(6));
+				azienda.setTelefono(rs.getString(7));
+			
+			}
+			
+			con.close();
+		}
+		
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+		
+		return azienda;
 	}
 	
 }

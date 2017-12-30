@@ -8,7 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.Azienda;
 import bean.Studente;
+import dao.AziendaDaoImpl;
+import dao.AziendaDaoInterface;
 import dao.StudenteDaoImpl;
 import dao.StudenteDaoInterface;
 
@@ -31,15 +34,30 @@ public class ViewProfileControl extends HttpServlet {
 		String tipoUtente = (String) session.getAttribute("tipoUtente");
 		String email = (String) session.getAttribute("email");
 		
-		Studente user = new Studente();
+		
 		
 		if(tipoUtente.equals("Studente")){
 			
 			StudenteDaoInterface studenteDao = new StudenteDaoImpl();
 			
-			user = studenteDao.getStudenteByEmail(email);    //istanzia il bean restituito dal metodo del dao
+			Studente user = studenteDao.getStudenteByEmail(email);    //istanzia il bean restituito dal metodo del dao
 			
-			request.setAttribute("beanStudente", user); //
+			request.setAttribute("bean", user); //ritorna alla request l'oggetto bean 
+			
+			getServletConfig().getServletContext().getRequestDispatcher("/AccountView.jsp").forward(request, response);
+			
+		}
+		
+		if(tipoUtente.equals("Azienda")){
+			
+			AziendaDaoInterface aziendaDao = new AziendaDaoImpl();
+			
+			Azienda user = aziendaDao.getAziendaByEmail(email); //istanzia il bean restituito dal metodo del dao
+			
+			request.setAttribute("bean", user); //ritorna alla request l'oggetto bean 
+			
+			getServletConfig().getServletContext().getRequestDispatcher("/AccountView.jsp").forward(request, response);
+			
 			
 		}
 	}
