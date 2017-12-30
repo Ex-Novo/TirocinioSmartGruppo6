@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1" import="java.util.*, dao.*, bean.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 
@@ -147,41 +147,58 @@
 
 	<!-- Header -->
 	<header class="masthead bg-primary text-white text-center">
-	<div class="container">
 
-
+	<div class="view">
 		<fieldset>
+
+			<%
+			HttpSession s = request.getSession();
+			String tipoUtente= (String) s.getAttribute("tipoUtente");
+			if(tipoUtente.equals("Studente")){
+				Studente bean = (Studente) request.getAttribute("bean");			
+			%>
 
 			<form action="" method="post" id="A" style="position: relative">
 				<input type="hidden" name="tipo" value="Studente" /> <br> <label>NOME:
-				</label><input type="nome" name="nome" /> <br> <label>COGNOME:
-				</label><input type="cognome" name="cognome" /><br> <label>EMAIL:
-				</label><input type="email" name="email" /><br> <label>PASSWORD:
-				</label><input type="password" name="password" /><br> <label>CODICE
-					FISCALE: </label><input type="codicefiscale" name="codiceFiscale" /> <br>
-				<label>MATRICOLA: </label><input type="matricola" name="matricola" />
-				<br> <label>DATA NASCITA: </label><input type="date"
-					name="dataNascita" /><br> <label>LUOGO NASCITA: </label><input
-					type="luogoNascita" name="luogoNascita" /><br>
+				</label><input readonly="readonly" type="nome" name="nome"
+					value="<%=bean.getNome()%>" /> <br> <label>COGNOME: </label><input
+					readonly="readonly" type="cognome" name="cognome"
+					value="<%=bean.getCognome() %>" /><br> <label>EMAIL:
+				</label><input readonly="readonly" type="email" name="email"
+					valure="<%=bean.getEmail() %> " /><br> <label>CODICE
+					FISCALE: </label><input readonly="readonly" type="codicefiscale"
+					name="codiceFiscale" value=<%=bean.getCodiceFiscale() %> /> <br>
+				<label>MATRICOLA: </label><input readonly="readonly"
+					type="matricola" name="matricola"
+					valure="<%=bean.getMatricola() %>" /> <br> <label>DATA
+					NASCITA: </label><input readonly="readonly" type="date" name="dataNascita"
+					value="<%=bean.getDataNascita() %>" /><br> <label>LUOGO
+					NASCITA: </label><input readonly="readonly" type="luogoNascita"
+					name="luogoNascita" value="<%=bean.getLuogoNascita() %>" /><br>
 			</form>
+			<%
+				} else{
+				Azienda bean = (Azienda) request.getAttribute("bean");			
+			%>
 
 			<form action="" method="post" id="B"
 				style="visibility: hidden; position: absolute">
-				<label>NOME AZIENDA: </label><input type="azienda"
-					name="nomeAzienda" /> <br> <label>SEDE: </label><input
-					type="sede" name="sede" /> <br> <label>EMAIL: </label> <input
-					type="email" name="email" /><br> <label>PARTITA IVA:
-				</label><input type="piva" name="partitaIva" /> <br> <label>TELEFONO:
-				</label><input type="telefono" name="telefono" /> <br>
+				<label>NOME AZIENDA: </label><input readonly="readonly"
+					type="azienda" name="nomeAzienda"
+					value="<%=bean.getNomeAzienda() %>" /> <br> <label>SEDE:
+				</label><input readonly="readonly" type="sede" name="sede"
+					value="<%=bean.getSede() %>" /> <br> <label>EMAIL: </label> <input
+					readonly="readonly" type="email" name="email"
+					value="<%=bean.getEmail() %>" /><br> <label>PARTITA
+					IVA: </label><input readonly="readonly" type="piva" name="partitaIva"
+					value="<%=bean.getP_iva()%>" /> <br> <label>TELEFONO:
+				</label><input readonly="readonly" type="telefono" name="telefono" /> <br>
 			</form>
-
+			<%
+				} 
+			%>
 		</fieldset>
-
-
-
-
-
-
+	</div>
 
 	</div>
 	</header>
