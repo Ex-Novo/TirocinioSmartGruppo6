@@ -30,4 +30,12 @@ public interface StudenteDaoInterface {
 	 * @return ritorna un istanza del bean studente
 	 */
 	public Studente getStudenteByEmail(String email);
+	
+	
+	/**
+	 * Effettua una query nel database con la partita iva dell'azienda per trovare le informazioni 
+	 * riguardanti i tirocinanti di quell'azienda
+	 * @return ritorna una lista di studenti che fanno tirocinio presso quell'azienda
+	 */
+	public ArrayList<Studente> getTirocinanti(String p);
 }

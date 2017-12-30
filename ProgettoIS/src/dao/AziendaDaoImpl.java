@@ -122,14 +122,12 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 				
 				Azienda azienda = new Azienda();
 				
-				
 				azienda.setNomeAzienda(rs.getString(1));			
 				azienda.setEmail(rs.getString(2));
 				azienda.setTelefono(rs.getString(3));
 				azienda.setEmail(rs.getString(4));
 
 				aziende.add(azienda);
-				
 				
 			}
 			
