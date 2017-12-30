@@ -1,5 +1,11 @@
 package bean;
 
+
+/**
+ * Bean dell'entità Documento
+ * @author Anna Maria Rosanova
+ *
+ */
 public class Documento {
 
 	private int idDocumento;

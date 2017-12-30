@@ -2,6 +2,11 @@ package bean;
 
 import java.util.Date;
 
+/**
+ * Bean dell'entità FeedBack
+ * @author Anna Maria Rosanova
+ *
+ */
 public class Feedback {
 	private int idFeedback;
 	private Date data;

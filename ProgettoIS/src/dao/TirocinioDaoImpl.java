@@ -12,6 +12,14 @@ import util.DBConnection;
 
 public class TirocinioDaoImpl implements TirocinioDaoInterface{
 
+	
+	/**
+	 * Il metodo prende come parametro la partita iva dell'azienda ed effettua una query nel database per cercare il tirocinio associato
+	 * @return ritorna un bean di tirocinio con le info associate
+	 * 
+	 * @author: Francesco D'auria, Luca Lamberti
+	 * modifiche: Mario Procida
+	 */
 	@Override
 	public Tirocinio getDettagliAziendeConvenzionate(String piva) {
 		
@@ -23,14 +31,13 @@ public class TirocinioDaoImpl implements TirocinioDaoInterface{
 			
 			con = DBConnection.createConnection();
 			String query =
-					"SELECT *"
-					+ "FROM tirocinio"
-					+ "INNER JOIN azienda ON tirocinio.p_iva = azienda.p_iva WHERE azienda.p_iva= ?";
+					"SELECT tirocinio.idTirocinio, tirocinio.descrizione, tirocinio.numPosti "
+					+ "FROM tirocinio "
+					+ "INNER JOIN azienda ON tirocinio.p_iva = azienda.p_iva WHERE azienda.p_iva = ?";
 			preparedStatement = con.prepareStatement(query); 
 			preparedStatement.setString(1, piva);
 			
 			ResultSet rs = preparedStatement.executeQuery();
-			
 			
 			
 			while(rs.next()) {

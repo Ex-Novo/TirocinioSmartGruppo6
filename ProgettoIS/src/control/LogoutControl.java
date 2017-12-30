@@ -23,6 +23,8 @@ public class LogoutControl extends HttpServlet {
 
 	/**
 	 * il metodo doGet prende la sessione dell'utente e la rimuove, rimuovendo anche gli attributi email e password associati.
+	 * 
+	 * @author: Mario Procida
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

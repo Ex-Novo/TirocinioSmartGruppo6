@@ -26,7 +26,11 @@ public class ViewProfileControl extends HttpServlet {
        
     }
 
-	
+	/**
+	 * Prende come parametro il tipo di utente loggato e la propria email dalla sessione e richiama un metodo dao per ricavare le informazioni del profilo
+	 * 
+	 * @author: Mario Procia , Anna Maria Rosanova
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();

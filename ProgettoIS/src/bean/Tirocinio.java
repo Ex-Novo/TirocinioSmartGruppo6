@@ -1,5 +1,10 @@
 package bean;
 
+/**
+ * Bean dell'entità Tirocinio
+ * @author Anna Maria Rosanova
+ *
+ */
 public class Tirocinio {
 	private int idTirocinio;
 	private String descrizione;

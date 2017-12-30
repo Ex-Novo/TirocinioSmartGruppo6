@@ -18,13 +18,10 @@
 		while (it.hasNext()) {
 			Azienda bean = (Azienda) it.next();
 			
-			
 			out.println(bean.getNomeAzienda());
 			out.println(bean.getEmail());%>
-			<form action=""> 
-				<input type="submit" value="<%=bean.getP_iva()%>" >
-			
-			
+			<form action="detailsAz?piva=<%=bean.getP_iva()%>&email=<%=bean.getEmail() %>" method="post"> 
+				<input type="submit" value="Visualizza dettaglio" >
 			</form><%
 		}
     }

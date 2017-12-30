@@ -13,6 +13,8 @@ public class DidatticaDaoImpl implements DidatticaDaoInterface {
 	
 	/**
 	 * Il metodo prende i parametri di login dal bean dell'user ed effettua la connessione al db. Se la query è riuscita ritorna status = true.
+	 * 
+	 * @author: Mario Procida
 	 */
 	@Override
 	public boolean loginUser(Didattica user)

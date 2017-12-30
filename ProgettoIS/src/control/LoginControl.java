@@ -32,7 +32,9 @@ public class LoginControl extends HttpServlet {
 
     /**
      * Prende il tipo di utente che vuole loggarsi e a seconda del tipo istanzia il bean e il dao e esegui la query. 
-     * Ritorna true se il login avviene con successo
+     * Ritorna true se il login avviene con successo.
+     * 
+     * @author: Mario Procida, Luca Lamberti, 
      */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
@@ -148,6 +150,11 @@ public class LoginControl extends HttpServlet {
 		}
 		
 		
+	}
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		doPost(request, response);
 	}
 
 }

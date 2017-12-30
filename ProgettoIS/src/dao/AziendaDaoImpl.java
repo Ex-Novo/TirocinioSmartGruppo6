@@ -16,6 +16,8 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 	/**
 	 * Il metodo registerUser prende i parametri dal bean e richiama il metodo di DBConnection per connettersi al database, per poi effettuare la query di inserimento.
 	 * Ritorna true se l'inserimento è andato a buon fine
+	 * 
+	 * @author:Mario Procida
 	 */
 	@Override
 	public boolean registerUser(Azienda user)
@@ -60,6 +62,8 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 	
 	/**
 	 * Il metodo prende i parametri di login dal bean dell'user ed effettua la connessione al db. Se la query è riuscita ritorna status = true.
+	 * 
+	 * @author: Mario Procida
 	 */
 	@Override
 	public boolean loginUser(Azienda user)
@@ -100,6 +104,8 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 	/**
 	 * Il metodo restituisce la lista completa delle aziende convenzionate presenti nel DB. 
 	 * Istanzia un bean per ogni azienda e la aggiunge all'arraylist da restituire
+	 * 
+	 * @author: Luca Lamberti
 	 */
 	@Override
 	public ArrayList<Azienda> getAziendeConvenzionate() {
@@ -112,7 +118,7 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 		{
 			
 			con = DBConnection.createConnection();
-			String query = "SELECT	azienda.nomeAzienda,azienda.email,azienda.telefono,azienda.sede,azienda.p_iva FROM convenzione INNER JOIN azienda ON convenzione.p_iva = azienda.p_iva where convenzione.stato = 'accettata'";
+			String query = "SELECT	azienda.nomeAzienda,azienda.email,azienda.telefono,azienda.sede,azienda.p_iva,azienda.tutorAziendale FROM convenzione INNER JOIN azienda ON convenzione.p_iva = azienda.p_iva where convenzione.stato = 'accettata'";
 			preparedStatement = con.prepareStatement(query); 
 			
 			
@@ -125,8 +131,9 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 				azienda.setNomeAzienda(rs.getString(1));			
 				azienda.setEmail(rs.getString(2));
 				azienda.setTelefono(rs.getString(3));
-				azienda.setEmail(rs.getString(4));
+				azienda.setSede(rs.getString(4));
 				azienda.setP_iva(rs.getString(5));
+				azienda.setTutorAziendale(rs.getString(6));
 
 				aziende.add(azienda);
 				
@@ -147,6 +154,8 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 	/**
 	 * Il metodo restituisce la lista completa delle aziende presenti nel DB. 
 	 * Istanzia un bean per ogni azienda e la aggiunge all'arraylist da restituire
+	 * 
+	 * @author: Mario Procida, Francesco D'auria
 	 */
 	@Override
 	public ArrayList<Azienda> getAziende() {
@@ -195,6 +204,8 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 	
 	/**
 	 * Il metodo ritorna un istanza di azienda trovata dall'email passata come parametro.
+	 * 
+	 * @author:Mario Procida
 	 */
 	@Override
 	public Azienda getAziendaByEmail(String email) {

@@ -1,5 +1,10 @@
 package bean;
 
+/**
+ * Bean dell'entità Registro
+ * @author Anna Maria Rosanova
+ *
+ */
 public class Registro {
 	private int idRegistro;
 

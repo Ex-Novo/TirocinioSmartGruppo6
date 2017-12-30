@@ -1,7 +1,11 @@
 package bean;
 
 import java.util.Date;
-
+/**
+ * Bean dell'entità Studente
+ * @author Anna Maria Rosanova
+ *
+ */
 public class Studente {
 	private String matricola;
 	private String nome;

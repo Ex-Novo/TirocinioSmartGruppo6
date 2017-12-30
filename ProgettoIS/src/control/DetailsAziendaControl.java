@@ -29,19 +29,27 @@ public class DetailsAziendaControl extends HttpServlet {
     }
 
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		doPost(request, response);
 	}
 
 	
+	/**Il metodo prende come parametro la partita iva e l'email dell'azienda convenzionata selezionata per poi chiamare i metodi
+	 * del dao del tirocinio associato all'azienda. Il metodo restituisce un bean di tirocinio e azienda.
+	 * 
+	 * @author: Luca Lamberti
+	 * modifiche: Mario Procida
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession session = request.getSession();
+		String piva = request.getParameter("piva");
+		String email = request.getParameter("email");
 		
-		String email = (String) session.getAttribute("email");
 		AziendaDaoInterface aziendaDao = new AziendaDaoImpl();
 		Azienda a = aziendaDao.getAziendaByEmail(email);
-		String piva = request.getParameter("piva");
+		
+		request.setAttribute("azienda", a);
 		
 		TirocinioDaoInterface tirocinioDao = new TirocinioDaoImpl();
 		Tirocinio tirocinio = tirocinioDao.getDettagliAziendeConvenzionate(piva);

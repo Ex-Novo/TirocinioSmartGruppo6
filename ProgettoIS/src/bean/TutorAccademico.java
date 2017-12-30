@@ -1,5 +1,10 @@
 package bean;
 
+/**
+ * Bean dell'entità TutorAccademico
+ * @author Anna Maria Rosanova
+ *
+ */
 public class TutorAccademico {
 	private String email;
 	private String codiceFiscale;

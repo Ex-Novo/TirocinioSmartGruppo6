@@ -2,6 +2,11 @@ package bean;
 
 import java.util.Date;
 
+/**
+ * Bean dell'entità Attività
+ * @author Anna Maria Rosanova
+ *
+ */
 public class Attivita {
 	private int idAttivita;
 	private Date data;

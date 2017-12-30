@@ -32,6 +32,8 @@ public class RegistrazioneControl extends HttpServlet {
      * Prende il parametro per controllare il tipo di utente da registrare e a seconda se è uno Studente o Azienda istanzia il bean.
      * Subito dopo istanzia l'interfaccia dao e l'implementazione dell'interfaccia per eseguire le query e ritorna un risoltato a seconda se
      * l'operazione è riuscita oppure no.
+     * 
+     * @author: Mario Procida,  Francesco D'auria
      */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -120,6 +122,11 @@ public class RegistrazioneControl extends HttpServlet {
 			
 		}
 
+	}
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		doPost(request, response);
 	}
 
 }

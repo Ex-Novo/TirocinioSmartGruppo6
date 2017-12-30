@@ -1,5 +1,10 @@
 package bean;
 
+/**
+ * Bean dell'entità Didattica
+ * @author Anna Maria Rosanova
+ *
+ */
 public class Didattica {
 	
 	private String email;

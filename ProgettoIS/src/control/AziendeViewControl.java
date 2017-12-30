@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import bean.Azienda;
 import bean.Studente;
 import dao.AziendaDaoImpl;
+import dao.AziendaDaoInterface;
 import dao.StudenteDaoImpl;
 
 /**
@@ -35,11 +36,13 @@ public class AziendeViewControl extends HttpServlet {
 	}
 
 	
+	/**Il metodo chiama il metodo del dao dell'azienda per restituire un array di aziende convenzionate
+	 * 
+	 * @author: Luca Lamberti
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		PrintWriter out = response.getWriter();
-		
-		AziendaDaoImpl aziendaDAO = new AziendaDaoImpl();
+		AziendaDaoInterface aziendaDAO = new AziendaDaoImpl();
 		ArrayList<Azienda> aziende = aziendaDAO.getAziendeConvenzionate();		
 		request.setAttribute("aziendeConvenzionate", aziende);
 		

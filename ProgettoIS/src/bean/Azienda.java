@@ -1,5 +1,10 @@
 package bean;
 
+/**
+ * Bean dell'entità Azienda
+ * @author Anna Maria Rosanova
+ *
+ */
 public class Azienda {
 	private String p_iva;
 	private String nomeAzienda;

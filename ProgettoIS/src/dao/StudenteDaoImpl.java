@@ -14,6 +14,8 @@ public class StudenteDaoImpl implements StudenteDaoInterface {
 	/**
 	 * Il metodo registerUser prende i parametri dal bean e richiama il metodo di DBConnection per connettersi al database, per poi effettuare la query di inserimento.
 	 * Ritorna true se l'inserimento è andato a buon fine
+	 * 
+	 * @author: Mario Procida
 	 */
 	@Override
 	public boolean registerUser(Studente user)
@@ -63,6 +65,8 @@ public class StudenteDaoImpl implements StudenteDaoInterface {
 	
 	/**
 	 * Il metodo prende i parametri di login dal bean dell'user ed effettua la connessione al db. Se la query è riuscita ritorna status = true.
+	 * 
+	 * @author: Mario Procida
 	 */
 	@Override
 	public boolean loginUser(Studente user)
@@ -105,6 +109,8 @@ public class StudenteDaoImpl implements StudenteDaoInterface {
 	/**
 	 * Il metodo restituisce la lista completa degli studenti presenti nel DB. 
 	 * Istanzia un bean per ogni studente e lo aggiunge all'arraylist da restituire
+	 * 
+	 * @author: Mario Procida, Francesco D'auria
 	 */
 	@Override
 	public ArrayList<Studente> getStudenti() {
@@ -199,7 +205,7 @@ public class StudenteDaoImpl implements StudenteDaoInterface {
 	/**
 	 * Il metodo restituisce la lista dei tirocinanti  presenti nel DB dell'azienda specificata. 
 	 * Istanzia un bean per ogni studente e lo aggiunge all'arraylist da restituire
-	 * autore: Luca Lamberti
+	 * @author: Luca Lamberti
 	 */
 	@Override
 	public ArrayList<Studente> getTirocinanti(String p) {
