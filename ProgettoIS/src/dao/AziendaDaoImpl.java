@@ -235,6 +235,8 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 		
 		return azienda;
 	}
+
+	
 	
 }
 	

@@ -37,5 +37,8 @@ public interface AziendaDaoInterface {
 	 * @return ritorna un istanza del bean azienda
 	 */
 	public Azienda getAziendaByEmail(String email);
-
+	
+	
 }
+
+
