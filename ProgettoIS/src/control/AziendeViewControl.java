@@ -45,7 +45,7 @@ public class AziendeViewControl extends HttpServlet {
 		
 		
 		/* Crea lista */
-		getServletConfig().getServletContext().getRequestDispatcher("/ListaAziendeConvenzionate.jsp").forward(request, response);
+		getServletConfig().getServletContext().getRequestDispatcher("/AziendeView.jsp").forward(request, response);
 		
 	}
 

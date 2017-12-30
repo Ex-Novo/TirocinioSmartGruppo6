@@ -199,6 +199,7 @@ public class StudenteDaoImpl implements StudenteDaoInterface {
 	/**
 	 * Il metodo restituisce la lista dei tirocinanti  presenti nel DB dell'azienda specificata. 
 	 * Istanzia un bean per ogni studente e lo aggiunge all'arraylist da restituire
+	 * autore: Luca Lamberti
 	 */
 	@Override
 	public ArrayList<Studente> getTirocinanti(String p) {

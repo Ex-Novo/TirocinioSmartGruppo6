@@ -112,7 +112,7 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 		{
 			
 			con = DBConnection.createConnection();
-			String query = "SELECT	azienda.nomeAzienda,azienda.email,azienda.telefono,azienda.sede FROM convenzione INNER JOIN azienda ON convenzione.p_iva = azienda.p_iva where convenzione.stato = 'accettata'";
+			String query = "SELECT	azienda.nomeAzienda,azienda.email,azienda.telefono,azienda.sede,azienda.p_iva FROM convenzione INNER JOIN azienda ON convenzione.p_iva = azienda.p_iva where convenzione.stato = 'accettata'";
 			preparedStatement = con.prepareStatement(query); 
 			
 			
@@ -126,6 +126,7 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 				azienda.setEmail(rs.getString(2));
 				azienda.setTelefono(rs.getString(3));
 				azienda.setEmail(rs.getString(4));
+				azienda.setP_iva(rs.getString(5));
 
 				aziende.add(azienda);
 				

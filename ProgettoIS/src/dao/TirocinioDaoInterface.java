@@ -13,7 +13,7 @@ public interface TirocinioDaoInterface {
 	 * @return ritorna la lista dei tirocini
 	 */
 	
-	public ArrayList<Tirocinio> getDettagliAziendeConvenzionate();
+	public Tirocinio getDettagliAziendeConvenzionate(String piva);
 	
 
 }
