@@ -59,6 +59,7 @@ public class LoginControl extends HttpServlet {
 				HttpSession session = request.getSession(true);
 				session.setAttribute("email", email);         
 				session.setAttribute("password",password);
+				session.setAttribute("tipoUtente", "Studente");
 				
 				out.println("<script>");
 				out.println("alert('Utente loggato')");
@@ -95,6 +96,7 @@ public class LoginControl extends HttpServlet {
 				HttpSession session = request.getSession(true);
 				session.setAttribute("email", email);         
 				session.setAttribute("password",password);
+				session.setAttribute("tipoUtente", "Azienda");
 				
 			
 				out.println("<script>");
@@ -128,6 +130,7 @@ public class LoginControl extends HttpServlet {
         		HttpSession session = request.getSession(true);
         		session.setAttribute("email", email);         
         		session.setAttribute("password",password);
+        		session.setAttribute("tipoUtente", "Didattica");
         		
         		out.println("<script>");
 				out.println("alert('Utente loggato')");
