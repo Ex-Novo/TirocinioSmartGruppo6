@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import bean.Azienda;
 import bean.Studente;
 import util.DBConnection;
 
@@ -128,9 +127,6 @@ public class StudenteDaoImpl implements StudenteDaoInterface {
 					
 					Studente studente = new Studente();
 					
-					/*insert into studente(matricola,nome,cognome,password,
-							codiceFiscale,email,dataNascita,luogoNascita) */
-					
 					studente.setMatricola(rs.getString(1));
 					studente.setNome(rs.getString(2));
 					studente.setCognome(rs.getString(3));
@@ -140,10 +136,8 @@ public class StudenteDaoImpl implements StudenteDaoInterface {
 					studente.setDataNascita(""+ rs.getDate(7));
 					studente.setLuogoNascita(rs.getString(8));
 
-					
 					studenti.add(studente);
 					
-				
 				}
 				
 				con.close();
@@ -157,5 +151,50 @@ public class StudenteDaoImpl implements StudenteDaoInterface {
 			
 			return studenti;
 		}
+	
+	/**
+	 * Il metodo ritorna un istanza di studente trovata dall'email passata come parametro.
+	 */
+	public Studente getStudenteByEmail(String email){
+		
+		Connection con = null;
+		PreparedStatement preparedStatement = null;
+		
+		Studente studente = new Studente();
+		try
+		{
+			
+			con = DBConnection.createConnection();
+			String query = "SELECT * FROM studente WHERE email = ?";
+			preparedStatement = con.prepareStatement(query); 
+			
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			preparedStatement.setString(1, email);
+			
+			while(rs.next()) {
+				
+				studente.setMatricola(rs.getString(1));
+				studente.setNome(rs.getString(2));
+				studente.setCognome(rs.getString(3));
+				studente.setPassword(rs.getString(4));
+				studente.setCodiceFiscale(rs.getString(5));
+				studente.setEmail(rs.getString(6));
+				studente.setDataNascita(""+ rs.getDate(7));
+				studente.setLuogoNascita(rs.getString(8));
+			
+			}
+			
+			con.close();
+		}
+		
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+		
+		return studente;
+	}
 
 }

@@ -23,4 +23,11 @@ public interface StudenteDaoInterface {
 	 * @return ritorna la lista di studenti registrati
 	 */
 	public ArrayList<Studente> getStudenti();
+	
+	/**
+	 * Effettua una query nel database con l'email dello studente per trovare le informazioni associate da
+	 * inserire nel profilo.
+	 * @return ritorna un istanza del bean studente
+	 */
+	public Studente getStudenteByEmail(String email);
 }
