@@ -196,5 +196,55 @@ public class StudenteDaoImpl implements StudenteDaoInterface {
 		
 		return studente;
 	}
+	
+	/**
+	 * Il metodo restituisce la lista dei tirocinanti  presenti nel DB dell'azienda specificata. 
+	 * Istanzia un bean per ogni studente e lo aggiunge all'arraylist da restituire
+	 */
+	@Override
+	public ArrayList<Studente> getTirocinanti(String p) {
+			
+			Connection con = null;
+			PreparedStatement preparedStatement = null;
+			ArrayList<Studente> studenti = new ArrayList<Studente>();
+			
+			try
+			{
+				
+				con = DBConnection.createConnection();
+				String query = "SELECT studente.matricola, studente.nome , studente.cognome , studente.codiceFiscale ,studente.email ,studente.dataNascita ,studente.luogoNascita FROM (((studente INNER JOIN richiestatirocinio on studente.matricola=richiestatirocinio.matricola)INNER JOIN tirocinio on richiestatirocinio.idTirocinio=tirocinio.idTirocinio) INNER JOIN azienda on tirocinio.p_iva=azienda.p_iva) WHERE azienda.p_iva= ?";
+				preparedStatement = con.prepareStatement(query); 
+				
+				
+				ResultSet rs = preparedStatement.executeQuery();
+				preparedStatement.setString(1, p);
+				
+				while(rs.next()) {
+					
+					Studente studente = new Studente();
+					
+					studente.setMatricola(rs.getString(1));
+					studente.setNome(rs.getString(2));
+					studente.setCognome(rs.getString(3));
+					studente.setCodiceFiscale(rs.getString(4));
+					studente.setEmail(rs.getString(5));
+					studente.setDataNascita(""+ rs.getDate(6));
+					studente.setLuogoNascita(rs.getString(7));
+
+					studenti.add(studente);
+					
+				}
+				
+				con.close();
+			}
+			
+			catch(SQLException e)
+			{
+				e.printStackTrace();
+			}
+			
+			
+			return studenti;
+		}
 
 }
