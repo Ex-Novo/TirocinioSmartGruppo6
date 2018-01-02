@@ -45,9 +45,9 @@ public class DocumentsViewControl extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		String email = (String) session.getAttribute("email");
-		String tipo = (String) session.getAttribute("tipo");
+		String tipo = (String) session.getAttribute("tipoUtente");
 		
-		System.out.println(tipo);
+		
 		ArrayList<Documento> documenti = new ArrayList<Documento>();
 		DocumentoDaoInterface docDao = new DocumentoDaoImpl();
 		
