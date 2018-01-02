@@ -29,6 +29,7 @@ public class StudenteDaoImpl implements StudenteDaoInterface {
 		String email = user.getEmail();
 		String dataNascita = user.getDataNascita();
 		String luogoNascita = user.getLuogoNascita();
+		String uniqueID = user.getUniqueID();
 		
 		Connection con = null;
 		PreparedStatement preparedStatement = null;
@@ -36,7 +37,7 @@ public class StudenteDaoImpl implements StudenteDaoInterface {
 		try
 		{
 			con = DBConnection.createConnection();
-			String query = "insert into studente(matricola,nome,cognome,password,codiceFiscale,email,dataNascita,luogoNascita) values (?,?,?,?,?,?,?,?)"; 
+			String query = "insert into studente(matricola,nome,cognome,password,codiceFiscale,email,dataNascita,luogoNascita,uniqueID) values (?,?,?,?,?,?,?,?,?)"; 
 			preparedStatement = con.prepareStatement(query); 
 			preparedStatement.setString(1, matricola);
 			preparedStatement.setString(2, nome);
@@ -46,6 +47,7 @@ public class StudenteDaoImpl implements StudenteDaoInterface {
 			preparedStatement.setString(6, email);
 			preparedStatement.setString(7, dataNascita);
 			preparedStatement.setString(8, luogoNascita);
+			preparedStatement.setString(9, uniqueID);
 			
 			int i = preparedStatement.executeUpdate();
 

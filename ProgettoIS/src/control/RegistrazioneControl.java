@@ -2,6 +2,7 @@ package control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,12 +17,15 @@ import dao.AziendaDaoImpl;
 import dao.AziendaDaoInterface;
 import dao.StudenteDaoImpl;
 import dao.StudenteDaoInterface;
+import util.FileManager;
 
 
 
 @WebServlet("/RegistrazioneControl")
+	
 public class RegistrazioneControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final String FILE_UPLOAD_PATH = "uploadedFiles";
 
 
 	public RegistrazioneControl() {
@@ -52,6 +56,8 @@ public class RegistrazioneControl extends HttpServlet {
 			String dataNascita = request.getParameter("dataNascita");
 			String luogoNascita = request.getParameter("luogoNascita");
 			
+			String uniqueID = UUID.randomUUID().toString(); //genera un ID univoco per l'utente
+			
 			Studente user = new Studente();
 
 			user.setMatricola(matricola);
@@ -62,16 +68,24 @@ public class RegistrazioneControl extends HttpServlet {
 			user.setEmail(email);
 			user.setDataNascita(dataNascita);
 			user.setLuogoNascita(luogoNascita);
+			user.setUniqueID(uniqueID);
 			
 			StudenteDaoInterface studenteDao = new StudenteDaoImpl();
 			
 			boolean userRegistered = studenteDao.registerUser(user);
 
 			if(userRegistered){
+				
+				FileManager fm = new FileManager();
+				
+				fm.createFolder(FILE_UPLOAD_PATH ,uniqueID); //richiama il metodo di FileManager per creare una folder con l'id unico dell'utente appena registrato
+				
 				out.println("<script>");
 				out.println("alert('Registrazione riuscita. Ora puoi effettuare l'accesso')");
-				out.println("window.history.back()");
+				out.println("window.open('index.jsp','_self')");
 				out.println("</script>");
+				
+				
 			}
 			else{
 				out.println("<script>");
@@ -92,6 +106,8 @@ public class RegistrazioneControl extends HttpServlet {
 			String sede = request.getParameter("sede");
 			String telefono = request.getParameter("telefono");
 			
+			String uniqueID = UUID.randomUUID().toString(); //genera un ID univoco per l'utente
+			
 			Azienda user = new Azienda();
 			
 			user.setNomeAzienda(nomeAzienda);
@@ -100,6 +116,7 @@ public class RegistrazioneControl extends HttpServlet {
 			user.setPassword(password);
 			user.setSede(sede);
 			user.setTelefono(telefono);
+			user.setUniqueID(uniqueID);
 			
 			AziendaDaoInterface aziendaDao = new AziendaDaoImpl();
 			
@@ -107,10 +124,15 @@ public class RegistrazioneControl extends HttpServlet {
 			
 			if(userRegistered){
 				
+				FileManager fm = new FileManager();
+				
+				fm.createFolder(FILE_UPLOAD_PATH ,uniqueID); //richiama il metodo di FileManager per creare una folder con l'id unico dell'utente appena registrato
+				
 				out.println("<script>");
 				out.println("alert('Registrazione riuscita. Ora puoi effettuare l'accesso')");
-				out.println("window.history.back()");
+				out.println("window.open('index.jsp','_self')");
 				out.println("</script>");
+				
 			}
 			else{
 				

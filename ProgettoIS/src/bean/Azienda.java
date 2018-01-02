@@ -13,9 +13,16 @@ public class Azienda {
 	private String password;
 	private String telefono;
 	private String sede;
+	private String uniqueID;
 	
 	
 	
+	public String getUniqueID() {
+		return uniqueID;
+	}
+	public void setUniqueID(String uniqueID) {
+		this.uniqueID = uniqueID;
+	}
 	public void setSede(String sede) {
 		this.sede = sede;
 	}

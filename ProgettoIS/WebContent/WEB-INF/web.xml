@@ -13,16 +13,13 @@
     <servlet-name>ViewProfileControl</servlet-name>
     <servlet-class>control.ViewProfileControl</servlet-class>
   </servlet>
-  
   <servlet>
     <servlet-name>DetailsAziendaControl</servlet-name>
     <servlet-class>control.DetailsAziendaControl</servlet-class>
   </servlet>
-  
-   <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>DetailsAziendaControl</servlet-name>
     <url-pattern>/detailsAz</url-pattern>
   </servlet-mapping>
-  
   
 </web-app>

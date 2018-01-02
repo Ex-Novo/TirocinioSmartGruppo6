@@ -15,7 +15,14 @@ public class Studente {
 	private String email;
 	private String dataNascita;
 	private String luogoNascita;
+	private String uniqueID;
 	
+	public String getUniqueID() {
+		return uniqueID;
+	}
+	public void setUniqueID(String uniqueID) {
+		this.uniqueID = uniqueID;
+	}
 	public String getMatricola() {
 		return matricola;
 	}
