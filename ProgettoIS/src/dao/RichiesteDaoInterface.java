@@ -12,7 +12,7 @@ public interface RichiesteDaoInterface {
 	 * @return un booleano: "true" se è andata a buon fine, altrimenti "false"
 	 */
 	
-	public boolean invioRichiestaTirocinio();
+	public boolean invioRichiestaTirocinio(String tutorAziendale);
 	
 	/** Crea una richiesta di convenzione e la salva nel database tramite una query
 	 * 
@@ -57,5 +57,4 @@ public interface RichiesteDaoInterface {
 	 */
 	
 	public ArrayList<Convenzione> getRichiesteConvenzione();
-	
 }
