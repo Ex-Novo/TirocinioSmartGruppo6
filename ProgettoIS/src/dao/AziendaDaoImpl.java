@@ -120,7 +120,7 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 		{
 			
 			con = DBConnection.createConnection();
-			String query = "SELECT	azienda.nomeAzienda,azienda.email,azienda.telefono,azienda.sede,azienda.p_iva,azienda.tutorAziendale FROM convenzione INNER JOIN azienda ON convenzione.p_iva = azienda.p_iva where convenzione.stato = 'accettata'";
+			String query = "SELECT	azienda.nomeAzienda,azienda.email,azienda.telefono,azienda.sede,azienda.p_iva,azienda.tutorAziendale, azienda.uniqueID FROM convenzione INNER JOIN azienda ON convenzione.p_iva = azienda.p_iva where convenzione.stato = 'accettata'";
 			preparedStatement = con.prepareStatement(query); 
 			
 			
@@ -136,6 +136,7 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 				azienda.setSede(rs.getString(4));
 				azienda.setP_iva(rs.getString(5));
 				azienda.setTutorAziendale(rs.getString(6));
+				azienda.setUniqueID(rs.getString(7));
 
 				aziende.add(azienda);
 				
@@ -187,6 +188,7 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 				azienda.setPassword(rs.getString(5));
 				azienda.setSede(rs.getString(6));
 				azienda.setTelefono(rs.getString(7));
+				azienda.setUniqueID(rs.getString(8));
 
 				aziende.add(azienda);
 				
@@ -235,6 +237,7 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 				azienda.setPassword(rs.getString(5));
 				azienda.setSede(rs.getString(6));
 				azienda.setTelefono(rs.getString(7));
+				azienda.setUniqueID(rs.getString(8));
 			
 			}
 			

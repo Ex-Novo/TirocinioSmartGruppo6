@@ -143,6 +143,7 @@ public class StudenteDaoImpl implements StudenteDaoInterface {
 					studente.setEmail(rs.getString(6));
 					studente.setDataNascita(""+ rs.getDate(7));
 					studente.setLuogoNascita(rs.getString(8));
+					studente.setUniqueID(rs.getString(9));
 
 					studenti.add(studente);
 					
@@ -189,6 +190,7 @@ public class StudenteDaoImpl implements StudenteDaoInterface {
 				studente.setEmail(rs.getString(6));
 				studente.setDataNascita(""+ rs.getDate(7));
 				studente.setLuogoNascita(rs.getString(8));
+				studente.setUniqueID(rs.getString(9));
 			
 			}
 			
@@ -220,7 +222,7 @@ public class StudenteDaoImpl implements StudenteDaoInterface {
 			{
 				
 				con = DBConnection.createConnection();
-				String query = "SELECT studente.matricola, studente.nome , studente.cognome , studente.codiceFiscale ,studente.email ,studente.dataNascita ,studente.luogoNascita FROM (((studente INNER JOIN richiestatirocinio on studente.matricola=richiestatirocinio.matricola)INNER JOIN tirocinio on richiestatirocinio.idTirocinio=tirocinio.idTirocinio) INNER JOIN azienda on tirocinio.p_iva=azienda.p_iva) WHERE azienda.p_iva= ?";
+				String query = "SELECT studente.matricola, studente.nome , studente.cognome , studente.codiceFiscale ,studente.email ,studente.dataNascita ,studente.luogoNascita, studente.uniqueID FROM (((studente INNER JOIN richiestatirocinio on studente.matricola=richiestatirocinio.matricola)INNER JOIN tirocinio on richiestatirocinio.idTirocinio=tirocinio.idTirocinio) INNER JOIN azienda on tirocinio.p_iva=azienda.p_iva) WHERE azienda.p_iva= ?";
 				preparedStatement = con.prepareStatement(query); 
 				
 				preparedStatement.setString(1, p);
@@ -236,6 +238,7 @@ public class StudenteDaoImpl implements StudenteDaoInterface {
 					studente.setEmail(rs.getString(5));
 					studente.setDataNascita(""+ rs.getDate(6));
 					studente.setLuogoNascita(rs.getString(7));
+					studente.setUniqueID(rs.getString(8));
 
 					studenti.add(studente);
 					

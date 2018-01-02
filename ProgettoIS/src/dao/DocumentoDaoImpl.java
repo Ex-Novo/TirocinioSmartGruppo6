@@ -23,7 +23,7 @@ public class DocumentoDaoImpl implements DocumentoDaoInterface{
 		try {
 			con = DBConnection.createConnection();
 			
-			String query = "SELECT `tipo`, `path` FROM `documento` WHERE matricola = ? OR p_iva = ?";
+			String query = "SELECT `tipo`, `nome` FROM `documento` WHERE matricola = ? OR p_iva = ?";
 			
 			preparedStatement = con.prepareStatement(query); 
 			
@@ -36,7 +36,9 @@ public class DocumentoDaoImpl implements DocumentoDaoInterface{
 				Documento doc = new Documento();
 				
 				doc.setTipo(rs.getString(1));
-				doc.setPath(rs.getString(2));
+				doc.setNome(rs.getString(2));
+				
+				documenti.add(doc);
 				
 				
 			}

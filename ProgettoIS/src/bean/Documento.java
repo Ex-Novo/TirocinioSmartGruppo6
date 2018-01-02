@@ -10,7 +10,7 @@ public class Documento {
 
 	private int idDocumento;
 	private String tipo;
-	private String path;
+	private String nome;
 	
 	public int getIdDocumento() {
 		return idDocumento;
@@ -24,11 +24,11 @@ public class Documento {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	public String getPath() {
-		return path;
+	public String getNome() {
+		return nome;
 	}
-	public void setPath(String path) {
-		this.path = path;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	
 }

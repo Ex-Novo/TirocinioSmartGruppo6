@@ -6,16 +6,23 @@ public class FileManager {
 	
 	/**
 	 * Metodo che crea una cartella personale con l'id univoco dell'utente
-	 * @param path
-	 * @param id
 	 * @author Mario Procida
 	 */
-	public void createFolder(String path, String id) {
+	public void createFolder(String path,String filename) {
 		
-		File f = new File (path + id);
-		if(!f.mkdir()) {
-			System.out.println("Cartella non creata");
-		};
+		
+		System.out.println(path);
+	    File f = new File (path + "/" +  filename);
+	    System.out.println(path + "/" + filename);
+	    if(!f.mkdir()) {
+	    	System.out.println("errore creazione");
+	    }
+		
+	}
+	
+	public void uploadFile(String filename, String uniqueID) {
+		
+		
 	}
 
 }

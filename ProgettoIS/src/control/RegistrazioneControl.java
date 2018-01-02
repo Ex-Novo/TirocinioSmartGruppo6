@@ -1,5 +1,6 @@
 package control;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.UUID;
@@ -25,9 +26,7 @@ import util.FileManager;
 	
 public class RegistrazioneControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String FILE_UPLOAD_PATH = "uploadedFiles";
-
-
+	
 	public RegistrazioneControl() {
 
 	}
@@ -76,10 +75,10 @@ public class RegistrazioneControl extends HttpServlet {
 
 			if(userRegistered){
 				
+				String path = getServletContext().getInitParameter("fsroot");
 				FileManager fm = new FileManager();
-				
-				fm.createFolder(FILE_UPLOAD_PATH ,uniqueID); //richiama il metodo di FileManager per creare una folder con l'id unico dell'utente appena registrato
-				
+				fm.createFolder(path ,uniqueID); //richiama il metodo di FileManager per creare una folder con l'id unico dell'utente appena registrato
+			    
 				out.println("<script>");
 				out.println("alert('Registrazione riuscita. Ora puoi effettuare l'accesso')");
 				out.println("window.open('index.jsp','_self')");
@@ -124,9 +123,9 @@ public class RegistrazioneControl extends HttpServlet {
 			
 			if(userRegistered){
 				
+				String path = getServletContext().getInitParameter("fsroot");
 				FileManager fm = new FileManager();
-				
-				fm.createFolder(FILE_UPLOAD_PATH ,uniqueID); //richiama il metodo di FileManager per creare una folder con l'id unico dell'utente appena registrato
+				fm.createFolder(path ,uniqueID); //richiama il metodo di FileManager per creare una folder con l'id unico dell'utente appena registrato
 				
 				out.println("<script>");
 				out.println("alert('Registrazione riuscita. Ora puoi effettuare l'accesso')");

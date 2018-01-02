@@ -22,4 +22,9 @@
     <url-pattern>/detailsAz</url-pattern>
   </servlet-mapping>
   
+  <context-param>
+    <param-name>fsroot</param-name>
+    <param-value>C:\TirocinioSmartFiles</param-value>
+</context-param>
+  
 </web-app>

@@ -35,6 +35,7 @@ public class LogoutControl extends HttpServlet {
 		
 		session.removeAttribute("email");
 		session.removeAttribute("password");
+		session.removeAttribute("tipoUtente");
 		session.invalidate();
 		
 		out.println("Utente sloggato");
