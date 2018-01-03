@@ -18,7 +18,7 @@ import dao.AziendaDaoImpl;
 import dao.AziendaDaoInterface;
 import dao.StudenteDaoImpl;
 import dao.StudenteDaoInterface;
-import util.FileManager;
+import util.FileUtil;
 
 
 
@@ -76,8 +76,8 @@ public class RegistrazioneControl extends HttpServlet {
 			if(userRegistered){
 				
 				String path = getServletContext().getInitParameter("fsroot");
-				FileManager fm = new FileManager();
-				fm.createFolder(path ,uniqueID); //richiama il metodo di FileManager per creare una folder con l'id unico dell'utente appena registrato
+				FileUtil fu = new FileUtil();
+				fu.createFolder(path ,uniqueID); //richiama il metodo di FileManager per creare una folder con l'id unico dell'utente appena registrato
 			    
 				out.println("<script>");
 				out.println("alert('Registrazione riuscita. Ora puoi effettuare l'accesso')");
@@ -124,7 +124,7 @@ public class RegistrazioneControl extends HttpServlet {
 			if(userRegistered){
 				
 				String path = getServletContext().getInitParameter("fsroot");
-				FileManager fm = new FileManager();
+				FileUtil fm = new FileUtil();
 				fm.createFolder(path ,uniqueID); //richiama il metodo di FileManager per creare una folder con l'id unico dell'utente appena registrato
 				
 				out.println("<script>");

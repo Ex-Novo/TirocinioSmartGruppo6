@@ -2,7 +2,7 @@ package util;
 
 import java.io.File;
 
-public class FileManager {
+public class FileUtil {
 	
 	/**
 	 * Metodo che crea una cartella personale con l'id univoco dell'utente
@@ -11,18 +11,12 @@ public class FileManager {
 	public void createFolder(String path,String filename) {
 		
 		
-		System.out.println(path);
-	    File f = new File (path + "/" +  filename);
-	    System.out.println(path + "/" + filename);
+		
+	    File f = new File (path + File.separator +  filename);
+	    System.out.println(path + File.separator + filename);
 	    if(!f.mkdir()) {
 	    	System.out.println("errore creazione");
 	    }
 		
 	}
-	
-	public void uploadFile(String filename, String uniqueID) {
-		
-		
-	}
-
 }

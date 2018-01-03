@@ -27,6 +27,18 @@
 			}
 		}
 	%>
+	
+	<h3>Carica File</h3>
+	<form method="post" action="UploadControl" name="echo" enctype="multipart/form-data">
+		<fieldset>
+			<legend>Seleziona il file</legend>
+			<input type="file" name="file"	size="50"/> <br>
+			<input type="submit" value="Invia">
+			<input type="reset" value="Reset">	
+		</fieldset>
+
+	
+	</form>
 
 
 </body>
