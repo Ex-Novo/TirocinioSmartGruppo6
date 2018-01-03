@@ -4,9 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-
-import bean.Azienda;
 import bean.Tirocinio;
 import util.DBConnection;
 
@@ -64,6 +61,49 @@ public class TirocinioDaoImpl implements TirocinioDaoInterface{
 		
 	}
 	
+	/**
+	 * Il metodo prende come parametro il tirocinio da inserire ed effettua la query nel database
+	 * @return ritorna true se l'inserimento ha avuto successo false altrimenti
+	 * 
+	 * @author: Luca Lamberti
+	 * 
+	 */
+	@Override
+	public boolean creaTirocinio(Tirocinio t) {
+		
+		Connection con = null;
+		PreparedStatement preparedStatement = null;
+		
+		try
+		{
+			
+			con = DBConnection.createConnection();
+			String query ="INSERT INTO " + "tirocinio "
+				+ " (descrizione, numPosti, p_iva) VALUES (?, ?, ?)";
+			preparedStatement = con.prepareStatement(query);
+			
+			preparedStatement.setString(1, t.getDescrizione());
+			preparedStatement.setInt(2, t.getNumPosti());
+			preparedStatement.setString(3, t.getP_iva());
+			
+			
+			
+			int rs = preparedStatement.executeUpdate();
+			
+			if(rs!=0 ){
+			
+			con.close();
+			return true;
+			}
+		}
+		
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
 	
 	
 

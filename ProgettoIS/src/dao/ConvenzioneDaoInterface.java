@@ -6,7 +6,7 @@ import bean.Convenzione;
 
 public interface ConvenzioneDaoInterface {
 	
-	public boolean approvazioneRichiestaConvenzione(Convenzione convenzione);
+	public boolean approvazioneRichiestaConvenzione(String piva);
 	
 	public ArrayList<Convenzione> getRichiesteConvenzione();
 	

@@ -1,7 +1,5 @@
 package dao;
 
-import java.util.ArrayList;
-
 import bean.Tirocinio;
 
 public interface TirocinioDaoInterface {
@@ -14,6 +12,14 @@ public interface TirocinioDaoInterface {
 	 */
 	
 	public Tirocinio getDettagliAziendeConvenzionate(String piva);
+	
+	
+	/**
+	 * 
+	 * Effettua una query nel database per l' inserimento di un nuovo tirocinio
+	 * @return ritorna true se l' inserimento avviene con successo false altrimenti
+	 */
+	public boolean creaTirocinio(Tirocinio t);
 	
 
 }

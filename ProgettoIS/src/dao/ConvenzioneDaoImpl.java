@@ -7,17 +7,53 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import bean.Convenzione;
-
 import util.DBConnection;
 
 public class ConvenzioneDaoImpl implements ConvenzioneDaoInterface{
 
-	@Override  //da implementare
-	public boolean approvazioneRichiestaConvenzione(Convenzione convenzione) {
+	/**
+	 * Il metodo prende come parametro la partita iva dell'azienda di cui si vuole accettare la convenzione
+	 * @return ritorna true se la convenzione è accettata
+	 * 
+	 * @author: Luca Lamberti , Francesco D'Auria
+	 */
+	@Override  
+	public boolean approvazioneRichiestaConvenzione(String piva) {
+		
+		Connection con = null;
+		PreparedStatement preparedStatement=null;
+		
+		try
+		{
+			
+			con = DBConnection.createConnection();
+			String query ="UPDATE convenzione SET stato= 'accettata' WHERE p_iva= ?";
+			preparedStatement = con.prepareStatement(query);
+			
+			preparedStatement.setString(1, piva);
+			
+			int rs = preparedStatement.executeUpdate();
+			
+			if(rs!=0 ){
+			
+			con.close();
+			return true;
+			}
+		}
+		
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
 		
 		return false;
 	}
-
+	
+	/**
+	 * @return ritorna un arrayList di Convenzioni che sono in attesa di approvazione
+	 * 
+	 * @author: Luca Lamberti , Francesco D'Auria
+	 */
 	@Override
 	public ArrayList<Convenzione> getRichiesteConvenzione() {
 		
@@ -56,12 +92,17 @@ public class ConvenzioneDaoImpl implements ConvenzioneDaoInterface{
 			e.printStackTrace();
 		}
 		
-		
 		return richiesteConvenzione;
-		
-		
 	}
 
+	
+	/**
+	 * Il metodo prende come parametro la convenzione da voler inoltrare e altri 2 parametri rappresentanti le chiavi esterne
+	 * Effettua la query di inserimento nel database
+	 * @return ritorna true se la query ha successo 
+	 * 
+	 * @author: Luca Lamberti , Francesco D'Auria
+	 */
 	@Override 
 	public boolean invioRichiestaConvenzione(Convenzione convenzione, String email ,String piva) {
 		
@@ -98,10 +139,6 @@ public class ConvenzioneDaoImpl implements ConvenzioneDaoInterface{
 		{
 			e.printStackTrace();
 		}
-		
-		
-		
-		
 		
 		return false;
 	}
