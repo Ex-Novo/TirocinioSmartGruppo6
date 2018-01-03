@@ -55,12 +55,17 @@ public class LoginControl extends HttpServlet {
 			
 			boolean logUser = studenteDao.loginUser(user); //true se la query è andata a buon fine
 			
+			user = studenteDao.getStudenteByEmail(email);
+			
+			String uniqueID = user.getUniqueID();
+			
 			if(logUser){
 			    
 				// creazione della sessione utente
 				HttpSession session = request.getSession(true);
 				session.setAttribute("email", email);         
 				session.setAttribute("password",password);
+				session.setAttribute("uniqueID", uniqueID);
 				session.setAttribute("tipoUtente", "Studente");
 				
 				out.println("<script>");
@@ -89,8 +94,10 @@ public class LoginControl extends HttpServlet {
 			user.setPassword(password);
 			
 			AziendaDaoInterface aziendaDao = new AziendaDaoImpl();
-			
 			boolean logUser = aziendaDao.loginUser(user); //true se la query è andata a buon fine
+			
+			user = aziendaDao.getAziendaByEmail(email);
+			String uniqueID = user.getUniqueID();
 			
 			if(logUser){
 				
@@ -98,6 +105,7 @@ public class LoginControl extends HttpServlet {
 				HttpSession session = request.getSession(true);
 				session.setAttribute("email", email);         
 				session.setAttribute("password",password);
+				session.setAttribute("uniqueID", uniqueID);
 				session.setAttribute("tipoUtente", "Azienda");
 				
 			
