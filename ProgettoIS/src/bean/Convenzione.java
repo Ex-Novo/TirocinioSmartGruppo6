@@ -14,6 +14,8 @@ public class Convenzione {
 	private String tutorAziendale;
 	private int numPosti;
 	private String stato;
+	private String email;
+	private String p_iva;
 	
 	public String getIdAttivita() {
 		return idAttivita;
@@ -52,7 +54,18 @@ public class Convenzione {
 	public void setStato(String stato) {
 		this.stato = stato;
 	}
-	
+	public String getP_iva() {
+		return p_iva;
+	}
+	public void setP_iva(String p_iva) {
+		this.p_iva = p_iva;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	
 	
 }

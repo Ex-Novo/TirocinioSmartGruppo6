@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import bean.Azienda;
-import bean.Studente;
 import util.DBConnection;
 
 public class AziendaDaoImpl implements AziendaDaoInterface{
@@ -251,6 +250,48 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 		
 		
 		return azienda;
+	}
+
+	/**
+	 * Il metodo aggiunge il valore del tutorAziendale all' interno dell' azienda avente come 
+	 * partita iva piva.
+	 * 
+	 * @return: true se l'inserimento ha avuto successo 
+	 * 
+	 * @author: Luca Lamberti
+	 */
+	@Override
+	public boolean addTutorAziendale(String tutor ,String piva) {
+		
+		Connection con = null;
+		PreparedStatement preparedStatement = null;
+		
+		try
+		{
+			
+			con = DBConnection.createConnection();
+			String query ="UPDATE azienda SET tutorAziendale = ? WHERE p_iva= ?";
+			preparedStatement = con.prepareStatement(query);
+			
+			preparedStatement.setString(1, tutor);
+			preparedStatement.setString(2, piva);
+			
+			
+			int rs = preparedStatement.executeUpdate();
+			
+			if(rs!=0 ){
+			
+			con.close();
+			return true;
+			}
+		}
+		
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+		return false;
 	}
 
 	
