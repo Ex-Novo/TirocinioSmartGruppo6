@@ -85,12 +85,7 @@ function regValidation(form){
 			return false;
 		}
 		
-		if(codiceFiscale==""){
-			
-			alert("Inserire il codice fiscale");
-			form.codiceFiscale.focus();
-			return false;
-		}
+	
 
 	}
 	
@@ -122,22 +117,10 @@ function regValidation(form){
 			form.sede.focus();
 			return false;
 		}
-		if(sede==""){//se il campo sede è vuoto
-			
-			alert("Inserisci la sede");
-			form.sede.focus();
-			return false;
-		}
 		
 		if(!nomeAzienda.match(letters)){ //se il nome dell'azienda non contiene soltanto lettere
 			
 			alert("Il nome dell'azienda deve avere solo caratteri alfabetici");
-			form.nomeAzienda.focus();
-			return false;
-		}
-		if(nomeAzienda==""){ // se il campo è vuoto
-			
-			alert("Inserisci il nome dell'azienda");
 			form.nomeAzienda.focus();
 			return false;
 		}
