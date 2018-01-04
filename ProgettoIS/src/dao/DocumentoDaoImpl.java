@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import bean.Documento;
 import util.DBConnection;
 
+/**
+ * DAO che permette le operazioni sul database riguardanti i documenti
+ *
+ */
 public class DocumentoDaoImpl implements DocumentoDaoInterface{
 	
 	/**

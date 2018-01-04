@@ -2,6 +2,10 @@ package util;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/**
+ * Classe che istanzia la connessione con il database
+ *
+ */
 public class DBConnection {
 
 	public static Connection createConnection()

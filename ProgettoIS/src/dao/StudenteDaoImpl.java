@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import bean.Studente;
 import util.DBConnection;
 
+/**
+ * DAO che permette le operazioni sul database riguardanti gli studenti
+ *
+ */
 public class StudenteDaoImpl implements StudenteDaoInterface {
 
 	/**

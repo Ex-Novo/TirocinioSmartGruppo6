@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import bean.Convenzione;
 import util.DBConnection;
 
+/**
+ * DAO che permette le operazioni sul database riguardanti le convenzioni
+ *
+ */
 public class ConvenzioneDaoImpl implements ConvenzioneDaoInterface{
 
 	/**

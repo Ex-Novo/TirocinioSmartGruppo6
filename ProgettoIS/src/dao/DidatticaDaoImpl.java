@@ -8,6 +8,10 @@ import java.sql.SQLException;
 import bean.Didattica;
 import util.DBConnection;
 
+/**
+ * DAO che permette le operazioni sul database riguardanti la didattica
+ *
+ */
 public class DidatticaDaoImpl implements DidatticaDaoInterface {
 	
 	

@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 import bean.RichiestaTirocinio;
 
+/**
+ * DAO che permette le operazioni sul database riguardanti le richieste  di tirocinio
+ *
+ */
 public class RichiestaTirocinioDaoImpl implements RichiestaTirocinioDaoInterface {
 
 	@Override

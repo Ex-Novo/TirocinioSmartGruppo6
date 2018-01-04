@@ -2,6 +2,10 @@ package util;
 
 import java.io.File;
 
+/**
+ * Classe per gestire file system
+ *
+ */
 public class FileUtil {
 	
 	/**

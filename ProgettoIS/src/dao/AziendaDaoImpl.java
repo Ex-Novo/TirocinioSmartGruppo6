@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import bean.Azienda;
 import util.DBConnection;
 
+/**
+ * DAO che permette le operazioni sul database riguardanti le aziende
+ *
+ */
 public class AziendaDaoImpl implements AziendaDaoInterface{
 	
 	
@@ -62,7 +66,8 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 	}
 	
 	/**
-	 * Il metodo prende i parametri di login dal bean dell'user ed effettua la connessione al db. Se la query è riuscita ritorna status = true.
+	 * Il metodo prende i parametri di login dal bean dell'user ed effettua la connessione al db. 
+	 * Se la query è riuscita ritorna status = true.
 	 * 
 	 * @author: Mario Procida
 	 */

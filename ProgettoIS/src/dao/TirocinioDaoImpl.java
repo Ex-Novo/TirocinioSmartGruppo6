@@ -7,6 +7,11 @@ import java.sql.SQLException;
 import bean.Tirocinio;
 import util.DBConnection;
 
+/**
+ * DAO che permette le operazioni sul database riguardanti i tirocini
+ *
+ */
+
 public class TirocinioDaoImpl implements TirocinioDaoInterface{
 
 	

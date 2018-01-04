@@ -2,10 +2,14 @@ package dao;
 
 import bean.Utente;
 import util.DBConnection;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+
+/**
+ * DAO che permette le operazioni sul database riguardanti gli utenti
+ *
+ */
 
 public class UtenteDao {
 	
