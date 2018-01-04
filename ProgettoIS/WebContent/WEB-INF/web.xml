@@ -5,14 +5,22 @@
     <servlet-name>RegistrazioneControl</servlet-name>
     <servlet-class>control.RegistrazioneControl</servlet-class>
   </servlet>
+  
   <servlet>
     <servlet-name>LoginControl</servlet-name>
     <servlet-class>control.LoginControl</servlet-class>
   </servlet>
+  
+  <servlet>
+    <servlet-name>LogoutControl</servlet-name>
+    <servlet-class>control.LogoutControl</servlet-class>
+  </servlet>
+  
   <servlet>
     <servlet-name>ViewProfileControl</servlet-name>
     <servlet-class>control.ViewProfileControl</servlet-class>
   </servlet>
+  
   <servlet>
     <servlet-name>DetailsAziendaControl</servlet-name>
     <servlet-class>control.DetailsAziendaControl</servlet-class>
@@ -22,9 +30,20 @@
     <servlet-name>UploadControl</servlet-name>
     <servlet-class>control.UploadControl</servlet-class>
   </servlet>
+  
   <servlet-mapping>
     <servlet-name>DetailsAziendaControl</servlet-name>
     <url-pattern>/detailsAz</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>LogoutControl</servlet-name>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  
+   <servlet-mapping>
+    <servlet-name>ViewProfileControl</servlet-name>
+    <url-pattern>/profile</url-pattern>
   </servlet-mapping>
   
   <context-param>

@@ -1,4 +1,4 @@
-function loginValidation(form){
+/*function loginValidation(form){
 	var email= form.email.value;
 	
 	
@@ -11,4 +11,4 @@ function loginValidation(form){
 	}
 	
 	
-}
+}*/

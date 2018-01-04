@@ -72,11 +72,14 @@ public class LoginControl extends HttpServlet {
 				session.setAttribute("password",password);
 				session.setAttribute("uniqueID", uniqueID);
 				session.setAttribute("tipoUtente", "Studente");
+				session.setMaxInactiveInterval(600); //tempo di inattività massimo prima del logout = 10 minuti
 				
 				out.println("<script>");
 				out.println("alert('Utente loggato')");
-				out.println("window.history.back()");
+				out.println("window.open('index.jsp','_self')");
 				out.println("</script>");
+				
+				
 			
 				
 			}
@@ -112,11 +115,12 @@ public class LoginControl extends HttpServlet {
 				session.setAttribute("password",password);
 				session.setAttribute("uniqueID", uniqueID);
 				session.setAttribute("tipoUtente", "Azienda");
+				session.setMaxInactiveInterval(600); //tempo di inattività massimo prima del logout = 10 minuti
 				
 			
 				out.println("<script>");
 				out.println("alert('Utente loggato')");
-				out.println("window.history.back()");
+				out.println("window.open('index.jsp','_self')");
 				out.println("</script>");
 				
 			}
@@ -146,10 +150,11 @@ public class LoginControl extends HttpServlet {
         		session.setAttribute("email", email);         
         		session.setAttribute("password",password);
         		session.setAttribute("tipoUtente", "Didattica");
+        		session.setMaxInactiveInterval(600); //tempo di inattività massimo prima del logout = 10 minuti
         		
         		out.println("<script>");
 				out.println("alert('Utente loggato')");
-				out.println("window.history.back()");
+				out.println("window.open('index.jsp','_self')");
 				out.println("</script>");
 
         	}

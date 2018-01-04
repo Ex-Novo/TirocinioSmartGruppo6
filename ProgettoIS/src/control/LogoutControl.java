@@ -39,9 +39,13 @@ public class LogoutControl extends HttpServlet {
 		session.removeAttribute("email");
 		session.removeAttribute("password");
 		session.removeAttribute("tipoUtente");
+		session.removeAttribute("uniqueID");
 		session.invalidate();
 		
-		out.println("Utente sloggato");
+		out.println("<script>");
+		out.println("alert('Logout effettuato')");
+		out.println("window.open('index.jsp','_self')");
+		out.println("</script>");
 	}
 
 	

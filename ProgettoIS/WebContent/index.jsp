@@ -6,48 +6,24 @@
 <head>
 
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
 
 <title>Tirocinio Smart</title>
 
-<!-- Bootstrap core CSS -->
-<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Custom fonts for this template -->
-<link href="vendor/font-awesome/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
-	rel="stylesheet" type="text/css">
-<link
-	href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
-	rel="stylesheet" type="text/css">
-
-<!-- Plugin CSS -->
-<link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet"
-	type="text/css">
-
-<!-- Custom styles for this template -->
-<link href="css/freelancer.min.css" rel="stylesheet">
-<link href="css/login.css" rel="stylesheet">
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/loginValidation.js"></script>
-<script type="text/javascript" src="js/regValidation.js"></script>
 </head>
 
-<body id="page-top">
 <%@ include file="/header.jsp" %>
-	
+<body>
 
 	<!-- Header -->
-	<header class="masthead bg-primary text-white text-center">
-	<div class="container">
-		<img class="img-fluid mb-5 d-block mx-auto" src="img/profile.png"
-			alt="">
-		<h1 class="text-uppercase mb-0">Aziende Convenzionate</h1>
-	</div>
+	<header class="masthead bg-primary text-white text-center" >
+		<div class="container">
+			<img class="img-fluid mb-5 d-block mx-auto" src="img/profile.png"
+				alt="">
+			<h1 class="text-uppercase mb-0">Aziende Convenzionate</h1>
+		</div>
 	</header>
 
 
