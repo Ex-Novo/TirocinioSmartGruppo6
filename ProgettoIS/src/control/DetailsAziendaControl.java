@@ -16,7 +16,8 @@ import dao.TirocinioDaoImpl;
 import dao.TirocinioDaoInterface;
 
 /**
- * Servlet implementation class DetailsAziendaControl
+ * Servlet che recupera le informazioni del tirocinio dell'azienda e
+ * le inoltra alla jsp DettaglioAzienda 
  */
 @WebServlet("/DetailsAziendaControl")
 public class DetailsAziendaControl extends HttpServlet {
@@ -36,7 +37,7 @@ public class DetailsAziendaControl extends HttpServlet {
 
 	
 	/**Il metodo prende come parametro la partita iva e l'email dell'azienda convenzionata selezionata per poi chiamare i metodi
-	 * del dao del tirocinio associato all'azienda. Il metodo restituisce un bean di tirocinio e azienda.
+	 * del dao del tirocinio associato all'azienda. Il metodo restituisce un bean di tirocinio.
 	 * 
 	 * @author: Luca Lamberti
 	 * modifiche: Mario Procida

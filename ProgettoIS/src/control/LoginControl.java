@@ -21,6 +21,11 @@ import bean.Studente;
 import bean.Azienda;
 import bean.Didattica;
 
+/**
+ * Servlet che permette il login e la creazione della sessione
+ * in base al tipo di utente
+ *
+ */
 @WebServlet("/LoginControl")
 public class LoginControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;

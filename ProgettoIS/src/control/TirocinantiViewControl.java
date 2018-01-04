@@ -19,7 +19,7 @@ import dao.StudenteDaoImpl;
 import dao.StudenteDaoInterface;
 
 /**
- * Servlet implementation class TirocinantiViewControl
+ * Servlet che consente di visualizzare la lista dei tirocinanti presso una determinata azienda
  */
 @WebServlet("/TirocinantiViewControl")
 public class TirocinantiViewControl extends HttpServlet {
@@ -33,7 +33,8 @@ public class TirocinantiViewControl extends HttpServlet {
 
 
 	/**
-	 * Chiama un metodo dallo studente dao per ritornare una lista di tirocinanti presso l'azienda loggata, passando come parametro la sua email.
+	 * Chiama un metodo dallo studente dao per ritornare una lista di tirocinanti presso l'azienda loggata, 
+	 * passando come parametro la sua email.
 	 * 
 	 * @author: Luca Lamberti
 	 */

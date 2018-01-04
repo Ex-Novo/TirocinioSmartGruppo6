@@ -18,7 +18,11 @@ import dao.AziendaDaoInterface;
 import dao.StudenteDaoImpl;
 import dao.StudenteDaoInterface;
 
-
+/**
+ * Servlet che permette la visualizzazione di tutti gli utenti
+ * registrati al sistema
+ *
+ */
 @WebServlet("/ViewUtentiControl")
 public class ViewUtentiControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;

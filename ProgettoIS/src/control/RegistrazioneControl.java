@@ -20,8 +20,11 @@ import dao.StudenteDaoImpl;
 import dao.StudenteDaoInterface;
 import util.FileUtil;
 
-
-
+/**
+ * Servlet che permette la registrazione in base al tipo di utente, crea il bean e poi 
+ * inserisce i dati nel database
+ *
+ */
 @WebServlet("/RegistrazioneControl")
 	
 public class RegistrazioneControl extends HttpServlet {
@@ -32,9 +35,9 @@ public class RegistrazioneControl extends HttpServlet {
 	}
 
     /**
-     * Prende il parametro per controllare il tipo di utente da registrare e a seconda se è uno Studente o Azienda istanzia il bean.
-     * Subito dopo istanzia l'interfaccia dao e l'implementazione dell'interfaccia per eseguire le query e ritorna un risoltato a seconda se
-     * l'operazione è riuscita oppure no.
+     * Prende il parametro tipo per controllare il tipo di utente da registrare e a seconda se è uno Studente o Azienda istanzia il bean.
+     * Subito dopo istanzia l'interfaccia dao e l'implementazione dell'interfaccia per eseguire le query e ritorna un risultato
+     * a seconda se l'operazione è riuscita oppure no.
      * 
      * @author: Mario Procida,  Francesco D'auria
      */

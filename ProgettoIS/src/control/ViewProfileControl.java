@@ -15,7 +15,10 @@ import dao.AziendaDaoInterface;
 import dao.StudenteDaoImpl;
 import dao.StudenteDaoInterface;
 
-
+/**
+ * Servlet che permette di inoltra le informazioni dell'utente all jsp
+ *
+ */
 @WebServlet("/ViewProfileControl")
 public class ViewProfileControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -27,7 +30,8 @@ public class ViewProfileControl extends HttpServlet {
     }
 
 	/**
-	 * Prende come parametro il tipo di utente loggato e la propria email dalla sessione e richiama un metodo dao per ricavare le informazioni del profilo
+	 * Prende come parametro il tipo di utente loggato e la propria email dalla sessione
+	 * e richiama un metodo dao per ricavare le informazioni del profilo
 	 * 
 	 * @author: Mario Procia , Anna Maria Rosanova
 	 */

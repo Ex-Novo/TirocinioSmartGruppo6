@@ -16,7 +16,7 @@ import dao.ConvenzioneDaoImpl;
 import dao.ConvenzioneDaoInterface;
 
 /**
- * Servlet implementation class RichiestaConvenzioneControl
+ * Servlet che permette ad una azienda non convenzionata di effettuare la richiesta di convenzione
  */
 @WebServlet("/RichiestaConvenzioneControl")
 public class RichiestaConvenzioneControl extends HttpServlet {

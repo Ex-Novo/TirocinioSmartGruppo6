@@ -17,7 +17,8 @@ import dao.AziendaDaoInterface;
 import dao.StudenteDaoImpl;
 
 /**
- * Servlet implementation class AziendeViewControl
+ * Servlet che contiene il metodo doPost che recupera le aziende convenzionate dal database
+ * e le inoltra alla jsp AziendeView come attributo
  */
 @WebServlet("/AziendeViewControl")
 public class AziendeViewControl extends HttpServlet {
