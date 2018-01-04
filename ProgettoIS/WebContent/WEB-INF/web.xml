@@ -27,9 +27,19 @@
   </servlet>
   
   <servlet>
+    <servlet-name>DocumentsViewControl</servlet-name>
+    <servlet-class>control.DocumentsViewControl</servlet-class>
+  </servlet>
+  
+  <servlet>
     <servlet-name>UploadControl</servlet-name>
     <servlet-class>control.UploadControl</servlet-class>
   </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>DocumentsViewControl</servlet-name>
+    <url-pattern>/documents</url-pattern>
+  </servlet-mapping>
   
   <servlet-mapping>
     <servlet-name>DetailsAziendaControl</servlet-name>

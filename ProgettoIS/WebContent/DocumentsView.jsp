@@ -6,40 +6,50 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Tirocinio Smart - Documenti</title>
 </head>
+
+
 <body>
+<%@ include file="/header.jsp" %>
 
-	<%
-		HttpSession s = request.getSession();
-
-		Collection<?> documenti = (Collection<?>) request.getAttribute("documenti");
-
-		if (documenti != null && documenti.size() != 0) {
-			Iterator<?> it = documenti.iterator();
-
-			while (it.hasNext()) {
-
-				Documento bean = (Documento) it.next();
-
-				out.println("** -- Nome = " + bean.getNome());
-				out.println("-- Tipo = " + bean.getTipo());
-			}
-		}
-	%>
-	
-	<h3>Carica File</h3>
-	<form method="post" action="UploadControl" name="echo" enctype="multipart/form-data">
-		<fieldset>
-			<legend>Seleziona il file</legend>
-			<input type="file" name="file"	size="50"/> <br>
-			<input type="submit" value="Invia">
-			<input type="reset" value="Reset">	
-		</fieldset>
-
-	
-	</form>
-
-
+	<header class="masthead bg-primary text-white text-center" >
+		<div class="container">
+			    <!--  Prende i l'arraylist dei documenti caricati dalla request -->
+				<%
+					Collection<?> documenti = (Collection<?>) request.getAttribute("documenti");
+			
+					if (documenti != null && documenti.size() != 0) {
+						Iterator<?> it = documenti.iterator();
+			
+						while (it.hasNext()) {
+			
+							Documento bean = (Documento) it.next();
+			
+							out.println("** -- Nome = " + bean.getNome());
+							out.println("-- Tipo = " + bean.getTipo());
+						}
+					}else{
+						
+					
+				%>
+				
+				<h3>Non hai caricato nessun documento.</h3>
+				<%
+					}
+				%>
+				
+				<!-- Form per upload di file -->
+				<form method="post" action="UploadControl" name="echo" enctype="multipart/form-data">
+					<fieldset>
+						<legend>Seleziona il file</legend>
+						<input type="file" name="file"	size="50"/> <br>
+						<input type="submit" value="Invia">
+						<input type="reset" value="Reset">	
+					</fieldset>
+				</form>
+		</div>
+	</header>
+<%@include file="/footer.jsp" %>
 </body>
 </html>

@@ -54,7 +54,6 @@ public class ViewProfileControl extends HttpServlet {
 			getServletConfig().getServletContext().getRequestDispatcher("/AccountView.jsp").forward(request, response);
 			
 		}
-		
 		if(tipoUtente.equals("Azienda")){
 			
 			AziendaDaoInterface aziendaDao = new AziendaDaoImpl();
@@ -65,8 +64,8 @@ public class ViewProfileControl extends HttpServlet {
 			
 			getServletConfig().getServletContext().getRequestDispatcher("/AccountView.jsp").forward(request, response);
 			
-			
 		}
+		
 	}
 
 	
