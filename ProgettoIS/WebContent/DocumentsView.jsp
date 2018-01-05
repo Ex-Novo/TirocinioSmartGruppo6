@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    
- <%@ page import="java.util.*,dao.*,bean.*" %>
+	pageEncoding="ISO-8859-1"%>
+
+<%@ page import="java.util.*,dao.*,bean.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,22 +11,22 @@
 
 
 <body>
-<%@ include file="/header.jsp" %>
+	<%@ include file="/header.jsp"%>
+	<header class="masthead bg-primary text-white text-center">
 	<div id="wrapper">
-		<header class="masthead bg-primary text-white text-center" >
-			<div class="container">
-			
-			    <!-- Controlla se l'utente è loggato -->
-				<%
+		<div class="container">
+
+			<!-- Controlla se l'utente è loggato -->
+			<%
 					if(email == null && password == null){
 				
 				%>
-				<h3> Non sei loggato. Effettua il login.</h3>
-				
-				<!-- Mostra i documenti se l'utente è loggato -->
-				<%}else{ %>
-				    <!--  Prende i l'arraylist dei documenti caricati dalla request -->
-					<%
+			<h3>Non sei loggato. Effettua il login.</h3>
+
+			<!-- Mostra i documenti se l'utente è loggato -->
+			<%}else{ %>
+			<!--  Prende i l'arraylist dei documenti caricati dalla request -->
+			<%
 						Collection<?> documenti = (Collection<?>) request.getAttribute("documenti");
 				
 						if (documenti != null && documenti.size() != 0) {
@@ -43,30 +43,31 @@
 							
 						
 					%>
-					
-					<h3>Non hai caricato nessun documento.</h3>
-					<%
+
+			<h3>Non hai caricato nessun documento.</h3>
+			<%
 						}
 					
 					%>
-					
-					<!-- Form per upload di file -->
-					<form method="post" action="UploadControl" name="echo" enctype="multipart/form-data">
-						<fieldset>
-							<legend>Seleziona il file</legend>
-							<input type="file" name="file"	size="50"/> <br>
-							<input type="submit" value="Invia">
-							<input type="reset" value="Reset">	
-						</fieldset>
-					</form>
-					
-				<%} %>
-			</div>
-			
-		</header>
+
+			<!-- Form per upload di file -->
+			<form method="post" action="UploadControl" name="echo"
+				enctype="multipart/form-data">
+				<fieldset>
+					<legend>Seleziona il file</legend>
+					<input type="file" name="file" size="50" /> <br> <input
+						type="submit" value="Invia"> <input type="reset"
+						value="Reset">
+				</fieldset>
+			</form>
+
+			<%} %>
+		</div>
+
+
 	</div>
-	
-	<div id="push"></div>
-<%@include file="/footer.jsp" %>
+	</header>
+	<div class="bg-primary" id="push"></div>
+	<%@include file="/footer.jsp"%>
 </body>
 </html>
