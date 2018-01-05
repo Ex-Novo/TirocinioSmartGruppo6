@@ -12,44 +12,61 @@
 
 <body>
 <%@ include file="/header.jsp" %>
-
-	<header class="masthead bg-primary text-white text-center" >
-		<div class="container">
-			    <!--  Prende i l'arraylist dei documenti caricati dalla request -->
+	<div id="wrapper">
+		<header class="masthead bg-primary text-white text-center" >
+			<div class="container">
+			
+			    <!-- Controlla se l'utente è loggato -->
 				<%
-					Collection<?> documenti = (Collection<?>) request.getAttribute("documenti");
-			
-					if (documenti != null && documenti.size() != 0) {
-						Iterator<?> it = documenti.iterator();
-			
-						while (it.hasNext()) {
-			
-							Documento bean = (Documento) it.next();
-			
-							out.println("** -- Nome = " + bean.getNome());
-							out.println("-- Tipo = " + bean.getTipo());
-						}
-					}else{
+					if(email == null && password == null){
+				
+				%>
+				<h3> Non sei loggato. Effettua il login.</h3>
+				
+				<!-- Mostra i documenti se l'utente è loggato -->
+				<%}else{ %>
+				    <!--  Prende i l'arraylist dei documenti caricati dalla request -->
+					<%
+						Collection<?> documenti = (Collection<?>) request.getAttribute("documenti");
+				
+						if (documenti != null && documenti.size() != 0) {
+							Iterator<?> it = documenti.iterator();
+				
+							while (it.hasNext()) {
+				
+								Documento bean = (Documento) it.next();
+				
+								out.println("** -- Nome = " + bean.getNome());
+								out.println("-- Tipo = " + bean.getTipo());
+							}
+						}else{
+							
 						
+					%>
 					
-				%>
-				
-				<h3>Non hai caricato nessun documento.</h3>
-				<%
-					}
-				%>
-				
-				<!-- Form per upload di file -->
-				<form method="post" action="UploadControl" name="echo" enctype="multipart/form-data">
-					<fieldset>
-						<legend>Seleziona il file</legend>
-						<input type="file" name="file"	size="50"/> <br>
-						<input type="submit" value="Invia">
-						<input type="reset" value="Reset">	
-					</fieldset>
-				</form>
-		</div>
-	</header>
+					<h3>Non hai caricato nessun documento.</h3>
+					<%
+						}
+					
+					%>
+					
+					<!-- Form per upload di file -->
+					<form method="post" action="UploadControl" name="echo" enctype="multipart/form-data">
+						<fieldset>
+							<legend>Seleziona il file</legend>
+							<input type="file" name="file"	size="50"/> <br>
+							<input type="submit" value="Invia">
+							<input type="reset" value="Reset">	
+						</fieldset>
+					</form>
+					
+				<%} %>
+			</div>
+			
+		</header>
+	</div>
+	
+	<div id="push"></div>
 <%@include file="/footer.jsp" %>
 </body>
 </html>
