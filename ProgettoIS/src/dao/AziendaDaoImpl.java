@@ -300,6 +300,52 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 	}
 
 	
+	/**
+	 * Il metodo ritorna un istanza di azienda trovata dalla partita iva passata come parametro.
+	 * 
+	 * @author:Luca Lamberti, Simone Torluccio
+	 */
+	@Override
+	public Azienda getAziendaByP_Iva(String piva) {
+		
+		Connection con = null;
+		PreparedStatement preparedStatement = null;
+		
+		Azienda azienda = new Azienda();
+		try
+		{
+			
+			con = DBConnection.createConnection();
+			String query = "SELECT * FROM azienda WHERE p_iva = ?";
+			preparedStatement = con.prepareStatement(query); 
+			
+			preparedStatement.setString(1, piva);
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()) {
+				
+				azienda.setP_iva(rs.getString(1));
+				azienda.setNomeAzienda(rs.getString(2));
+				azienda.setTutorAziendale(rs.getString(3));
+				azienda.setEmail(rs.getString(4));
+				azienda.setPassword(rs.getString(5));
+				azienda.setSede(rs.getString(6));
+				azienda.setTelefono(rs.getString(7));
+				azienda.setUniqueID(rs.getString(8));
+			
+			}
+			
+			con.close();
+		}
+		
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+		
+		return azienda;
+	}
 	
 }
 	

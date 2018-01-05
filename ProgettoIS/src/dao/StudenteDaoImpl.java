@@ -167,6 +167,8 @@ public class StudenteDaoImpl implements StudenteDaoInterface {
 	
 	/**
 	 * Il metodo ritorna un istanza di studente trovata dall'email passata come parametro.
+	 * 
+	 * @author: Mario Procida
 	 */
 	public Studente getStudenteByEmail(String email){
 		
@@ -209,6 +211,55 @@ public class StudenteDaoImpl implements StudenteDaoInterface {
 		
 		return studente;
 	}
+	
+	
+	/**
+	 * Il metodo ritorna un istanza di studente trovata dalla matricola  passata come parametro.
+	 * 
+	 * @author: Simone Torluccio ,Luca Lamberti
+	 */
+	public Studente getStudenteByMatricola(String matricola){
+		
+		Connection con = null;
+		PreparedStatement preparedStatement = null;
+		
+		Studente studente = new Studente();
+		try
+		{
+			
+			con = DBConnection.createConnection();
+			String query = "SELECT * FROM studente WHERE matricola = ?";
+			preparedStatement = con.prepareStatement(query); 
+			
+			preparedStatement.setString(1, matricola);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			while(rs.next()) {
+				
+				studente.setMatricola(rs.getString(1));
+				studente.setNome(rs.getString(2));
+				studente.setCognome(rs.getString(3));
+				studente.setPassword(rs.getString(4));
+				studente.setCodiceFiscale(rs.getString(5));
+				studente.setEmail(rs.getString(6));
+				studente.setDataNascita(""+ rs.getDate(7));
+				studente.setLuogoNascita(rs.getString(8));
+				studente.setUniqueID(rs.getString(9));
+			
+			}
+			
+			con.close();
+		}
+		
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+		
+		return studente;
+	}
+	
 	
 	/**
 	 * Il metodo restituisce la lista dei tirocinanti  presenti nel DB dell'azienda specificata. 

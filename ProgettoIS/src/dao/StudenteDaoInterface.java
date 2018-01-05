@@ -38,4 +38,7 @@ public interface StudenteDaoInterface {
 	 * @return ritorna una lista di studenti che fanno tirocinio presso quell'azienda
 	 */
 	public ArrayList<Studente> getTirocinanti(String p);
+	
+	public Studente getStudenteByMatricola(String matricola);
+	
 }

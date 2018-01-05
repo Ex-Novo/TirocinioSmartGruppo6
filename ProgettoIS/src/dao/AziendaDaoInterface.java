@@ -38,6 +38,8 @@ public interface AziendaDaoInterface {
 	 */
 	public Azienda getAziendaByEmail(String email);
 	
+	public Azienda getAziendaByP_Iva(String piva);
+	
 	
 	public boolean addTutorAziendale(String tutor,String piva);
 	
