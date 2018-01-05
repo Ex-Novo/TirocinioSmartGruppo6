@@ -22,7 +22,7 @@ public class ControlloMatricolaStudente extends HttpServlet {
     
     public ControlloMatricolaStudente() {
         super();
-        
+
     }
 
 	/**
@@ -43,8 +43,10 @@ public class ControlloMatricolaStudente extends HttpServlet {
 		
 		studente= studenteDao.getStudenteByMatricola(matricola);
 		
-		if(studente== null){risultato="Matricola valida";}
-		else{risultato="Matricola non  valida, gia' presente nel database";}
+		if(studente.getMatricola().equals(matricola)){
+			
+			risultato="Matricola non  valida, gia' presente nel database";
+	    }
 		
 		response.getWriter().write(risultato);
 	}

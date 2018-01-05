@@ -15,7 +15,7 @@
 </head>
 <%@ include file="/header.jsp" %>
 <body>
-	
+	<div id="wrapper">
 		<header class="masthead bg-primary text-white text-center">
 			<div class="container">
 						<%
@@ -24,7 +24,7 @@
 								if(tipoUtente.equals("Studente")){
 									Studente bean = (Studente) request.getAttribute("bean");			
 						%>
-			            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="documents" method="post">Visualizza documenti</a>
+			            <a class="btn btn-info" href="documents" method="post">Visualizza documenti</a>
 						<form action="" method="post" id="A" style="position: relative">
 							<input type="hidden" name="tipo" value="Studente" /> <br> <label>NOME:
 							</label><input readonly="readonly" type="nome" name="nome"
@@ -73,8 +73,8 @@
 						%>
 			</div>
 		</header>
-
-
+   </div>
+<div id="push"></div>
 <%@include file="/footer.jsp" %>	
 
 </body>

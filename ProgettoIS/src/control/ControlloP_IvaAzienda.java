@@ -40,10 +40,12 @@ public class ControlloP_IvaAzienda extends HttpServlet {
  		AziendaDaoInterface aziendaDao = new AziendaDaoImpl();
 		Azienda azienda = new Azienda();
 		
-		azienda= aziendaDao.getAziendaByEmail(piva);
+		azienda= aziendaDao.getAziendaBypiva(piva);
 		
-		if(azienda== null){risultato="P_Iva valida";}
-		else{risultato="P_Iva non  valida, gia' presente nel database";}
+		if(azienda.getP_iva().equals(piva)){
+			
+			risultato="Partita Iva non  valida, gia' presente nel database";
+	    }
 		
 		response.getWriter().write(risultato);
 	}

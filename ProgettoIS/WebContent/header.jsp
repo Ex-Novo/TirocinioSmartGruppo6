@@ -36,11 +36,12 @@
 	<!-- Custom styles for this template -->
 	<link href="css/freelancer.min.css" rel="stylesheet">
 	<link href="css/login.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
 
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/loginValidation.js"></script>
 	<script type="text/javascript" src="js/regValidation.js"></script>
-	<script type="text/javascript" src="js/validationPrimaryKeys.js"></script>
+	<script type="text/javascript" src="js/validationPrimaryKey.js"></script>
 </head>
 
 <body id="page-top">
@@ -102,11 +103,11 @@
 
 									<form action="RegistrazioneControl" onSubmit="return regValidation(this);" method="post" id="A" style="position: relative">
 										<input type="hidden" name="tipo" value="Studente"  />
-										<input type="nome" name="nome" placeholder="Nome" pattern="^[A-Za-z]+$" title="Il nome può contenere solo lettere" required /> 
+										<input type="nome" name="nome" placeholder="Nome" pattern="^[A-Za-z]+$" title="Il nome può contenere solo lettere" required autofocus/> 
 										<input type="cognome" name="cognome" placeholder="Cognome" pattern="^[A-Za-z]+$" title="Il cognome può contenere solo lettere" required />
 										<input type="email" name="email" placeholder="Email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" title="Formato email rossi@mail.com"  onblur="checkEmailStudente(this.value)" required />
-										<input type="password" name="password" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Must have at least 6 characters' : ''); if(this.checkValidity()) form.password_two.pattern = this.value;" placeholder="Password" maxlength="15" minlength="4" required />
-										<input type="password" name="confermaPsw" onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');" placeholder="Conferma Password" required />
+										<input type="password" name="password"  placeholder="Password" maxlength="15" minlength="4" required />
+										<input type="password" name="confermaPsw" placeholder="Conferma Password" required />
 										<input type="nome" name="codiceFiscale" placeholder="Codice Fiscale" pattern="[A-Za-z0-9]+" required /> 
 										<input type="matricola" name="matricola" placeholder="Matricola" pattern="^[0-9]+$" title="La matricola può contenere solo numeri" onblur="checkMatricolaStudente(this.value)" required /> 
 										<input type="date" name="dataNascita" required /> 
@@ -115,7 +116,7 @@
 									</form>
 									<form action="RegistrazioneControl" onSubmit="return regValidation(this);" method="post" id="B" style="visibility: hidden; position: absolute; top: -1px">
 										<input type="hidden" name="tipo" value="Azienda"  />
-										<input type="nome" name="nomeAzienda" placeholder="Nome Azienda" pattern="^[A-Za-z]+$" title="Il nome può contenere solo lettere" required /> 
+										<input type="nome" name="nomeAzienda" placeholder="Nome Azienda" pattern="^[A-Za-z]+$" title="Il nome può contenere solo lettere" required autofocus/> 
 										<input type="sede" name="sede" placeholder="Sede" pattern="^[A-Za-z]+$" title="La sede può contenere solo lettere" required /> 
 										<input type="email" name="email" placeholder="Email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" title="Formato email rossi@mail.com" onblur="checkEmailAzienda(this.value)" required />
 										<input type="piva" name="partitaIva" placeholder="Partita Iva" pattern="^[0-9]+$" title="Solo numeri consentiti" onblur="checkP_IvaAzienda(this.value)" required/> 

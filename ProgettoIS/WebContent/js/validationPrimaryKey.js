@@ -16,7 +16,7 @@ function checkMatricolaStudente(matricola){
 			alert(this.responseText);
 		}
 	};
-	xmht.open("GET","ControlloMatricolaStudente.java?matricola="+matricola,true);
+	xmht.open("GET","checkMatricola?matricola="+matricola,true);
 	xmht.send();
 	return true;
 }
@@ -32,7 +32,7 @@ function checkEmailStudente(email){
 			alert(this.responseText);
 		}
 	};
-	xmht.open("GET","ControlloEmailStudente.java?email="+email,true);
+	xmht.open("GET","checkEmailStudente?email="+email,true);
 	xmht.send();
 	return true;
 }
@@ -48,7 +48,7 @@ function checkEmailAzienda(email){
 			alert(this.responseText);
 		}
 	};
-	xmht.open("GET","ControlloEmailAzienda.java?email="+email,true);
+	xmht.open("GET","checkEmailAzienda?email="+email,true);
 	xmht.send();
 	return true;
 }
@@ -64,7 +64,7 @@ function checkP_IvaAzienda(piva){
 			alert(this.responseText);
 		}
 	};
-	xmht.open("GET","ControlloP_IvaAzienda.java?piva="+piva,true);
+	xmht.open("GET","checkpiva?piva="+piva,true);
 	xmht.send();
 	return true;
 }

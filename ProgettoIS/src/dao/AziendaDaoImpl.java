@@ -306,7 +306,7 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 	 * @author:Luca Lamberti, Simone Torluccio
 	 */
 	@Override
-	public Azienda getAziendaByP_Iva(String piva) {
+	public Azienda getAziendaBypiva(String piva) {
 		
 		Connection con = null;
 		PreparedStatement preparedStatement = null;

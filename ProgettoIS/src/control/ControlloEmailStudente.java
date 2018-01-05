@@ -41,10 +41,12 @@ public class ControlloEmailStudente extends HttpServlet {
  		StudenteDaoInterface studenteDao = new StudenteDaoImpl();
 		Studente studente = new Studente();
 		
-		studente= studenteDao.getStudenteByEmail(email);
+		studente = studenteDao.getStudenteByEmail(email);
 		
-		if(studente== null){risultato="Email valida";}
-		else{risultato="Email non  valida, gia' presente nel database";}
+		if(studente.getEmail().equals(email)){
+			
+			risultato="Email non  valida, gia' presente nel database";
+	    }
 		
 		response.getWriter().write(risultato);
 	}
