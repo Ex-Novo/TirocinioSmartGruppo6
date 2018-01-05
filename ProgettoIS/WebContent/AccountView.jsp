@@ -5,6 +5,26 @@
 
 <head>
 
+
+
+<style>
+table {
+	border-collapse: collapse;
+	width: 50%;
+}
+
+th, td {
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) {
+	background-color: #111e6b;
+}
+</style>
+
+
+
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,67 +36,103 @@
 </head>
 <%@ include file="/header.jsp"%>
 <body class="bg-primary">
-		<div id="wrapper">
-			<header class="masthead bg-primary text-white text-center">
-				<div class="container">
-					<%
-									String tipoUtente= (String) s.getAttribute("tipoUtente");
-									if(tipoUtente != null){
-										if(tipoUtente.equals("Studente")){
-											Studente bean = (Studente) request.getAttribute("bean");			
-								%>
-					<a class="btn btn-info" href="documents" method="post">Visualizza
-						documenti</a>
-					<form action="" method="post" id="A" style="position: relative">
-						<input type="hidden" name="tipo" value="Studente" /> <br> <label>NOME:
-						</label><input readonly="readonly" type="nome" name="nome"
-							value="<%=bean.getNome()%>" /> <br> <label>COGNOME: </label><input
-							readonly="readonly" type="cognome" name="cognome"
-							value="<%=bean.getCognome() %>" /><br> <label>EMAIL:
-						</label><input readonly="readonly" type="email" name="email"
-							value="<%=bean.getEmail() %> " /><br> <label>CODICE
-							FISCALE: </label><input readonly="readonly" type="codicefiscale"
-							name="codiceFiscale" value=<%=bean.getCodiceFiscale() %> /> <br>
-						<label>MATRICOLA: </label><input readonly="readonly"
-							type="matricola" name="matricola" value="<%=bean.getMatricola() %>" />
-						<br> <label>DATA NASCITA: </label><input readonly="readonly"
-							type="date" name="dataNascita" value="<%=bean.getDataNascita() %>" /><br>
-						<label>LUOGO NASCITA: </label><input readonly="readonly"
-							type="luogoNascita" name="luogoNascita"
-							value="<%=bean.getLuogoNascita() %>" /><br>
-					</form>
-					<%
-										} else{
-										Azienda bean = (Azienda) request.getAttribute("bean");			
-								%>
-		
-					<form action="" method="post" id="B"position:absolute">
-						<label>NOME AZIENDA: </label><input readonly="readonly"
-							type="azienda" name="nomeAzienda"
-							value="<%=bean.getNomeAzienda() %>" /> <br> <label>SEDE:
-						</label><input readonly="readonly" type="sede" name="sede"
-							value="<%=bean.getSede() %>" /> <br> <label>EMAIL: </label> <input
-							readonly="readonly" type="email" name="email"
-							value="<%=bean.getEmail() %>" /><br> <label>PARTITA
-							IVA: </label><input readonly="readonly" type="piva" name="partitaIva"
-							value="<%=bean.getP_iva()%>" /> <br> <label>TELEFONO:
-						</label><input readonly="readonly" type="telefono" name="telefono"
-							value="<%=bean.getTelefono() %>" /> <br>
-					</form>
-					<%
-										}
-									}else{
-										
-									
-								%>
-					<h3>Non sei loggato. Effettua il login.</h3>
-					<%
-									}
-								%>
-				</div>
-		 	</header>
+	<div id="wrapper">
+		<header class="masthead bg-primary text-white text-center">
+		<div class="container">
+			<%
+				String tipoUtente = (String) s.getAttribute("tipoUtente");
+				if (tipoUtente != null) {
+					if (tipoUtente.equals("Studente")) {
+						Studente bean = (Studente) request.getAttribute("bean");
+			%>
+
+			<form action="" method="post" id="A" style="position: relative">
+				<table align="right">
+					<tbody>
+						<tr>
+							<td><b>NOME:</b></td>
+							<td><%=bean.getNome()%></td>
+						</tr>
+						<tr>
+							<td><b>COGNOME:</b></td>
+							<td><%=bean.getCognome()%></td>
+						</tr>
+						<tr>
+							<td><b>EMAIL:</b></td>
+							<td><%=bean.getEmail()%></td>
+						</tr>
+						<tr>
+							<td><b>CODICE FISCALE:</b></td>
+							<td><%=bean.getCodiceFiscale()%></td>
+						</tr>
+						<tr>
+							<td><b>MATRICOLA:</b></td>
+							<td><%=bean.getMatricola()%></td>
+						</tr>
+						<tr>
+							<td><b>DATA NASCITA:</b></td>
+							<td><%=bean.getDataNascita()%></td>
+						</tr>
+						<tr>
+							<td><b>LUOGO NASCITA:</b></td>
+							<td><%=bean.getLuogoNascita()%></td>
+						</tr>
+						<tr>
+							<td><b>DOCUMENTI CARICATI:</b></td>
+							<td><a class="btn btn-info" href="documents" method="post">Visualizza
+									documenti </a></td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+			<%
+				} else {
+						Azienda bean = (Azienda) request.getAttribute("bean");
+			%>
+
+			<form action="" method="post" id="B"position:absolute">
+				<table align="right">
+					<tbody>
+						<tr>
+							<td><b>NOME AZIENDA:</b></td>
+							<td><%=bean.getNomeAzienda()%></td>
+						</tr>
+						<tr>
+							<td><b>SEDE:</b></td>
+							<td><%=bean.getSede()%></td>
+						</tr>
+						<tr>
+							<td><b>EMAIL:</b></td>
+							<td><%=bean.getEmail()%></td>
+						</tr>
+						<tr>
+							<td><b>PARTITA IVA:</b></td>
+							<td><%=bean.getP_iva()%></td>
+						</tr>
+						<tr>
+							<td><b>TELEFONO:</b></td>
+							<td><%=bean.getTelefono()%></td>
+						</tr>
+						<tr>
+							<td><b>DOCUMENTI CARICATI:</b></td>
+							<td><a class="btn btn-info" href="documents" method="post">Visualizza
+									documenti </a></td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+			<%
+				}
+				} else {
+			%>
+			<h3>Non sei loggato. Effettua il login.</h3>
+			<%
+				}
+			%>
 		</div>
-	
+		</header>
+	</div>
+
 	<div class="bg-primary" id="push"></div>
 	<%@include file="/footer.jsp"%>
 
