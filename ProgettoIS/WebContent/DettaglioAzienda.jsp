@@ -8,21 +8,31 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Dettaglio azienda</title>
 </head>
-<body>
+<body class="bg-primary">
 
-<%
+	<%@ include file="/header.jsp"%>
 	
-	Azienda a = (Azienda) request.getAttribute("azienda");
-	Tirocinio t = (Tirocinio) request.getAttribute("tirocinio");	
+	<div id="wrapper">
+		<header class="masthead bg-primary text-white text-center">
+			 <div class="container">
+				<%
+				
+				Azienda a = (Azienda) request.getAttribute("azienda");
+				Tirocinio t = (Tirocinio) request.getAttribute("tirocinio");	
+				
+				out.println("Nome azienda" + a.getNomeAzienda());
+				out.println("-- Tutor aziendale" + a.getTutorAziendale());
+				
+				out.println("-- Descrizione tirocinio = " + t.getDescrizione());
+				out.println("-- Numero posti disponibili = "+ t.getNumPosti());
+				
+				
+				%>
+			</div>
+		</header>
+	</div>
 	
-	out.println("Nome azienda" + a.getNomeAzienda());
-	out.println("-- Tutor aziendale" + a.getTutorAziendale());
-	
-	out.println("-- Descrizione tirocinio = " + t.getDescrizione());
-	out.println("-- Numero posti disponibili = "+ t.getNumPosti());
-	
-
-%>
-
+	<div id="push"></div>
+	<%@ include file="/footer.jsp"%>
 </body>
 </html>

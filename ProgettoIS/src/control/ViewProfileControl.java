@@ -43,7 +43,7 @@ public class ViewProfileControl extends HttpServlet {
 		String email = (String) session.getAttribute("email");
 		
 		
-		if(tipoUtente.equals("Studente")){
+		if(tipoUtente != null && tipoUtente.equals("Studente")){
 			
 			StudenteDaoInterface studenteDao = new StudenteDaoImpl();
 			
@@ -54,7 +54,7 @@ public class ViewProfileControl extends HttpServlet {
 			getServletConfig().getServletContext().getRequestDispatcher("/AccountView.jsp").forward(request, response);
 			
 		}
-		if(tipoUtente.equals("Azienda")){
+		if(tipoUtente != null && tipoUtente.equals("Azienda")){
 			
 			AziendaDaoInterface aziendaDao = new AziendaDaoImpl();
 			
@@ -66,6 +66,10 @@ public class ViewProfileControl extends HttpServlet {
 			
 		}
 		
+		if(tipoUtente == null) {
+			
+			getServletConfig().getServletContext().getRequestDispatcher("/AccountView.jsp").forward(request, response);
+		}
 	}
 
 	
