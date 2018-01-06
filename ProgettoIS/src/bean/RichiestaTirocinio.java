@@ -1,6 +1,4 @@
 package bean;
-
-import java.util.Date;
 /**
  * Bean dell'entità RichiestaTirocinio
  * @author Anna Maria Rosanova
@@ -11,7 +9,13 @@ public class RichiestaTirocinio {
 	private int idRichiestaTirocinio;
 	private String nomeTutorAccademico;
 	private String status;
-	private Date data;
+	private String data;
+	
+	private String emailTutAcc; // campi per chiavi esterne
+	private String emailDir;
+	private String matricola;
+	private int idTirocinio;
+	
 	
 	public int getIdRichiestaTirocinio() {
 		return idRichiestaTirocinio;
@@ -31,11 +35,34 @@ public class RichiestaTirocinio {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public Date getData() {
+	public String getData() {
 		return data;
 	}
-	public void setData(Date data) {
+	public void setData(String data) {
 		this.data = data;
 	}
-
+	public String getEmailTutAcc() {
+		return emailTutAcc;
+	}
+	public void setEmailTutAcc(String emailTutAcc) {
+		this.emailTutAcc = emailTutAcc;
+	}
+	public String getEmailDir() {
+		return emailDir;
+	}
+	public void setEmailDir(String emailDir) {
+		this.emailDir = emailDir;
+	}
+	public String getMatricola() {
+		return matricola;
+	}
+	public void setMatricola(String matricola) {
+		this.matricola = matricola;
+	}
+	public int getIdTirocinio() {
+		return idTirocinio;
+	}
+	public void setIdTirocinio(int idTirocinio) {
+		this.idTirocinio = idTirocinio;
+	}
 }

@@ -21,7 +21,7 @@ import dao.ConvenzioneDaoInterface;
 @WebServlet("/RichiestaConvenzioneControl")
 public class RichiestaConvenzioneControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	private static final String EMAIL_DIRETTORE = "fverdi@unisa.it";   
     
     public RichiestaConvenzioneControl() {
         super();
@@ -62,7 +62,7 @@ public class RichiestaConvenzioneControl extends HttpServlet {
 			convenzione.setNumPosti(numPosti);
 
 			ConvenzioneDaoInterface convenzioneDao = new ConvenzioneDaoImpl();
-			convenzioneDao.invioRichiestaConvenzione(convenzione, "fverdi@unisa.it", piva);
+			convenzioneDao.invioRichiestaConvenzione(convenzione, EMAIL_DIRETTORE, piva);
 			getServletConfig().getServletContext().getRequestDispatcher("/FirmaConvenzione.jsp").forward(request, response);
 			
 	//	}
