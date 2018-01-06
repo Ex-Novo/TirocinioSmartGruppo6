@@ -4,33 +4,12 @@
 <html lang="en">
 
 <head>
-
-
-
-<style>
-table {
-	border-collapse: collapse;
-	width: 50%;
-}
-
-th, td {
-	text-align: left;
-	padding: 8px;
-}
-
-tr:nth-child(even) {
-	background-color: #111e6b;
-}
-</style>
-
-
-
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-
+<link href="css/table.css" rel="stylesheet">
 <title>Tirocinio Smart</title>
 
 </head>
