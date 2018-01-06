@@ -107,6 +107,7 @@ public class ConvenzioneDaoImpl implements ConvenzioneDaoInterface{
 	 * 
 	 * @author: Luca Lamberti , Francesco D'Auria
 	 */
+	
 	@Override 
 	public boolean invioRichiestaConvenzione(Convenzione convenzione, String email ,String piva) {
 		
