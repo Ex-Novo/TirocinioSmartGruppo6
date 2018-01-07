@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
-<%@ page import="java.util.*,dao.*,bean.*"%>
+<%@ page import="java.util.*,dao.*,bean.*,java.io.File"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,7 +26,8 @@
 	
 				<!-- Mostra i documenti se l'utente è loggato -->
 				<%}else{ %>
-				<!--  Prende i l'arraylist dei documenti caricati dalla request -->
+				<h3> File caricati</h3>
+				<!--  Prende i l'arraylist dei documenti caricati dalla request e imposta la path per leggere i file nella cartella personale dell'utente-->
 				<%
 							Collection<?> documenti = (Collection<?>) request.getAttribute("documenti");
 					
@@ -36,34 +37,50 @@
 								while (it.hasNext()) {
 					
 									Documento bean = (Documento) it.next();
-					
-									out.println("** -- Nome = " + bean.getNome());
-									out.println("-- Tipo = " + bean.getTipo());
+									
+									String filename = application.getInitParameter("fsroot") + File.separator + s.getAttribute("uniqueID") + File.separator + bean.getNome();
+									
+				%>
+									
+										<table>
+										
+											<tbody>
+												<tr>
+													<td><b>NOME:</b></td>
+													<td><%=bean.getNome()%></td>
+													<td> <a href="DownloadControl?filename=<%=bean.getNome()%>">Scarica</a> </td>
+												</tr>
+											</tbody>
+										</table>
+									
+				<% 			
 								}
-							}else{
+							}
+							else{
 								
 							
-						%>
-	
-				<h3>Non hai caricato nessun documento.</h3>
-				<%
+				%>
+
+						<h3>Non hai caricato nessun documento.</h3>
+						<%
 							}
 						
 						%>
-	
-				<!-- Form per upload di file -->
-				<form method="post" action="UploadControl" name="echo"
-					enctype="multipart/form-data">
-					<fieldset>
-						<legend>Seleziona il file</legend>
-						<input type="file" name="file" size="50" /> <br> <input
-							type="submit" value="Invia"> <input type="reset"
-							value="Reset">
-					</fieldset>
-				</form>
-	
-				<%} %>
-			</div>
+
+						<!-- Form per upload di file -->
+						<form method="post" action="UploadControl" name="echo"
+							enctype="multipart/form-data">
+							<fieldset>
+								<legend>Seleziona il file</legend>
+								<input type="file" name="file" size="50" /> <br> <input
+									type="submit" value="Invia"> <input type="reset"
+									value="Reset">
+							</fieldset>
+						</form>
+
+						<%} %>
+					
+		</div>
 
          </header>
 	</div>

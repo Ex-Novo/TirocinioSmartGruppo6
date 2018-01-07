@@ -15,25 +15,43 @@
 	<div id="wrapper">
 		 <header class="masthead bg-primary text-white text-center">
 		 	<div class="container">
-				<%
-				
-				Collection<?> aziende = (Collection<?>) request.getAttribute("aziendeConvenzionate");
-				out.println(aziende.size());
-				if (aziende != null && aziende.size() != 0) {
-					Iterator<?> it = aziende.iterator();
+			 	<table>
+					<tbody>
+						<tr>
+							<td>Nome Azienda</td>
+							<td>Sede</td>
+							<td>Telefono</td>
+							<td>Dettagli Azienda</td>									
+						</tr>
+					<%
 					
-					while (it.hasNext()) {
-						Azienda bean = (Azienda) it.next();
+					Collection<?> aziende = (Collection<?>) request.getAttribute("aziendeConvenzionate");
+					
+					if (aziende != null && aziende.size() != 0) {
+						Iterator<?> it = aziende.iterator();
 						
-						out.println(bean.getNomeAzienda());
-						out.println(bean.getEmail());%>
-						<form action="detailsAz?piva=<%=bean.getP_iva()%>&email=<%=bean.getEmail() %>" method="post"> 
-							<input type="submit" value="Visualizza dettaglio" >
-						</form><%
-					}
-			    }
-			
-				%>
+						while (it.hasNext()) {
+							Azienda bean = (Azienda) it.next();
+							
+					%>
+							<tr>
+								<td><%=bean.getNomeAzienda() %></td>
+								<td><%=bean.getSede() %></td>
+								<td><%=bean.getTelefono() %></td>	
+								<td>
+									<form action="detailsAz?piva=<%=bean.getP_iva()%>&email=<%=bean.getEmail() %>" method="post"> 
+										<input type="submit" class="btn btn-info" value="Visualizza dettaglio" >
+									</form>
+								</td>								
+							</tr>
+								
+					<%
+						}
+				    }
+				
+					%>
+					</tbody>
+				</table>
 			</div>
 		</header>
 	</div>

@@ -15,19 +15,60 @@
 	<div id="wrapper">
 		<header class="masthead bg-primary text-white text-center">
 			 <div class="container">
+				 
 				<%
 				
-				Azienda a = (Azienda) request.getAttribute("azienda");
-				Tirocinio t = (Tirocinio) request.getAttribute("tirocinio");	
-				
-				out.println("Nome azienda" + a.getNomeAzienda());
-				out.println("-- Tutor aziendale" + a.getTutorAziendale());
-				
-				out.println("-- Descrizione tirocinio = " + t.getDescrizione());
-				out.println("-- Numero posti disponibili = "+ t.getNumPosti());
+					Azienda a = (Azienda) request.getAttribute("azienda");
+					Tirocinio t = (Tirocinio) request.getAttribute("tirocinio");	
+					
+					if(email != null && password != null){
 				
 				
 				%>
+				<table>
+					<tbody>
+						<tr>
+							<td>Descrizione Attività Tirocinio</td>
+							<td><%=t.getDescrizione() %></td>
+						</tr>
+						<tr>
+							<td>Numero Posti Disponibili</td>
+							<td><%=t.getNumPosti() %></td>
+						</tr>
+						<tr>
+							<td>Sede</td>
+							<td><%=a.getSede() %></td>
+						</tr>
+						<tr>
+							<td>Telefono</td>
+							<td><%=a.getTelefono() %></td>
+						</tr>
+						<tr>
+							<td>Partita Iva</td>
+							<td><%=a.getP_iva() %></td>
+						</tr>
+						<tr>
+							<td>Email</td>
+							<td><%=a.getEmail() %></td>
+						</tr>
+						<tr>
+							<td>Tutor Aziendale</td>
+							<td><%=a.getTutorAziendale() %></td>
+						</tr>
+						<tr>
+							<td>Richiesta Tirocinio</td>
+							<td>
+								<form action="" method="post">
+										<input class="btn btn-info" type="submit" value="Richiesta Tirocinio" >
+								</form>	
+							</td>								
+						</tr>	
+							
+					</tbody>
+				</table>
+				<%}else{ %>
+				<h3>Non sei loggato. Effettua il login</h3>
+				<%} %>
 			</div>
 		</header>
 	</div>

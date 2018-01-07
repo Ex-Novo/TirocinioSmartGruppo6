@@ -95,6 +95,8 @@ public class UploadControl extends HttpServlet {
 		 out.println("alert('File caricato')");
 		 out.println("window.open('documents','_self')");
 		 out.println("</script>");
+		 
+		 out.close();
 	}
 	
 	private String extractFileName(Part part) {
