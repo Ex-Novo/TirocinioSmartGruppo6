@@ -24,7 +24,7 @@ import dao.StudenteDaoInterface;
 /**
  * Servlet usata per mandare alla jsp le richieste di tirocinio e di convenzione da visualizzare
  */
-@WebServlet("/RichiestaTirocinioControl")
+@WebServlet("/ViewListaRichiesteControl")
 public class ViewListaRichiesteControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
