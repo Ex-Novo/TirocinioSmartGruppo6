@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -50,8 +51,6 @@ public class UploadControl extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		PrintWriter out = response.getWriter();
-		response.setContentType("text/plain");
 		
 		HttpSession session = request.getSession();
 		String email = (String) session.getAttribute("email");
@@ -62,12 +61,11 @@ public class UploadControl extends HttpServlet {
 		String userPath = rootPath + File.separator + uniqueID;
 		String fileName = null;
 		
-		out.write("upload = \n");
+		
 		for(Part part : request.getParts()) {
 			fileName = extractFileName(part);
 			if (fileName != null && !fileName.equals("")) {
 				part.write(userPath + File.separator + fileName);
-				out.write(fileName + "\n");
 			}
 		}
 		
@@ -92,7 +90,11 @@ public class UploadControl extends HttpServlet {
 			dDao.saveFile(fileName, a.getP_iva(), tipoUtente);
 		}
 		
-		out.close();
+		PrintWriter out =response.getWriter();
+		 out.println("<script>");
+		 out.println("alert('File caricato')");
+		 out.println("window.open('documents','_self')");
+		 out.println("</script>");
 	}
 	
 	private String extractFileName(Part part) {

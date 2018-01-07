@@ -9,12 +9,12 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<link href="css/table.css" rel="stylesheet">
 <title>Tirocinio Smart</title>
 
 </head>
-<%@ include file="/header.jsp"%>
+
 <body class="bg-primary">
+<%@ include file="/header.jsp"%>
 	<div id="wrapper">
 		<header class="masthead bg-primary text-white text-center">
 		<div class="container">
@@ -25,8 +25,8 @@
 						Studente bean = (Studente) request.getAttribute("bean");
 			%>
 
-			<form action="" method="post" id="A" style="position: relative">
-				<table align="right">
+			<form action="" method="post" id="A">
+				<table>
 					<tbody>
 						<tr>
 							<td><b>NOME:</b></td>
@@ -69,8 +69,8 @@
 						Azienda bean = (Azienda) request.getAttribute("bean");
 			%>
 
-			<form action="" method="post" id="B"position:absolute">
-				<table align="right">
+			<form action="" method="post" id="B">
+				<table>
 					<tbody>
 						<tr>
 							<td><b>NOME AZIENDA:</b></td>

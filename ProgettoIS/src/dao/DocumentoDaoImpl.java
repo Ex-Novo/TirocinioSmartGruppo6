@@ -72,12 +72,12 @@ public class DocumentoDaoImpl implements DocumentoDaoInterface{
 		String query = "";
 		if(tipoUtente.equals("Studente")) {
 			query = "INSERT into documento(tipo,matricola,emailDI,p_iva,nome)"
-					+ "VALUES ('rConvenzione',?,null,null,?)" ;  
+					+ "VALUES ('rTirocinio',?,null,null,?)" ;  
 		}
 
 		if(tipoUtente.equals("Azienda")) {
 			query = "INSERT into documento(tipo,matricola,emailDI,p_iva,nome)"
-					+ "VALUES ('rTirocinio',null,null,?,?)" ;
+					+ "VALUES ('rConvenzione',null,null,?,?)" ;
 		}
 
 		try {

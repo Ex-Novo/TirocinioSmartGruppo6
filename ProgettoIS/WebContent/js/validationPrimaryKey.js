@@ -11,7 +11,7 @@ function checkMatricolaStudente(matricola){
 	var xmht= new XMLHttpRequest();
 	xmht.onreadystatechange =function(){
 		console.log("readyState: " + this.readyState);
-		if(this.readyState==4&&this.status==200){
+		if(this.readyState==4 && this.status==200 && matricola != ""){
 			
 			alert(this.responseText);
 		}
@@ -27,7 +27,7 @@ function checkEmailStudente(email){
 	var xmht= new XMLHttpRequest();
 	xmht.onreadystatechange =function(){
 		console.log("readyState: " + this.readyState);
-		if(this.readyState==4&&this.status==200){
+		if(this.readyState==4 && this.status==200 && email != ""){
 			
 			alert(this.responseText);
 		}
@@ -43,7 +43,7 @@ function checkEmailAzienda(email){
 	var xmht= new XMLHttpRequest();
 	xmht.onreadystatechange =function(){
 		console.log("readyState: " + this.readyState);
-		if(this.readyState==4&&this.status==200){
+		if(this.readyState==4 && this.status==200 && email != ""){
 			
 			alert(this.responseText);
 		}
@@ -59,7 +59,7 @@ function checkP_IvaAzienda(piva){
 	var xmht= new XMLHttpRequest();
 	xmht.onreadystatechange =function(){
 		console.log("readyState: " + this.readyState);
-		if(this.readyState==4&&this.status==200){
+		if(this.readyState==4 && this.status==200 && piva != ""){
 			
 			alert(this.responseText);
 		}

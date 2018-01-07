@@ -44,12 +44,17 @@ public class ControlloEmailAzienda extends HttpServlet {
 		
 		azienda= aziendaDao.getAziendaByEmail(email);
 		
-		if(azienda.getEmail().equals(email)){
+		if(azienda.getEmail() != null && azienda.getEmail().equals(email)){
 			
 			risultato="Email non  valida, gia' presente nel database";
+			
 	    }
+		else {
+			risultato="Email disponibile";
+		}
 		
 		response.getWriter().write(risultato);
+		
 	}
 
 	

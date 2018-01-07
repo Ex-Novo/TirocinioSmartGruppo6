@@ -43,10 +43,14 @@ public class ControlloMatricolaStudente extends HttpServlet {
 		
 		studente= studenteDao.getStudenteByMatricola(matricola);
 		
-		if(studente.getMatricola().equals(matricola)){
+		if(studente.getMatricola() != null && studente.getMatricola().equals(matricola)){
 			
 			risultato="Matricola non  valida, gia' presente nel database";
+			
 	    }
+		else {
+			risultato="Matricola disponibile";
+		}
 		
 		response.getWriter().write(risultato);
 	}
