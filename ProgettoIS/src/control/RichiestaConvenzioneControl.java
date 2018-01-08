@@ -1,6 +1,11 @@
 package control;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,20 +44,22 @@ public class RichiestaConvenzioneControl extends HttpServlet {
 	
 		HttpSession session = request.getSession();
 		String email = (String) session.getAttribute("email");//email dell'azienda loggata
-		
-		//if(submit.equals("confermaForm")){
+		String tipo = request.getParameter("tipo");
+		if(tipo.equals("confermaForm")){
+			
 			AziendaDaoInterface aziendaDao = new AziendaDaoImpl();
 			Azienda azienda = aziendaDao.getAziendaByEmail(email);
-
+			
+			DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+			Date date = new Date();
+			
 			String piva=azienda.getP_iva();
 			String stato="in attesa";
-			String dataConv = request.getParameter("dataConvenzione");
+			String dataConv = "" + dateFormat.format(date);
 			String dettaglioConv = request.getParameter("descrizione");
 			String tutorAziendale= request.getParameter("tutorAziendale");
 			int numPosti = Integer.parseInt( request.getParameter("numPosti"));
-
-			aziendaDao.addTutorAziendale(tutorAziendale, piva);//salvo il tutor aziendale nel db
-
+			
 			Convenzione convenzione= new Convenzione();
 			convenzione.setData(dataConv);
 			convenzione.setStato(stato);
@@ -61,15 +68,20 @@ public class RichiestaConvenzioneControl extends HttpServlet {
 			convenzione.setTutorAziendale(tutorAziendale);
 			convenzione.setNumPosti(numPosti);
 
-			ConvenzioneDaoInterface convenzioneDao = new ConvenzioneDaoImpl();
+			/*ConvenzioneDaoInterface convenzioneDao = new ConvenzioneDaoImpl();
 			convenzioneDao.invioRichiestaConvenzione(convenzione, EMAIL_DIRETTORE, piva);
+			aziendaDao.addTutorAziendale(tutorAziendale, piva);//salvo il tutor aziendale nel db*/
+			
+			session.setAttribute("convenzione", convenzione);
+			
 			getServletConfig().getServletContext().getRequestDispatcher("/FirmaConvenzione.jsp").forward(request, response);
 			
-	//	}
-		//if(submit.equals("confermaForm")){
+		}
+		/*
+		if(tipo.equals("confermaRichiesta")){
 			
 			//richiesta effettuata correttamente. Dispatcher ad un altra pagina
-	//	}
+		}*/
 		
 	}
 

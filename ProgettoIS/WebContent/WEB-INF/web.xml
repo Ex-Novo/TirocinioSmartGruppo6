@@ -22,6 +22,10 @@
     <servlet-class>control.AziendeViewControl</servlet-class>
   </servlet>
   <servlet>
+    <servlet-name>ViewListaRichiesteControl</servlet-name>
+    <servlet-class>control.ViewListaRichiesteControl</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>DetailsAziendaControl</servlet-name>
     <servlet-class>control.DetailsAziendaControl</servlet-class>
   </servlet>
@@ -46,12 +50,40 @@
     <servlet-class>control.ControlloMatricolaStudente</servlet-class>
   </servlet>
   <servlet>
+    <servlet-name>TirocinantiViewControl</servlet-name>
+    <servlet-class>control.TirocinantiViewControl</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>ControlloP_IvaAzienda</servlet-name>
     <servlet-class>control.ControlloP_IvaAzienda</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ViewUtentiControl</servlet-name>
+    <servlet-class>control.ViewUtentiControl</servlet-class>
+  </servlet>
+   <servlet>
+    <servlet-name>RichiestaConvenzioneControl</servlet-name>
+    <servlet-class>control.RichiestaConvenzioneControl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RichiestaConvenzioneControl</servlet-name>
+    <url-pattern>/rConv</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ViewListaRichiesteControl</servlet-name>
+    <url-pattern>/richieste</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ViewUtentiControl</servlet-name>
+    <url-pattern>/utenti</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>ControlloP_IvaAzienda</servlet-name>
     <url-pattern>/checkpiva</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
+    <servlet-name>TirocinantiViewControl</servlet-name>
+    <url-pattern>/tirocinanti</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>ControlloEmailStudente</servlet-name>
@@ -89,4 +121,5 @@
     <param-name>fsroot</param-name>
     <param-value>C:\TirocinioSmartFiles</param-value>
   </context-param>
+  
 </web-app>

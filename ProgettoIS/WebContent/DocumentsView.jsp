@@ -27,8 +27,9 @@
 				<!-- Mostra i documenti se l'utente è loggato -->
 				<%}else{ %>
 				<h3> File caricati</h3>
-				<!--  Prende i l'arraylist dei documenti caricati dalla request e imposta la path per leggere i file nella cartella personale dell'utente-->
-				<%
+				
+						<!--  Prende i l'arraylist dei documenti caricati dalla request e imposta la path per leggere i file nella cartella personale dell'utente-->
+						<%
 							Collection<?> documenti = (Collection<?>) request.getAttribute("documenti");
 					
 							if (documenti != null && documenti.size() != 0) {
@@ -40,26 +41,23 @@
 									
 									String filename = application.getInitParameter("fsroot") + File.separator + s.getAttribute("uniqueID") + File.separator + bean.getNome();
 									
-				%>
-									
-										<table>
-										
-											<tbody>
-												<tr>
-													<td><b>NOME:</b></td>
-													<td><%=bean.getNome()%></td>
-													<td> <a href="DownloadControl?filename=<%=bean.getNome()%>">Scarica</a> </td>
-												</tr>
-											</tbody>
-										</table>
-									
-				<% 			
+						%>	
+									<table>
+										<tbody>
+											<tr>
+												<td><b>NOME:</b></td>
+												<td><%=bean.getNome()%></td>
+												<td> <a href="DownloadControl?filename=<%=bean.getNome()%>&tipo=notFirma">Scarica</a> </td>
+											</tr>
+										</tbody>
+									</table>
+						<% 			
 								}
 							}
 							else{
 								
 							
-				%>
+						%>
 
 						<h3>Non hai caricato nessun documento.</h3>
 						<%

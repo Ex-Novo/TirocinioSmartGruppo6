@@ -12,6 +12,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.itextpdf.text.Anchor;
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Font.FontFamily;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+
+import bean.Convenzione;
+
+
 /**
  * Servlet implementation class DownloadControl
  */
@@ -28,7 +42,9 @@ public class DownloadControl extends HttpServlet {
     }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * Questo metodo permette di scaricare il documento salvato dall'utente o il documento pdf della richiesta auto generato
+	 * 
+	 * @author Mario Procida
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -37,32 +53,76 @@ public class DownloadControl extends HttpServlet {
 		 String uniqueID = (String) session.getAttribute("uniqueID");
 		
 		 String filename = request.getParameter("filename");
-       
-         String rootPath =  getServletContext().getInitParameter("fsroot");
-         // Find this file id in database to get file name, and file type
-
-         // You must tell the browser the file type you are going to send
-         // for example application/pdf, text/plain, text/html, image/jpg
-         response.setContentType("application/pdf");
-
-         // Make sure to show the download dialog
-         response.setHeader("Content-disposition","attachment; filename=\"" + filename + "\""  );
-
-         // Assume file name is retrieved from database
-         // For example D:\\file\\test.pdf
-
-         File my_file = new File(rootPath + File.separator + uniqueID + File.separator + filename);
-
-         // This should send the file to browser
-         OutputStream out = response.getOutputStream();
-         FileInputStream in = new FileInputStream(my_file);
-         byte[] buffer = new byte[4096];
-         int length;
-         while ((length = in.read(buffer)) > 0){
-            out.write(buffer, 0, length);
-         }
-         in.close();
-         out.flush();
+		 String tipo = request.getParameter("tipo");
+		 
+		 //Metodo per scaricare il file presente nel file system
+		 if(tipo.equals("notFirma")) {
+	         String rootPath =  getServletContext().getInitParameter("fsroot");
+	        
+	         response.setContentType("application/pdf");
+	
+	         response.setHeader("Content-disposition","attachment; filename=\"" + filename + "\""  );
+	     
+	         File my_file = new File(rootPath + File.separator + uniqueID + File.separator + filename);
+	
+	         OutputStream out = response.getOutputStream();
+	         FileInputStream in = new FileInputStream(my_file);
+	         byte[] buffer = new byte[4096];
+	         int length;
+	         while ((length = in.read(buffer)) > 0){
+	            out.write(buffer, 0, length);
+	         }
+	         in.close();
+	         out.flush();
+		 }
+		 
+		 //metodo per generare il pdf dalle informazioni della form
+		 if(tipo.equals("firmaConvenzione")) {
+			 
+			 Convenzione conv = (Convenzione) session.getAttribute("convenzione"); 
+			 
+			 response.setContentType("application/pdf");
+			 response.setHeader("Content-disposition","attachment; filename = richiesta.pdf");
+			 
+			 OutputStream out = response.getOutputStream();
+			 
+			 //font da utilizzare
+			 Font bfBold18 = new Font(FontFamily.TIMES_ROMAN, 18, Font.BOLD, new BaseColor(0, 0, 0)); 
+			 Font bfBold12 = new Font(FontFamily.TIMES_ROMAN, 12, Font.BOLDITALIC, new BaseColor(0, 0, 0)); 
+			 Font bf12 = new Font(FontFamily.TIMES_ROMAN, 12); 
+			 
+			 Document doc = new Document(PageSize.A4, 50, 50, 50, 50);
+			 try {
+				 
+					PdfWriter writer = PdfWriter.getInstance(doc, out);	
+					
+					//proprietà header
+					doc.addAuthor("utente");
+					doc.addCreationDate();
+					doc.addProducer();
+					doc.addCreator("TirocinioSmart");
+					doc.addTitle("Richiesta");
+					doc.setPageSize(PageSize.LETTER);
+					doc.open();
+					
+					//aggiunta paragraph
+					
+					doc.add(new Paragraph("Università degli Studi di Salerno - Dipartimento di Informatica", bfBold12));
+					doc.add(new Paragraph("Dati Richiesta", bfBold18));
+					doc.add(new Paragraph("Descrizione Tirocinio:" + conv.getDescrizione() ,bf12 ));
+					doc.add(new Paragraph("Numeri Posti Tirocinio:" + conv.getNumPosti() ,bf12 ));
+					doc.add(new Paragraph("Firma:", bf12));
+					doc.add(new Paragraph("Data:" + conv.getData(),bf12));
+					doc.close(); 
+					
+					
+			} catch (DocumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			 
+			
+		 }
 
 	}
 

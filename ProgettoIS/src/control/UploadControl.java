@@ -93,7 +93,7 @@ public class UploadControl extends HttpServlet {
 		PrintWriter out =response.getWriter();
 		 out.println("<script>");
 		 out.println("alert('File caricato')");
-		 out.println("window.open('documents','_self')");
+		 out.println("window.history.back()");
 		 out.println("</script>");
 		 
 		 out.close();

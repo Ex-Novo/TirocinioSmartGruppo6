@@ -63,6 +63,7 @@ public class LoginControl extends HttpServlet {
 			user = studenteDao.getStudenteByEmail(email);
 			
 			String uniqueID = user.getUniqueID();
+			String matricola = user.getMatricola();
 			
 			if(logUser){
 			    
@@ -71,6 +72,7 @@ public class LoginControl extends HttpServlet {
 				session.setAttribute("email", email);         
 				session.setAttribute("password",password);
 				session.setAttribute("uniqueID", uniqueID);
+				session.setAttribute("matricola", matricola);
 				session.setAttribute("tipoUtente", "Studente");
 				session.setMaxInactiveInterval(600); //tempo di inattività massimo prima del logout = 10 minuti
 				
@@ -106,6 +108,7 @@ public class LoginControl extends HttpServlet {
 			
 			user = aziendaDao.getAziendaByEmail(email);
 			String uniqueID = user.getUniqueID();
+			String piva = user.getP_iva();
 			
 			if(logUser){
 				
@@ -114,6 +117,7 @@ public class LoginControl extends HttpServlet {
 				session.setAttribute("email", email);         
 				session.setAttribute("password",password);
 				session.setAttribute("uniqueID", uniqueID);
+				session.setAttribute("piva", piva);
 				session.setAttribute("tipoUtente", "Azienda");
 				session.setMaxInactiveInterval(600); //tempo di inattività massimo prima del logout = 10 minuti
 				
