@@ -1,3 +1,10 @@
+<!-- 
+Jsp che mostra la lista di tutti gli utenti registrati
+
+autori: Mario Procida
+
+ -->
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"
 %>

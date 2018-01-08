@@ -1,3 +1,10 @@
+<!-- 
+Jsp che permette di poter scaricare e caricare la richiesta e confermarla
+
+autori: Mario Procida
+
+ -->
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -26,6 +33,7 @@
 					
 					<!-- Conferma Richiesta di convenzione -->
 					<form action="rConv" method="post">
+						<input type="hidden" name="tipo" value="confermaRichiesta"/>
 						<input type="submit" class="btn btn-info" value="Conferma Richiesta" />
 					</form>
 				</div>

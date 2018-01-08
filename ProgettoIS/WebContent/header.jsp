@@ -1,3 +1,10 @@
+<!-- 
+Jsp header che viene inclusa nella index. Contiene tutti gli import di script, css e classi e la dashboard per loggare, registrarsi ed effettuare il logout
+
+autori: Mario Procida
+
+ -->
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
  <%@ page import="java.util.*,dao.*,bean.*" %>

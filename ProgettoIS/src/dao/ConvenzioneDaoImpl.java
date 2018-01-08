@@ -125,8 +125,8 @@ public class ConvenzioneDaoImpl implements ConvenzioneDaoInterface{
 			preparedStatement.setString(1, convenzione.getData());
 			preparedStatement.setString(2, convenzione.getStato());
 			preparedStatement.setString(3, convenzione.getDescrizione());
-			preparedStatement.setString(4, email);
-			preparedStatement.setString(5, piva);
+			preparedStatement.setString(4, piva);
+			preparedStatement.setString(5, email);
 			preparedStatement.setString(6, convenzione.getTutorAziendale());
 			preparedStatement.setInt(7, convenzione.getNumPosti());
 			
@@ -145,6 +145,40 @@ public class ConvenzioneDaoImpl implements ConvenzioneDaoInterface{
 			e.printStackTrace();
 		}
 		
+		return false;
+	}
+	
+	/**
+	 * Questo metodo controlla se è presente nel database una convenzione con la partita iva dell'azienda
+	 * @return Ritorna true se è già presente altrimenti false
+	 * 
+	 * @author Mario Procida
+	 */
+	@Override
+	public boolean getConvenzione(String piva) {
+		Connection con = null;
+		PreparedStatement preparedStatement = null;
+		
+
+		try
+		{
+			con = DBConnection.createConnection();
+			String query ="SELECT * FROM convenzione WHERE p_iva = ?  ";
+			preparedStatement = con.prepareStatement(query);
+			
+			preparedStatement.setString(1, piva);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()) {
+				con.close();
+				return true;
+			}
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
 		return false;
 	}
 

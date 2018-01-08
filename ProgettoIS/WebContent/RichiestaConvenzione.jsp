@@ -1,3 +1,10 @@
+
+<!-- 
+Jsp che permette di compilare una form per richiedere una convenzione
+
+autori: Mario Procida
+
+ -->
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.*,dao.*,bean.*,java.io.File"%>

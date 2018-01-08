@@ -61,11 +61,9 @@ public class ViewListaRichiesteControl extends HttpServlet {
 		ArrayList<Convenzione> listaRichiesteConvenzione = richiesteConvenzioneDAO.getRichiesteConvenzione();
 		
 		// Invio alle .jsp degli ArrayList tramite attributi
-		out.println("Numero richieste tirocinio =" + listaRichiesteTirocinio.size());
-		request.setAttribute("listaRichiesteTirocinio", listaRichiesteTirocinio);
 		
-		out.println("Numero richieste convenzione =" + listaRichiesteConvenzione.size());
-		request.setAttribute("listaRichiesteTirocinio", listaRichiesteConvenzione);
+		request.setAttribute("listRichTirocinio", listaRichiesteTirocinio);
+		request.setAttribute("listRichConvenzione", listaRichiesteConvenzione);
 		
 		/* Reindirizza alla jsp dove verrà visualizzata la lista */
 		getServletConfig().getServletContext().getRequestDispatcher("/ListaRichieste.jsp").forward(request, response);

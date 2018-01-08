@@ -1,3 +1,10 @@
+<!-- 
+Jsp che mostra in dettaglio il tirocinio offerto dall'azienda
+
+autori: Mario Procida, Anna Maria Rosanova
+
+ -->
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     

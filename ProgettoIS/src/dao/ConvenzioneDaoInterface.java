@@ -27,4 +27,6 @@ public interface ConvenzioneDaoInterface {
 	public boolean invioRichiestaConvenzione(Convenzione convenzione, String email ,String piva);
 	
 	public ArrayList<Convenzione> getRichiesteConvenzione();
+	
+	public boolean getConvenzione(String piva);
 }
