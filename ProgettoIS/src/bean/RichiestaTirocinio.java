@@ -14,6 +14,15 @@ public class RichiestaTirocinio {
 	private String emailTutAcc; // campi per chiavi esterne
 	private String emailDir;
 	private String matricola;
+	private String nomeFile;
+	
+	
+	public String getNomeFile() {
+		return nomeFile;
+	}
+	public void setNomeFile(String nomeFile) {
+		this.nomeFile = nomeFile;
+	}
 	private int idTirocinio;
 	
 	

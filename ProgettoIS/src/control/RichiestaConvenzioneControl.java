@@ -39,6 +39,12 @@ public class RichiestaConvenzioneControl extends HttpServlet {
 	}
 
 	
+	/**
+	 * Questo metodo salva i valori della form nel Bean convenzione e nel caso l'utente confermi la convenzione salva i dati di quest'ultima nel database.
+	 * 
+	 * @author Luca Lamberti
+	 * modifiche: Mario Procida
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 
 	
@@ -63,6 +69,7 @@ public class RichiestaConvenzioneControl extends HttpServlet {
 			String tutorAziendale= request.getParameter("tutorAziendale");
 			int numPosti = Integer.parseInt( request.getParameter("numPosti"));
 			
+			
 			Convenzione convenzione= new Convenzione();
 			convenzione.setData(dataConv);
 			convenzione.setStato(stato);
@@ -70,8 +77,10 @@ public class RichiestaConvenzioneControl extends HttpServlet {
 			convenzione.setP_iva(piva);
 			convenzione.setTutorAziendale(tutorAziendale);
 			convenzione.setNumPosti(numPosti);
+			convenzione.setNomeFile("richiesta" + "_" + azienda.getNomeAzienda() + ".pdf");
 			
 			session.setAttribute("convenzione", convenzione);
+			session.setAttribute("azienda", azienda);
 			
 			getServletConfig().getServletContext().getRequestDispatcher("/FirmaConvenzione.jsp").forward(request, response);
 			

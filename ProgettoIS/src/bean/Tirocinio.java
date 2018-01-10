@@ -11,6 +11,7 @@ public class Tirocinio {
 	private int numPosti;
 	private String p_iva;
 	
+	
 	public int getIdTirocinio() {
 		return idTirocinio;
 	}

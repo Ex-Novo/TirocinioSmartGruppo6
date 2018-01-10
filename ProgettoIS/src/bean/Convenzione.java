@@ -16,7 +16,14 @@ public class Convenzione {
 	private String stato;
 	private String email;
 	private String p_iva;
+	private String nomeFile;
 	
+	public String getNomeFile() {
+		return nomeFile;
+	}
+	public void setNomeFile(String nomeFile) {
+		this.nomeFile = nomeFile;
+	}
 	public String getIdAttivita() {
 		return idAttivita;
 	}

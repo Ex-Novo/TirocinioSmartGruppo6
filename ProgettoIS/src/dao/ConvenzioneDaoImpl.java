@@ -69,7 +69,7 @@ public class ConvenzioneDaoImpl implements ConvenzioneDaoInterface{
 		{
 			
 			con = DBConnection.createConnection();
-			String query = "SELECT dataConvenzione, stato, dettaglioConvenzione, tutorAziendale, numPosti FROM convenzione WHERE stato='in attesa'";
+			String query = "SELECT dataConvenzione, stato, dettaglioConvenzione, tutorAziendale, numPosti,p_iva,nomeFile FROM convenzione WHERE stato='in attesa'";
 			preparedStatement = con.prepareStatement(query); 
 			
 			
@@ -84,6 +84,9 @@ public class ConvenzioneDaoImpl implements ConvenzioneDaoInterface{
 				convenzione.setDescrizione(rs.getString(3));
 				convenzione.setTutorAziendale(rs.getString(4));
 				convenzione.setNumPosti(rs.getInt(5));
+				convenzione.setP_iva(rs.getString(6));
+				convenzione.setNomeFile(rs.getString(7));
+				
 				
 				richiesteConvenzione.add(convenzione);
 			}
@@ -119,7 +122,7 @@ public class ConvenzioneDaoImpl implements ConvenzioneDaoInterface{
 			
 			con = DBConnection.createConnection();
 			String query ="INSERT INTO " + "convenzione "
-				+ " (dataConvenzione, stato, dettaglioConvenzione, p_iva, email, tutorAziendale, numPosti) VALUES (?, ?, ?, ?, ?, ?, ?)";
+				+ " (dataConvenzione, stato, dettaglioConvenzione, p_iva, email, tutorAziendale, numPosti,nomeFile) VALUES (?, ?, ?, ?, ?, ?, ?,?)";
 			preparedStatement = con.prepareStatement(query);
 			
 			preparedStatement.setString(1, convenzione.getData());
@@ -129,6 +132,7 @@ public class ConvenzioneDaoImpl implements ConvenzioneDaoInterface{
 			preparedStatement.setString(5, email);
 			preparedStatement.setString(6, convenzione.getTutorAziendale());
 			preparedStatement.setInt(7, convenzione.getNumPosti());
+			preparedStatement.setString(8, convenzione.getNomeFile());
 			
 			
 			int rs = preparedStatement.executeUpdate();

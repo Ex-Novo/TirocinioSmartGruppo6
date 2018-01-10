@@ -54,7 +54,7 @@ autori: Mario Procida, Anna Maria Rosanova
 											<tr>
 												<td><b>NOME:</b></td>
 												<td><%=bean.getNome()%></td>
-												<td> <a href="DownloadControl?filename=<%=bean.getNome()%>&tipo=notFirma">Scarica</a> </td>
+												<td> <a href="DownloadControl?filename=<%=bean.getNome()%>&tipo=myFile">Scarica</a> </td>
 											</tr>
 										</tbody>
 									</table>

@@ -51,8 +51,6 @@ public class ViewListaRichiesteControl extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		PrintWriter out = response.getWriter();
-		
 		RichiestaTirocinioDaoImpl richiesteTirocinioDAO = new RichiestaTirocinioDaoImpl();
 		ConvenzioneDaoImpl richiesteConvenzioneDAO = new ConvenzioneDaoImpl();
 		

@@ -18,52 +18,92 @@ autori: Mario Procida
 		<div class="wrapper">
 			<header class="masthead bg-primary text-white text-center" >
 				<div class="container">
+				
+				
 				<!--  Se l'utente è loggato ed è la Didattica -->
 				<%
 					String tipoUtente = (String) s.getAttribute("tipoUtente");
 					if(email != null && password != null && tipoUtente.equals("Didattica")){ 
 				%>
-					<table>
-						<tbody>
-							<tr>
-								<td>Data</td>
-								<td>Stato</td>
-								<td>Partita Iva Azienda</td>
-								<td>Email</td>								
-							</tr>
-							
-					<%
-					
-					Collection<?> convenzioni = (Collection<?>) request.getAttribute("listRichConvenzione");
-		
-					if (convenzioni != null && convenzioni.size() != 0) {
-					Iterator<?> it = convenzioni.iterator();
-			
-						while (it.hasNext()) {
-							Convenzione bean = (Convenzione) it.next();
-				
-					%>
+					<!--  Lista convenzioni -->
+						<table>
+							<tbody>
+								<tr>
+									<td>Data</td>
+									<td>Stato</td>
+									<td>Partita Iva Azienda</td>
+									<td>Documento Richiesta</td>							
+								</tr>
+								
+						<%
 						
-						<tr>
-							<td><%=bean.getData() %></td>
-							<td><%=bean.getStato() %></td>
-							<td><%=bean.getP_iva() %></td>
-							<td><%=bean.getEmail() %></td>
-						</tr>
+						Collection<?> convenzioni = (Collection<?>) request.getAttribute("listRichConvenzione");
+						
+						if (convenzioni != null && convenzioni.size() != 0) {
+						Iterator<?> it = convenzioni.iterator();
+				
+							while (it.hasNext()) {
+								Convenzione bean = (Convenzione) it.next();
+					
+						%>
 							
-						</tbody>
-					</table>
-					<%	} 
-					}else{
-					%>
-					<!-- Se non sono presenti richieste nel DB -->
-						<h3> Non sono presenti richieste</h3>
-					<%} %>
-					
+							<tr>
+								<td><%=bean.getData() %></td>
+								<td><%=bean.getStato() %></td>
+								<td><%=bean.getP_iva() %></td>
+								<td> <a href="DownloadControl?filename=<%=bean.getNomeFile()%>&piva=<%=bean.getP_iva()%>&tipo=convenzione">Scarica</a> </td>
+							</tr>
+								
+							</tbody>
+						</table>
+						<%	} 
+						}else{
+						%>
+						<!-- Se non sono presenti richieste nel DB -->
+							<h3> Non sono presenti richieste di convenzione</h3>
+						<%} %>
+						
+						<!--  Lista tirocini -->
+						<table>
+							<tbody>
+								<tr>
+									<td>Data</td>
+									<td>Stato</td>
+									<td>Matricola Studente</td>
+									<td>Documento Richiesta</td>							
+								</tr>
+						
+						<% 
+						Collection<?> rTirocini = (Collection<?>) request.getAttribute("listRichTirocinio");
+						
+						if (rTirocini != null && rTirocini.size() != 0) {
+						Iterator<?> it = rTirocini.iterator();
+				
+							while (it.hasNext()) {
+								RichiestaTirocinio bean = (RichiestaTirocinio) it.next();
+						
+						%>
+						
+							<tr>
+								<td><%=bean.getData() %></td>
+								<td><%=bean.getStatus() %></td>
+								<td><%=bean.getMatricola()%></td>
+								<td> <a href="DownloadControl?filename=<%=bean.getNomeFile()%>&piva=<%=bean.getMatricola()%>&tipo=tirocinio">Scarica</a> </td>
+							</tr>
+								
+							</tbody>
+						</table>
+						<% 
+						   } 
+						}else{
+						%>
+							<!-- Se non sono presenti richieste nel DB -->
+								<h3> Non sono presenti richieste di tirocinio</h3>
+						<%} %>
+							
+								
 				<!-- Se l'utente non è loggato o non è autorizzato a visualizzare questa pagina -->
-				<%}else{
-					
-				%>
+				<%}else{%>
 					<h3> Non sei autenticato o non sei autorizzato a visualizzare questa pagina.</h3>
 				<%} %>
 				</div>
