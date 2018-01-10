@@ -26,7 +26,7 @@ import dao.ConvenzioneDaoInterface;
 @WebServlet("/RichiestaConvenzioneControl")
 public class RichiestaConvenzioneControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String EMAIL_DIRETTORE = "fverdi@unisa.it";   
+	private static final String EMAIL_DIRETTORE = "fverdi@unisa.it"; 
     
     public RichiestaConvenzioneControl() {
         super();

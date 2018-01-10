@@ -25,12 +25,15 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import bean.Azienda;
 import bean.Convenzione;
+import bean.RichiestaTirocinio;
 import bean.Studente;
 import dao.AziendaDaoImpl;
 import dao.AziendaDaoInterface;
 import dao.StudenteDaoImpl;
 import dao.StudenteDaoInterface;
-
+/**
+ * La servlet gestisce i vari tipi di download dei documenti, sia generandoli sia scaricando i documenti già caricati nel server appartenenti ai singoli utenti.
+ */
 
 /**
  * Servlet implementation class DownloadControl
@@ -139,7 +142,7 @@ public class DownloadControl extends HttpServlet {
 	         out.flush();
 		 }
 		 
-		 //per generare il pdf dalle informazioni della form
+		 //per generare il pdf dalle informazioni della form di richiesta convenzione
 		 if(tipo.equals("firmaConvenzione")) {
 			 
 			 Convenzione conv = (Convenzione) session.getAttribute("convenzione"); 
@@ -180,6 +183,58 @@ public class DownloadControl extends HttpServlet {
 					doc.add(new Paragraph("Numeri Posti Tirocinio:" + conv.getNumPosti() ,bf12 ));
 					doc.add(new Paragraph("Firma:", bf12));
 					doc.add(new Paragraph("Data:" + conv.getData(),bf12));
+					doc.close(); 
+					
+					
+			} catch (DocumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			 
+			
+		 }
+		 
+		 //per generare il pdf dalle informazioni della form di richiesta convenzione
+		 if(tipo.equals("firmaTirocinio")) {
+			 
+			 RichiestaTirocinio rTirocinio = (RichiestaTirocinio) session.getAttribute("rTirocinio"); 
+			 Studente studente = (Studente) session.getAttribute("studente");
+			 
+			 response.setContentType("application/pdf");
+			 response.setHeader("Content-disposition","attachment; filename = richiesta\"" + studente.getNome() + studente.getCognome() + ".pdf");
+			 
+			 OutputStream out = response.getOutputStream();
+			 
+			 //font da utilizzare
+			 Font bfBold18 = new Font(FontFamily.TIMES_ROMAN, 18, Font.BOLD, new BaseColor(0, 0, 0)); 
+			 Font bfBold12 = new Font(FontFamily.TIMES_ROMAN, 12, Font.BOLDITALIC, new BaseColor(0, 0, 0)); 
+			 Font bf12 = new Font(FontFamily.TIMES_ROMAN, 12); 
+			 
+			 Document doc = new Document(PageSize.A4, 50, 50, 50, 50);
+			 try {
+				 
+					PdfWriter writer = PdfWriter.getInstance(doc, out);	
+					
+					//proprietà header
+					doc.addAuthor("utente");
+					doc.addCreationDate();
+					doc.addProducer();
+					doc.addCreator("TirocinioSmart");
+					doc.addTitle("Richiesta");
+					doc.setPageSize(PageSize.LETTER);
+					doc.open();
+					
+					//aggiunta paragraph
+					
+					doc.add(new Paragraph("Università degli Studi di Salerno - Dipartimento di Informatica", bfBold18));
+					doc.add(new Paragraph("Richiesta di Tirocinio", bfBold12));
+					doc.add(new Paragraph("Dati Richiesta", bfBold18));
+					doc.add(new Paragraph("Nome:" + studente.getNome(), bf12));
+					doc.add(new Paragraph("Cognome:" + studente.getCognome(), bf12));
+					doc.add(new Paragraph("Matricola: "+ studente.getMatricola(), bf12));
+					doc.add(new Paragraph("Tutor Accademico scelto:" + rTirocinio.getNomeTutorAccademico(),bf12 ));
+					doc.add(new Paragraph("Data:" + rTirocinio.getData(),bf12));
+					doc.add(new Paragraph("Firma:", bf12));
 					doc.close(); 
 					
 					

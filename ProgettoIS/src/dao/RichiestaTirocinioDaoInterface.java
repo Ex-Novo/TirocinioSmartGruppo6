@@ -27,4 +27,6 @@ public interface RichiestaTirocinioDaoInterface {
 	
 	public ArrayList<RichiestaTirocinio> getRichiesteTirocinio();
 
+	boolean getRichTirocinio(String matricola);
+
 }

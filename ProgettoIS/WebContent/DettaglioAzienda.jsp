@@ -65,9 +65,7 @@ autori: Mario Procida, Anna Maria Rosanova
 						<tr>
 							<td>Richiesta Tirocinio</td>
 							<td>
-								<form action="" method="post">
-										<input class="btn btn-info" type="submit" value="Richiesta Tirocinio" >
-								</form>	
+								<a class="btn btn-info" href="checkTiro?t=<%=t.getIdTirocinio()%>">Richiedi convenzione</a>
 							</td>								
 						</tr>	
 							

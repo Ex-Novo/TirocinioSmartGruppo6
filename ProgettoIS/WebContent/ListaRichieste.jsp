@@ -25,9 +25,10 @@ autori: Mario Procida
 					String tipoUtente = (String) s.getAttribute("tipoUtente");
 					if(email != null && password != null && tipoUtente.equals("Didattica")){ 
 				%>
-					<!--  Lista convenzioni -->
+						<!--  Lista convenzioni -->
 						<table>
 							<tbody>
+								<tr> <td>Richieste di Convenzione</td></tr>	
 								<tr>
 									<td>Data</td>
 									<td>Stato</td>
@@ -47,25 +48,28 @@ autori: Mario Procida
 					
 						%>
 							
-							<tr>
-								<td><%=bean.getData() %></td>
-								<td><%=bean.getStato() %></td>
-								<td><%=bean.getP_iva() %></td>
-								<td> <a href="DownloadControl?filename=<%=bean.getNomeFile()%>&piva=<%=bean.getP_iva()%>&tipo=convenzione">Scarica</a> </td>
-							</tr>
+								<tr>
+									<td><%=bean.getData() %></td>
+									<td><%=bean.getStato() %></td>
+									<td><%=bean.getP_iva() %></td>
+									<td> <a class="btn btn-info" href="DownloadControl?filename=<%=bean.getNomeFile()%>&piva=<%=bean.getP_iva()%>&tipo=convenzione">Scarica</a> </td>
+								</tr>
 								
-							</tbody>
+							
+						<%	}%>
+						 	</tbody>
 						</table>
-						<%	} 
-						}else{
+						<%}else{
 						%>
 						<!-- Se non sono presenti richieste nel DB -->
 							<h3> Non sono presenti richieste di convenzione</h3>
 						<%} %>
 						
 						<!--  Lista tirocini -->
+						
 						<table>
 							<tbody>
+								<tr> <td>Richieste di Convenzione</td></tr>	
 								<tr>
 									<td>Data</td>
 									<td>Stato</td>
@@ -84,18 +88,18 @@ autori: Mario Procida
 						
 						%>
 						
-							<tr>
-								<td><%=bean.getData() %></td>
-								<td><%=bean.getStatus() %></td>
-								<td><%=bean.getMatricola()%></td>
-								<td> <a href="DownloadControl?filename=<%=bean.getNomeFile()%>&piva=<%=bean.getMatricola()%>&tipo=tirocinio">Scarica</a> </td>
-							</tr>
+								<tr>
+									<td><%=bean.getData() %></td>
+									<td><%=bean.getStatus() %></td>
+									<td><%=bean.getMatricola()%></td>
+									<td> <a class="btn btn-info" href="DownloadControl?filename=<%=bean.getNomeFile()%>&matricola=<%=bean.getMatricola()%>&tipo=tirocinio">Scarica</a> </td>
+								</tr>
 								
-							</tbody>
-						</table>
 						<% 
-						   } 
-						}else{
+						   } %>
+						   </tbody>
+						</table>
+						<% }else{
 						%>
 							<!-- Se non sono presenti richieste nel DB -->
 								<h3> Non sono presenti richieste di tirocinio</h3>

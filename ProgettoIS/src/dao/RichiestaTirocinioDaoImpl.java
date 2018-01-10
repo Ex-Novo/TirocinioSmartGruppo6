@@ -36,7 +36,7 @@ public class RichiestaTirocinioDaoImpl implements RichiestaTirocinioDaoInterface
 
 			con = DBConnection.createConnection();
 			String query ="INSERT INTO " + "richiestatirocinio "
-					+ " (nomeTutorAccademico, status, dataInvio, p_iva, emailTA, emailDI, matricola, idTirocinio) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+					+ " (nomeTutorAccademico, status, dataInvio, emailTA, emailDI, matricola, idTirocinio,nomeFile) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 			preparedStatement = con.prepareStatement(query);
 
 			preparedStatement.setString(1, richiestaTirocinio.getNomeTutorAccademico());
@@ -46,6 +46,7 @@ public class RichiestaTirocinioDaoImpl implements RichiestaTirocinioDaoInterface
 			preparedStatement.setString(5, richiestaTirocinio.getEmailDir());
 			preparedStatement.setString(6, richiestaTirocinio.getMatricola());
 			preparedStatement.setInt(7, richiestaTirocinio.getIdTirocinio());
+			preparedStatement.setString(8, richiestaTirocinio.getNomeFile());
 
 
 			int rs = preparedStatement.executeUpdate();
@@ -144,6 +145,7 @@ public class RichiestaTirocinioDaoImpl implements RichiestaTirocinioDaoInterface
 				richiestaTirocinio.setEmailDir(rs.getString(6));
 				richiestaTirocinio.setMatricola(rs.getString(7));
 				richiestaTirocinio.setIdTirocinio(rs.getInt(8));
+				richiestaTirocinio.setNomeFile(rs.getString(9));
 
 				listaRichiesteTirocinio.add(richiestaTirocinio);
 
@@ -162,6 +164,42 @@ public class RichiestaTirocinioDaoImpl implements RichiestaTirocinioDaoInterface
 
 
 
+	}
+	
+	
+	/**
+	 * Questo metodo controlla se è presente nel database una richiesta con la matricola dello studente
+	 * @return Ritorna true se è già presente altrimenti false
+	 * 
+	 * @author Mario Procida
+	 */
+	@Override
+	public boolean getRichTirocinio(String matricola) {
+		
+		Connection con = null;
+		PreparedStatement preparedStatement = null;
+		
+	
+		try
+		{
+			con = DBConnection.createConnection();
+			String query ="SELECT * FROM richiestatirocinio WHERE matricola = ?";
+			preparedStatement = con.prepareStatement(query);
+			
+			preparedStatement.setString(1, matricola);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			while(rs.next()) {
+				con.close();
+				return true;
+			}
+		}
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 
