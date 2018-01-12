@@ -146,7 +146,7 @@ public class RegistrazioneControl extends HttpServlet {
 			
 		}
 		
-		out.close();
+		
 
 	}
 	

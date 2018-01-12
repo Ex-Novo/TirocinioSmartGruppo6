@@ -65,7 +65,7 @@ autori: Mario Procida, Anna Maria Rosanova
 						<tr>
 							<td>Richiesta Tirocinio</td>
 							<td>
-								<a class="btn btn-info" href="checkTiro?t=<%=t.getIdTirocinio()%>">Richiedi convenzione</a>
+								<a class="btn btn-info" href="checkTiro?t=<%=t.getIdTirocinio()%>">Richiedi tirocinio</a>
 							</td>								
 						</tr>	
 							

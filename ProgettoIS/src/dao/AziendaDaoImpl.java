@@ -124,7 +124,7 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 		{
 			
 			con = DBConnection.createConnection();
-			String query = "SELECT	azienda.nomeAzienda,azienda.email,azienda.telefono,azienda.sede,azienda.p_iva,azienda.tutorAziendale, azienda.uniqueID FROM convenzione INNER JOIN azienda ON convenzione.p_iva = azienda.p_iva where convenzione.stato = 'accettata'";
+			String query = "SELECT	azienda.nomeAzienda,azienda.email,azienda.telefono,azienda.sede,azienda.p_iva,azienda.tutorAziendale, azienda.uniqueID FROM convenzione INNER JOIN azienda ON convenzione.p_iva = azienda.p_iva where convenzione.stato = 'approvata'";
 			preparedStatement = con.prepareStatement(query); 
 			
 			
