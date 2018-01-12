@@ -17,7 +17,7 @@ public class ConvenzioneDaoImpl implements ConvenzioneDaoInterface{
 
 	/**
 	 * Il metodo prende come parametro la partita iva dell'azienda di cui si vuole accettare la convenzione
-	 * @return ritorna true se la convenzione è accettata
+	 * @return ritorna true se la query è andata a buon fine
 	 * 
 	 * @author: Luca Lamberti , Francesco D'Auria
 	 */
@@ -31,7 +31,45 @@ public class ConvenzioneDaoImpl implements ConvenzioneDaoInterface{
 		{
 			
 			con = DBConnection.createConnection();
-			String query ="UPDATE convenzione SET stato= 'accettata' WHERE p_iva= ?";
+			String query ="UPDATE convenzione SET stato= 'approvata' WHERE p_iva= ?";
+			preparedStatement = con.prepareStatement(query);
+			
+			preparedStatement.setString(1, piva);
+			
+			int rs = preparedStatement.executeUpdate();
+			
+			if(rs!=0 ){
+			
+			con.close();
+			return true;
+			}
+		}
+		
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+	
+	/**
+	 * Il metodo prende come parametro la partita iva dell'azienda di cui si vuole rifutare la convenzione
+	 * @return ritorna true se la query è andata a buon fine
+	 * 
+	 * @author: Mario Procida
+	 */
+	@Override  
+	public boolean rifiutoRichiestaConvenzione(String piva) {
+		
+		Connection con = null;
+		PreparedStatement preparedStatement=null;
+		
+		try
+		{
+			
+			con = DBConnection.createConnection();
+			String query ="UPDATE convenzione SET stato= 'rifiutata' WHERE p_iva= ?";
 			preparedStatement = con.prepareStatement(query);
 			
 			preparedStatement.setString(1, piva);
@@ -153,21 +191,21 @@ public class ConvenzioneDaoImpl implements ConvenzioneDaoInterface{
 	}
 	
 	/**
-	 * Questo metodo controlla se è presente nel database una convenzione con la partita iva dell'azienda
-	 * @return Ritorna true se è già presente altrimenti false
+	 * Questo metodo effettua una query nel database per recuperare la richiesta di convenzione dell'azienda tramite il parametro passato della partita iva
+	 * @return Ritorna la convenzione
 	 * 
 	 * @author Mario Procida
 	 */
 	@Override
-	public boolean getConvenzione(String piva) {
+	public Convenzione getConvenzione(String piva) {
 		Connection con = null;
 		PreparedStatement preparedStatement = null;
-		
+		Convenzione convenzione = new Convenzione();
 
 		try
 		{
 			con = DBConnection.createConnection();
-			String query ="SELECT * FROM convenzione WHERE p_iva = ?  ";
+			String query ="SELECT dataConvenzione, stato, dettaglioConvenzione, tutorAziendale, numPosti,p_iva,nomeFile FROM convenzione WHERE p_iva = ?  ";
 			preparedStatement = con.prepareStatement(query);
 			
 			preparedStatement.setString(1, piva);
@@ -175,15 +213,23 @@ public class ConvenzioneDaoImpl implements ConvenzioneDaoInterface{
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			while(rs.next()) {
-				con.close();
-				return true;
+				
+				convenzione.setData(rs.getString(1));
+				convenzione.setStato(rs.getString(2));
+				convenzione.setDescrizione(rs.getString(3));
+				convenzione.setTutorAziendale(rs.getString(4));
+				convenzione.setNumPosti(rs.getInt(5));
+				convenzione.setP_iva(rs.getString(6));
+				convenzione.setNomeFile(rs.getString(7));
+			
 			}
+			con.close();
 		}
 		catch(SQLException e)
 		{
 			e.printStackTrace();
 		}
-		return false;
+		return convenzione;
 	}
 
 }

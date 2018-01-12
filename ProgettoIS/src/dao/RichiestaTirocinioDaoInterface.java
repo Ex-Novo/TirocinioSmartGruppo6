@@ -23,10 +23,12 @@ public interface RichiestaTirocinioDaoInterface {
 	 * @return true se la richiesta è stata approvata con successo, false altrimenti
 	 */
 	
-	public boolean approvazioneRichiestaTirocinio(RichiestaTirocinio richiestaTirocinio);
+	public boolean approvazioneRichiestaTirocinio(String matricola);
 	
 	public ArrayList<RichiestaTirocinio> getRichiesteTirocinio();
 
-	boolean getRichTirocinio(String matricola);
+	public RichiestaTirocinio getRichTirocinio(String matricola);
+
+	public boolean rifiutoRichiestaTirocinio(String matricola);
 
 }

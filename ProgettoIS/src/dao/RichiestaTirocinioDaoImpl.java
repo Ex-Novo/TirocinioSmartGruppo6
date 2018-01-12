@@ -70,13 +70,13 @@ public class RichiestaTirocinioDaoImpl implements RichiestaTirocinioDaoInterface
 	/**
 	 * Il metodo prende come parametro l'id della richiesta del tirocinio
 	 * della quale cui si vuole accettare la richiesta
-	 * @return ritorna true se la richiesta di tirocinio è accettata
+	 * @return ritorna true se la query è andata a buon fine
 	 * 
 	 * @author: Luca Lamberti , Francesco D'Auria
 	 */
 	
 	@Override
-	public boolean approvazioneRichiestaTirocinio(RichiestaTirocinio richiestaTirocinio) {
+	public boolean approvazioneRichiestaTirocinio(String matricola) {
 
 
 		Connection con = null;
@@ -86,10 +86,51 @@ public class RichiestaTirocinioDaoImpl implements RichiestaTirocinioDaoInterface
 		{
 
 			con = DBConnection.createConnection();
-			String query ="UPDATE richiestatirocinio SET status='accettata' WHERE idRichiestaTirocinio= ?";
+			String query ="UPDATE richiestatirocinio SET status='approvata' WHERE matricola = ?";
 			preparedStatement = con.prepareStatement(query);
 
-			preparedStatement.setInt(1, richiestaTirocinio.getIdRichiestaTirocinio());
+			preparedStatement.setString(1, matricola);
+
+			int rs = preparedStatement.executeUpdate();
+
+			if(rs!=0 ){
+
+				con.close();
+				return true;
+			}
+		}
+
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+
+		return false;
+	}
+	
+	/**
+	 * Il metodo prende come parametro l'id della richiesta del tirocinio
+	 * della quale cui si vuole accettare la richiesta
+	 * @return ritorna true se la query è andata a buon fine
+	 * 
+	 * @author: Mario Procida
+	 */
+	
+	@Override
+	public boolean rifiutoRichiestaTirocinio(String matricola) {
+
+
+		Connection con = null;
+		PreparedStatement preparedStatement=null;
+
+		try
+		{
+
+			con = DBConnection.createConnection();
+			String query ="UPDATE richiestatirocinio SET status='rifiutata' WHERE matricola = ?";
+			preparedStatement = con.prepareStatement(query);
+
+			preparedStatement.setString(1, matricola);
 
 			int rs = preparedStatement.executeUpdate();
 
@@ -169,16 +210,16 @@ public class RichiestaTirocinioDaoImpl implements RichiestaTirocinioDaoInterface
 	
 	/**
 	 * Questo metodo controlla se è presente nel database una richiesta con la matricola dello studente
-	 * @return Ritorna true se è già presente altrimenti false
+	 * @return Ritorna la richiesta
 	 * 
 	 * @author Mario Procida
 	 */
 	@Override
-	public boolean getRichTirocinio(String matricola) {
+	public RichiestaTirocinio getRichTirocinio(String matricola) {
 		
 		Connection con = null;
 		PreparedStatement preparedStatement = null;
-		
+		RichiestaTirocinio richiestaTirocinio = new RichiestaTirocinio();
 	
 		try
 		{
@@ -191,15 +232,23 @@ public class RichiestaTirocinioDaoImpl implements RichiestaTirocinioDaoInterface
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			while(rs.next()) {
-				con.close();
-				return true;
+				richiestaTirocinio.setIdRichiestaTirocinio(rs.getInt(1));
+				richiestaTirocinio.setNomeTutorAccademico(rs.getString(2));
+				richiestaTirocinio.setStatus(rs.getString(3));
+				richiestaTirocinio.setData(rs.getDate(4).toString());
+				richiestaTirocinio.setEmailTutAcc(rs.getString(5));
+				richiestaTirocinio.setEmailDir(rs.getString(6));
+				richiestaTirocinio.setMatricola(rs.getString(7));
+				richiestaTirocinio.setIdTirocinio(rs.getInt(8));
+				richiestaTirocinio.setNomeFile(rs.getString(9));
 			}
+			con.close();
 		}
 		catch(SQLException e)
 		{
 			e.printStackTrace();
 		}
-		return false;
+		return richiestaTirocinio;
 	}
 
 

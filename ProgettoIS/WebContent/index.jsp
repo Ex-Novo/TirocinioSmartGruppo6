@@ -44,7 +44,7 @@ autori: Mario Procida, Anna Maria Rosanova, Angelo Lucia, Michele Salerno
 				if(tipoUtente.equals("Azienda")) {
 			%>
 				<div class="text-white text-center">
-					<h3> Funzionalità azienda</h3>
+					<h2 class="text-uppercase mb-0"> Funzionalità azienda</h2>
 				</div>
 				<div class="text-white text-center">
 					<a class="btn btn-info" href="checkConv">Richiedi convenzione</a>
@@ -61,7 +61,7 @@ autori: Mario Procida, Anna Maria Rosanova, Angelo Lucia, Michele Salerno
 		
 			%>
 				<div class="text-white text-center">
-					<h3> Funzionalità Studente</h3>
+					<h2 class="text-uppercase mb-0">Funzionalità Studente</h2>
 				</div>
 				<div class="text-white text-center">
 					<a class="btn btn-info" href="RichiestaTirocinio.jsp">FeedBack Azienda</a>
@@ -78,7 +78,7 @@ autori: Mario Procida, Anna Maria Rosanova, Angelo Lucia, Michele Salerno
 		
 			%>
 				<div class="text-white text-center">
-					<h3> Funzionalità didattica</h3>
+					<h2 class="text-uppercase mb-0"> Funzionalità didattica</h2>
 				</div>
 				<div class="text-white text-center">
 					<a class="btn btn-info" href="utenti">Lista Utenti</a>

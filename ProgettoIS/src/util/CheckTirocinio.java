@@ -10,8 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.ConvenzioneDaoImpl;
-import dao.ConvenzioneDaoInterface;
+import bean.RichiestaTirocinio;
 import dao.RichiestaTirocinioDaoImpl;
 import dao.RichiestaTirocinioDaoInterface;
 
@@ -52,12 +51,10 @@ public class CheckTirocinio extends HttpServlet {
 		int idTirocinio = Integer.parseInt(request.getParameter("t"));
 
 		RichiestaTirocinioDaoInterface rTirocinioDao = new RichiestaTirocinioDaoImpl();
-		boolean result = rTirocinioDao.getRichTirocinio(matricola); //ritorna true se trova la richiesta di tirocinio
+		RichiestaTirocinio richTir = rTirocinioDao.getRichTirocinio(matricola); //ritorna true se trova la richiesta di tirocinio
 
 		PrintWriter out = response.getWriter();
-		if(result) {
-			
-			
+		if(richTir.getMatricola() != null) {
 			
 			out.println("<script>");
 			out.println("alert('Hai già richiesto un tirocinio.')");

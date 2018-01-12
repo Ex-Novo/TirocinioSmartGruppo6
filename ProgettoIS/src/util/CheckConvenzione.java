@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import bean.Convenzione;
 import dao.ConvenzioneDaoImpl;
 import dao.ConvenzioneDaoInterface;
 
@@ -46,10 +47,10 @@ public class CheckConvenzione extends HttpServlet {
 		String piva = (String) session.getAttribute("piva");
 
 		ConvenzioneDaoInterface convDao = new ConvenzioneDaoImpl();
-		boolean result = convDao.getConvenzione(piva); //ritorna true se trova la convenzione
+		Convenzione convenzione = convDao.getConvenzione(piva); //ritorna true se trova la convenzione
 
 		PrintWriter out = response.getWriter();
-		if(result) {
+		if(convenzione.getP_iva() != null) {
 			out.println("<script>");
 			out.println("alert('Hai già richiesto una convenzione.')");
 			out.println("window.history.back()");

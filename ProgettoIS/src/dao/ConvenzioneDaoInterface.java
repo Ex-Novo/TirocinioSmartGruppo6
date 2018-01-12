@@ -28,5 +28,7 @@ public interface ConvenzioneDaoInterface {
 	
 	public ArrayList<Convenzione> getRichiesteConvenzione();
 	
-	public boolean getConvenzione(String piva);
+	public Convenzione getConvenzione(String piva);
+
+	public boolean rifiutoRichiestaConvenzione(String piva);
 }

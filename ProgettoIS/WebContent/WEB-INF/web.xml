@@ -81,7 +81,7 @@
     <servlet-name>RichiestaConvenzioneControl</servlet-name>
     <url-pattern>/rConv</url-pattern>
   </servlet-mapping>
-   <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>RichiestaTirocinioControl</servlet-name>
     <url-pattern>/rTiro</url-pattern>
   </servlet-mapping>

@@ -53,12 +53,14 @@ autori: Mario Procida
 									<td><%=bean.getStato() %></td>
 									<td><%=bean.getP_iva() %></td>
 									<td> <a class="btn btn-info" href="DownloadControl?filename=<%=bean.getNomeFile()%>&piva=<%=bean.getP_iva()%>&tipo=convenzione">Scarica</a> </td>
+									<td> <a class="btn btn-success" href="ApprovaConvenzioneControl?piva=<%=bean.getP_iva()%>&tipo=accetta">Accetta</a> </td>
+									<td> <a class="btn btn-danger" href="ApprovaConvenzioneControl?piva=<%=bean.getP_iva()%>&tipo=rifiuta">Rifiuta</a> </td>
 								</tr>
 								
 							
 						<%	}%>
 						 	</tbody>
-						</table>
+						</table><br>
 						<%}else{
 						%>
 						<!-- Se non sono presenti richieste nel DB -->
@@ -71,7 +73,7 @@ autori: Mario Procida
 							<tbody>
 								<tr> <td>Richieste di Convenzione</td></tr>	
 								<tr>
-									<td>Data</td>
+									<td>Data</td>	
 									<td>Stato</td>
 									<td>Matricola Studente</td>
 									<td>Documento Richiesta</td>							
@@ -93,6 +95,8 @@ autori: Mario Procida
 									<td><%=bean.getStatus() %></td>
 									<td><%=bean.getMatricola()%></td>
 									<td> <a class="btn btn-info" href="DownloadControl?filename=<%=bean.getNomeFile()%>&matricola=<%=bean.getMatricola()%>&tipo=tirocinio">Scarica</a> </td>
+									<td> <a class="btn btn-success" href="ApprovaTirocinioControl?matricola=<%=bean.getMatricola()%>&tipo=accetta">Accetta</a> </td>
+									<td> <a class="btn btn-danger" href="ApprovaTirocinioControl?matricola=<%=bean.getMatricola()%>&tipo=rifiuta">Rifiuta</a> </td>
 								</tr>
 								
 						<% 
