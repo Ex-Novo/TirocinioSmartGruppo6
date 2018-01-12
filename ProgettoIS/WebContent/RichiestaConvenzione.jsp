@@ -6,42 +6,63 @@ autori: Mario Procida
 
  -->
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.*,dao.*,bean.*,java.io.File"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link href="css/styleFormRichiesta.css" rel="stylesheet">
 <title>Richiesta convenzione</title>
 </head>
 <body class="bg-primary">
 
-<%@ include file="/header.jsp"%>
+	<%@ include file="/header.jsp"%>
 
 
 	<div id="wrapper">
-		
+
 		<!--  Form per la richiesta di convenzione -->
 		<header class="masthead bg-primary text-white text-center">
-			<div class="container">
-			
+		<div class="container">
+
 			<!--  Se l'utente è loggato mostra la form -->
-			<% if(email != null && password != null){ %>
+			<%
+				if (email != null && password != null) {
+			%>
+		
 				<form action="rConv" method="post">
-					<input type="hidden" name="tipo" value="confermaForm">
-					<label name="descrizione">Descrizione tirocinio</label> <input type="text" name="descrizione" pattern="^[0-9a-zA-Z,\.\s']+$" required /> <br>
-					<label name="numPosti">Numero posti offerti</label> <input type="number" name="numPosti" required /><br>
-					<label name="tutorAziendale">Tutor aziendale</label> <input type="text" name="tutorAziendale" pattern="^[A-Za-z,\.\s']+$"  required />
-					<input type="submit" class="btn btn-info" value="Conferma form" />
+				<div id="form">
+					<input type="hidden" name="tipo" value="confermaForm"> 
+					<h4>Richiesta Convenzione</h4>
+					
+					<label>Tutor Aziendale</label> <br>
+					<input type="text" name="tutorAziendale" pattern="^[A-Za-z,\.\s']+$" required /> <br>
+				
+					<label>Numero posti offerti</label> <br>
+					<input type="number" min="0" name="numPosti" required /> <br>
+						
+					<label>Descrizione tirocinio</label> <br>
+					<textarea type="text" name="descrizione" cols="30" rows="10"></textarea>
+					<br>
+					
+					<input type="submit" name="submit" class="btn btn-info" value="Conferma form" />
+					</div>
 				</form>
-			<%}else{ %>
-				<h3>Non sei loggato. Devi effettuare il login</h3>
-			<%} %>
-			</div>
+			
+			
+			<%
+				} else {
+			%>
+			<h3>Non sei loggato. Devi effettuare il login</h3>
+			<%
+				}
+			%>
+		</div>
 		</header>
 	</div>
-	
-	
+
+
 	<div class="bg-primary" id="push"></div>
 	<%@include file="/footer.jsp"%>
 

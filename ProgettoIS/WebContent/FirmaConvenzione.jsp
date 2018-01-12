@@ -24,11 +24,19 @@ autori: Mario Procida
 					
 					<!-- Form per caricare la richiesta firmata -->
 					<form method="post" action="UploadControl" name="echo" enctype="multipart/form-data">
-						<fieldset>
-							<legend>Seleziona il file</legend>
-								<input type="file" name="file" size="50" /> <br> 
-								<input type="submit" class="btn btn-info" value="Invia"> <input type="reset" value="Reset">
-						</fieldset>
+
+						<table style="margin:20px">
+							<thead>
+								<tr> <th style="text-align:center; font-size:30px" colspan="2"> Seleziona il file </th></tr>
+							</thead>
+							<tbody>
+								<tr> <td colspan="2"> <input type="file" name="file" size="50" /></td></tr>
+							</tbody>
+							<tfoot>
+								<tr> <td style="text-align:center;"> <input type="submit" class="btn btn-info" value="Invia"></td>
+								<td style="text-align:center;"> <input type="reset" value="Reset"></td> </tr>
+							</tfoot>
+						</table>						
 					</form>
 					
 					<!-- Conferma Richiesta di convenzione -->

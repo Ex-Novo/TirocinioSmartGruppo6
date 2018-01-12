@@ -12,6 +12,7 @@ autori: Mario Procida
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link href="css/styleFormRichiesta.css" rel="stylesheet">
 <title>Richiesta tirocinio</title>
 </head>
 <body class="bg-primary">
@@ -28,9 +29,12 @@ autori: Mario Procida
 			<!--  Se l'utente è loggato mostra la form -->
 			<% if(email != null && password != null){ %>
 				<form action="rTiro" method="post">
-					<input type="hidden" name="tipo" value="confermaForm">
-					<label name="tutor">TutorAccademico</label> <input type="text" name="tutorAccademico" pattern="^[0-9a-zA-Z,\.\s']+$" required /> <br>
-					<input type="submit" class="btn btn-info" value="Conferma form" />
+					<div id="form">
+						<input type="hidden" name="tipo" value="confermaForm">
+						<h4>Richiesta Tirocinio</h4>
+						<label name="tutor">TutorAccademico</label> <input type="text" name="tutorAccademico" pattern="^[0-9a-zA-Z,\.\s']+$" required /> <br>
+						<input type="submit" name="submit" class="btn btn-info" value="Conferma form" />
+					</div>
 				</form>
 			<%}else{ %>
 				<h3>Non sei loggato. Devi effettuare il login</h3>
