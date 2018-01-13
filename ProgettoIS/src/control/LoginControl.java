@@ -74,11 +74,12 @@ public class LoginControl extends HttpServlet {
 				session.setAttribute("uniqueID", uniqueID);
 				session.setAttribute("matricola", matricola);
 				session.setAttribute("tipoUtente", "Studente");
+				session.setAttribute("fileUploaded", false);
 				session.setMaxInactiveInterval(600); //tempo di inattività massimo prima del logout = 10 minuti
 				
 				out.println("<script>");
 				out.println("alert('Utente loggato')");
-				out.println("window.open('index.jsp','_self')");
+				out.println("window.location.replace('index.jsp')");
 				out.println("</script>");
 				
 				
@@ -90,7 +91,7 @@ public class LoginControl extends HttpServlet {
 				
 				
 				out.println("<script>");
-				out.println("alert('Utente non trovato')");
+				out.println("alert('Credenziali errate')");
 				out.println("window.history.back()");
 				out.println("</script>");
 			}
@@ -131,7 +132,7 @@ public class LoginControl extends HttpServlet {
 			
 			else{ //login errato
 				out.println("<script>");
-				out.println("alert('Utente non trovato')");
+				out.println("alert('Credenziali errate')");
 				out.println("window.history.back()");
 				out.println("</script>");
 			}
@@ -165,7 +166,7 @@ public class LoginControl extends HttpServlet {
 
         	else{ //login errato
         		out.println("<script>");
-				out.println("alert('Utente non trovato')");
+				out.println("alert('Credenziali errate')");
 				out.println("window.history.back()");
 				out.println("</script>");
         	}

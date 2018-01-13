@@ -44,11 +44,11 @@ public class ControlloP_IvaAzienda extends HttpServlet {
 		
 		if(azienda.getP_iva() != null && azienda.getP_iva().equals(piva)){
 			
-			risultato="Partita Iva non  valida, gia' presente nel database";
+			risultato="no";
 			
 	    }
 		else {
-			risultato="Partita iva disponibile";
+			risultato="si";
 		}
 		
 		

@@ -62,10 +62,21 @@ public class UploadControl extends HttpServlet {
 		String fileName = null;
 		
 		
+		
 		for(Part part : request.getParts()) {
 			fileName = extractFileName(part);
 			if (fileName != null && !fileName.equals("")) {
 				part.write(userPath + File.separator + fileName);
+				
+				session.setAttribute("fileUploaded", true); //per far comparire il tasto di conferma richiesta nel caso in cui l'utente carica il documento firmato
+				
+				PrintWriter out =response.getWriter();
+				out.println("<script>");
+				out.println("alert('File caricato')");
+				out.println("window.history.back()");
+				out.println("</script>");
+				 
+				out.close();
 			}
 		}
 		
@@ -90,13 +101,9 @@ public class UploadControl extends HttpServlet {
 			dDao.saveFile(fileName, a.getP_iva(), tipoUtente);
 		}
 		
-		PrintWriter out =response.getWriter();
-		out.println("<script>");
-		out.println("alert('File caricato')");
-		out.println("window.history.back()");
-		out.println("</script>");
-		 
-		out.close();
+		
+		
+		
 	}
 	
 	private String extractFileName(Part part) {

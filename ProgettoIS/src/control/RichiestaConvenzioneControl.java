@@ -52,6 +52,7 @@ public class RichiestaConvenzioneControl extends HttpServlet {
 		String email = (String) session.getAttribute("email");//email dell'azienda loggata
 		String tipo = request.getParameter("tipo");
 		
+		PrintWriter out =response.getWriter();
 		
 		AziendaDaoInterface aziendaDao = new AziendaDaoImpl();
 		Azienda azienda = aziendaDao.getAziendaByEmail(email);
@@ -87,7 +88,7 @@ public class RichiestaConvenzioneControl extends HttpServlet {
 		}
 		
 		//Conferma della richiesta di convenzione dopo aver caricato il documento firmato salvando i dati nel database
-		if(tipo.equals("confermaRichiesta")){
+		if(tipo.equals("confermaRichiesta") && (boolean)session.getAttribute("fileUploaded")){
 			
 			Convenzione convenzione = (Convenzione) session.getAttribute("convenzione");
 			
@@ -95,7 +96,9 @@ public class RichiestaConvenzioneControl extends HttpServlet {
 			ConvenzioneDaoInterface convenzioneDao = new ConvenzioneDaoImpl();
 			boolean result = convenzioneDao.invioRichiestaConvenzione(convenzione, EMAIL_DIRETTORE, convenzione.getP_iva());//salva la convenzione del database
 			
-			PrintWriter out =response.getWriter();
+			session.removeAttribute("fileUploaded");
+			
+			
 			//se la query è andata a buon fine
 			if(result){
 				out.println("<script>");
@@ -113,8 +116,12 @@ public class RichiestaConvenzioneControl extends HttpServlet {
 				
 			}
 			out.close();
+		}else{
+			out.println("<script>");
+			out.println("alert('Non hai caricato il documento firmato. Non puoi inviare la richiesta')");
+			out.println("window.history.back()");
+			out.println("</script>");
 		}
-		
 	}
 
 }

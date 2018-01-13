@@ -17,7 +17,6 @@ public class FileUtil {
 		
 		
 	    File f = new File (path + File.separator +  filename);
-	    System.out.println(path + File.separator + filename);
 	    if(!f.mkdir()) {
 	    	System.out.println("errore creazione");
 	    }

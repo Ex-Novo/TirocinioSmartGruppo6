@@ -52,8 +52,8 @@ autori: Mario Procida
 
 			<!-- Conferma Richiesta di convenzione -->
 			<form action="rTiro" method="post">
-				<input type="hidden" name="tipo" value="confermaRichiesta" /> <input
-					type="submit" class="btn btn-info" value="Conferma Richiesta" />
+				<input type="hidden" name="tipo" value="confermaRichiesta" /> 
+				<input type="submit" class="btn btn-info" value="Conferma Richiesta" />
 			</form>
 		</div>
 		</header>

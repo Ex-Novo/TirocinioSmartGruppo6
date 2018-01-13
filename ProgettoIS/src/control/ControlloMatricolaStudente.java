@@ -45,11 +45,11 @@ public class ControlloMatricolaStudente extends HttpServlet {
 		
 		if(studente.getMatricola() != null && studente.getMatricola().equals(matricola)){
 			
-			risultato="Matricola non  valida, gia' presente nel database";
+			risultato="no";
 			
 	    }
 		else {
-			risultato="Matricola disponibile";
+			risultato="si";
 		}
 		
 		response.getWriter().write(risultato);

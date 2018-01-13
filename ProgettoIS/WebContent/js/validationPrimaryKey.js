@@ -11,9 +11,9 @@ function checkMatricolaStudente(matricola){
 	var xmht= new XMLHttpRequest();
 	xmht.onreadystatechange =function(){
 		console.log("readyState: " + this.readyState);
-		if(this.readyState==4 && this.status==200 && matricola != ""){
+		if(this.responseText == 'no'){
 			
-			alert(this.responseText);
+			alert('Matricola non valida. Gia presente nel database');
 		}
 	};
 	xmht.open("GET","checkMatricola?matricola="+matricola,true);
@@ -27,9 +27,9 @@ function checkEmailStudente(email){
 	var xmht= new XMLHttpRequest();
 	xmht.onreadystatechange =function(){
 		console.log("readyState: " + this.readyState);
-		if(this.readyState==4 && this.status==200 && email != ""){
+		if(this.responseText == 'no'){
 			
-			alert(this.responseText);
+			alert('Email non valida. Gia presente nel database');
 		}
 	};
 	xmht.open("GET","checkEmailStudente?email="+email,true);
@@ -43,9 +43,9 @@ function checkEmailAzienda(email){
 	var xmht= new XMLHttpRequest();
 	xmht.onreadystatechange =function(){
 		console.log("readyState: " + this.readyState);
-		if(this.readyState==4 && this.status==200 && email != ""){
+		if(this.responseText == 'no'){
 			
-			alert(this.responseText);
+			alert('Email non valida. Gia presente nel database');
 		}
 	};
 	xmht.open("GET","checkEmailAzienda?email="+email,true);
@@ -59,9 +59,9 @@ function checkP_IvaAzienda(piva){
 	var xmht= new XMLHttpRequest();
 	xmht.onreadystatechange =function(){
 		console.log("readyState: " + this.readyState);
-		if(this.readyState==4 && this.status==200 && piva != ""){
+		if(this.responseText == 'no'){
 			
-			alert(this.responseText);
+			alert('Partita iva non valida. Gia presente nel database');
 		}
 	};
 	xmht.open("GET","checkpiva?piva="+piva,true);

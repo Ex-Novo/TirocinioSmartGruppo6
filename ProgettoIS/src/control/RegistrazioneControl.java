@@ -85,7 +85,7 @@ public class RegistrazioneControl extends HttpServlet {
 			    
 				out.println("<script>");
 				out.println("alert('Registrazione riuscita. Ora puoi effettuare l'accesso')");
-				out.println("window.open('index.jsp','_self')");
+				out.println("window.location.replace('index.jsp')");
 				out.println("</script>");
 				
 			}
@@ -132,7 +132,7 @@ public class RegistrazioneControl extends HttpServlet {
 				
 				out.println("<script>");
 				out.println("alert('Registrazione riuscita. Ora puoi effettuare l'accesso')");
-				out.println("window.open('index.jsp','_self')");
+				out.println("window.location.replace('index.jsp')");
 				out.println("</script>");
 				
 			}

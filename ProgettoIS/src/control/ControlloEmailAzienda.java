@@ -37,23 +37,22 @@ public class ControlloEmailAzienda extends HttpServlet {
 		String risultato="";
  		String email=request.getParameter("email");
  		
- 		System.out.println(email);
- 		
  		AziendaDaoInterface aziendaDao = new AziendaDaoImpl();
 		Azienda azienda = new Azienda();
 		
-		azienda= aziendaDao.getAziendaByEmail(email);
+		azienda = aziendaDao.getAziendaByEmail(email);
 		
 		if(azienda.getEmail() != null && azienda.getEmail().equals(email)){
 			
-			risultato="Email non  valida, gia' presente nel database";
+			risultato="no";
 			
 	    }
 		else {
-			risultato="Email disponibile";
+			risultato="si";
 		}
 		
 		response.getWriter().write(risultato);
+			
 		
 	}
 

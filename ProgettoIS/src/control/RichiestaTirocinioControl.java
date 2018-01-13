@@ -61,6 +61,7 @@ public class RichiestaTirocinioControl extends HttpServlet {
 			String email = (String) session.getAttribute("email");//email dello studente loggata
 			String tipo = request.getParameter("tipo");
 			
+			PrintWriter out =response.getWriter();
 			
 			StudenteDaoInterface studenteDao = new StudenteDaoImpl();
 			Studente studente = studenteDao.getStudenteByEmail(email);
@@ -95,7 +96,7 @@ public class RichiestaTirocinioControl extends HttpServlet {
 			}
 			
 			//Conferma della richiesta di tirocinio dopo aver caricato il documento firmato salvando i dati nel database
-			if(tipo.equals("confermaRichiesta")){
+			if(tipo.equals("confermaRichiesta") && (boolean)session.getAttribute("fileUploaded")){
 				
 				RichiestaTirocinio rTirocinio = (RichiestaTirocinio) session.getAttribute("rTirocinio");
 				
@@ -103,7 +104,9 @@ public class RichiestaTirocinioControl extends HttpServlet {
 				RichiestaTirocinioDaoInterface rTirocinioDao = new RichiestaTirocinioDaoImpl();
 				boolean result = rTirocinioDao.invioRichiestaTirocinio(rTirocinio);//salva la richiesta di tirocinio del database
 				
-				PrintWriter out =response.getWriter();
+				session.setAttribute("fileUploaded",false);
+				
+				
 				//se la query è andata a buon fine
 				if(result){
 					out.println("<script>");
@@ -121,6 +124,11 @@ public class RichiestaTirocinioControl extends HttpServlet {
 					
 				}
 				out.close();
+			}else if(tipo.equals("confermaRichiesta") && !(boolean)session.getAttribute("fileUploaded")){
+				out.println("<script>");
+				out.println("alert('Non hai caricato il documento firmato. Non puoi inviare la richiesta')");
+				out.println("window.history.back()");
+				out.println("</script>");
 			}
 		
 		

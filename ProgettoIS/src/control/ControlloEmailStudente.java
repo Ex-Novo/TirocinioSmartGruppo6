@@ -45,11 +45,11 @@ public class ControlloEmailStudente extends HttpServlet {
 		
 		if(studente.getEmail() != null && studente.getEmail().equals(email)){
 			
-			risultato="Email non valida, gia' presente nel database";
+			risultato="no";
 			
 	    }
 		else {
-			risultato="Email disponibile";
+			risultato="si";
 		}
 		response.getWriter().write(risultato);
 		
