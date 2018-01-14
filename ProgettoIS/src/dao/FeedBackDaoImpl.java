@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import bean.Convenzione;
 import bean.Feedback;
@@ -63,10 +64,10 @@ public class FeedBackDaoImpl implements FeedBackDaoInterface {
 	 * @author Mario Procida, Luca Lamberti
 	 */
 	@Override
-	public Feedback getFeedBack(String piva, String matricola, int idTirocinio) {
+	public ArrayList<Feedback> getFeedBacks(String piva, String matricola, int idTirocinio) {
 		Connection con = null;
 		PreparedStatement preparedStatement = null;
-		Feedback fb = new Feedback();
+		ArrayList<Feedback> feedbacks = new ArrayList<Feedback>();
 
 		try
 		{
@@ -82,13 +83,15 @@ public class FeedBackDaoImpl implements FeedBackDaoInterface {
 			ResultSet rs = preparedStatement.executeQuery();
 			
 			while(rs.next()) {
-				
+				Feedback fb = new Feedback();
 				fb.setIdFeedback(rs.getInt(1));
 				fb.setValutazioneStudente(rs.getDouble(2));
 				fb.setValutazioneAzienda(rs.getDouble(3));
 				fb.setData("" + rs.getDate(4));
 				fb.setPiva(rs.getString(5));
 				fb.setMatricola(rs.getString(6));	
+				
+				feedbacks.add(fb);
 			}
 			con.close();
 		}
@@ -96,7 +99,7 @@ public class FeedBackDaoImpl implements FeedBackDaoInterface {
 		{
 			e.printStackTrace();
 		}
-		return fb;
+		return feedbacks;
 	}
 	
 	/**

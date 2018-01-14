@@ -15,11 +15,11 @@
 				<%
 					
 					String tipoUtente = (String) s.getAttribute("tipoUtente");
-					if(tipoUtente != null && tipoUtente.equals("Azienda")){
+					if(tipoUtente != null && tipoUtente.equals("Studente")){
 						boolean canFeed = (boolean) s.getAttribute("canFeed");
 						if(canFeed){
 				%>
-							<form method="post" action="FeedBackStudenteControl">
+							<form method="post" action="FeedBackAziendaControl">
 								<div id="form"> 
 									<h4>Valutazione Azienda</h4>
 									<p><em>Inserire un numero di valutazione da 1 a 5</em> </p>

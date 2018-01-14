@@ -2,6 +2,7 @@ package util;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -51,8 +52,52 @@ public class CheckValutazione extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
-		
+		PrintWriter out = response.getWriter();
 		String tipoValutazione = (String) session.getAttribute("tipoVal");
+		
+		
+		
+		//Controllo se lo studente ha già effettuato un feedback sull'azienda
+		if(tipoValutazione.equals("fbAzienda")) {
+			
+			
+			String matricola = (String) session.getAttribute("matricola");
+			String piva = (String) session.getAttribute("pivaAzienda");
+			
+			RichiestaTirocinioDaoInterface rTirDao = new RichiestaTirocinioDaoImpl();
+			RichiestaTirocinio rTir = rTirDao.getRichTirocinio(matricola);
+			
+			int idTirocinio = rTir.getIdTirocinio();
+			
+			FeedBackDaoInterface fbDao = new FeedBackDaoImpl();
+			
+			ArrayList<Feedback> fbs = fbDao.getFeedBacks(piva, matricola, idTirocinio);
+			
+			boolean result = false;
+			for(int i = 0 ; i< fbs.size(); i++) {
+				if(fbs.get(i).getValutazioneAzienda() != 0) {
+					result = true;
+				}
+			}
+			
+			
+			if(result) {
+				
+				session.setAttribute("canFeed", false);
+				
+				out.println("<script>");
+				out.println("alert('Hai già valutato l'azienda')");
+				out.println("window.open('index.jsp','_self')");
+				out.println("</script>");
+				
+			}else {
+				session.setAttribute("canFeed", true);
+				
+				out.println("<script>");
+				out.println("window.open('FeedBackAzienda.jsp','_self')");
+				out.println("</script>");
+			}
+		}
 		
 		//Controllo se l'azienda ha già effettuato un feedback sullo studente
 		if(tipoValutazione.equals("fbStudente")) {
@@ -67,55 +112,33 @@ public class CheckValutazione extends HttpServlet {
 			
 			FeedBackDaoInterface fbDao = new FeedBackDaoImpl();
 			
-			Feedback fb = fbDao.getFeedBack(piva, matricolaStudente, idTirocinio);
+			ArrayList<Feedback> fbs = fbDao.getFeedBacks(piva, matricolaStudente, idTirocinio);
 			
-			PrintWriter out = response.getWriter();
-			if(fb.getValutazioneStudente() != 0) {
+			boolean result = false;
+			for(int i = 0 ; i< fbs.size(); i++) {
+				
+				if(fbs.get(i).getValutazioneStudente() != 0) {
+					result = true;
+				}
+			}
+			
+			
+			if(result) {
+				
 				session.setAttribute("canFeed", false);
 				out.println("<script>");
 				out.println("alert('Hai già valutato lo studente')");
 				out.println("window.history.back()");
 				out.println("</script>");
 			}else {
-				session.setAttribute("canFeed", false);
+				session.setAttribute("canFeed", true);
 				out.println("<script>");
 				out.println("window.open('FeedBackStudente.jsp','_self')");
 				out.println("</script>");
 			}
 		}
 		
-		//Controllo se lo studente ha già effettuato un feedback sull'azienda
-		if(tipoValutazione.equals("fbAzienda")) {
-			String matricola = (String) session.getAttribute("matricola");
-			String piva = (String) session.getAttribute("pivaAzienda");
-			
-			RichiestaTirocinioDaoInterface rTirDao = new RichiestaTirocinioDaoImpl();
-			RichiestaTirocinio rTir = rTirDao.getRichTirocinio(matricola);
-			
-			int idTirocinio = rTir.getIdTirocinio();
-			
-			FeedBackDaoInterface fbDao = new FeedBackDaoImpl();
-			
-			Feedback fb = fbDao.getFeedBack(piva, matricola, idTirocinio);
-			
-			PrintWriter out = response.getWriter();
-			if(fb.getValutazioneAzienda() != 0) {
-				session.setAttribute("canFeed", false);
-				out.println("<script>");
-				out.println("alert('Hai già valutato l'azienda')");
-				out.println("window.history.back()");
-				out.println("</script>");
-			}else {
-				session.setAttribute("canFeed", false);
-				
-				out.println("<script>");
-				out.println("window.open('FeedBackAzienda.jsp','_self')");
-				out.println("</script>");
-			}
-		}
-		
-		
-		
+		out.close();
 		
 	}
 

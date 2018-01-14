@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import bean.Azienda;
 import bean.Tirocinio;
 import util.DBConnection;
 
@@ -111,7 +113,47 @@ public class TirocinioDaoImpl implements TirocinioDaoInterface{
 	}
 	
 	
-	
+	/**
+	 * Questo metodo effettua una query per cercare un tirocinio con l'id passato
+	 * @return Ritorna un istanza di tirocinio
+	 * @author Mario Procida
+	 */
+	@Override
+	public Tirocinio getPivaByIdTirocinio(int id) {
+		Connection con = null;
+		PreparedStatement preparedStatement = null;
+		Tirocinio tirocinio = new Tirocinio();
+		
+		try{
+
+			con = DBConnection.createConnection();
+			String query ="SELECT p_iva FROM tirocinio WHERE idTirocinio = ?";
+			preparedStatement = con.prepareStatement(query); 
+			
+			preparedStatement.setInt(1, id);
+			
+			ResultSet rs = preparedStatement.executeQuery();
+			
+			
+			while(rs.next()) {
+					
+				tirocinio.setP_iva(rs.getString(1));
+
+
+										
+			}
+			
+			con.close();
+		}
+		
+		catch(SQLException e)
+		{
+			e.printStackTrace();
+		}
+		
+		
+		return tirocinio;
+	}
 	
 
 }

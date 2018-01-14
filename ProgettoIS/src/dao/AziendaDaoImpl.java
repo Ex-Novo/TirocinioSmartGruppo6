@@ -349,51 +349,7 @@ public class AziendaDaoImpl implements AziendaDaoInterface{
 		return azienda;
 	}
 	
-	/**
-	 * Questo metodo effettua una query per cercare un tirocinio con l'id passato
-	 * @return Ritorna un istanza di tirocinio
-	 * @author Mario Procida
-	 */
-	@Override
-	public Azienda getAziendaByIdTirocinio(int id,String matricola) {
-		Connection con = null;
-		PreparedStatement preparedStatement = null;
-		Azienda azienda = new Azienda();
-		
-		try{
-			
-			con = DBConnection.createConnection();
-			String query ="SELECT azienda.p_iva, azienda.nomeAzienda , azienda.email , azienda.sede ,azienda.telefono"
-					+ "FROM (((studente INNER JOIN richiestatirocinio on studente.matricola=richiestatirocinio.matricola)INNER JOIN tirocinio on richiestatirocinio.idTirocinio=tirocinio.idTirocinio) "
-					+ "INNER JOIN azienda on tirocinio.p_iva=azienda.p_iva) WHERE richiestatirocinio.matricola = ? AND richiestatirocinio.status = 'approvata'";
-			preparedStatement = con.prepareStatement(query); 
-			
-			preparedStatement.setInt(1, id);
-			
-			ResultSet rs = preparedStatement.executeQuery();
-			
-			
-			while(rs.next()) {
-					
-				azienda.setP_iva(rs.getString(1));
-				azienda.setNomeAzienda(rs.getString(2));
-				azienda.setEmail(rs.getString(3));
-				azienda.setSede(rs.getString(4));
-				azienda.setTelefono(rs.getString(5));
-										
-			}
-			
-			con.close();
-		}
-		
-		catch(SQLException e)
-		{
-			e.printStackTrace();
-		}
-		
-		
-		return azienda;
-	}
+	
 
 	
 }

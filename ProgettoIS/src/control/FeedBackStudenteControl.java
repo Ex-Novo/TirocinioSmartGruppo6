@@ -92,7 +92,7 @@ public class FeedBackStudenteControl extends HttpServlet {
 			if(result){
 					
 				session.removeAttribute("matricolaStudente");
-				
+				session.setAttribute("canFeed", false);
 				out.println("<script>");
 				out.println("alert('Valutazione inviata con successo')");
 				out.println("window.open('index.jsp','_self')");

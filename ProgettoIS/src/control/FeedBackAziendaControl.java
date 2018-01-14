@@ -63,12 +63,12 @@ public class FeedBackAziendaControl extends HttpServlet {
 			RichiestaTirocinioDaoInterface rTirDao = new RichiestaTirocinioDaoImpl();
 			RichiestaTirocinio rTir = rTirDao.getRichTirocinio(matricola);
 			
-			int idTirocinio = rTir.getIdRichiestaTirocinio();
+			int idTirocinio = rTir.getIdTirocinio();
 			
-			AziendaDaoInterface azDao = new AziendaDaoImpl();
-			Azienda a = azDao.getAziendaByIdTirocinio(idTirocinio, matricola);
+			TirocinioDaoInterface tirDao = new TirocinioDaoImpl();
+			Tirocinio t = tirDao.getPivaByIdTirocinio(idTirocinio);
 			
-			session.setAttribute("pivaAzienda", a.getP_iva());
+			session.setAttribute("pivaAzienda", t.getP_iva());
 			session.setAttribute("tipoVal", "fbAzienda");
 			
 			getServletConfig().getServletContext().getRequestDispatcher("/checkVal").forward(request, response);
@@ -106,7 +106,7 @@ public class FeedBackAziendaControl extends HttpServlet {
 			if(result){
 					
 				session.removeAttribute("pivaAzienda");
-				
+				session.setAttribute("canFeed", false);
 				out.println("<script>");
 				out.println("alert('Valutazione inviata con successo')");
 				out.println("window.open('index.jsp','_self')");

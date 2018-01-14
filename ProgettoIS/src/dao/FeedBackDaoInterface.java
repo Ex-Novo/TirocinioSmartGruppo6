@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.ArrayList;
+
 import bean.Feedback;
 
 public interface FeedBackDaoInterface {
@@ -7,5 +9,5 @@ public interface FeedBackDaoInterface {
 	
 	public boolean inviaFeedBackAzienda(Feedback fb);
 	
-	public Feedback getFeedBack(String piva,String matricola, int idTirocinio);
+	public ArrayList<Feedback> getFeedBacks(String piva,String matricola, int idTirocinio);
 }

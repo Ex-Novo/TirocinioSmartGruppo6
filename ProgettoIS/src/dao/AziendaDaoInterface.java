@@ -22,7 +22,7 @@ public interface AziendaDaoInterface {
 	
 	public boolean addTutorAziendale(String tutor,String piva);
 
-	public Azienda getAziendaByIdTirocinio(int id, String matricola);
+	
 	
 	
 }
