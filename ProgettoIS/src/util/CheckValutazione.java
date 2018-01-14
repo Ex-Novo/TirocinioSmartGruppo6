@@ -40,6 +40,7 @@ public class CheckValutazione extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		doPost(request, response);
 	}
 
@@ -87,8 +88,9 @@ public class CheckValutazione extends HttpServlet {
 				
 				out.println("<script>");
 				out.println("alert('Hai già valutato l'azienda')");
-				out.println("window.open('index.jsp','_self')");
+				out.println("window.history.back()");
 				out.println("</script>");
+				
 				
 			}else {
 				session.setAttribute("canFeed", true);
@@ -138,8 +140,9 @@ public class CheckValutazione extends HttpServlet {
 			}
 		}
 		
+		out.flush();
 		out.close();
-		
+			
 	}
 
 }

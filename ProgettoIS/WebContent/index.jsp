@@ -12,10 +12,8 @@ autori: Mario Procida, Anna Maria Rosanova, Angelo Lucia, Michele Salerno
 
 <head>
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 <title>Tirocinio Smart</title>
 
