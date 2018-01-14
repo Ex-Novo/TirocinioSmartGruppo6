@@ -34,6 +34,10 @@
     <servlet-class>util.CheckTirocinio</servlet-class>
   </servlet>
   <servlet>
+    <servlet-name>CheckValutazione</servlet-name>
+    <servlet-class>util.CheckValutazione</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>DetailsAziendaControl</servlet-name>
     <servlet-class>control.DetailsAziendaControl</servlet-class>
   </servlet>
@@ -96,6 +100,10 @@
   <servlet-mapping>
     <servlet-name>CheckTirocinio</servlet-name>
     <url-pattern>/checkTiro</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CheckValutazione</servlet-name>
+    <url-pattern>/checkVal</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>ViewUtentiControl</servlet-name>

@@ -28,25 +28,25 @@ autori: Mario Procida
 
 			<!--  Se l'utente è loggato mostra la form -->
 			<%
-				if (email != null && password != null) {
+				if (email != null && password != null && (boolean) s.getAttribute("canRequest")) {
 			%>
 		
 				<form action="rConv" method="post">
-				<div id="form">
-					<input type="hidden" name="tipo" value="confermaForm"> 
-					<h4>Richiesta Convenzione</h4>
-					
-					<label>Tutor Aziendale</label> <br>
-					<input type="text" name="tutorAziendale" pattern="^[A-Za-z,\.\s']+$" required /> <br>
-				
-					<label>Numero posti offerti</label> <br>
-					<input type="number" min="0" name="numPosti" required /> <br>
+					<div id="form">
+						<input type="hidden" name="tipo" value="confermaForm"> 
+						<h4>Richiesta Convenzione</h4>
 						
-					<label>Descrizione tirocinio</label> <br>
-					<textarea type="text" name="descrizione" cols="30" rows="10"></textarea>
-					<br>
+						<label>Tutor Aziendale</label> <br>
+						<input type="text" name="tutorAziendale" pattern="^[A-Za-z,\.\s']+$" required /> <br>
 					
-					<input type="submit" name="submit" class="btn btn-info" value="Conferma form" />
+						<label>Numero posti offerti</label> <br>
+						<input type="number" min="0" name="numPosti" required /> <br>
+							
+						<label>Descrizione tirocinio</label> <br>
+						<textarea type="text" name="descrizione" cols="30" rows="10"></textarea>
+						<br>
+						
+						<input type="submit" name="submit" class="btn btn-info" value="Conferma form" />
 					</div>
 				</form>
 			
@@ -54,7 +54,7 @@ autori: Mario Procida
 			<%
 				} else {
 			%>
-			<h3>Non sei loggato. Devi effettuare il login</h3>
+			<h3>Non sei autorizzato a visualizzare questa pagina</h3>
 			<%
 				}
 			%>

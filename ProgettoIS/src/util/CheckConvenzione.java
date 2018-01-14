@@ -51,11 +51,14 @@ public class CheckConvenzione extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 		if(convenzione.getP_iva() != null) {
+			session.setAttribute("canRequest", false);
+			
 			out.println("<script>");
 			out.println("alert('Hai già richiesto una convenzione.')");
 			out.println("window.history.back()");
 			out.println("</script>");
 		}else {
+			session.setAttribute("canRequest", true);
 			out.println("<script>");
 			out.println("window.open('RichiestaConvenzione.jsp','_self')");
 			out.println("</script>");

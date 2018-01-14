@@ -56,12 +56,14 @@ public class CheckTirocinio extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		if(richTir.getMatricola() != null) {
 			
+			session.setAttribute("canRequest", false);
+			
 			out.println("<script>");
 			out.println("alert('Hai già richiesto un tirocinio.')");
 			out.println("window.history.back()");
 			out.println("</script>");
 		}else {
-			
+			session.setAttribute("canRequest", true);
 			session.setAttribute("idTirocinio", idTirocinio) ;
 			out.println("<script>");
 			out.println("window.open('RichiestaTirocinio.jsp','_self')");

@@ -27,7 +27,7 @@ autori: Mario Procida
 			<div class="container">
 			
 			<!--  Se l'utente è loggato mostra la form -->
-			<% if(email != null && password != null){ %>
+			<% if(email != null && password != null && (boolean) s.getAttribute("canRequest")){ %>
 				<form action="rTiro" method="post">
 					<div id="form">
 						<input type="hidden" name="tipo" value="confermaForm">
@@ -37,7 +37,7 @@ autori: Mario Procida
 					</div>
 				</form>
 			<%}else{ %>
-				<h3>Non sei loggato. Devi effettuare il login</h3>
+				<h3>Non sei autorizzato a visualizzare questa pagina</h3>
 			<%} %>
 			</div>
 		</header>

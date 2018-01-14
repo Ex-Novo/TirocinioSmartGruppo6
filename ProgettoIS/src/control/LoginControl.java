@@ -75,6 +75,8 @@ public class LoginControl extends HttpServlet {
 				session.setAttribute("matricola", matricola);
 				session.setAttribute("tipoUtente", "Studente");
 				session.setAttribute("fileUploaded", false);
+				session.setAttribute("canRequest", false);
+				session.setAttribute("canFeed", false);
 				session.setMaxInactiveInterval(600); //tempo di inattività massimo prima del logout = 10 minuti
 				
 				out.println("<script>");
@@ -177,7 +179,7 @@ public class LoginControl extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		doPost(request, response);
+		
 	}
 
 }

@@ -277,7 +277,9 @@ public class StudenteDaoImpl implements StudenteDaoInterface {
 			{
 				
 				con = DBConnection.createConnection();
-				String query = "SELECT studente.matricola, studente.nome , studente.cognome , studente.codiceFiscale ,studente.email ,studente.dataNascita ,studente.luogoNascita, studente.uniqueID FROM (((studente INNER JOIN richiestatirocinio on studente.matricola=richiestatirocinio.matricola)INNER JOIN tirocinio on richiestatirocinio.idTirocinio=tirocinio.idTirocinio) INNER JOIN azienda on tirocinio.p_iva=azienda.p_iva) WHERE azienda.p_iva= ? AND richiestatirocinio.status = 'approvata'";
+				String query = "SELECT studente.matricola, studente.nome , studente.cognome , studente.codiceFiscale ,studente.email ,studente.dataNascita ,studente.luogoNascita, studente.uniqueID "
+						+ "FROM (((studente INNER JOIN richiestatirocinio on studente.matricola=richiestatirocinio.matricola)INNER JOIN tirocinio on richiestatirocinio.idTirocinio=tirocinio.idTirocinio) "
+						+ "INNER JOIN azienda on tirocinio.p_iva=azienda.p_iva) WHERE azienda.p_iva= ? AND richiestatirocinio.status = 'approvata'";
 				preparedStatement = con.prepareStatement(query); 
 				
 				preparedStatement.setString(1, p);

@@ -40,6 +40,11 @@ public class LogoutControl extends HttpServlet {
 		session.removeAttribute("password");
 		session.removeAttribute("tipoUtente");
 		session.removeAttribute("uniqueID");
+		session.removeAttribute("matricola");
+		session.removeAttribute("piva");
+		session.removeAttribute("canRequest");
+		session.removeAttribute("fileUploaded");
+		session.removeAttribute("canFeed");
 		session.invalidate();
 		
 		out.println("<script>");
