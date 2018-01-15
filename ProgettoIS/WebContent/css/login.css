@@ -79,7 +79,7 @@ fieldset {
   padding: 10px;
   font-size: 12px;
   display: block;
-  width: 100%;
+  width: 96%;
   border: none;
   color: #fff;
   border-radius: 5px;
@@ -119,7 +119,6 @@ a:hover {
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
   border-bottom: 15px solid #ECF0F1;
-  left: 20%;
   position: absolute;
   top: -10px;
 }
@@ -173,9 +172,10 @@ a:hover {
 .formholder2 input[type="submit"] {
   background: #1abc9c;
   padding: 10px;
+  margin-top: 10px;
   font-size: 12px;
   display: block;
-  width: 100%;
+  width: 98%;
   border: none;
   color: #fff;
   border-radius: 5px;
