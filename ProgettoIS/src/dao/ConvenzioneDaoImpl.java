@@ -205,7 +205,7 @@ public class ConvenzioneDaoImpl implements ConvenzioneDaoInterface{
 		try
 		{
 			con = DBConnection.createConnection();
-			String query ="SELECT dataConvenzione, stato, dettaglioConvenzione, tutorAziendale, numPosti,p_iva,nomeFile FROM convenzione WHERE p_iva = ?  ";
+			String query ="SELECT dataConvenzione, stato, dettaglioConvenzione, tutorAziendale, numPosti,p_iva,nomeFile FROM convenzione WHERE p_iva = ? AND stato = 'in attesa' ";
 			preparedStatement = con.prepareStatement(query);
 			
 			preparedStatement.setString(1, piva);
