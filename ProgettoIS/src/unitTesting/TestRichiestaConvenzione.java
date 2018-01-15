@@ -40,7 +40,7 @@ public class TestRichiestaConvenzione {
 	 * 
 	 *  L'Utente non può inviare dei campi non compilati (HTML: < ... required>)
 	 *  
-	 *  L'Utente non può inserire un nome di tutor accademico non valido (HTML: <input type=text>)
+	 *  L'Utente non può inserire un nome di tutor accademico non valido (pattern="^[A-Za-z,\.\s']+$" required)
 	 *  
 	 *  L'Utente non può inserire un numero posti NaN (Not A Number) (HTML: <input type=number>)
 	 *  */

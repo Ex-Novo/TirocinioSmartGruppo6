@@ -32,7 +32,7 @@ autori: Mario Procida
 					<div id="form">
 						<input type="hidden" name="tipo" value="confermaForm">
 						<h4>Richiesta Tirocinio</h4>
-						<label name="tutor">TutorAccademico</label> <input type="text" name="tutorAccademico" pattern="^[0-9a-zA-Z,\.\s']+$" required /> <br>
+						<label name="tutor">TutorAccademico</label> <input type="text" name="tutorAccademico" pattern="^[a-zA-Z,\.\s']+$" title="Il nome può contenere solo lettere" required /> <br>
 						<input type="submit" name="submit" class="btn btn-info" value="Conferma form" />
 					</div>
 				</form>
