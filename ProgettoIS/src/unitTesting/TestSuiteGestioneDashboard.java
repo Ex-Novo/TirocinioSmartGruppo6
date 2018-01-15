@@ -5,7 +5,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ TestLogin.class })
+@SuiteClasses({ TestLogin.class, TestRegistrazioneAzienda.class, TestRegistrazioneStudente.class })
 public class TestSuiteGestioneDashboard {
 
 }
