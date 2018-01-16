@@ -9,12 +9,12 @@ import dao.StudenteDaoImpl;
 
 public class TestRegistrazioneStudente {
 
-	/* Divisione della registrazione in due categorie:
+	/* La registrazione di uno studente può essere divisa in 4 categorie:
 	 * 
-	 * - Avvenuta con successo
-	 * - Non avvenuta con successo
-	 * 
-	 * Da testare su entrambi i tipi di registazione (Studente ed Azienda)
+	 *  - Studente = null;
+	 *  - Studente = new Studente();
+	 *  - Studente = new Studente (format corretto garantito da javascript, non esistente nel db)
+	 *  - Studente = new Studente (format corretto garantito da javascript, esistente nel db)
 	 */
 	
 	
@@ -28,14 +28,14 @@ public class TestRegistrazioneStudente {
 	public void RegistrazioneStudenteAvvenuta() {
 		
 		Studente studente = new Studente();
-		studente.setMatricola("PROVA");
-		studente.setNome("PROVA");
-		studente.setCognome("PROVA");
-		studente.setPassword("PROVA");
-		studente.setCodiceFiscale("PROVA");
-		studente.setEmail("PROVA");
+		studente.setMatricola("Matricola");
+		studente.setNome("Nome");
+		studente.setCognome("Cognome");
+		studente.setPassword("Password");
+		studente.setCodiceFiscale("Codice Fiscale");
+		studente.setEmail("email@email.com");
 		studente.setDataNascita("2018-12-31");
-		studente.setLuogoNascita("PROVA");
+		studente.setLuogoNascita("Luogo Nascita");
 		
 		StudenteDaoImpl studenteDAO = new StudenteDaoImpl();
 		
@@ -55,22 +55,53 @@ public class TestRegistrazioneStudente {
 		Studente studente = new Studente();
 		
 		/* Inserisco una matricola già esistente nel DB */
-		studente.setMatricola("PROVA");
+		studente.setMatricola("0512101111");
 		
-		studente.setNome("PROVA");
-		studente.setCognome("PROVA");
-		studente.setPassword("PROVA");
-		studente.setCodiceFiscale("PROVA");
-		studente.setEmail("PROVA");
-		studente.setDataNascita("2018-12-01");
-		studente.setLuogoNascita("PROVA");
+		studente.setNome("Nome");
+		studente.setCognome("Cognome");
+		studente.setPassword("Password");
+		studente.setCodiceFiscale("Codice Fiscale");
+		studente.setEmail("email@email.com");
+		studente.setDataNascita("2018-12-31");
+		studente.setLuogoNascita("Luogo Nascita");
 		
 		StudenteDaoImpl studenteDAO = new StudenteDaoImpl();
 		
 		assertEquals(false, studenteDAO.registerUser(studente));
-		
-		
-		
+
 	}
+	
+	/** Test Registrazione Studente // Studente = null;
+	 * 
+	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
+	 * */
+
+	@Test
+	public void RegistrazionStudenteNull() {
+		
+		Studente studente = null;
+		
+		StudenteDaoImpl studenteDAO = new StudenteDaoImpl();
+		
+		assertEquals(false, studenteDAO.registerUser(studente));
+
+	}
+	
+	/** Test Registrazione Studente // Studente = null;
+	 * 
+	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
+	 * */
+
+	@Test
+	public void RegistrazionStudenteDefault() {
+		
+		Studente studente = new Studente();
+		
+		StudenteDaoImpl studenteDAO = new StudenteDaoImpl();
+		
+		assertEquals(false, studenteDAO.registerUser(studente));
+
+	}
+
 
 }

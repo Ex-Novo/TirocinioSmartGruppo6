@@ -8,6 +8,14 @@ import bean.Azienda;
 import dao.AziendaDaoImpl;
 
 public class TestRegistrazioneAzienda {
+	
+	/* La registrazione di un azienda può essere divisa in 4 categorie:
+	 * 
+	 *  - Azienda = null;
+	 *  - Azienda = new Azienda();
+	 *  - Azienda = new Azienda (format corretto garantito da javascript, non esistente nel db)
+	 *  - Azienda = new Azienda (format corretto garantito da javascript, esistente nel db)
+	 */
 
 	/** Test Registrazione Azienda // Avvenuta con Successo
 	 * 
@@ -31,7 +39,7 @@ public class TestRegistrazioneAzienda {
 		assertEquals(true, aziendaDAO.registerUser(azienda));
 
 	}
-	
+
 	
 	/** Test Registrazione Azienda // Non Avvenuta con Successo
 	 * 
@@ -47,7 +55,7 @@ public class TestRegistrazioneAzienda {
 		
 		azienda.setNomeAzienda("Nome Azienda");
 		azienda.setSede("Sede");
-		azienda.setP_iva("Partita Iva");
+		azienda.setP_iva("0983732387");
 		azienda.setEmail("email@email.com");
 		azienda.setTelefono("3313313313");
 		azienda.setPassword("111");
@@ -58,4 +66,35 @@ public class TestRegistrazioneAzienda {
 
 	}
 	
+	/** Test Registrazione Azienda // Azienda = null;
+	 * 
+	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
+	 * */
+	
+	@Test
+	public void RegistrazioneAziendaNull() {
+		
+		Azienda azienda = null;
+
+		AziendaDaoImpl aziendaDAO = new AziendaDaoImpl();
+		
+		assertEquals(false, aziendaDAO.registerUser(azienda));
+
+	}
+	
+	/** Test Registrazione Azienda // Azienda = new Azienda();
+	 * 
+	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
+	 * */
+	
+	@Test
+	public void RegistrazioneAziendaDefault() {
+		
+		Azienda azienda = new Azienda();
+
+		AziendaDaoImpl aziendaDAO = new AziendaDaoImpl();
+		
+		assertEquals(false, aziendaDAO.registerUser(azienda));
+
+	}
 }

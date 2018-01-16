@@ -8,8 +8,18 @@ import bean.Studente;
 import dao.StudenteDaoImpl;
 
 public class TestLogin {
+	
+	/* Esistono tre tipi di casi:
+	 * 
+	 * - Email e password di format corretto (correttezza data dalla jsp; email esistente nel db)
+	 * 			- con email e password che matchano (valide)
+	 * 			- con email e password che non matchano (password non matcha)
+	 * 
+	 * - Email e password di format corretto (correttezza data dalla jsp; email NON esistente nel db)
+	 * 
+	 */
 
-	/** TC_1.1 Test_Login // Credenziali corrette
+	/** Test_Login // Credenziali corrette (email e password matchano)
 	 * 
 	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
 	 * */
@@ -25,7 +35,7 @@ public class TestLogin {
 		assertEquals(true, studenteDAO.loginUser(studente));
 	}
 	
-	/** TC_1.1 Test_Login // Password Errata
+	/** TC_1.1 Test_Login // Email esiste ma la password non matcha
 	 * 
 	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
 	 * */
@@ -41,13 +51,13 @@ public class TestLogin {
 		assertEquals(false, studenteDAO.loginUser(studente));
 	}
 	
-	/** TC_1.1 Test_Login // Email Errata
+	/** TC_1.1 Test_Login // Email Errata o non presente nel database
 	 * 
 	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
 	 * */
 	
 	@Test
-	public void testLoginEmailErrata() {
+	public void testLoginEmailNonEsiste() {
 		
 		Studente studente = new Studente();
 		studente.setEmail("mprocidaX@gmail.com");
