@@ -45,8 +45,7 @@ public class TestElencoRichieste {
 	
 	@Test
 	public void TestElencoRichiesteTirocinioFallita() {
-		RichiestaTirocinioDaoImpl richiesteTirocinioDAO = new RichiestaTirocinioDaoImpl();
-		
+
 		/* Se fallisce il metodo per ottenere la lista, ritorna un "new ArraList<RichiestaTirocinio>" */ 
 		ArrayList<RichiestaTirocinio> listaRichiesteTirocinio = new ArrayList<RichiestaTirocinio>();
 		
@@ -75,8 +74,7 @@ public class TestElencoRichieste {
 	@Test
 	
 	public void TestElencoRichiesteConvenzioneFallita() {
-		ConvenzioneDaoImpl richiesteConvenzioneDAO = new ConvenzioneDaoImpl();
-		
+
 		/* Se fallisce il metodo per ottenere la lista, ritorna un "new ArraList<Convenzione>" */ 
 		ArrayList<Convenzione> listaRichiesteConvenzione = new ArrayList<Convenzione>();
 		
