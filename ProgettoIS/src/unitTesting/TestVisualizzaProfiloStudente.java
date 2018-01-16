@@ -26,7 +26,7 @@ public class TestVisualizzaProfiloStudente {
 	public void testGetStudenteByMatricolaEsistente () {
 		String matricola = "0512101111";
 		StudenteDaoImpl studenteDao = new StudenteDaoImpl ();
-		assertNotNull (studenteDao.getStudenteByMatricola(matricola));
+		assertEquals (matricola, studenteDao.getStudenteByMatricola(matricola).getMatricola());
 	}
 	
 	//Test email non esistente
@@ -44,7 +44,7 @@ public class TestVisualizzaProfiloStudente {
 	public void testGetStudenteByEmailEsistente () {
 		String email = "storluccio@gmail.com";
 		StudenteDaoImpl studenteDao = new StudenteDaoImpl ();
-		assertNotNull (studenteDao.getStudenteByEmail(email));
+		assertEquals (email, studenteDao.getStudenteByEmail(email).getEmail());
 	}
 
 }

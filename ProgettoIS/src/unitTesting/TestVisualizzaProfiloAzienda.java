@@ -17,7 +17,7 @@ public class TestVisualizzaProfiloAzienda {
 	public void testGetAziendaByEmailEsistente () {
 		String email =  "hsoftware@gmail.com";
 		AziendaDaoImpl aziendaDao = new AziendaDaoImpl ();
-		assertNotNull (aziendaDao.getAziendaByEmail(email));
+		assertEquals (email, aziendaDao.getAziendaByEmail(email).getEmail());
 	}
 	
 	//Test email non esistente 
@@ -35,7 +35,7 @@ public class TestVisualizzaProfiloAzienda {
 	public void testGetAziendaByPivaEsistente () {
 		String piva =  "0983732387";
 		AziendaDaoImpl aziendaDao = new AziendaDaoImpl ();
-		assertNotNull (aziendaDao.getAziendaByEmail(piva));
+		assertEquals (piva, aziendaDao.getAziendaByEmail(piva).getP_iva());
 	}
 	
 	//Test P_Iva non esistente
