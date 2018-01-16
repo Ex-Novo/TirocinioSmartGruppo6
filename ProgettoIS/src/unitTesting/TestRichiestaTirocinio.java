@@ -7,6 +7,15 @@ import org.junit.Test;
 import bean.RichiestaTirocinio;
 import dao.RichiestaTirocinioDaoImpl;
 
+// Ho provato con un nuovo utente "dauriafrancescomaria@gmail.com" e "111"
+
+/* Durante la richiesta di tirocinio vi è solo il nome del "Tutor Accademico" da inserire:
+ * 
+ * Il nome del "Tutor Accademico" è <required> dal tag, quindi non può essere nullo o "" (stringa vuota)
+ * Si può solo testare se effettivamente funziona la funzionalità di creazione di richiesta tirocinio
+ */
+
+
 public class TestRichiestaTirocinio {
 
 	/** TC_2.2 Test_RichiestConvenzione // Form valido

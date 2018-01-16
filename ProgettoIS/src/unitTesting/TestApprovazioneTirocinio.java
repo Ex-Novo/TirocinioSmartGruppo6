@@ -11,8 +11,8 @@ public class TestApprovazioneTirocinio {
 
 	/* Un'approvazione di tirocinio può avere solo due categorie:
 	 * 
-	 * - Avvenuta con successo -> ritorna true
-	 * - Fallita (per un qualsiasi motivo) -> ritorna false
+	 * - matricola esiste:
+	 * - matricola non esiste o è errata:
 	 */
 	
 	/** Test Approvazione Tirocinio // Avvenuta con Successo

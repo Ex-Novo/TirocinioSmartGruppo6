@@ -9,10 +9,10 @@ import dao.ConvenzioneDaoImpl;
 
 public class TestApprovazioneConvenzione {
 
-	/* Un'approvazione di convenzione può avere solo due categorie:
+	/* Un'approvazione di convenzione può essere divisa in:
 	 * 
-	 * - Avvenuta con successo -> ritorna true
-	 * - Fallita (per un qualsiasi motivo) -> ritorna false
+	 * partita iva esiste:
+	 * partita iva è errata:
 	 */
 	
 	/** Test Approvazione Convenzione // Avvenuta
