@@ -26,11 +26,11 @@ autori: Mario Procida, Anna Maria Rosanova, Angelo Lucia, Michele Salerno
 		<!-- Header -->
 		<header class="masthead bg-primary text-white text-center" >
 			<div class="container">
-				<a href="aziende" ><img  class="img-fluid mb-5 d-block mx-auto" src="img/profile.png" alt=""></a>
-				<h1 class="text-uppercase mb-0">Aziende Convenzionate</h1>
+				<h2 class="text-uppercase mb-0">Aziende Convenzionate</h2>
+				<a href="aziende" ><img  class="img-fluid mb-5 d-block mx-auto zoom" src="img/profile.png" alt=""></a>
 			</div>
 			
-		</header>
+		
 		
 		<!--  Check per il login effettuato -->
 		<% if(email != null && password != null){ %>
@@ -45,8 +45,8 @@ autori: Mario Procida, Anna Maria Rosanova, Angelo Lucia, Michele Salerno
 					<h2 class="text-uppercase mb-0"> Funzionalità azienda</h2>
 				</div>
 				<div class="text-white text-center">
-					<a class="btn btn-info" href="checkConv">Richiedi convenzione</a>
-					<a class="btn btn-info" href="tirocinanti">Lista Tirocinanti</a>	
+					<a class="btn btn-info btn-lg" href="checkConv">Richiedi convenzione</a>
+					<a class="btn btn-info btn-lg" href="tirocinanti">Lista Tirocinanti</a>	
 				</div>
 			<%
 				}
@@ -76,7 +76,7 @@ autori: Mario Procida, Anna Maria Rosanova, Angelo Lucia, Michele Salerno
 		
 			%>
 				<div class="text-white text-center">
-					<h2 class="text-uppercase mb-0"> Funzionalità didattica</h2>
+					<h2 class="text-uppercase mb-0"> Funzionalità didattica/direttore</h2>
 				</div>
 				<div class="text-white text-center">
 					<a class="btn btn-info" href="utenti">Lista Utenti</a>
@@ -87,6 +87,7 @@ autori: Mario Procida, Anna Maria Rosanova, Angelo Lucia, Michele Salerno
 			%>
 		
 		<%	} %>
+			</header>
 	</div>
 	<!-- Crea spazio tra il footer e il corpo centrale -->
 	<div class="bg-primary" id="push"></div>

@@ -79,12 +79,12 @@ public class LoginControl extends HttpServlet {
 				session.setAttribute("canFeed", false);
 				session.setMaxInactiveInterval(600); //tempo di inattività massimo prima del logout = 10 minuti
 				
-				out.println("<script>");
-				out.println("alert('Utente loggato')");
-				out.println("window.location.replace('index.jsp')");
-				out.println("</script>");
 				
-				
+				out.println("<script type=\"text/javascript\">");
+			    out.println("alert('Accesso effettuato');");
+			    out.println("location='index.jsp';");
+			    out.println("</script>");
+					
 			
 				
 			}
@@ -92,7 +92,7 @@ public class LoginControl extends HttpServlet {
 			else if(!logUser){ // login errato
 				
 				
-				out.println("<script>");
+				out.println("<script type=\"text/javascript\">");
 				out.println("alert('Credenziali errate')");
 				out.println("window.history.back()");
 				out.println("</script>");
@@ -125,15 +125,15 @@ public class LoginControl extends HttpServlet {
 				session.setMaxInactiveInterval(600); //tempo di inattività massimo prima del logout = 10 minuti
 				
 			
-				out.println("<script>");
-				out.println("alert('Utente loggato')");
-				out.println("window.open('index.jsp','_self')");
-				out.println("</script>");
+				out.println("<script type=\"text/javascript\">");
+			    out.println("alert('Accesso effettuato');");
+			    out.println("location='index.jsp';");
+			    out.println("</script>");
 				
 			}
 			
 			else{ //login errato
-				out.println("<script>");
+				out.println("<script type=\"text/javascript\">");
 				out.println("alert('Credenziali errate')");
 				out.println("window.history.back()");
 				out.println("</script>");
@@ -159,22 +159,22 @@ public class LoginControl extends HttpServlet {
         		session.setAttribute("tipoUtente", "Didattica");
         		session.setMaxInactiveInterval(600); //tempo di inattività massimo prima del logout = 10 minuti
         		
-        		out.println("<script>");
-				out.println("alert('Utente loggato')");
-				out.println("window.open('index.jsp','_self')");
-				out.println("</script>");
-
+        		out.println("<script type=\"text/javascript\">");
+			    out.println("alert('Accesso effettuato');");
+			    out.println("location='index.jsp';");
+			    out.println("</script>");
         	}
 
         	else{ //login errato
-        		out.println("<script>");
+        		out.println("<script type=\"text/javascript\">");
 				out.println("alert('Credenziali errate')");
 				out.println("window.history.back()");
 				out.println("</script>");
         	}
 		}
 		
-        
+        out.flush();
+        out.close();
 		
 	}
 	

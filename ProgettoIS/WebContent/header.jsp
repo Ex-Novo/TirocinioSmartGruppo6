@@ -63,7 +63,7 @@ autori: Mario Procida
 		id="mainNav">
 	<div class="container">
 		<a class="navbar-brand js-scroll-trigger" href="index.jsp"><img
-			src="img\logo.png" height="80e"></a>
+			src="img\logo.png" class="zoom" height="80e"></a>
 		<button
 			class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded"
 			type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -89,16 +89,15 @@ autori: Mario Procida
 						<div class="formholder">
 							<div class="randompad">
 								<fieldset>
-									<form action="LoginControl"
-										onSubmit="return loginValidation(this);" method="post">
-										<input type="radio" name="tipo" checked="checked"
-											value="Studente">Studente <input type="radio"
-											name="tipo" value="Azienda">Azienda <input
-											type="radio" name="tipo" value="Didattica">Didattica
-										<br> <br> <label name="email">Email</label> <input
-											type="email" name="email" required /> <label name="password">Password</label>
-										<input type="password" name="password" required /> <input
-											type="submit" value="Login" />
+									<form action="LoginControl" onSubmit="return loginValidation(this);" method="post">
+										<input type="radio" name="tipo" checked="checked" value="Studente">Studente 
+										<input type="radio" name="tipo" value="Azienda">Azienda 
+										<input type="radio" name="tipo" value="Didattica">Didattica/Direttore
+										<br> <br> <label name="email">Email</label>
+										<input type="email" name="email" required /> 
+											<label name="password">Password</label>
+										<input type="password" name="password" required /> 
+										<input type="submit" value="Login" />
 									</form>
 								</fieldset>
 							</div>
@@ -116,65 +115,34 @@ autori: Mario Procida
 									<form action="RegistrazioneControl"
 										onSubmit="return regValidation(this);" method="post" id="A"
 										style="position: relative">
-										<input type="hidden" name="tipo" value="Studente" /> <input
-											type="nome" name="nome" placeholder="Nome"
-											pattern="^[A-Za-z]+$"
-											title="Il nome può contenere solo lettere" required autofocus />
-										<input type="cognome" name="cognome" placeholder="Cognome"
-											pattern="^[A-Za-z]+$"
-											title="Il cognome può contenere solo lettere" required /> <input
-											type="email" name="email" placeholder="Email"
-											pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
-											title="Formato email rossi@mail.com"
-											onblur="checkEmailStudente(this.value)" required /> <input
-											type="password" name="password" placeholder="Password"
-											maxlength="15" minlength="4" required /> <input
-											type="password" name="confermaPsw"
-											placeholder="Conferma Password" required /> <input
-											type="nome" name="codiceFiscale" placeholder="Codice Fiscale"
-											pattern="[A-Za-z0-9]+" required /> <input type="matricola"
-											name="matricola" placeholder="Matricola" pattern="^[0-9]+$"
-											title="La matricola può contenere solo numeri"
-											onblur="checkMatricolaStudente(this.value)" required /> <input
-											type="date" name="dataNascita" required /> <input
-											type="nome" name="luogoNascita"
-											placeholder="Luogo di Nascita" pattern="^[A-Za-z]+$"
-											title="Il luogo può contenere solo lettere" required /> <input
-											type="submit" value="Registrati" />
+										<input type="hidden" name="tipo" value="Studente" /> 
+										<input  type="nome" name="nome" placeholder="Nome" pattern="^[A-Za-z,\.\s']+$" title="Il nome può contenere solo lettere" required autofocus />
+										<input type="cognome" name="cognome" placeholder="Cognome" pattern="^[A-Za-z,\.\s']+$" title="Il cognome può contenere solo lettere" required /> 
+										<input type="email" name="email" placeholder="Email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" title="Formato email rossi@mail.com" onblur="checkEmailStudente(this.value)" required /> 
+										<input type="password" name="password" placeholder="Password" maxlength="15" minlength="4" required /> 
+										<input type="password" name="confermaPsw" placeholder="Conferma Password" required /> 
+										<input type="nome" name="codiceFiscale" placeholder="Codice Fiscale" pattern="[A-Za-z0-9]+" required /> 
+										<input type="matricola" name="matricola" placeholder="Matricola" pattern="^[0-9]+$" title="La matricola può contenere solo numeri" onblur="checkMatricolaStudente(this.value)" required /> 
+										<input type="date" name="dataNascita" required /> 
+										<input type="nome" name="luogoNascita"placeholder="Luogo di Nascita" pattern="^[A-Za-z]+$" title="Il luogo può contenere solo lettere" required /> 
+										<input type="submit" value="Registrati" />
 									</form>
-									<form action="RegistrazioneControl"
-										onSubmit="return regValidation(this);" method="post" id="B"
-										style="visibility: hidden; position: absolute; top: -1px">
-										<input type="hidden" name="tipo" value="Azienda" /> <input
-											type="nome" name="nomeAzienda" placeholder="Nome Azienda"
-											pattern="^[A-Za-z]+$"
-											title="Il nome può contenere solo lettere" required autofocus />
-										<input type="sede" name="sede" placeholder="Sede"
-											pattern="^[A-Za-z]+$"
-											title="La sede può contenere solo lettere" required /> <input
-											type="email" name="email" placeholder="Email"
-											pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
-											title="Formato email rossi@mail.com"
-											onblur="checkEmailAzienda(this.value)" required /> <input
-											type="piva" name="partitaIva" placeholder="Partita Iva"
-											pattern="^[0-9]+$" title="Solo numeri consentiti"
-											onblur="checkP_IvaAzienda(this.value)" required /> <input
-											type="telefono" name="telefono"
-											placeholder="Numero di telefono" pattern="^[0-9]+$"
-											title="Solo numeri consentiti" required /> <input
-											type="password" name="password" placeholder="Password"
-											maxlength="15" minlength="4" required /> <input
-											type="password" name="confermaPsw"
-											placeholder="Conferma Password" required /> <input
-											type="submit" value="Registrati" />
+									<form action="RegistrazioneControl" onSubmit="return regValidation(this);" method="post" id="B" style="visibility: hidden; position: absolute; top: -1px">
+										<input type="hidden" name="tipo" value="Azienda" /> 
+										<input type="nome" name="nomeAzienda" placeholder="Nome Azienda" pattern="^[A-Za-z,\.\s']+$" title="Il nome può contenere solo lettere" required autofocus />
+										<input type="sede" name="sede" placeholder="Sede"pattern="^[A-Za-z,\.\s']+$"title="La sede può contenere solo lettere" required /> 
+										<input type="email" name="email" placeholder="Email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" title="Formato email rossi@mail.com" onblur="checkEmailAzienda(this.value)" required /> 
+										<input type="piva" name="partitaIva" placeholder="Partita Iva" pattern="^[0-9]+$" title="Solo numeri consentiti"onblur="checkP_IvaAzienda(this.value)" required /> 
+										<input type="telefono" name="telefono" placeholder="Numero di telefono" pattern="^[0-9]+$" title="Solo numeri consentiti" required /> 
+										<input type="password" name="password" placeholder="Password" maxlength="15" minlength="4" required /> 
+										<input type="password" name="confermaPsw" placeholder="Conferma Password" required /> 
+										<input type="submit" value="Registrati" />
 									</form>
 									<br> <br>
 									<form action="">
 										<center>
-											<input type="radio" name="RadioB" onclick="hideB()"
-												value="Studente" checked="checked"> Studente <input
-												type="radio" name="RadioB" onclick="hideA()" value="Azienda">
-											Azienda
+											<input type="radio" name="RadioB" onclick="hideB()" value="Studente" checked="checked"> Studente 
+											<input type="radio" name="RadioB" onclick="hideA()" value="Azienda"> Azienda
 										</center>
 										<br>
 									</form>
@@ -193,7 +161,7 @@ autori: Mario Procida
 
 				<li class="nav-item mx-0 mx-lg-1"><a
 					class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-					href="profile" method="post"><%=email%></a></li>
+					href="profile" method="post">Visualizza profilo</a></li>
 
 				<%
 					}

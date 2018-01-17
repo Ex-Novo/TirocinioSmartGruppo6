@@ -28,7 +28,9 @@ autori: Mario Procida
 
 			<!--  Se l'utente è loggato mostra la form -->
 			<%
-				if (email != null && password != null && (boolean) s.getAttribute("canRequest")) {
+			String tipoUtente = (String) s.getAttribute("tipoUtente");
+			boolean canRequest = (boolean) s.getAttribute("canRequest");
+			if(email != null && password != null && canRequest && tipoUtente.equals("Azienda")) {
 			%>
 		
 				<form action="rConv" method="post">
@@ -46,7 +48,7 @@ autori: Mario Procida
 						<textarea type="text" name="descrizione" cols="30" rows="10"></textarea>
 						<br>
 						
-						<input type="submit" name="submit" class="btn btn-info" value="Conferma form" />
+						<input id="submit" type="submit" name="submit" class="btn btn-info" value="Conferma form" />
 					</div>
 				</form>
 			

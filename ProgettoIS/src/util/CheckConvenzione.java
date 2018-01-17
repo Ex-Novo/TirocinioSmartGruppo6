@@ -50,13 +50,21 @@ public class CheckConvenzione extends HttpServlet {
 		Convenzione convenzione = convDao.getConvenzione(piva); //ritorna true se trova la convenzione
 
 		PrintWriter out = response.getWriter();
-		if(convenzione.getP_iva() != null) {
+		if(convenzione.getP_iva() != null && convenzione.getStato().equals("in attesa")) {
 			session.setAttribute("canRequest", false);
 			
 			out.println("<script>");
-			out.println("alert('Hai già richiesto una convenzione.')");
+			out.println("alert('Hai già richiesto una convenzione. La preghiamo di attendere la risposta del Direttore')");
 			out.println("window.history.back()");
 			out.println("</script>");
+		}else if(convenzione.getP_iva() != null && convenzione.getStato().equals("rifiutata")) {
+		
+			session.setAttribute("canRequest", false);
+			out.println("<script>");
+			out.println("alert('La richiesta di convenzione che hai effettuato è stata rifiutata. Per chiarimenti contattare la didattica.')");
+			out.println("window.history.back()");
+			out.println("</script>");
+		
 		}else {
 			session.setAttribute("canRequest", true);
 			out.println("<script>");

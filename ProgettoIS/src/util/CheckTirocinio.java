@@ -54,14 +54,21 @@ public class CheckTirocinio extends HttpServlet {
 		RichiestaTirocinio richTir = rTirocinioDao.getRichTirocinio(matricola); //ritorna true se trova la richiesta di tirocinio
 
 		PrintWriter out = response.getWriter();
-		if(richTir.getMatricola() != null) {
+		if(richTir.getMatricola() != null && richTir.getStatus().equals("in attesa")) {
 			
 			session.setAttribute("canRequest", false);
 			
 			out.println("<script>");
-			out.println("alert('Hai già richiesto un tirocinio.')");
+			out.println("alert('Hai già richiesto un tirocinio.Si prega di attendere una risposta.')");
 			out.println("window.history.back()");
 			out.println("</script>");
+		}else if(richTir.getMatricola() != null && richTir.getStatus().equals("rifiutata")) {
+			session.setAttribute("canRequest", false);
+			out.println("<script>");
+			out.println("alert('La tua richiesta di tirocinio è stata rifiutata. Per chiarimenti contattare la didattica')");
+			out.println("window.history.back()");
+			out.println("</script>");
+	
 		}else {
 			session.setAttribute("canRequest", true);
 			session.setAttribute("idTirocinio", idTirocinio) ;
@@ -69,6 +76,9 @@ public class CheckTirocinio extends HttpServlet {
 			out.println("window.open('RichiestaTirocinio.jsp','_self')");
 			out.println("</script>");
 		}
+		
+		out.flush();
+		out.close();
 	}
 
 }

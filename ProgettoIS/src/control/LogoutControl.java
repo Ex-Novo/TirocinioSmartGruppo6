@@ -47,10 +47,7 @@ public class LogoutControl extends HttpServlet {
 		session.removeAttribute("canFeed");
 		session.invalidate();
 		
-		out.println("<script>");
-		out.println("alert('Logout effettuato')");
-		out.println("window.open('index.jsp','_self')");
-		out.println("</script>");
+		response.sendRedirect("index.jsp");
 	}
 
 	

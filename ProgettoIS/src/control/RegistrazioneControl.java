@@ -83,15 +83,15 @@ public class RegistrazioneControl extends HttpServlet {
 				FileUtil fu = new FileUtil();
 				fu.createFolder(path ,uniqueID); //richiama il metodo di FileManager per creare una folder con l'id unico dell'utente appena registrato
 			    
-				out.println("<script>");
-				out.println("alert('Registrazione riuscita. Ora puoi effettuare l'accesso')");
-				out.println("window.location.replace('index.jsp')");
-				out.println("</script>");
+				out.println("<script type=\"text/javascript\">");
+			    out.println("alert('Registrazione effettuata con successo. Ora puoi effettuare l'accesso');");
+			    out.println("location='index.jsp';");
+			    out.println("</script>");
 				
 			}
 			else{
-				out.println("<script>");
-				out.println("alert('Registrazione non riuscita. Riprova!')");
+				out.println("<script type=\"text/javascript\">");
+				out.println("alert('Registrazione non riuscita, riprova')");
 				out.println("window.history.back()");
 				out.println("</script>");
 				
@@ -130,23 +130,24 @@ public class RegistrazioneControl extends HttpServlet {
 				FileUtil fm = new FileUtil();
 				fm.createFolder(path ,uniqueID); //richiama il metodo di FileManager per creare una folder con l'id unico dell'utente appena registrato
 				
-				out.println("<script>");
-				out.println("alert('Registrazione riuscita. Ora puoi effettuare l'accesso')");
-				out.println("window.location.replace('index.jsp')");
-				out.println("</script>");
+				out.println("<script type=\"text/javascript\">");
+			    out.println("alert('Registrazione effettuata con successo. Ora puoi effettuare l'accesso');");
+			    out.println("location='index.jsp';");
+			    out.println("</script>");
 				
 			}
 			else{
 				
-				out.println("<script>");
-				out.println("alert('Registrazione non riuscita. Riprova!')");
+				out.println("<script type=\"text/javascript\">");
+				out.println("alert('Registrazione non riuscita, riprova')");
 				out.println("window.history.back()");
 				out.println("</script>");
 			}
 			
 		}
 		
-		
+		out.flush();
+        out.close();
 
 	}
 	

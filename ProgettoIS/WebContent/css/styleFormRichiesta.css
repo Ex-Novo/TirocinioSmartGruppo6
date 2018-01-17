@@ -1,5 +1,5 @@
 #form {
-	width: 500px;
+	width: 95%;
 	margin: auto; background : #111e6b;
 	padding: 25px;
 	overflow: hidden;
@@ -14,6 +14,7 @@ label, input, textarea {
 }
 
 input, textarea {
+	width: 75%;
 	background: white;
 	border: 1px solid white;
 	color: #000000;
@@ -28,11 +29,15 @@ input {
 }
 
 #submit {
-	padding: 0;
-	width: 100px;
-	margin-top: 10px;
+	margin-top: 1em;
+	width: 25%;
+	
 }
 
 #line { 
     border-color: white;
+}
+
+.input2{
+	width: 40%;
 }
