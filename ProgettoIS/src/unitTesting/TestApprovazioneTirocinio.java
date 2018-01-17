@@ -12,7 +12,7 @@ public class TestApprovazioneTirocinio {
 	/* Un'approvazione di tirocinio può avere solo due categorie:
 	 * 
 	 * - matricola esiste:
-	 * - matricola non esiste o è errata:
+	 * - matricola è errata (Ex: errore di codifica)
 	 */
 
 	/** Test Approvazione Tirocinio // Avvenuta con Successo
@@ -47,13 +47,13 @@ public class TestApprovazioneTirocinio {
 	@Test
 	public void testApprovazioneTirocinioFallita() {
 
-		/* Provo ad approvare una richiesta di tirocinio ad una richiesta che non esiste */
+		/* Provo ad approvare una richiesta di tirocinio che non esiste */
 
 
 		RichiestaTirocinioDaoImpl richiestaTirocinioDAO = new RichiestaTirocinioDaoImpl();
 
 
-		assertEquals(false, richiestaTirocinioDAO.approvazioneRichiestaTirocinio("0"));
+		assertEquals(false, richiestaTirocinioDAO.approvazioneRichiestaTirocinio("0512101111111111"));
 
 
 

@@ -6,6 +6,19 @@ import org.junit.Test;
 
 import dao.AziendaDaoImpl;
 
+/*
+ * I metodi ritornano informazioni di un'Azienda la sua email o chiave (Partita Iva)
+ * 
+ * Le categorie sono:
+ * 
+ * - email valida
+ * - email non esiste o non valida (Ex: errore di codifica)
+ * 
+ * - partita iva valida
+ * - partita iva non esiste o non valida (Ex: errore di codifica)
+ * 
+ */
+
 public class TestVisualizzaProfiloAzienda {
 
 	/** Test visualizza Profilo Azienda // Email esistente
@@ -23,6 +36,11 @@ public class TestVisualizzaProfiloAzienda {
 
 	//Test email non esistente 
 
+	/** Test visualizza Profilo Azienda // Email non esistente (Ex: errore di codifica)
+	 * 
+	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
+	 * */
+
 	@Test
 	public void testGetAziendaByEmailNonEsistente () {
 		AziendaDaoImpl aziendaDao = new AziendaDaoImpl ();
@@ -31,7 +49,11 @@ public class TestVisualizzaProfiloAzienda {
 		assertEquals (null, aziendaDao.getAziendaByEmail(email).getEmail());
 	}
 
-	//Test P_Iva esistente
+	/** Test visualizza Profilo Azienda // Partita Iva (chiave) esistente
+	 * 
+	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
+	 * */
+
 
 	@Test
 	public void testGetAziendaByPivaEsistente () {
@@ -41,7 +63,12 @@ public class TestVisualizzaProfiloAzienda {
 		assertEquals (piva, aziendaDao.getAziendaByEmail(piva).getP_iva());
 	}
 
-	//Test P_Iva non esistente
+
+	/** Test visualizza Profilo Azienda // Partita Iva (chiave) non esistente (Ex: errore di codifica)
+	 * 
+	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
+	 * */
+
 
 	@Test
 	public void testGetAziendaByPivaNonEsistente () {

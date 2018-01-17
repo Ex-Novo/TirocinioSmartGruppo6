@@ -11,8 +11,8 @@ public class TestApprovazioneConvenzione {
 
 	/* Un'approvazione di convenzione può essere divisa in:
 	 * 
-	 * partita iva esiste:
-	 * partita iva è errata:
+	 * partita iva è corretta:
+	 * partita iva è errata (Ex: errore di codifica)
 	 */
 
 	/** Test Approvazione Convenzione // Avvenuta
@@ -52,8 +52,9 @@ public class TestApprovazioneConvenzione {
 
 		ConvenzioneDaoImpl convenzioneDAO = new ConvenzioneDaoImpl();
 
-		/* Inserisco un a partita iva che non esiste */
-		assertEquals(false, convenzioneDAO.approvazioneRichiestaConvenzione("0"));
+		/* Inserisco un a partita iva che non esiste (Ex: dovuta ad errori di codifica)*/
+
+		assertEquals(false, convenzioneDAO.approvazioneRichiestaConvenzione("09837323871111"));
 
 	} 
 }

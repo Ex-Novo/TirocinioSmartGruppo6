@@ -9,12 +9,14 @@ import dao.AziendaDaoImpl;
 
 public class TestRegistrazioneAzienda {
 
-	/* La registrazione di un azienda può essere divisa in 4 categorie:
+	/* La registrazione di un azienda può essere divisa in categorie:
 	 * 
-	 *  - Azienda = null;
-	 *  - Azienda = new Azienda();
-	 *  - Azienda = new Azienda (format corretto garantito da javascript, non esistente nel db)
-	 *  - Azienda = new Azienda (format corretto garantito da javascript, esistente nel db)
+	 *  - Azienda = new Azienda
+	 *  (format corretto e required garantito da javascript/html, chiave non esistente nel db)
+	 *  
+	 *  - Azienda = new Azienda
+	 *  (format corretto e required garantito da javascript/html, chiave esistente nel db)
+	 * 
 	 */
 
 	/** Test Registrazione Azienda // Avvenuta con Successo
@@ -28,6 +30,7 @@ public class TestRegistrazioneAzienda {
 		Azienda azienda = new Azienda();
 		AziendaDaoImpl aziendaDAO = new AziendaDaoImpl();
 
+		/* Mi registro con una chiave non presente nel database*/
 		azienda.setNomeAzienda("Nome Azienda");
 		azienda.setSede("Sede");
 		azienda.setP_iva("Partita Iva");
@@ -40,7 +43,7 @@ public class TestRegistrazioneAzienda {
 	}
 
 
-	/** Test Registrazione Azienda // Non Avvenuta con Successo
+	/** Test Registrazione Azienda // Fallita (Ex: chiave già presente)
 	 * 
 	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
 	 * */
@@ -51,11 +54,11 @@ public class TestRegistrazioneAzienda {
 		Azienda azienda = new Azienda();
 		AziendaDaoImpl aziendaDAO = new AziendaDaoImpl();
 
-		/* Inserisco una partita iva già esistente */
+		/* Inserisco una chiave già esistente */
 
 		azienda.setNomeAzienda("Nome Azienda");
 		azienda.setSede("Sede");
-		azienda.setP_iva("0983732387");
+		azienda.setP_iva("0983732387");			/*Chiave = partita iva*/
 		azienda.setEmail("email@email.com");
 		azienda.setTelefono("3313313313");
 		azienda.setPassword("111");
@@ -64,33 +67,4 @@ public class TestRegistrazioneAzienda {
 
 	}
 
-	/** Test Registrazione Azienda // Azienda = null;
-	 * 
-	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
-	 * */
-
-	@Test
-	public void registrazioneAziendaNull() {
-
-		Azienda azienda = null;
-		AziendaDaoImpl aziendaDAO = new AziendaDaoImpl();
-
-		assertEquals(false, aziendaDAO.registerUser(azienda));
-
-	}
-
-	/** Test Registrazione Azienda // Azienda = new Azienda();
-	 * 
-	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
-	 * */
-
-	@Test
-	public void registrazioneAziendaDefault() {
-
-		Azienda azienda = new Azienda();
-		AziendaDaoImpl aziendaDAO = new AziendaDaoImpl();
-
-		assertEquals(false, aziendaDAO.registerUser(azienda));
-
-	}
 }

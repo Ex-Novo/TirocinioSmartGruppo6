@@ -9,12 +9,14 @@ import dao.StudenteDaoImpl;
 
 public class TestRegistrazioneStudente {
 
-	/* La registrazione di uno studente può essere divisa in 4 categorie:
+	/* La registrazione di uno studente può essere divisa in categorie:
 	 * 
-	 *  - Studente = null;
-	 *  - Studente = new Studente();
-	 *  - Studente = new Studente (format corretto garantito da javascript, non esistente nel db)
-	 *  - Studente = new Studente (format corretto garantito da javascript, esistente nel db)
+	 *	 *  - Studente = new Studente
+	 *  (format corretto e required garantito da javascript/html, chiave non esistente nel db)
+	 *  
+	 *  - Studente = new Studente
+	 *  (format corretto e required garantito da javascript/html, chiave esistente nel db)  
+	 *  
 	 */
 
 
@@ -43,7 +45,7 @@ public class TestRegistrazioneStudente {
 		assertEquals(true, studenteDAO.registerUser(studente));
 	}
 
-	/** Test Registrazione Studente // Non Avvenuta con Successo
+	/** Test Registrazione Studente // Fallita (Ex: chiave già presente)
 	 * 
 	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
 	 * */
@@ -56,9 +58,7 @@ public class TestRegistrazioneStudente {
 		Studente studente = new Studente();
 		StudenteDaoImpl studenteDAO = new StudenteDaoImpl();
 
-		/* Inserisco una matricola già esistente nel DB */
-		studente.setMatricola("0512101111");
-
+		studente.setMatricola("0512101111"); /*Chiave=matricola*/
 		studente.setNome("Nome");
 		studente.setCognome("Cognome");
 		studente.setPassword("Password");
@@ -70,36 +70,4 @@ public class TestRegistrazioneStudente {
 		assertEquals(false, studenteDAO.registerUser(studente));
 
 	}
-
-	/** Test Registrazione Studente // Studente = null;
-	 * 
-	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
-	 * */
-
-	@Test
-	public void registrazionStudenteNull() {
-
-		Studente studente = null;
-		StudenteDaoImpl studenteDAO = new StudenteDaoImpl();
-
-		assertEquals(false, studenteDAO.registerUser(studente));
-
-	}
-
-	/** Test Registrazione Studente // Studente = null;
-	 * 
-	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
-	 * */
-
-	@Test
-	public void registrazionStudenteDefault() {
-
-		Studente studente = new Studente();
-		StudenteDaoImpl studenteDAO = new StudenteDaoImpl();
-
-		assertEquals(false, studenteDAO.registerUser(studente));
-
-	}
-
-
 }

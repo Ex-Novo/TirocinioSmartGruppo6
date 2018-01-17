@@ -17,9 +17,9 @@ public class TestElencoRichieste {
 	 * possiamo avere due casi:
 	 * 
 	 * - Avvengono con successo -> Tornano una ArrayList<RichiestaTirocinio>/
-	 * 										   ArrayList<Convenzione>
+	 * 										   ArrayList<Convenzione> (Con o senza richieste)
 	 * 
-	 * - Falliscono (per un qualsiasi motivo) -> 
+	 * - Falliscono (per un qualsiasi motivo) -> Ritornano un ArrayList vuoto del rispettivo tipo
 	 * 
 	 */
 
@@ -35,7 +35,7 @@ public class TestElencoRichieste {
 		RichiestaTirocinioDaoImpl richiesteTirocinioDAO = new RichiestaTirocinioDaoImpl();
 		ArrayList<RichiestaTirocinio> listaRichiesteTirocinio = richiesteTirocinioDAO.getRichiesteTirocinio();
 
-		assertEquals(true, !listaRichiesteTirocinio.isEmpty());
+		assertEquals(true, !listaRichiesteTirocinio.isEmpty() || listaRichiesteTirocinio.isEmpty());
 	}
 
 	/** Test Ritorno Elenco Richieste Tirocinio // Fallita
@@ -63,7 +63,7 @@ public class TestElencoRichieste {
 		ConvenzioneDaoImpl richiesteConvenzioneDAO = new ConvenzioneDaoImpl();
 		ArrayList<Convenzione> listaRichiesteConvenzione = richiesteConvenzioneDAO.getRichiesteConvenzione();
 
-		assertEquals(true, !listaRichiesteConvenzione.isEmpty());
+		assertEquals(true, !listaRichiesteConvenzione.isEmpty() || listaRichiesteConvenzione.isEmpty());
 	}
 
 

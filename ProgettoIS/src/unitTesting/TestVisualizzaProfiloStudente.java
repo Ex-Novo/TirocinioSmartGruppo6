@@ -6,6 +6,19 @@ import org.junit.Test;
 
 import dao.StudenteDaoImpl;
 
+/*
+ * I metodi ritornano informazioni di uno Studente la sua email o chiave (Matricola)
+ * 
+ * Le categorie sono:
+ * 
+ * - email valida
+ * - email non esiste o non valida (Ex: errore di codifica)
+ * 
+ * - matricola valida
+ * - matricola non esiste o non valida (Ex: errore di codifica)
+ * 
+ */
+
 public class TestVisualizzaProfiloStudente {
 
 	/** Test visualizza Profilo Studente // Matricola non esistente
