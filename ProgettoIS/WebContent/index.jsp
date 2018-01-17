@@ -8,7 +8,7 @@ autori: Mario Procida, Anna Maria Rosanova, Angelo Lucia, Michele Salerno
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
+<html >
 
 <head>
 
@@ -62,8 +62,8 @@ autori: Mario Procida, Anna Maria Rosanova, Angelo Lucia, Michele Salerno
 					<h2 class="text-uppercase mb-0">Funzionalità Studente</h2>
 				</div>
 				<div class="text-white text-center">
-					<a class="btn btn-info" href="#">Consulta Registro</a>
-					<a class="btn btn-info" href="FeedBackAziendaControl?tipo=sendValutazione">FeedBack Azienda</a>	
+					<a class="btn btn-info btn-lg" href="#">Consulta Registro</a>
+					<a class="btn btn-info btn-lg" href="FeedBackAziendaControl?tipo=sendValutazione">FeedBack Azienda</a>	
 				</div>
 			<%
 				}
@@ -79,8 +79,8 @@ autori: Mario Procida, Anna Maria Rosanova, Angelo Lucia, Michele Salerno
 					<h2 class="text-uppercase mb-0"> Funzionalità didattica/direttore</h2>
 				</div>
 				<div class="text-white text-center">
-					<a class="btn btn-info" href="utenti">Lista Utenti</a>
-					<a class="btn btn-info" href="richieste">Visualizza Richieste</a>	
+					<a class="btn btn-info btn-lg" href="utenti">Lista Utenti</a>
+					<a class="btn btn-info btn-lg" href="richieste">Visualizza Richieste</a>	
 				</div>
 			<%
 				}

@@ -27,30 +27,30 @@
 									<hr id="line">	
 									<h5><em>Qualità del progetto di tirocinio</em></h5> <br>	
 									<label>La durata del tirocinio è stata adeguata agli obiettivi formativi? </label> <br>
-									<input type="number" name="rating1" min="1" max="5" value="1" required /> <br>
+									<input class="input3" type="number" name="rating1" min="1" max="5" value="1" required /> <br>
 								
 									<label>Gli obiettivi formativi previsti sono stati raggiunti?</label> <br>
-									<input type="number" name="rating2" min="1" max="5" value="1" required /> <br>
+									<input class="input3" type="number" name="rating2" min="1" max="5" value="1" required /> <br>
 									
 									<hr id="line">	
 									<h5><em>Qualità ente ospitante</em></h5> <br>	
 									<label>Mansioni assegnate</label> <br>
-									<input type="number" name="rating3" min="1" max="5" value="1" required /> <br>
+									<input class="input3" type="number" name="rating3" min="1" max="5" value="1" required /> <br>
 									
 									<label>Assistenza del tutor ospitante</label> <br>
-									<input type="number" name="rating4" min="1" max="5" value="1" required /> <br>
+									<input class="input3" type="number" name="rating4" min="1" max="5" value="1" required /> <br>
 									
 									<hr id="line">	
 									<h5><em>Qualità delle strutture universitarie addette alla gestione di tirocini</em></h5> <br>	
 									<label>Le strutture hanno fornito informazioni chiare ed esaustive?</label> <br>
-									<input type="number" name="rating5" min="1" max="5" value="1" required /> <br>
+									<input class="input3" type="number" name="rating5" min="1" max="5" value="1" required /> <br>
 									
 									<label>Le strutture hanno fornito assistenza e disponibilità?</label> <br>
-									<input type="number" name="rating6" min="1" max="5" value="1" required /> <br>
+									<input class="input3" type="number" name="rating6" min="1" max="5" value="1" required /> <br>
 									<br>
 									
 									<input type="hidden" name="tipo" value="confermaForm"/>
-									<input type="submit" name="submit" class="btn btn-info" value="Conferma form" />
+									<input type="submit" id="submit" name="submit" class="btn btn-info" value="Conferma form" />
 								</div>
 							</form>
 				<%  }else{%> <h3> Hai già inviato un feedback</h3><%} %>

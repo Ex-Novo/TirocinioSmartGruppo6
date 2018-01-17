@@ -28,9 +28,10 @@ autori: Mario Procida
 
 			<!--  Se l'utente è loggato mostra la form -->
 			<%
-			String tipoUtente = (String) s.getAttribute("tipoUtente");
-			boolean canRequest = (boolean) s.getAttribute("canRequest");
-			if(email != null && password != null && canRequest && tipoUtente.equals("Azienda")) {
+			if(email != null && password != null){
+				String tipoUtente = (String) s.getAttribute("tipoUtente");
+				boolean canRequest = (boolean) s.getAttribute("canRequest");
+				if(canRequest && tipoUtente.equals("Azienda")) {
 			%>
 		
 				<form action="rConv" method="post">
@@ -39,7 +40,7 @@ autori: Mario Procida
 						<h4>Richiesta Convenzione</h4>
 						
 						<label>Tutor Aziendale</label> <br>
-						<input type="text" name="tutorAziendale" pattern="^[A-Za-z,\.\s']+$" required /> <br>
+						<input type="text" name="tutorAziendale" pattern="[a-zA-Z\\s']+" required /> <br>
 					
 						<label>Numero posti offerti</label> <br>
 						<input type="number" min="0" name="numPosti" required /> <br>
@@ -59,6 +60,7 @@ autori: Mario Procida
 			<h3>Non sei autorizzato a visualizzare questa pagina</h3>
 			<%
 				}
+			}
 			%>
 		</div>
 		</header>

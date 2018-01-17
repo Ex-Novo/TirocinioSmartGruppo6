@@ -138,6 +138,10 @@
     <url-pattern>/detailsAz</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
+    <servlet-name>RegistrazioneControl</servlet-name>
+    <url-pattern>/registration</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>LogoutControl</servlet-name>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>

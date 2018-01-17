@@ -65,6 +65,12 @@ public class CheckConvenzione extends HttpServlet {
 			out.println("window.history.back()");
 			out.println("</script>");
 		
+		}else if(convenzione.getP_iva() != null && convenzione.getStato().equals("approvata")){
+			session.setAttribute("canRequest", false);
+			out.println("<script>");
+			out.println("alert('La tua azienda è già convenzionata con il dipartimento')");
+			out.println("window.history.back()");
+			out.println("</script>");
 		}else {
 			session.setAttribute("canRequest", true);
 			out.println("<script>");

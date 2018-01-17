@@ -26,17 +26,17 @@
 								
 								<hr id="line">	
 								<label>Competenze informatiche possedute in ingresso dallo studente</label> <br>
-								<input type="number" name="rating1" min="1" max="5" value="1" required /> <br>
+								<input class="input3" type="number" name="rating1" min="1" max="5" value="1" required /> <br>
 							
 								<label>Competenze acquisite al termine del tirocinio nella specifica disciplina</label> <br>
-								<input type="number" name="rating2" min="1" max="5" value="1" required /> <br>
+								<input class="input3" type="number" name="rating2" min="1" max="5" value="1" required /> <br>
 									
 								<label>Soft skill (capacità di relazionarsi, di comunicare, di lavorare in team)</label> <br>
-								<input type="number" name="rating3" min="1" max="5" value="1" required /> <br>
+								<input class="input3" type="number" name="rating3" min="1" max="5" value="1" required /> <br>
 								<br>
 								
 								<input type="hidden" name="tipo" value="confermaForm"/>
-								<input type="submit" name="submit" class="btn btn-info" value="Conferma form" />
+								<input type="submit" id="submit" name="submit" class="btn btn-info" value="Conferma form" />
 							</div>
 						</form>
 						</div>

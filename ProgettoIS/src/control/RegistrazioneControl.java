@@ -91,7 +91,7 @@ public class RegistrazioneControl extends HttpServlet {
 			}
 			else{
 				out.println("<script type=\"text/javascript\">");
-				out.println("alert('Registrazione non riuscita, riprova')");
+				out.println("alert('Registrazione non riuscita, riprova');");
 				out.println("window.history.back()");
 				out.println("</script>");
 				
@@ -151,5 +151,11 @@ public class RegistrazioneControl extends HttpServlet {
 
 	}
 	
+	
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+	
+		
+	}
 
 }

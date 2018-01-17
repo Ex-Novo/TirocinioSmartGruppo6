@@ -69,6 +69,12 @@ public class CheckTirocinio extends HttpServlet {
 			out.println("window.history.back()");
 			out.println("</script>");
 	
+		}else if(richTir.getMatricola() != null && richTir.getStatus().equals("approvata")){
+			session.setAttribute("canRequest", false);
+			out.println("<script>");
+			out.println("alert('Impossibile effettuare la richiesta. Richiesta di tirocinio già inviata ed approvata')");
+			out.println("window.history.back()");
+			out.println("</script>");
 		}else {
 			session.setAttribute("canRequest", true);
 			session.setAttribute("idTirocinio", idTirocinio) ;

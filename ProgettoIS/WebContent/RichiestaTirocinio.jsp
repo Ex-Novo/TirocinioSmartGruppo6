@@ -28,20 +28,22 @@ autori: Mario Procida
 			
 			<!--  Se l'utente è loggato mostra la form -->
 			<% 
+			if(email != null && password != null){
 				String tipoUtente = (String) s.getAttribute("tipoUtente");
 				boolean canRequest = (boolean) s.getAttribute("canRequest");
-				if(email != null && password != null && canRequest && tipoUtente.equals("Studente")){ %>
+				if(canRequest && tipoUtente.equals("Studente")) { %>
 				<form action="rTiro" method="post">
 					<div id="form">
 						<input type="hidden" name="tipo" value="confermaForm">
 						<h4>Richiesta Tirocinio</h4>
-						<label name="tutor">TutorAccademico</label> <br><input class="input2" type="text" name="tutorAccademico" pattern="^[a-zA-Z,\.\s']+$" title="Il nome può contenere solo lettere" required /> <br>
+						<label name="tutor">TutorAccademico</label> <br><input class="input2" type="text" name="tutorAccademico" pattern="[a-zA-Z\\s']+" title="Il nome può contenere solo lettere" required /> <br>
 						<input type="submit" name="submit" id="submit" class="btn btn-info" value="Conferma form" />
 					</div>
 				</form>
 			<%}else{ %>
 				<h3>Non sei autorizzato a visualizzare questa pagina</h3>
-			<%} %>
+			<%}
+			}%>
 			</div>
 		</header>
 	</div>
