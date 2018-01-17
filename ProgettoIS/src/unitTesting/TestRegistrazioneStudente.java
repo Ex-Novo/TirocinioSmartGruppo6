@@ -16,18 +16,20 @@ public class TestRegistrazioneStudente {
 	 *  - Studente = new Studente (format corretto garantito da javascript, non esistente nel db)
 	 *  - Studente = new Studente (format corretto garantito da javascript, esistente nel db)
 	 */
-	
-	
-	
+
+
+
 	/** Test Registrazione Studente // Avvenuta con Successo
 	 * 
 	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
 	 * */
 
 	@Test
-	public void RegistrazioneStudenteAvvenuta() {
-		
+	public void registrazioneStudenteAvvenuta() {
+
 		Studente studente = new Studente();
+		StudenteDaoImpl studenteDAO = new StudenteDaoImpl();
+
 		studente.setMatricola("Matricola");
 		studente.setNome("Nome");
 		studente.setCognome("Cognome");
@@ -36,9 +38,8 @@ public class TestRegistrazioneStudente {
 		studente.setEmail("email@email.com");
 		studente.setDataNascita("2018-12-31");
 		studente.setLuogoNascita("Luogo Nascita");
-		
-		StudenteDaoImpl studenteDAO = new StudenteDaoImpl();
-		
+
+
 		assertEquals(true, studenteDAO.registerUser(studente));
 	}
 
@@ -48,15 +49,16 @@ public class TestRegistrazioneStudente {
 	 * */
 
 	@Test
-	public void RegistrazionStudenteFallita() {
-		
+	public void registrazioneStudenteFallita() {
+
 		/* Inserisco una matricola già esistente nel DB */
-		
+
 		Studente studente = new Studente();
-		
+		StudenteDaoImpl studenteDAO = new StudenteDaoImpl();
+
 		/* Inserisco una matricola già esistente nel DB */
 		studente.setMatricola("0512101111");
-		
+
 		studente.setNome("Nome");
 		studente.setCognome("Cognome");
 		studente.setPassword("Password");
@@ -64,41 +66,37 @@ public class TestRegistrazioneStudente {
 		studente.setEmail("email@email.com");
 		studente.setDataNascita("2018-12-31");
 		studente.setLuogoNascita("Luogo Nascita");
-		
-		StudenteDaoImpl studenteDAO = new StudenteDaoImpl();
-		
+
 		assertEquals(false, studenteDAO.registerUser(studente));
 
 	}
-	
+
 	/** Test Registrazione Studente // Studente = null;
 	 * 
 	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
 	 * */
 
 	@Test
-	public void RegistrazionStudenteNull() {
-		
+	public void registrazionStudenteNull() {
+
 		Studente studente = null;
-		
 		StudenteDaoImpl studenteDAO = new StudenteDaoImpl();
-		
+
 		assertEquals(false, studenteDAO.registerUser(studente));
 
 	}
-	
+
 	/** Test Registrazione Studente // Studente = null;
 	 * 
 	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
 	 * */
 
 	@Test
-	public void RegistrazionStudenteDefault() {
-		
+	public void registrazionStudenteDefault() {
+
 		Studente studente = new Studente();
-		
 		StudenteDaoImpl studenteDAO = new StudenteDaoImpl();
-		
+
 		assertEquals(false, studenteDAO.registerUser(studente));
 
 	}

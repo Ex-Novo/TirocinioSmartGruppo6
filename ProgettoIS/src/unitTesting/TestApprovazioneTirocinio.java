@@ -14,49 +14,49 @@ public class TestApprovazioneTirocinio {
 	 * - matricola esiste:
 	 * - matricola non esiste o è errata:
 	 */
-	
+
 	/** Test Approvazione Tirocinio // Avvenuta con Successo
 	 * 
 	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
 	 * */
-	
+
 	@Test
-	public void TestApprovazioneTirocinioAvvenuta() {
-		
+	public void testApprovazioneTirocinioAvvenuta() {
+
 		RichiestaTirocinio richiesta = new RichiestaTirocinio();
+		RichiestaTirocinioDaoImpl richiestaTirocinioDAO = new RichiestaTirocinioDaoImpl();
+
 		richiesta.setMatricola("0512101111");
 		richiesta.setNomeFile("Nome File");
 		richiesta.setStatus("in attesa");
 		richiesta.setIdTirocinio(1);
-		
-		RichiestaTirocinioDaoImpl richiestaTirocinioDAO = new RichiestaTirocinioDaoImpl();
+
+
 		richiestaTirocinioDAO.invioRichiestaTirocinio(richiesta);
-		
-		
-		
+
 		assertEquals(true, richiestaTirocinioDAO.approvazioneRichiestaTirocinio(richiesta.getMatricola()));
-		
-	
+
+
 	}
-	
+
 	/** Test Approvazione Tirocinio // Fallita
 	 * 
 	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
 	 * */
-	
+
 	@Test
-	public void TestApprovazioneTirocinioFallita() {
-		
+	public void testApprovazioneTirocinioFallita() {
+
 		/* Provo ad approvare una richiesta di tirocinio ad una richiesta che non esiste */
-		
-		
+
+
 		RichiestaTirocinioDaoImpl richiestaTirocinioDAO = new RichiestaTirocinioDaoImpl();
-	
-		
+
+
 		assertEquals(false, richiestaTirocinioDAO.approvazioneRichiestaTirocinio("0"));
-		
-	
-	
+
+
+
 	}
 
 }

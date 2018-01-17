@@ -14,28 +14,30 @@ public class TestApprovazioneConvenzione {
 	 * partita iva esiste:
 	 * partita iva è errata:
 	 */
-	
+
 	/** Test Approvazione Convenzione // Avvenuta
 	 * 
 	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
 	 * */
-	
-	
+
+
 	@Test
-	public void TestApprovazioneConvenzioneAvvenuta() {
-		
+	public void testApprovazioneConvenzioneAvvenuta() {
+
 		Convenzione convenzione= new Convenzione();
+		ConvenzioneDaoImpl convenzioneDAO = new ConvenzioneDaoImpl();
+
+
 		/*Partita iva di un'azienda già esistente */
 		convenzione.setP_iva("0983732387");
-		
+
 		/* E-mail di chi approva la convenzione */
 		convenzione.setEmail("fverdi@unisa.it");
-		
+
 		convenzione.setStato("in attesa");
-		
-		ConvenzioneDaoImpl convenzioneDAO = new ConvenzioneDaoImpl();
+
 		convenzioneDAO.invioRichiestaConvenzione(convenzione, convenzione.getEmail(), convenzione.getP_iva());
-		
+
 		assertEquals(true, convenzioneDAO.approvazioneRichiestaConvenzione(convenzione.getP_iva()));
 	}
 
@@ -43,15 +45,15 @@ public class TestApprovazioneConvenzione {
 	 * 
 	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
 	 * */
-	
-	
+
+
 	@Test
-	public void TestApprovazioneConvenzioneFallita() {
+	public void testApprovazioneConvenzioneFallita() {
 
 		ConvenzioneDaoImpl convenzioneDAO = new ConvenzioneDaoImpl();
-	
+
 		/* Inserisco un a partita iva che non esiste */
 		assertEquals(false, convenzioneDAO.approvazioneRichiestaConvenzione("0"));
-	
+
 	} 
 }

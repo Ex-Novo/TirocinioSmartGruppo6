@@ -22,11 +22,13 @@ public class TestRichiestaTirocinio {
 	 * 
 	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
 	 * */
-	
+
 	@Test
 	public void testInvioRichiestaTirocinioFormValido() {
+
 		RichiestaTirocinio richiestaTirocinio = new RichiestaTirocinio ();
-		
+		RichiestaTirocinioDaoImpl richiestaTirocinioDao=new RichiestaTirocinioDaoImpl();
+
 		richiestaTirocinio.setData("2018-01-15");
 		richiestaTirocinio.setNomeFile("RichiestaTirocinio");
 		richiestaTirocinio.setNomeTutorAccademico("Mario Rossi");
@@ -35,14 +37,11 @@ public class TestRichiestaTirocinio {
 		richiestaTirocinio.setEmailDir("fverdi@unisa.it");
 		richiestaTirocinio.setIdTirocinio(1);
 		richiestaTirocinio.setMatricola("0512103599");
-		
-		
-		RichiestaTirocinioDaoImpl richiestaTirocinioDao=new RichiestaTirocinioDaoImpl();
-		
-		
+
+
 		assertEquals (true, richiestaTirocinioDao.invioRichiestaTirocinio(richiestaTirocinio));
 	}
-	
+
 	/* Nella form di invio richiesta tirocinio:
 	 * 
 	 *  L'Utente non può inviare dei campi non compilati (HTML: < ... required>)
