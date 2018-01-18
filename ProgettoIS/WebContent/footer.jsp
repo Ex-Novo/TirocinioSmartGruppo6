@@ -32,14 +32,11 @@ autori: Mario Procida
 				<h4 class="text-uppercase mb-4">Corso di Gestione dei Progetti Software Prof.ssa F. Ferrucci</h4>
 			</div>
 			<div class="col-md-4">
-				<h4 class="text-uppercase mb-4">Tirocinio Smart</h4><h4> Gruppo 6 Members:</h4>
+				<h4 class="text-uppercase mb-4">Tirocinio Smart</h4><h4> Gruppo 6 Members</h4>
 				<ul class="mb-0 list-inline">
-					<li>Mario Procida</li>
-					<li>Simone Torluccio</li>
-					<li>Angelo Lucia</li>
-					<li>Michele Salerno</li>
-					<li>Anna Maria Rosanova</li>
-					<li>Luca Lamberti</li>
+					<li>Mario Procida - Simone Torluccio</li>
+					<li>Angelo Lucia - Michele Salerno</li>
+					<li>Anna Maria Rosanova - Luca Lamberti</li>
 					<li>Francesco Maria D'auria</li>
 				</ul>
 			</div>
