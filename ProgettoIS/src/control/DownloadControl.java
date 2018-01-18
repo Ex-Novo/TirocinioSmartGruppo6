@@ -19,6 +19,7 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Font.FontFamily;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -41,6 +42,7 @@ import dao.StudenteDaoInterface;
 @WebServlet("/DownloadControl")
 public class DownloadControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -49,6 +51,7 @@ public class DownloadControl extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
+    
 
 	/**
 	 * Questo metodo permette di scaricare il documento salvato dall'utente o il documento pdf della richiesta auto generato
@@ -145,6 +148,8 @@ public class DownloadControl extends HttpServlet {
 		 //per generare il pdf dalle informazioni della form di richiesta convenzione
 		 if(tipo.equals("firmaConvenzione")) {
 			 
+			 String logo = getServletContext().getInitParameter("fsroot") + "/img/logoDipartimento.jpg";
+			 
 			 Convenzione conv = (Convenzione) session.getAttribute("convenzione"); 
 			 Azienda azienda = (Azienda) session.getAttribute("azienda");
 			 
@@ -156,7 +161,7 @@ public class DownloadControl extends HttpServlet {
 			 //font da utilizzare
 			 Font bfBold18 = new Font(FontFamily.TIMES_ROMAN, 18, Font.BOLD, new BaseColor(0, 0, 0)); 
 			 Font bfBold12 = new Font(FontFamily.TIMES_ROMAN, 12, Font.BOLDITALIC, new BaseColor(0, 0, 0)); 
-			 Font bf12 = new Font(FontFamily.TIMES_ROMAN, 12); 
+			 Font bf12 = new Font(FontFamily.TIMES_ROMAN, 12,Font.BOLD); 
 			 
 			 Document doc = new Document(PageSize.A4, 50, 50, 50, 50);
 			 try {
@@ -174,15 +179,31 @@ public class DownloadControl extends HttpServlet {
 					
 					//aggiunta paragraph
 					
-					doc.add(new Paragraph("Università degli Studi di Salerno - Dipartimento di Informatica", bfBold12));
 					
-					doc.add(new Paragraph("Dati Richiesta", bfBold18));
-					doc.add(new Paragraph("Nome Azienda:" + azienda.getNomeAzienda(), bf12));
-					doc.add(new Paragraph("Partita Iva: "+ azienda.getP_iva(), bf12));
-					doc.add(new Paragraph("Descrizione Tirocinio:" + conv.getDescrizione() ,bf12 ));
-					doc.add(new Paragraph("Numeri Posti Tirocinio:" + conv.getNumPosti() ,bf12 ));
-					doc.add(new Paragraph("Firma:", bf12));
-					doc.add(new Paragraph("Data:" + conv.getData(),bf12));
+					Image logoDip = Image.getInstance(logo);
+					logoDip.setAlignment(logoDip.MIDDLE);
+					doc.add(logoDip);
+					
+					Paragraph dipInf = new Paragraph("Università degli Studi di Salerno - Dipartimento di Informatica", bfBold12);
+					dipInf.setAlignment(dipInf.ALIGN_CENTER);
+					doc.add(dipInf);
+					
+					Paragraph title = new Paragraph("Dati Richiesta di Convenzione", bfBold18);
+					title.setAlignment(title.ALIGN_CENTER);
+					
+					doc.add(title);
+					
+					doc.add(new Paragraph("Nome Azienda:  " + azienda.getNomeAzienda(), bf12));
+					doc.add(new Paragraph("Partita Iva:  "+ azienda.getP_iva(), bf12));
+					doc.add(new Paragraph("Descrizione Tirocinio:  " + conv.getDescrizione() ,bf12 ));
+					doc.add(new Paragraph("Numeri Posti Tirocinio:  " + conv.getNumPosti() ,bf12 ));
+					doc.add(new Paragraph("Data:  " + conv.getData(),bf12));
+					
+					Paragraph firma = new Paragraph("Firma:", bf12);
+					firma.setAlignment(firma.ALIGN_BOTTOM);
+					firma.setAlignment(firma.ALIGN_RIGHT);
+					doc.add(firma);
+					
 					doc.close(); 
 					
 					
@@ -197,8 +218,12 @@ public class DownloadControl extends HttpServlet {
 		 //per generare il pdf dalle informazioni della form di richiesta convenzione
 		 if(tipo.equals("firmaTirocinio")) {
 			 
+			 String logo = getServletContext().getInitParameter("fsroot") + "/img/logoDipartimento.jpg";
+			 
 			 RichiestaTirocinio rTirocinio = (RichiestaTirocinio) session.getAttribute("rTirocinio"); 
 			 Studente studente = (Studente) session.getAttribute("studente");
+			 
+			 String nomeAzienda = (String) session.getAttribute("nomeAz");
 			 
 			 response.setContentType("application/pdf");
 			 response.setHeader("Content-disposition","attachment; filename = richiesta\"" + studente.getNome() + studente.getCognome() + ".pdf");
@@ -208,7 +233,7 @@ public class DownloadControl extends HttpServlet {
 			 //font da utilizzare
 			 Font bfBold18 = new Font(FontFamily.TIMES_ROMAN, 18, Font.BOLD, new BaseColor(0, 0, 0)); 
 			 Font bfBold12 = new Font(FontFamily.TIMES_ROMAN, 12, Font.BOLDITALIC, new BaseColor(0, 0, 0)); 
-			 Font bf12 = new Font(FontFamily.TIMES_ROMAN, 12); 
+			 Font bf12 = new Font(FontFamily.TIMES_ROMAN, 12,Font.BOLD); 
 			 
 			 Document doc = new Document(PageSize.A4, 50, 50, 50, 50);
 			 try {
@@ -225,16 +250,30 @@ public class DownloadControl extends HttpServlet {
 					doc.open();
 					
 					//aggiunta paragraph
+					Image logoDip = Image.getInstance(logo);
+					logoDip.setAlignment(logoDip.MIDDLE);
+					doc.add(logoDip);
 					
-					doc.add(new Paragraph("Università degli Studi di Salerno - Dipartimento di Informatica", bfBold18));
-					doc.add(new Paragraph("Richiesta di Tirocinio", bfBold12));
-					doc.add(new Paragraph("Dati Richiesta", bfBold18));
-					doc.add(new Paragraph("Nome:" + studente.getNome(), bf12));
-					doc.add(new Paragraph("Cognome:" + studente.getCognome(), bf12));
+					Paragraph dipInf = new Paragraph("Università degli Studi di Salerno - Dipartimento di Informatica", bfBold12);
+					dipInf.setAlignment(dipInf.ALIGN_CENTER);
+					doc.add(dipInf);
+					
+					Paragraph title = new Paragraph("Dati Richiesta di Tirocinio", bfBold18);
+					title.setAlignment(title.ALIGN_CENTER);
+					doc.add(title);
+					
+					doc.add(new Paragraph("Nome:  " + studente.getNome(), bf12));
+					doc.add(new Paragraph("Cognome:  " + studente.getCognome(), bf12));
 					doc.add(new Paragraph("Matricola: "+ studente.getMatricola(), bf12));
-					doc.add(new Paragraph("Tutor Accademico scelto:" + rTirocinio.getNomeTutorAccademico(),bf12 ));
-					doc.add(new Paragraph("Data:" + rTirocinio.getData(),bf12));
-					doc.add(new Paragraph("Firma:", bf12));
+					doc.add(new Paragraph("Nome azienda scelta che offre il tirocinio:  " + nomeAzienda, bf12));
+					doc.add(new Paragraph("Tutor Accademico scelto:  " + rTirocinio.getNomeTutorAccademico(),bf12 ));
+					doc.add(new Paragraph("Data:  " + rTirocinio.getData(),bf12));
+					
+					Paragraph firma = new Paragraph("Firma:", bf12);
+					firma.setAlignment(firma.ALIGN_BOTTOM);
+					firma.setAlignment(firma.ALIGN_RIGHT);
+					doc.add(firma);
+					
 					doc.close(); 
 					
 					

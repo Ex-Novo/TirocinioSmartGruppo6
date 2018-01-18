@@ -69,6 +69,7 @@ public class RichiestaTirocinioControl extends HttpServlet {
 			//conferma del form per la richiesta di convenzione
 			if(tipo.equals("confermaForm")){
 				
+				
 				DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 				Date date = new Date();
 				

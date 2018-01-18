@@ -48,6 +48,8 @@ public class CheckTirocinio extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		String matricola = (String) session.getAttribute("matricola");
+		String nomeAzienda = request.getParameter("nomeAz");
+	
 		int idTirocinio = Integer.parseInt(request.getParameter("t"));
 
 		RichiestaTirocinioDaoInterface rTirocinioDao = new RichiestaTirocinioDaoImpl();
@@ -64,7 +66,8 @@ public class CheckTirocinio extends HttpServlet {
 			out.println("</script>");
 		}else if(richTir.getMatricola() != null && richTir.getStatus().equals("rifiutata")) {
 			session.setAttribute("canRequest", true);
-			session.setAttribute("idTirocinio", idTirocinio) ;
+			session.setAttribute("idTirocinio", idTirocinio);
+			session.setAttribute("nomeAz", nomeAzienda);
 			out.println("<script>");
 			out.println("alert('La precedente richiesta di tirocinio che hai effettuato e stata rifiutata.Puoi effettuarne un altra. Per chiarimenti contattare la didattica')");
 			out.println("window.open('RichiestaTirocinio.jsp','_self')");
@@ -78,7 +81,8 @@ public class CheckTirocinio extends HttpServlet {
 			out.println("</script>");
 		}else {
 			session.setAttribute("canRequest", true);
-			session.setAttribute("idTirocinio", idTirocinio) ;
+			session.setAttribute("idTirocinio", idTirocinio);
+			session.setAttribute("nomeAz", nomeAzienda);
 			out.println("<script>");
 			out.println("window.open('RichiestaTirocinio.jsp','_self')");
 			out.println("</script>");
