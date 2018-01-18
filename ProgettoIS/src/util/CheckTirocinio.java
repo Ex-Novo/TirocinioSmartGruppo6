@@ -66,7 +66,7 @@ public class CheckTirocinio extends HttpServlet {
 			session.setAttribute("canRequest", true);
 			session.setAttribute("idTirocinio", idTirocinio) ;
 			out.println("<script>");
-			out.println("alert('La tua richiesta di tirocinio è stata rifiutata. Per chiarimenti contattare la didattica')");
+			out.println("alert('La precedente richiesta di tirocinio che hai effettuato e stata rifiutata.Puoi effettuarne un'altra. Per chiarimenti contattare la didattica')");
 			out.println("window.open('RichiestaTirocinio.jsp','_self')");
 			out.println("</script>");
 	

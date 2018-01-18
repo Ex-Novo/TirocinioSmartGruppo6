@@ -54,21 +54,21 @@ public class CheckConvenzione extends HttpServlet {
 			session.setAttribute("canRequest", false);
 			
 			out.println("<script>");
-			out.println("alert('Hai già richiesto una convenzione. La preghiamo di attendere la risposta del Direttore')");
+			out.println("alert('Hai gia richiesto una convenzione. La preghiamo di attendere la risposta del Direttore')");
 			out.println("window.history.back()");
 			out.println("</script>");
 		}else if(convenzione.getP_iva() != null && convenzione.getStato().equals("rifiutata")) {
 		
 			session.setAttribute("canRequest", true);
 			out.println("<script>");
-			out.println("alert('La richiesta di convenzione che hai effettuato è stata rifiutata. Per chiarimenti contattare la didattica.')");
+			out.println("alert('La precedente richiesta di convenzione che hai effettuato e stata rifiutata.Puoi effettuarne un altra. Per chiarimenti contattare la didattica.')");
 			out.println("window.open('RichiestaConvenzione.jsp','_self')");
 			out.println("</script>");
 		
 		}else if(convenzione.getP_iva() != null && convenzione.getStato().equals("approvata")){
 			session.setAttribute("canRequest", false);
 			out.println("<script>");
-			out.println("alert('La tua azienda è già convenzionata con il dipartimento')");
+			out.println("alert('La tua azienda e gia convenzionata con il dipartimento')");
 			out.println("window.history.back()");
 			out.println("</script>");
 		}else {
@@ -77,6 +77,9 @@ public class CheckConvenzione extends HttpServlet {
 			out.println("window.open('RichiestaConvenzione.jsp','_self')");
 			out.println("</script>");
 		}
+		out.flush();
+		out.close();
+		
 	}
 
 }

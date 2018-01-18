@@ -81,7 +81,6 @@ public class LoginControl extends HttpServlet {
 				
 				
 				out.println("<script type=\"text/javascript\">");
-			    out.println("alert('Accesso effettuato');");
 			    out.println("location='index.jsp';");
 			    out.println("</script>");
 					
@@ -126,7 +125,7 @@ public class LoginControl extends HttpServlet {
 				
 			
 				out.println("<script type=\"text/javascript\">");
-			    out.println("alert('Accesso effettuato');");
+			    
 			    out.println("location='index.jsp';");
 			    out.println("</script>");
 				
@@ -160,7 +159,7 @@ public class LoginControl extends HttpServlet {
         		session.setMaxInactiveInterval(600); //tempo di inattività massimo prima del logout = 10 minuti
         		
         		out.println("<script type=\"text/javascript\">");
-			    out.println("alert('Accesso effettuato');");
+			    
 			    out.println("location='index.jsp';");
 			    out.println("</script>");
         	}

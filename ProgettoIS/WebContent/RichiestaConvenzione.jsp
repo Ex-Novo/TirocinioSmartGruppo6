@@ -40,7 +40,7 @@ autori: Mario Procida
 						<h4>Richiesta Convenzione</h4>
 						
 						<label>Tutor Aziendale</label> <br>
-						<input type="text" name="tutorAziendale" pattern="[a-zA-Z\\s']+" required /> <br>
+						<input type="text" name="tutorAziendale" pattern="^([a-zA-Z ']*)$" required /> <br>
 					
 						<label>Numero posti offerti</label> <br>
 						<input type="number" min="0" name="numPosti" required /> <br>

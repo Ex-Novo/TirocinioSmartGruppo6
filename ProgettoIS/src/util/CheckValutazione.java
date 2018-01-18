@@ -87,7 +87,7 @@ public class CheckValutazione extends HttpServlet {
 				session.setAttribute("canFeed", false);
 				
 				out.println("<script>");
-				out.println("alert('Hai già valutato l'azienda')");
+				out.println("alert('Hai gia valutato l azienda')");
 				out.println("window.history.back()");
 				out.println("</script>");
 				
@@ -129,7 +129,7 @@ public class CheckValutazione extends HttpServlet {
 				
 				session.setAttribute("canFeed", false);
 				out.println("<script>");
-				out.println("alert('Hai già valutato lo studente')");
+				out.println("alert('Hai gia valutato lo studente')");
 				out.println("window.history.back()");
 				out.println("</script>");
 			}else {

@@ -38,7 +38,7 @@
 									<td><%=bean.getCognome() %></td>
 									<td><%=bean.getMatricola() %></td>
 									<td> <a class="btn btn-info" href="FeedBackStudenteControl?tipo=sendValutazione&matricola=<%=bean.getMatricola()%>">Invia FeedBack</a> </td>
-									<td> <a class="btn btn-info" href="#">Compila Registro</a> </td>
+									<td> <a class="btn btn-info" href="CompilaRegistroControl?tipo=addAtt&matricola=<%=bean.getMatricola()%>">Compila Registro</a> </td>
 								</tr>
 							
 							<%

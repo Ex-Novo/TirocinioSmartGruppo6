@@ -46,7 +46,7 @@
 									<input class="input3" type="number" name="rating5" min="1" max="5" value="1" required /> <br>
 									
 									<label>Le strutture hanno fornito assistenza e disponibilità?</label> <br>
-									<input class="input3" type="number" name="rating6" min="1" max="5" value="1" required /> <br>
+									<input class="input3" type="number" name="rating6" min="1" max="5" value="1" maxlength="1" required /> <br>
 									<br>
 									
 									<input type="hidden" name="tipo" value="confermaForm"/>
