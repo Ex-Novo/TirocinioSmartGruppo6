@@ -62,7 +62,7 @@ autori: Mario Procida, Anna Maria Rosanova, Angelo Lucia, Michele Salerno
 					<h2 class="text-uppercase mb-0">Funzionalità Studente</h2>
 				</div>
 				<div class="text-white text-center">
-					<a class="btn btn-info btn-lg" href="#">Consulta Registro</a>
+					<a class="btn btn-info btn-lg" href="ConsultazioneRegistroControl">Consulta Registro</a>
 					<a class="btn btn-info btn-lg" href="FeedBackAziendaControl?tipo=sendValutazione">FeedBack Azienda</a>	
 				</div>
 			<%

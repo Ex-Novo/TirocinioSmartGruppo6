@@ -1,3 +1,6 @@
+<!-- Jsp che visualizza una form da compilare per aggiungere un 'attività al registro dello studente
+autori: Mario Procida -->
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -31,7 +34,7 @@
 									<input type="number" name="oreLavoro" min="1" max="12" value="1" required /> <br>
 									
 									<hr id="line">		
-									<label></label> <br>
+									<label>Descrizione</label> <br>
 									<textarea type="text" name="descrizione" cols="30" rows="10"></textarea>									
 									<br>
 									

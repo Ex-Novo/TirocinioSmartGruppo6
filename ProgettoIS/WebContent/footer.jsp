@@ -21,10 +21,10 @@ autori: Mario Procida
 	<div class="container">
 		<div class="row">
 			<div class="col-md-4 mb-5 mb-lg-0">
-				<h4 class="text-uppercase mb-4">Project Managers:</h4>
+				<h4 class="text-uppercase mb-4">Project Managers</h4>
 				<ul class="mb-0 list-inline">
 					<li>Maria Cristina Ricciardi</li>
-					<li>Simone Torluccio</li>
+					<li>Giuseppe Adinolfi</li>
 					
 				</ul>
 			</div>

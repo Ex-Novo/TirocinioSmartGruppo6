@@ -26,7 +26,7 @@ public class AttivitaDaoImpl implements AttivitaDaoInterface{
 				+ " (data, ore, descrizione, idTirocinio, idRegistro) VALUES (?, ?, ?, ?, ?)";
 			preparedStatement = con.prepareStatement(query);
 			
-			preparedStatement.setString(1, a.getData());
+			preparedStatement.setString(1,a.getData());
 			preparedStatement.setInt(2, a.getOre());
 			preparedStatement.setString(3, a.getDescrizione());
 			preparedStatement.setInt(4, a.getIdTirocinio());

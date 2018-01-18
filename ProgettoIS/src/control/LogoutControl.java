@@ -31,7 +31,6 @@ public class LogoutControl extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		PrintWriter out = response.getWriter();
 		
 		HttpSession session = request.getSession();
 		response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);

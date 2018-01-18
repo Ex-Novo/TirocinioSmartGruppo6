@@ -54,27 +54,29 @@ public class CompilaRegistroControl extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		String tipo = request.getParameter("tipo");
-		String matricola="";
+		
 		
 		if(tipo.equals("addAtt")) {
-			matricola = request.getParameter("matricola");
+			String matricola = request.getParameter("matricola");
 			session.setAttribute("matricolaStudente", matricola);
 			response.sendRedirect("CompilaRegistro.jsp");
 		}
 		
 		if(tipo.equals("sendAtt")) {
-			String data = request.getParameter("date");
+			
+			String matricolaStudente = (String) session.getAttribute("matricolaStudente");
+			String data = request.getParameter("data");
 			int oreLavoro = Integer.parseInt(request.getParameter("oreLavoro"));
 			String 	descrizione = request.getParameter("descrizione");
 			
 			RichiestaTirocinioDaoInterface richTirDao = new RichiestaTirocinioDaoImpl();
-			RichiestaTirocinio richTir = richTirDao.getRichTirocinio(matricola);
+			RichiestaTirocinio richTir = richTirDao.getRichTirocinio(matricolaStudente);
 			
 			RegistroDaoInterface regDao = new RegistroDaoImpl();
-			Registro reg = regDao.getRegistroByMatricola(matricola);
+			Registro reg = regDao.getRegistroByMatricola(matricolaStudente);
 			
 			Attivita att = new Attivita();
-			att.setData("" + data);
+			att.setData(data);
 			att.setOre(oreLavoro);
 			att.setDescrizione(descrizione);
 			att.setIdTirocinio(richTir.getIdTirocinio());
