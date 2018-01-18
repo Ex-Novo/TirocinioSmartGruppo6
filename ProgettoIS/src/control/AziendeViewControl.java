@@ -9,11 +9,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import bean.Azienda;
+import bean.Feedback;
 import bean.Studente;
 import dao.AziendaDaoImpl;
 import dao.AziendaDaoInterface;
+import dao.FeedBackDaoImpl;
+import dao.FeedBackDaoInterface;
 import dao.StudenteDaoImpl;
 
 /**
@@ -43,11 +47,12 @@ public class AziendeViewControl extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+
 		AziendaDaoInterface aziendaDAO = new AziendaDaoImpl();
 		ArrayList<Azienda> aziende = aziendaDAO.getAziendeConvenzionate();		
+		
 		request.setAttribute("aziendeConvenzionate", aziende);
-		
-		
+
 		/* Crea lista */
 		getServletConfig().getServletContext().getRequestDispatcher("/AziendeView.jsp").forward(request, response);
 		

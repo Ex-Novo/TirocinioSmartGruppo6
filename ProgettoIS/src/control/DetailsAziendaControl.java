@@ -1,6 +1,8 @@
 package control;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,9 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.Azienda;
+import bean.Feedback;
 import bean.Tirocinio;
 import dao.AziendaDaoImpl;
 import dao.AziendaDaoInterface;
+import dao.FeedBackDaoImpl;
+import dao.FeedBackDaoInterface;
 import dao.TirocinioDaoImpl;
 import dao.TirocinioDaoInterface;
 
@@ -55,7 +60,20 @@ public class DetailsAziendaControl extends HttpServlet {
 		TirocinioDaoInterface tirocinioDao = new TirocinioDaoImpl();
 		Tirocinio tirocinio = tirocinioDao.getDettagliAziendeConvenzionate(piva);
 		
+		FeedBackDaoInterface fbDao = new FeedBackDaoImpl();
+		ArrayList<Feedback> feedBacks = fbDao.getFeedBacksAzienda(piva);
+		
+		double valutazione = 0;
+		for(int i =  0 ; i < feedBacks.size(); i++) {
+			
+			valutazione = valutazione + feedBacks.get(i).getValutazioneAzienda();
+			
+		}
+		
+		valutazione = valutazione / feedBacks.size();
+		
 		request.setAttribute("tirocinio", tirocinio);
+		request.setAttribute("valutazione", valutazione);
 		
 		/* Crea lista */
 		getServletConfig().getServletContext().getRequestDispatcher("/DettaglioAzienda.jsp").forward(request, response);

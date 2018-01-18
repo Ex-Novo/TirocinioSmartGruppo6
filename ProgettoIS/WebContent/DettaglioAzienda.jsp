@@ -24,10 +24,10 @@ autori: Mario Procida, Anna Maria Rosanova
 			 <div class="container">
 				 
 				<%
-				
+					double valutazione = (double) request.getAttribute("valutazione");
 					Azienda a = (Azienda) request.getAttribute("azienda");
 					Tirocinio t = (Tirocinio) request.getAttribute("tirocinio");	
-					
+					System.out.println(valutazione);
 					if(email != null && password != null){
 				
 				
@@ -62,6 +62,14 @@ autori: Mario Procida, Anna Maria Rosanova
 							<td>Tutor Aziendale</td>
 							<td><%=a.getTutorAziendale() %></td>
 						</tr>
+								<td>FeedBack Complessivo Tirocinanti</td>
+								<td>
+									<span class="fa fa-star <%if(valutazione >= 1){%>checked<%}%>"></span>
+									<span class="fa fa-star <%if(valutazione >= 2){%>checked<%}%>"></span>
+									<span class="fa fa-star <%if(valutazione >= 3){%>checked<%}%>"></span>
+									<span class="fa fa-star <%if(valutazione >= 4){%>checked<%}%>"></span>
+									<span class="fa fa-star <%if(valutazione == 5){%>checked<%}%>"></span>
+								</td>
 						<tr>
 							<td>Richiesta Tirocinio</td>
 							<td>

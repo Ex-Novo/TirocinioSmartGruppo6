@@ -10,4 +10,6 @@ public interface FeedBackDaoInterface {
 	public boolean inviaFeedBackAzienda(Feedback fb);
 	
 	public ArrayList<Feedback> getFeedBacks(String piva,String matricola, int idTirocinio);
+
+	ArrayList<Feedback> getFeedBacksAzienda(String piva);
 }

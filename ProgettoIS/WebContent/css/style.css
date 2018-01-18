@@ -33,3 +33,7 @@ tr:nth-child(even) {
 	width:100%;
 }
 }
+
+.checked{
+	color:orange;
+}

@@ -14,6 +14,7 @@ autori: Mario Procida, Anna Maria Rosanova
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body class="bg-primary">
 
@@ -25,15 +26,16 @@ autori: Mario Procida, Anna Maria Rosanova
 			 	<table>
 					<tbody>
 						<tr>
-							<td>Nome Azienda</td>
-							<td>Sede</td>
-							<td>Telefono</td>
-							<td>Dettagli Azienda</td>									
+							<th>Nome Azienda</th>
+							<th>Sede</th>
+							<th>Telefono</th>
+							<th>Dettagli Azienda</th>							
 						</tr>
 					<%
 					
-					Collection<?> aziende = (Collection<?>) request.getAttribute("aziendeConvenzionate");
 					
+					Collection<?> aziende = (Collection<?>) request.getAttribute("aziendeConvenzionate");
+				
 					if (aziende != null && aziende.size() != 0) {
 						Iterator<?> it = aziende.iterator();
 						
