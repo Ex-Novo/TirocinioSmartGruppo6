@@ -12,15 +12,16 @@
 		<div class="wrapper">
 			<header class="masthead bg-primary text-white text-center" >
 				<div class="container">
-   				    <table>
+   				    <table class="table-bordered">
 						<tbody>
 							<tr>
-								<td>Nome</td>
-								<td>Cognome</td>
-								<td>Matricola</td>
-								<td>FeedBack</td>
-								<td>Compila Registro</td>																
+								<th>Nome</th>
+								<th>Cognome</th>
+								<th>Matricola</th>
+								<th>FeedBack</th>
+								<th>Compila Registro</th>																
 							</tr>
+						
 							<%Collection<?> studenti = (Collection<?>) request.getAttribute("studenti");
 						   
 							if (studenti != null && studenti.size() != 0) {
@@ -30,14 +31,15 @@
 							
 									Studente bean = (Studente) it.next();
 									
-							%>	
-							<tr>
-								<td><%=bean.getNome() %></td>
-								<td><%=bean.getCognome() %></td>
-								<td><%=bean.getMatricola() %></td>
-								<td> <a class="btn btn-info" href="FeedBackStudenteControl?tipo=sendValutazione&matricola=<%=bean.getMatricola()%>">Invia FeedBack</a> </td>
-								<td> <a class="btn btn-info" href="#">Compila Registro</a> </td>
-							</tr>
+							%>
+								
+								<tr>
+									<td><%=bean.getNome() %></td>
+									<td><%=bean.getCognome() %></td>
+									<td><%=bean.getMatricola() %></td>
+									<td> <a class="btn btn-info" href="FeedBackStudenteControl?tipo=sendValutazione&matricola=<%=bean.getMatricola()%>">Invia FeedBack</a> </td>
+									<td> <a class="btn btn-info" href="#">Compila Registro</a> </td>
+								</tr>
 							
 							<%
 								}

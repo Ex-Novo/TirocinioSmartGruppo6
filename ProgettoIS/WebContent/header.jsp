@@ -61,23 +61,22 @@ autori: Mario Procida
 		<a class="navbar-brand js-scroll-trigger" href="index.jsp">
 		<img src="img\logo.png" class="zoom" height="80e"></a>
 		<button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-			aria-controls="navbarResponsive" aria-expanded="false"
-			aria-label="Toggle navigation">
+			
+>
 			Menu <i class="fa fa-bars"></i>
 		</button>
 
 
 
 		<div class="collapse navbar-collapse" id="navbarResponsive">
-			<ul class="navbar-nav ml-auto">
+			<ul class="navbar-nav ml-auto ">
 				<!-- Controlla se l'utente è loggato e in caso positivo mostra i tasti per login e registrazione nella navigation bar-->
 				<%
 					if (email == null && password == null) {
 				%>
 				<!-- Login e registrazione -->
-				<li class="nav-item mx-0 mx-lg-1"><a
-					class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-					href="#" id="loginform" method="post">Login</a>
+				<li class="nav-item mx-0 mx-lg-1">
+				<a class="nav-link py-3 px-0 px-lg-3 rounded" href="#" id="loginform" method="post">Login</a>
 					<div class="login">
 						<div class="arrow-up"></div>
 						<div class="formholder">
@@ -97,12 +96,11 @@ autori: Mario Procida
 							</div>
 						</div>
 					</div></li>
-				<li class="nav-item mx-0 mx-lg-1"><a
-					class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-					href="#" id="registerform" method="post">Registrati</a>
+				<li class="nav-item mx-0 mx-lg-1 " >
+				<a class="nav-link py-3 px-0 px-lg-3 rounded " href="#" id="registerform" method="post">Registrati</a>
 					<div class="register">
-						<div class="arrow-up2" style="left: 55%"></div>
-						<div class="formholder2">
+						<div class="arrow-up2" ></div>
+						<div class="formholder2" >
 							<div class="randompad">
 								<fieldset>
 
