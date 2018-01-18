@@ -59,21 +59,21 @@ public class CheckTirocinio extends HttpServlet {
 			session.setAttribute("canRequest", false);
 			
 			out.println("<script>");
-			out.println("alert('Hai già richiesto un tirocinio.Si prega di attendere una risposta.')");
+			out.println("alert('Hai gia richiesto un tirocinio.Si prega di attendere una risposta.')");
 			out.println("window.history.back()");
 			out.println("</script>");
 		}else if(richTir.getMatricola() != null && richTir.getStatus().equals("rifiutata")) {
 			session.setAttribute("canRequest", true);
 			session.setAttribute("idTirocinio", idTirocinio) ;
 			out.println("<script>");
-			out.println("alert('La precedente richiesta di tirocinio che hai effettuato e stata rifiutata.Puoi effettuarne un'altra. Per chiarimenti contattare la didattica')");
+			out.println("alert('La precedente richiesta di tirocinio che hai effettuato e stata rifiutata.Puoi effettuarne un altra. Per chiarimenti contattare la didattica')");
 			out.println("window.open('RichiestaTirocinio.jsp','_self')");
 			out.println("</script>");
 	
 		}else if(richTir.getMatricola() != null && richTir.getStatus().equals("approvata")){
 			session.setAttribute("canRequest", false);
 			out.println("<script>");
-			out.println("alert('Impossibile effettuare la richiesta. Richiesta di tirocinio già inviata ed approvata')");
+			out.println("alert('Impossibile effettuare la richiesta. Richiesta di tirocinio gia inviata ed approvata')");
 			out.println("window.history.back()");
 			out.println("</script>");
 		}else {
