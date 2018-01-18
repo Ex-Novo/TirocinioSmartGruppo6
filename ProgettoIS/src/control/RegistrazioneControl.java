@@ -84,7 +84,7 @@ public class RegistrazioneControl extends HttpServlet {
 				fu.createFolder(path ,uniqueID); //richiama il metodo di FileManager per creare una folder con l'id unico dell'utente appena registrato
 			    
 				out.println("<script type=\"text/javascript\">");
-			    out.println("alert('Registrazione effettuata con successo. Ora puoi effettuare l\'accesso');");
+			    out.println("alert('Registrazione effettuata con successo. Ora puoi effettuare l accesso');");
 			    out.println("location='index.jsp';");
 			    out.println("</script>");
 				
@@ -131,7 +131,7 @@ public class RegistrazioneControl extends HttpServlet {
 				fm.createFolder(path ,uniqueID); //richiama il metodo di FileManager per creare una folder con l'id unico dell'utente appena registrato
 				
 				out.println("<script type=\"text/javascript\">");
-			    out.println("alert('Registrazione effettuata con successo. Ora puoi effettuare l\'accesso');");
+			    out.println("alert('Registrazione effettuata con successo. Ora puoi effettuare l accesso');");
 			    out.println("location='index.jsp';");
 			    out.println("</script>");
 				
