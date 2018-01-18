@@ -63,10 +63,11 @@ public class CheckTirocinio extends HttpServlet {
 			out.println("window.history.back()");
 			out.println("</script>");
 		}else if(richTir.getMatricola() != null && richTir.getStatus().equals("rifiutata")) {
-			session.setAttribute("canRequest", false);
+			session.setAttribute("canRequest", true);
+			session.setAttribute("idTirocinio", idTirocinio) ;
 			out.println("<script>");
 			out.println("alert('La tua richiesta di tirocinio è stata rifiutata. Per chiarimenti contattare la didattica')");
-			out.println("window.history.back()");
+			out.println("window.open('RichiestaTirocinio.jsp','_self')");
 			out.println("</script>");
 	
 		}else if(richTir.getMatricola() != null && richTir.getStatus().equals("approvata")){

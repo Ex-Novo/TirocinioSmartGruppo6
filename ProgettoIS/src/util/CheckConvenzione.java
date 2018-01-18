@@ -59,10 +59,10 @@ public class CheckConvenzione extends HttpServlet {
 			out.println("</script>");
 		}else if(convenzione.getP_iva() != null && convenzione.getStato().equals("rifiutata")) {
 		
-			session.setAttribute("canRequest", false);
+			session.setAttribute("canRequest", true);
 			out.println("<script>");
 			out.println("alert('La richiesta di convenzione che hai effettuato è stata rifiutata. Per chiarimenti contattare la didattica.')");
-			out.println("window.history.back()");
+			out.println("window.open('RichiestaConvenzione.jsp','_self')");
 			out.println("</script>");
 		
 		}else if(convenzione.getP_iva() != null && convenzione.getStato().equals("approvata")){
