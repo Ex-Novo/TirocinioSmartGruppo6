@@ -15,9 +15,18 @@ import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
-
+/**
+ * Questa classe crea il pdf della richiesta di convenzione/tirocinio e viene chiamata tramite l'adapter interface.
+ * @author Mario Procida
+ *
+ */
 public class PdfCreator implements PdfCreatorAdapter{
 
+  /**
+   * Questo metodo crea un pdf per la richiesta di convenzione 
+   * prendendo come parametri i vari dati della richiesta inoltrata tramite form.
+   * @author Mario Procida
+   */
   @Override
   public ByteArrayOutputStream creaPdfConv(String nomeAz, String piva, String descrizione,
       String numPosti, String data, String logo) throws MalformedURLException, IOException {
@@ -91,6 +100,11 @@ public class PdfCreator implements PdfCreatorAdapter{
    
   }
 
+  /**
+   * Questo metodo crea un pdf per la richiesta di tirocinio 
+   * prendendo come parametri i vari dati della richiesta inoltrata tramite form.
+   * @author Mario Procida
+   */
   @Override
   public ByteArrayOutputStream creaPdfTir(String nome, String cognome, String matricola, String nomeAzienda,
       String tutor, String data, String logo) throws MalformedURLException, IOException{
