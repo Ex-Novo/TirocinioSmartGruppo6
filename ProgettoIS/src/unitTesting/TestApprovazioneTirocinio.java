@@ -1,11 +1,12 @@
 package unitTesting;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 import bean.RichiestaTirocinio;
 import dao.RichiestaTirocinioDaoImpl;
+
+import org.junit.Test;
+
 
 public class TestApprovazioneTirocinio {
 
@@ -15,7 +16,7 @@ public class TestApprovazioneTirocinio {
    * - matricola è errata (Ex: errore di codifica)
    */
 
-  /** Test Approvazione Tirocinio // Avvenuta con Successo
+  /** Test Approvazione Tirocinio // Avvenuta con Successo.
    * 
    * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
    * */
@@ -34,12 +35,13 @@ public class TestApprovazioneTirocinio {
 
     richiestaTirocinioDAO.invioRichiestaTirocinio(richiesta);
 
-    assertEquals(true, richiestaTirocinioDAO.approvazioneRichiestaTirocinio(richiesta.getMatricola()));
+    assertEquals(true,
+          richiestaTirocinioDAO.approvazioneRichiestaTirocinio(richiesta.getMatricola()));
 
 
   }
 
-  /** Test Approvazione Tirocinio // Fallita
+  /** Test Approvazione Tirocinio // Fallita.
    * 
    * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
    * */

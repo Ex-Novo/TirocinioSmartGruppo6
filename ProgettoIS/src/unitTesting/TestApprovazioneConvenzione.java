@@ -1,13 +1,11 @@
 package unitTesting;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import bean.Convenzione;
 import dao.ConvenzioneDaoImpl;
 
 import org.junit.Test;
-
-
 
 public class TestApprovazioneConvenzione {
 
@@ -26,7 +24,7 @@ public class TestApprovazioneConvenzione {
   @Test
   public void testApprovazioneConvenzioneAvvenuta() {
 
-    Convenzione convenzione= new Convenzione();
+    Convenzione convenzione = new Convenzione();
     ConvenzioneDaoImpl convenzioneDAO = new ConvenzioneDaoImpl();
 
 
@@ -38,12 +36,13 @@ public class TestApprovazioneConvenzione {
 
     convenzione.setStato("in attesa");
 
-    convenzioneDAO.invioRichiestaConvenzione(convenzione, convenzione.getEmail(), convenzione.getP_iva());
+    convenzioneDAO.invioRichiestaConvenzione(convenzione, convenzione.getEmail(),
+        convenzione.getP_iva());
 
     assertEquals(true, convenzioneDAO.approvazioneRichiestaConvenzione(convenzione.getP_iva()));
   }
 
-  /** Test Approvazione Convenzione // Fallita
+  /** Test Approvazione Convenzione // Fallita.
    * 
    * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
    * */

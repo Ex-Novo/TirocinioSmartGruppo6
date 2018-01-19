@@ -1,11 +1,14 @@
 package unitTesting;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 import bean.Studente;
 import dao.StudenteDaoImpl;
+
+import org.junit.Test;
+
+
+
 
 public class TestRegistrazioneStudente {
 
@@ -21,7 +24,7 @@ public class TestRegistrazioneStudente {
 
 
 
-  /** Test Registrazione Studente // Avvenuta con Successo
+  /** Test Registrazione Studente // Avvenuta con Successo.
    * 
    * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
    * */
@@ -30,7 +33,7 @@ public class TestRegistrazioneStudente {
   public void registrazioneStudenteAvvenuta() {
 
     Studente studente = new Studente();
-    StudenteDaoImpl studenteDAO = new StudenteDaoImpl();
+    
 
     studente.setMatricola("Matricola");
     studente.setNome("Nome");
@@ -41,11 +44,11 @@ public class TestRegistrazioneStudente {
     studente.setDataNascita("2018-12-31");
     studente.setLuogoNascita("Luogo Nascita");
 
-
+    StudenteDaoImpl studenteDAO = new StudenteDaoImpl();
     assertEquals(true, studenteDAO.registerUser(studente));
   }
 
-  /** Test Registrazione Studente // Fallita (Ex: chiave già presente)
+  /** Test Registrazione Studente // Fallita (Ex: chiave già presente).
    * 
    * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
    * */

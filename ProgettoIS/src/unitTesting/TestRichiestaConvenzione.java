@@ -1,17 +1,24 @@
 package unitTesting;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 import bean.Convenzione;
 import dao.ConvenzioneDaoImpl;
 
+import org.junit.Test;
+
+
+
 /* Nella form di invio richiesta convenzione:
  * 
- *  L'Utente non può inviare "Tutor Accademico" e "Numero Posti" vuoti (HTML: < ... required>)
- *  L'Utente non può inserire un nome di tutor accademico non valido (pattern="^[A-Za-z,\.\s']+$" required)
- *  L'Utente non può inserire un numero posti NaN (Not A Number) (HTML: <input type=number>)
+ *  L'Utente non può inviare "Tutor Accademico" e "Numero Posti" vuoti
+ *  (HTML: < ... required>)
+ *  
+ *  L'Utente non può inserire un nome di tutor accademico non valido
+ *  (pattern="^[A-Za-z,\.\s']+$" required)
+ *  
+ *  L'Utente non può inserire un numero posti NaN (Not A Number)
+ *  (HTML: <input type=number>)
  *  
  *  Di conseguenza bisogna testare:
  *  -La descrizione può essere "" (Stringa vuota)
@@ -26,7 +33,7 @@ import dao.ConvenzioneDaoImpl;
 
 public class TestRichiestaConvenzione {
 
-  /** Test_RichiestConvenzione // Descrizione valida
+  /** Test_RichiestConvenzione // Descrizione valida.
    * 
    * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
    * */
@@ -35,7 +42,7 @@ public class TestRichiestaConvenzione {
   public void testRichiestaConvenzioneDescrizioneValida() {
 
     Convenzione convenzione = new Convenzione();
-    ConvenzioneDaoImpl convenzioneDAO = new ConvenzioneDaoImpl();
+
 
     /* I dati nel sistema vengono presi dalla sessione e dal db */
     convenzione.setData("2018-01-01");
@@ -47,15 +54,15 @@ public class TestRichiestaConvenzione {
     convenzione.setDescrizione("Sviluppo App Android e iOS");
     convenzione.setNumPosti(20);
 
-    String email= "grusso@unisa.it";
-    String piva= "000111232334";
+    String email = "grusso@unisa.it";
+    String piva = "000111232334";
 
-
+    ConvenzioneDaoImpl convenzioneDAO = new ConvenzioneDaoImpl();
     assertEquals(true, convenzioneDAO.invioRichiestaConvenzione(convenzione, email, piva));
 
   }
 
-  /** Test_RichiestConvenzione // Descrizione = null;
+  /** Test_RichiestConvenzione // Descrizione = null.
    * 
    * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
    * */
@@ -76,14 +83,14 @@ public class TestRichiestaConvenzione {
     convenzione.setDescrizione(null);
     convenzione.setNumPosti(20);
 
-    String email= "grusso@unisa.it";
-    String piva= "000111232334";
+    String email = "grusso@unisa.it";
+    String piva = "000111232334";
 
     assertEquals(false, convenzioneDAO.invioRichiestaConvenzione(convenzione, email, piva));
 
   }
 
-  /** Test_RichiestConvenzione // Descrizione = "" (Stringa vuota)
+  /** Test_RichiestConvenzione // Descrizione = "" (Stringa vuota).
    * 
    * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
    * */
@@ -104,8 +111,8 @@ public class TestRichiestaConvenzione {
     convenzione.setDescrizione("");
     convenzione.setNumPosti(20);
 
-    String email= "grusso@unisa.it";
-    String piva= "000111232334";
+    String email = "grusso@unisa.it";
+    String piva = "000111232334";
 
     assertEquals(false, convenzioneDAO.invioRichiestaConvenzione(convenzione, email, piva));
 

@@ -1,14 +1,16 @@
 package unitTesting;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 import bean.Azienda;
 import bean.Studente;
 import dao.AziendaDaoImpl;
 import dao.DocumentoDaoImpl;
 import dao.StudenteDaoImpl;
+
+import org.junit.Test;
+
+
 
 public class TestCaricaDocumento {
 
@@ -36,7 +38,7 @@ public class TestCaricaDocumento {
    * Azienda, file name non valido
    */
 
-  /** Test Carica Documento // Studente, filename valido
+  /** Test Carica Documento // Studente, filename valido.
    * 
    * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
    * */
@@ -51,7 +53,7 @@ public class TestCaricaDocumento {
 
   }
 
-  /** Test Carica Documento // Studente, filename non valido
+  /** Test Carica Documento // Studente, filename non valido.
    * 
    * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
    * */
@@ -69,7 +71,7 @@ public class TestCaricaDocumento {
 
   }
 
-  /** Test Carica Documento // Azienda, filename valido
+  /** Test Carica Documento // Azienda, filename valido.
    * 
    * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
    * */
@@ -85,7 +87,7 @@ public class TestCaricaDocumento {
 
   }
 
-  /** Test Carica Documento // Azienda, filename non valido
+  /** Test Carica Documento // Azienda, filename non valido.
    * 
    * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
    * */

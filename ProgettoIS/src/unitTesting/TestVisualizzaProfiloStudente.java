@@ -1,10 +1,12 @@
 package unitTesting;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
+import dao.StudenteDaoImpl;
 
 import org.junit.Test;
 
-import dao.StudenteDaoImpl;
+
 
 /*
  * I metodi ritornano informazioni di uno Studente la sua email o chiave (Matricola)
@@ -21,47 +23,47 @@ import dao.StudenteDaoImpl;
 
 public class TestVisualizzaProfiloStudente {
 
-  /** Test visualizza Profilo Studente // Matricola non esistente
+  /** Test visualizza Profilo Studente // Matricola non esistente.
    * 
    * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
    * */
 
   @Test
-  public void testGetStudenteByMatricolaNonEsistente () {
+  public void testGetStudenteByMatricolaNonEsistente() {
     String matricola = "PROVA";
-    StudenteDaoImpl studenteDao = new StudenteDaoImpl ();
+    StudenteDaoImpl studenteDao = new StudenteDaoImpl();
 
-    assertEquals (null, studenteDao.getStudenteByMatricola(matricola).getMatricola());
+    assertEquals(null, studenteDao.getStudenteByMatricola(matricola).getMatricola());
   }
 
   //Test matricola esistente 
 
   @Test
-  public void testGetStudenteByMatricolaEsistente () {
+  public void testGetStudenteByMatricolaEsistente() {
     String matricola = "0512101111";
-    StudenteDaoImpl studenteDao = new StudenteDaoImpl ();
+    StudenteDaoImpl studenteDao = new StudenteDaoImpl();
 
-    assertEquals (matricola, studenteDao.getStudenteByMatricola(matricola).getMatricola());
+    assertEquals(matricola, studenteDao.getStudenteByMatricola(matricola).getMatricola());
   }
 
   //Test email non esistente
 
   @Test
-  public void testGetStudenteByEmailNonEsistente () {
+  public void testGetStudenteByEmailNonEsistente() {
     String email = "PROVA";
-    StudenteDaoImpl studenteDao = new StudenteDaoImpl ();
+    StudenteDaoImpl studenteDao = new StudenteDaoImpl();
 
-    assertEquals (null, studenteDao.getStudenteByEmail(email).getEmail());
+    assertEquals(null, studenteDao.getStudenteByEmail(email).getEmail());
   }
 
   //Test email esistente
 
   @Test
-  public void testGetStudenteByEmailEsistente () {
+  public void testGetStudenteByEmailEsistente() {
     String email = "storluccio@gmail.com";
-    StudenteDaoImpl studenteDao = new StudenteDaoImpl ();
+    StudenteDaoImpl studenteDao = new StudenteDaoImpl();
 
-    assertEquals (email, studenteDao.getStudenteByEmail(email).getEmail());
+    assertEquals(email, studenteDao.getStudenteByEmail(email).getEmail());
   }
 
 }

@@ -2,10 +2,11 @@ package unitTesting;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Test;
-
 import bean.Studente;
 import dao.StudenteDaoImpl;
+
+import org.junit.Test;
+
 
 public class TestLogin {
 
@@ -19,7 +20,7 @@ public class TestLogin {
    * 
    */
 
-  /** Test_Login // Credenziali corrette (email e password matchano)
+  /** Test_Login // Credenziali corrette (email e password matchano).
    * 
    * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
    * */
@@ -36,7 +37,7 @@ public class TestLogin {
     assertEquals(true, studenteDAO.loginUser(studente));
   }
 
-  /** TC_1.1 Test_Login // Email esiste ma la password non matcha
+  /** Test_Login // Email esiste ma la password non matcha.
    * 
    * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
    * */
@@ -53,7 +54,7 @@ public class TestLogin {
     assertEquals(false, studenteDAO.loginUser(studente));
   }
 
-  /** TC_1.1 Test_Login // Email Errata o non presente nel database
+  /** Test_Login // Email Errata o non presente nel database.
    * 
    * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
    * */

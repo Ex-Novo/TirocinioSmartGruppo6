@@ -1,10 +1,12 @@
 package unitTesting;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
+import dao.AziendaDaoImpl;
 
 import org.junit.Test;
 
-import dao.AziendaDaoImpl;
+
 
 /*
  * I metodi ritornano informazioni di un'Azienda la sua email o chiave (Partita Iva)
@@ -21,60 +23,61 @@ import dao.AziendaDaoImpl;
 
 public class TestVisualizzaProfiloAzienda {
 
-  /** Test visualizza Profilo Azienda // Email esistente
+  /** Test visualizza Profilo Azienda // Email esistente.
    * 
    * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
    * */
 
   @Test
-  public void testGetAziendaByEmailEsistente () {
-    AziendaDaoImpl aziendaDao = new AziendaDaoImpl ();
+  public void testGetAziendaByEmailEsistente() {
+    AziendaDaoImpl aziendaDao = new AziendaDaoImpl();
     String email =  "hsoftware@gmail.com";
 
-    assertEquals (email, aziendaDao.getAziendaByEmail(email).getEmail());
+    assertEquals(email, aziendaDao.getAziendaByEmail(email).getEmail());
   }
 
   //Test email non esistente 
 
-  /** Test visualizza Profilo Azienda // Email non esistente (Ex: errore di codifica)
+  /** Test visualizza Profilo Azienda // Email non esistente (Ex: errore di codifica).
    * 
    * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
    * */
 
   @Test
-  public void testGetAziendaByEmailNonEsistente () {
-    AziendaDaoImpl aziendaDao = new AziendaDaoImpl ();
+  public void testGetAziendaByEmailNonEsistente() {
+    AziendaDaoImpl aziendaDao = new AziendaDaoImpl();
     String email =  "PROVA";
 
-    assertEquals (null, aziendaDao.getAziendaByEmail(email).getEmail());
+    assertEquals(null, aziendaDao.getAziendaByEmail(email).getEmail());
   }
 
-  /** Test visualizza Profilo Azienda // Partita Iva (chiave) esistente
+  /** Test visualizza Profilo Azienda // Partita Iva (chiave) esistente.
    * 
    * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
    * */
 
 
   @Test
-  public void testGetAziendaByPivaEsistente () {
+  public void testGetAziendaByPivaEsistente() {
     String piva =  "0983732387";
-    AziendaDaoImpl aziendaDao = new AziendaDaoImpl ();
+    AziendaDaoImpl aziendaDao = new AziendaDaoImpl();
 
-    assertEquals (piva, aziendaDao.getAziendaBypiva(piva).getP_iva());
+    assertEquals(piva, aziendaDao.getAziendaBypiva(piva).getP_iva());
   }
 
 
-  /** Test visualizza Profilo Azienda // Partita Iva (chiave) non esistente (Ex: errore di codifica)
+  /** Test visualizza Profilo Azienda //
+   * Partita Iva (chiave) non esistente (Ex: errore di codifica).
    * 
    * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
    * */
 
 
   @Test
-  public void testGetAziendaByPivaNonEsistente () {
+  public void testGetAziendaByPivaNonEsistente() {
     String piva =  "PROVA";
-    AziendaDaoImpl aziendaDao = new AziendaDaoImpl ();
+    AziendaDaoImpl aziendaDao = new AziendaDaoImpl();
 
-    assertEquals (null, aziendaDao.getAziendaBypiva(piva).getP_iva());
+    assertEquals(null, aziendaDao.getAziendaBypiva(piva).getP_iva());
   }
 }

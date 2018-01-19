@@ -1,15 +1,16 @@
 package unitTesting;
 
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 import bean.Convenzione;
 import bean.RichiestaTirocinio;
 import dao.ConvenzioneDaoImpl;
 import dao.RichiestaTirocinioDaoImpl;
+
+import java.util.ArrayList;
+import org.junit.Test;
+
+
 
 public class TestElencoRichieste {
 
@@ -24,7 +25,7 @@ public class TestElencoRichieste {
    */
 
 
-  /** Test Ritorno Elenco Richieste Tirocinio // Avvenuta con successo
+  /** Test Ritorno Elenco Richieste Tirocinio // Avvenuta con successo.
    * 
    * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
    * */
@@ -33,12 +34,13 @@ public class TestElencoRichieste {
   @Test
   public void testElencoRichiesteTirocinioAvvenuta() {
     RichiestaTirocinioDaoImpl richiesteTirocinioDAO = new RichiestaTirocinioDaoImpl();
-    ArrayList<RichiestaTirocinio> listaRichiesteTirocinio = richiesteTirocinioDAO.getRichiesteTirocinio();
+    ArrayList<RichiestaTirocinio> listaRichiesteTirocinio =
+          richiesteTirocinioDAO.getRichiesteTirocinio();
 
     assertEquals(true, !listaRichiesteTirocinio.isEmpty() || listaRichiesteTirocinio.isEmpty());
   }
 
-  /** Test Ritorno Elenco Richieste Tirocinio // Fallita
+  /** Test Ritorno Elenco Richieste Tirocinio // Fallita.
    * 
    * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
    * */
@@ -46,14 +48,15 @@ public class TestElencoRichieste {
   @Test
   public void testElencoRichiesteTirocinioFallita() {
 
-    /* Se fallisce il metodo per ottenere la lista, ritorna un "new ArraList<RichiestaTirocinio>" */ 
+    /* Se fallisce il metodo per ottenere la lista,
+     * ritorna un "new ArraList<RichiestaTirocinio>" */ 
     ArrayList<RichiestaTirocinio> listaRichiesteTirocinio = new ArrayList<RichiestaTirocinio>();
 
     assertEquals(true, listaRichiesteTirocinio.isEmpty());
   }
 
 
-  /** Test Ritorno Elenco Richieste Convenzione // Avvenuta con successo
+  /** Test Ritorno Elenco Richieste Convenzione // Avvenuta con successo.
    * 
    * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
    * */
@@ -61,13 +64,15 @@ public class TestElencoRichieste {
   @Test
   public void testElencoRichiesteConvenzioneAvvenuta() {
     ConvenzioneDaoImpl richiesteConvenzioneDAO = new ConvenzioneDaoImpl();
-    ArrayList<Convenzione> listaRichiesteConvenzione = richiesteConvenzioneDAO.getRichiesteConvenzione();
+    
+    ArrayList<Convenzione> listaRichiesteConvenzione
+        = richiesteConvenzioneDAO.getRichiesteConvenzione();
 
     assertEquals(true, !listaRichiesteConvenzione.isEmpty() || listaRichiesteConvenzione.isEmpty());
   }
 
 
-  /** Test Ritorno Elenco Richieste Convenzione // Fallita
+  /** Test Ritorno Elenco Richieste Convenzione // Fallita.
    * 
    * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
    * */
