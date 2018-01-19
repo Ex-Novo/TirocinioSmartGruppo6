@@ -9,54 +9,54 @@ import dao.RichiestaTirocinioDaoImpl;
 
 public class TestApprovazioneTirocinio {
 
-	/* Un'approvazione di tirocinio può avere solo due categorie:
-	 * 
-	 * - matricola esiste:
-	 * - matricola è errata (Ex: errore di codifica)
-	 */
+  /* Un'approvazione di tirocinio può avere solo due categorie:
+   * 
+   * - matricola esiste:
+   * - matricola è errata (Ex: errore di codifica)
+   */
 
-	/** Test Approvazione Tirocinio // Avvenuta con Successo
-	 * 
-	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
-	 * */
+  /** Test Approvazione Tirocinio // Avvenuta con Successo
+   * 
+   * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
+   * */
 
-	@Test
-	public void testApprovazioneTirocinioAvvenuta() {
+  @Test
+  public void testApprovazioneTirocinioAvvenuta() {
 
-		RichiestaTirocinio richiesta = new RichiestaTirocinio();
-		RichiestaTirocinioDaoImpl richiestaTirocinioDAO = new RichiestaTirocinioDaoImpl();
+    RichiestaTirocinio richiesta = new RichiestaTirocinio();
+    RichiestaTirocinioDaoImpl richiestaTirocinioDAO = new RichiestaTirocinioDaoImpl();
 
-		richiesta.setMatricola("0512101111");
-		richiesta.setNomeFile("Nome File");
-		richiesta.setStatus("in attesa");
-		richiesta.setIdTirocinio(1);
-
-
-		richiestaTirocinioDAO.invioRichiestaTirocinio(richiesta);
-
-		assertEquals(true, richiestaTirocinioDAO.approvazioneRichiestaTirocinio(richiesta.getMatricola()));
+    richiesta.setMatricola("0512101111");
+    richiesta.setNomeFile("Nome File");
+    richiesta.setStatus("in attesa");
+    richiesta.setIdTirocinio(1);
 
 
-	}
+    richiestaTirocinioDAO.invioRichiestaTirocinio(richiesta);
 
-	/** Test Approvazione Tirocinio // Fallita
-	 * 
-	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
-	 * */
-
-	@Test
-	public void testApprovazioneTirocinioFallita() {
-
-		/* Provo ad approvare una richiesta di tirocinio che non esiste */
+    assertEquals(true, richiestaTirocinioDAO.approvazioneRichiestaTirocinio(richiesta.getMatricola()));
 
 
-		RichiestaTirocinioDaoImpl richiestaTirocinioDAO = new RichiestaTirocinioDaoImpl();
+  }
+
+  /** Test Approvazione Tirocinio // Fallita
+   * 
+   * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
+   * */
+
+  @Test
+  public void testApprovazioneTirocinioFallita() {
+
+    /* Provo ad approvare una richiesta di tirocinio che non esiste */
 
 
-		assertEquals(false, richiestaTirocinioDAO.approvazioneRichiestaTirocinio("0512101111111111"));
+    RichiestaTirocinioDaoImpl richiestaTirocinioDAO = new RichiestaTirocinioDaoImpl();
+
+
+    assertEquals(false, richiestaTirocinioDAO.approvazioneRichiestaTirocinio("0512101111111111"));
 
 
 
-	}
+  }
 
 }
