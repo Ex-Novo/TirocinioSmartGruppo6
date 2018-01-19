@@ -6,7 +6,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({ TestApprovazioneConvenzione.class, TestApprovazioneTirocinio.class, TestElencoRichieste.class,
-		TestRichiestaConvenzione.class, TestRichiestaTirocinio.class })
+    TestRichiestaConvenzione.class, TestRichiestaTirocinio.class })
 public class TestSuiteGestioneTirocinioEsterno {
 
 }

@@ -18,36 +18,36 @@ import dao.RichiestaTirocinioDaoImpl;
 
 public class TestRichiestaTirocinio {
 
-	/** TC_2.2 Test_RichiestConvenzione // Form valido
-	 * 
-	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
-	 * */
+  /** TC_2.2 Test_RichiestConvenzione // Form valido
+   * 
+   * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
+   * */
 
-	@Test
-	public void testInvioRichiestaTirocinioFormValido() {
+  @Test
+  public void testInvioRichiestaTirocinioFormValido() {
 
-		RichiestaTirocinio richiestaTirocinio = new RichiestaTirocinio ();
-		RichiestaTirocinioDaoImpl richiestaTirocinioDao=new RichiestaTirocinioDaoImpl();
+    RichiestaTirocinio richiestaTirocinio = new RichiestaTirocinio ();
+    RichiestaTirocinioDaoImpl richiestaTirocinioDao=new RichiestaTirocinioDaoImpl();
 
-		richiestaTirocinio.setData("2018-01-15");
-		richiestaTirocinio.setNomeFile("RichiestaTirocinio");
-		richiestaTirocinio.setNomeTutorAccademico("Mario Rossi");
-		richiestaTirocinio.setStatus("in attesa");
-		richiestaTirocinio.setEmailTutAcc("mrossi@unisa.it");
-		richiestaTirocinio.setEmailDir("fverdi@unisa.it");
-		richiestaTirocinio.setIdTirocinio(1);
-		richiestaTirocinio.setMatricola("0512103599");
+    richiestaTirocinio.setData("2018-01-15");
+    richiestaTirocinio.setNomeFile("RichiestaTirocinio");
+    richiestaTirocinio.setNomeTutorAccademico("Mario Rossi");
+    richiestaTirocinio.setStatus("in attesa");
+    richiestaTirocinio.setEmailTutAcc("mrossi@unisa.it");
+    richiestaTirocinio.setEmailDir("fverdi@unisa.it");
+    richiestaTirocinio.setIdTirocinio(1);
+    richiestaTirocinio.setMatricola("0512103599");
 
 
-		assertEquals (true, richiestaTirocinioDao.invioRichiestaTirocinio(richiestaTirocinio));
-	}
+    assertEquals (true, richiestaTirocinioDao.invioRichiestaTirocinio(richiestaTirocinio));
+  }
 
-	/* Nella form di invio richiesta tirocinio:
-	 * 
-	 *  L'Utente non può inviare dei campi non compilati (HTML: < ... required>)
-	 *  
-	 *  L'Utente non può inserire un nome di tutor accademico non valido (pattern="^[A-Za-z,\.\s']+$" required)
-	 *  
-	 *  */
+  /* Nella form di invio richiesta tirocinio:
+   * 
+   *  L'Utente non può inviare dei campi non compilati (HTML: < ... required>)
+   *  
+   *  L'Utente non può inserire un nome di tutor accademico non valido (pattern="^[A-Za-z,\.\s']+$" required)
+   *  
+   *  */
 
 }

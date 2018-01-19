@@ -27,34 +27,34 @@ import dao.DocumentoDaoImpl;
 
 public class TestVisualizzaDocumenti {
 
-	/** Test Richiesta Elenco Documenti // Chiave valida
-	 * 
-	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
-	 * */
+  /** Test Richiesta Elenco Documenti // Chiave valida
+   * 
+   * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
+   * */
 
 
-	@Test
-	public void testElencoDocumentiChiaveValida() {
-		DocumentoDaoImpl documentoDAO = new DocumentoDaoImpl();
-		String chiave="0512103459";
-		ArrayList<Documento> listaDocumenti= documentoDAO.getDocumenti(chiave);
-		
-		assertEquals(true, listaDocumenti.isEmpty() || (!listaDocumenti.isEmpty()));
-	}
-	
-	/** Test Richiesta Elenco Documenti // Chiave non valida (Ex: errore di codifica)
-	 * 
-	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
-	 * */
-	
-	@Test
-	public void testElencoDocumentiChiaveNonValida() {
-		DocumentoDaoImpl documentoDAO = new DocumentoDaoImpl();
-		
-		/*Errore di codifica durante il passaggio del valore della chiave*/
-		String chiave="0512103459111111";
-		ArrayList<Documento> listaDocumenti= documentoDAO.getDocumenti(chiave);
-		
-		assertEquals(true, listaDocumenti.isEmpty());
-	}
+  @Test
+  public void testElencoDocumentiChiaveValida() {
+    DocumentoDaoImpl documentoDAO = new DocumentoDaoImpl();
+    String chiave="0512103459";
+    ArrayList<Documento> listaDocumenti= documentoDAO.getDocumenti(chiave);
+    
+    assertEquals(true, listaDocumenti.isEmpty() || (!listaDocumenti.isEmpty()));
+  }
+  
+  /** Test Richiesta Elenco Documenti // Chiave non valida (Ex: errore di codifica)
+   * 
+   * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
+   * */
+  
+  @Test
+  public void testElencoDocumentiChiaveNonValida() {
+    DocumentoDaoImpl documentoDAO = new DocumentoDaoImpl();
+    
+    /*Errore di codifica durante il passaggio del valore della chiave*/
+    String chiave="0512103459111111";
+    ArrayList<Documento> listaDocumenti= documentoDAO.getDocumenti(chiave);
+    
+    assertEquals(true, listaDocumenti.isEmpty());
+  }
 }

@@ -26,88 +26,88 @@ import dao.ConvenzioneDaoImpl;
 
 public class TestRichiestaConvenzione {
 
-	/** Test_RichiestConvenzione // Descrizione valida
-	 * 
-	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
-	 * */
+  /** Test_RichiestConvenzione // Descrizione valida
+   * 
+   * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
+   * */
 
-	@Test
-	public void testRichiestaConvenzioneDescrizioneValida() {
+  @Test
+  public void testRichiestaConvenzioneDescrizioneValida() {
 
-		Convenzione convenzione = new Convenzione();
-		ConvenzioneDaoImpl convenzioneDAO = new ConvenzioneDaoImpl();
+    Convenzione convenzione = new Convenzione();
+    ConvenzioneDaoImpl convenzioneDAO = new ConvenzioneDaoImpl();
 
-		/* I dati nel sistema vengono presi dalla sessione e dal db */
-		convenzione.setData("2018-01-01");
-		convenzione.setStato("in attesa");
-		convenzione.setNomeFile("Test Nome File");
+    /* I dati nel sistema vengono presi dalla sessione e dal db */
+    convenzione.setData("2018-01-01");
+    convenzione.setStato("in attesa");
+    convenzione.setNomeFile("Test Nome File");
 
-		/* Cosa viene effettivamente richiesto durante la richiesta di conv da parte dell'utente*/
-		convenzione.setTutorAziendale("Simone Lucillo");
-		convenzione.setDescrizione("Sviluppo App Android e iOS");
-		convenzione.setNumPosti(20);
+    /* Cosa viene effettivamente richiesto durante la richiesta di conv da parte dell'utente*/
+    convenzione.setTutorAziendale("Simone Lucillo");
+    convenzione.setDescrizione("Sviluppo App Android e iOS");
+    convenzione.setNumPosti(20);
 
-		String email= "grusso@unisa.it";
-		String piva= "000111232334";
+    String email= "grusso@unisa.it";
+    String piva= "000111232334";
 
 
-		assertEquals(true, convenzioneDAO.invioRichiestaConvenzione(convenzione, email, piva));
+    assertEquals(true, convenzioneDAO.invioRichiestaConvenzione(convenzione, email, piva));
 
-	}
+  }
 
-	/** Test_RichiestConvenzione // Descrizione = null;
-	 * 
-	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
-	 * */
+  /** Test_RichiestConvenzione // Descrizione = null;
+   * 
+   * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
+   * */
 
-	@Test
-	public void testRichiestaConvenzioneDescrizioneNull() {
+  @Test
+  public void testRichiestaConvenzioneDescrizioneNull() {
 
-		Convenzione convenzione = new Convenzione();
-		ConvenzioneDaoImpl convenzioneDAO = new ConvenzioneDaoImpl();
+    Convenzione convenzione = new Convenzione();
+    ConvenzioneDaoImpl convenzioneDAO = new ConvenzioneDaoImpl();
 
-		/* I dati nel sistema vengono presi dalla sessione e dal db */
-		convenzione.setData("2018-01-01");
-		convenzione.setStato("in attesa");
-		convenzione.setNomeFile("Test Nome File");
+    /* I dati nel sistema vengono presi dalla sessione e dal db */
+    convenzione.setData("2018-01-01");
+    convenzione.setStato("in attesa");
+    convenzione.setNomeFile("Test Nome File");
 
-		/* Cosa viene effettivamente richiesto durante la richiesta di conv da parte dell'utente*/
-		convenzione.setTutorAziendale("Simone Lucillo");
-		convenzione.setDescrizione(null);
-		convenzione.setNumPosti(20);
+    /* Cosa viene effettivamente richiesto durante la richiesta di conv da parte dell'utente*/
+    convenzione.setTutorAziendale("Simone Lucillo");
+    convenzione.setDescrizione(null);
+    convenzione.setNumPosti(20);
 
-		String email= "grusso@unisa.it";
-		String piva= "000111232334";
+    String email= "grusso@unisa.it";
+    String piva= "000111232334";
 
-		assertEquals(false, convenzioneDAO.invioRichiestaConvenzione(convenzione, email, piva));
+    assertEquals(false, convenzioneDAO.invioRichiestaConvenzione(convenzione, email, piva));
 
-	}
+  }
 
-	/** Test_RichiestConvenzione // Descrizione = "" (Stringa vuota)
-	 * 
-	 * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
-	 * */
+  /** Test_RichiestConvenzione // Descrizione = "" (Stringa vuota)
+   * 
+   * @author Luca Lamberti, Simone Torluccio, Francesco D'Auria
+   * */
 
-	@Test
-	public void testRichiestaConvenzioneDescrizioneStringaVuota() {
+  @Test
+  public void testRichiestaConvenzioneDescrizioneStringaVuota() {
 
-		Convenzione convenzione = new Convenzione();
-		ConvenzioneDaoImpl convenzioneDAO = new ConvenzioneDaoImpl();
+    Convenzione convenzione = new Convenzione();
+    ConvenzioneDaoImpl convenzioneDAO = new ConvenzioneDaoImpl();
 
-		/* I dati nel sistema vengono presi dalla sessione e dal db */
-		convenzione.setData("2018-01-01");
-		convenzione.setStato("in attesa");
-		convenzione.setNomeFile("Test Nome File");
+    /* I dati nel sistema vengono presi dalla sessione e dal db */
+    convenzione.setData("2018-01-01");
+    convenzione.setStato("in attesa");
+    convenzione.setNomeFile("Test Nome File");
 
-		/* Cosa viene effettivamente richiesto durante la richiesta di conv da parte dell'utente*/
-		convenzione.setTutorAziendale("Simone Lucillo");
-		convenzione.setDescrizione("");
-		convenzione.setNumPosti(20);
+    /* Cosa viene effettivamente richiesto durante la richiesta di conv da parte dell'utente*/
+    convenzione.setTutorAziendale("Simone Lucillo");
+    convenzione.setDescrizione("");
+    convenzione.setNumPosti(20);
 
-		String email= "grusso@unisa.it";
-		String piva= "000111232334";
+    String email= "grusso@unisa.it";
+    String piva= "000111232334";
 
-		assertEquals(false, convenzioneDAO.invioRichiestaConvenzione(convenzione, email, piva));
+    assertEquals(false, convenzioneDAO.invioRichiestaConvenzione(convenzione, email, piva));
 
-	}
+  }
 }
