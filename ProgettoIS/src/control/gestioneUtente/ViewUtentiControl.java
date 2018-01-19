@@ -38,8 +38,8 @@ public class ViewUtentiControl extends HttpServlet {
   }
 
   /**
-   * Chiama due metodi dao per ricavare la lista completa
-   * di tutti gli studenti e aziende registrate al sistema
+   * Chiama due metodi dao per ricavare la lista completa.
+   * di tutti gli studenti e aziende registrate al sistema.
    * 
    * @author: Mario Procida
    */
@@ -47,11 +47,11 @@ public class ViewUtentiControl extends HttpServlet {
     
     PrintWriter out = response.getWriter();
     
-    AziendaDaoInterface aziendaDAO = new AziendaDaoImpl();
-    StudenteDaoInterface studenteDAO = new StudenteDaoImpl();
+    AziendaDaoInterface aziendaDao = new AziendaDaoImpl();
+    StudenteDaoInterface studenteDao = new StudenteDaoImpl();
     
-    ArrayList<Azienda> aziende = aziendaDAO.getAziende();
-    ArrayList<Studente> studenti = studenteDAO.getStudenti();
+    ArrayList<Azienda> aziende = aziendaDao.getAziende();
+    ArrayList<Studente> studenti = studenteDao.getStudenti();
     
     out.println("Numero aziende =" + aziende.size());
     

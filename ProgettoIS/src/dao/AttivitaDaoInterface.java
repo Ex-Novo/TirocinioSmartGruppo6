@@ -1,13 +1,14 @@
 package dao;
 
-import java.util.ArrayList;
-
 import bean.Attivita;
 
+import java.util.ArrayList;
+
+
 public interface AttivitaDaoInterface {
-	
-	public boolean inserisciAttivita(Attivita a);
-	
-	public ArrayList<Attivita> getAttivitaByIdRegistro(int idRegistro);
+  
+  public boolean inserisciAttivita(Attivita a);
+  
+  public ArrayList<Attivita> getAttivitaByIdRegistro(int idRegistro);
 
 }
