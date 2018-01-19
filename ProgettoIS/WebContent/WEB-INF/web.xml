@@ -1,86 +1,163 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
   <display-name>ProgettoIS</display-name>
+  
+  <!-- Mapping gestione dashboard -->
   <servlet>
     <servlet-name>RegistrazioneControl</servlet-name>
-    <servlet-class>control.RegistrazioneControl</servlet-class>
+    <servlet-class>control.gestioneDashboard.RegistrazioneControl</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>LoginControl</servlet-name>
-    <servlet-class>control.LoginControl</servlet-class>
+    <servlet-class>control.gestioneDashboard.LoginControl</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>LogoutControl</servlet-name>
-    <servlet-class>control.LogoutControl</servlet-class>
+    <servlet-class>control.gestioneDashboard.LogoutControl</servlet-class>
   </servlet>
-  <servlet>
-    <servlet-name>ViewProfileControl</servlet-name>
-    <servlet-class>control.ViewProfileControl</servlet-class>
-  </servlet>
+  
+   <servlet-mapping>
+    <servlet-name>RegistrazioneControl</servlet-name>
+    <url-pattern>/registration</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>LoginControl</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  
+   <servlet-mapping>
+    <servlet-name>LogoutControl</servlet-name>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  
+  <!-- *********************** -->
+  
+  <!-- Mapping gestione utente -->
+  
   <servlet>
     <servlet-name>AziendeViewControl</servlet-name>
-    <servlet-class>control.AziendeViewControl</servlet-class>
+    <servlet-class>control.gestioneUtente.AziendeViewControl</servlet-class>
   </servlet>
-  <servlet>
-    <servlet-name>ViewListaRichiesteControl</servlet-name>
-    <servlet-class>control.ViewListaRichiesteControl</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>CheckConvenzione</servlet-name>
-    <servlet-class>util.CheckConvenzione</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>CheckTirocinio</servlet-name>
-    <servlet-class>util.CheckTirocinio</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>CheckValutazione</servlet-name>
-    <servlet-class>util.CheckValutazione</servlet-class>
-  </servlet>
-  <servlet>
+  
+   <servlet>
     <servlet-name>DetailsAziendaControl</servlet-name>
-    <servlet-class>control.DetailsAziendaControl</servlet-class>
+    <servlet-class>control.gestioneUtente.DetailsAziendaControl</servlet-class>
   </servlet>
-  <servlet>
-    <servlet-name>DocumentsViewControl</servlet-name>
-    <servlet-class>control.DocumentsViewControl</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>UploadControl</servlet-name>
-    <servlet-class>control.UploadControl</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>ControlloEmailAzienda</servlet-name>
-    <servlet-class>control.ControlloEmailAzienda</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>ControlloEmailStudente</servlet-name>
-    <servlet-class>control.ControlloEmailStudente</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>ControlloMatricolaStudente</servlet-name>
-    <servlet-class>control.ControlloMatricolaStudente</servlet-class>
-  </servlet>
-  <servlet>
+  
+   <servlet>
     <servlet-name>TirocinantiViewControl</servlet-name>
-    <servlet-class>control.TirocinantiViewControl</servlet-class>
+    <servlet-class>control.gestioneUtente.TirocinantiViewControl</servlet-class>
   </servlet>
-  <servlet>
-    <servlet-name>ControlloP_IvaAzienda</servlet-name>
-    <servlet-class>control.ControlloP_IvaAzienda</servlet-class>
-  </servlet>
+  
   <servlet>
     <servlet-name>ViewUtentiControl</servlet-name>
-    <servlet-class>control.ViewUtentiControl</servlet-class>
+    <servlet-class>control.gestioneUtente.ViewUtentiControl</servlet-class>
   </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>AziendeViewControl</servlet-name>
+    <url-pattern>/aziende</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>DetailsAziendaControl</servlet-name>
+    <url-pattern>/detailsAz</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>TirocinantiViewControl</servlet-name>
+    <url-pattern>/tirocinanti</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>ViewUtentiControl</servlet-name>
+    <url-pattern>/utenti</url-pattern>
+  </servlet-mapping>
+  
+  <!-- *********************** -->
+  
+  <!-- Mapping gestione Account -->
+  <servlet>
+    <servlet-name>ViewProfileControl</servlet-name>
+    <servlet-class>control.gestioneAccount.ViewProfileControl</servlet-class>
+  </servlet>
+  
+   <servlet-mapping>
+    <servlet-name>ViewProfileControl</servlet-name>
+    <url-pattern>/profile</url-pattern>
+  </servlet-mapping>
+  
+  <!-- *********************** -->
+  
+  <!-- Mapping gestione Documenti -->
+  <servlet>
+    <servlet-name>DocumentsViewControl</servlet-name>
+    <servlet-class>control.gestioneDocumenti.DocumentsViewControl</servlet-class>
+  </servlet>
+  
+   <servlet>
+    <servlet-name>UploadControl</servlet-name>
+    <servlet-class>control.gestioneDocumenti.UploadControl</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>DownloadControl</servlet-name>
+    <servlet-class>control.gestioneDocumenti.DownloadControl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>DocumentsViewControl</servlet-name>
+    <url-pattern>/documents</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>UploadControl</servlet-name>
+    <url-pattern>/upload</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>DownloadControl</servlet-name>
+    <url-pattern>/download</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!-- *********************** -->
+  
+  <!-- Mapping gestione Tirocinio -->
+  
+  <servlet>
+    <servlet-name>ApprovaConvenzioneControl</servlet-name>
+    <servlet-class>control.gestioneTirocinio.ApprovaConvenzioneControl</servlet-class>
+  </servlet>
+   <servlet>
+    <servlet-name>ApprovaTirocinioControl</servlet-name>
+    <servlet-class>control.gestioneTirocinio.ApprovaTirocinioControl</servlet-class>
+  </servlet>
+  
   <servlet>
     <servlet-name>RichiestaConvenzioneControl</servlet-name>
-    <servlet-class>control.RichiestaConvenzioneControl</servlet-class>
+    <servlet-class>control.gestioneTirocinio.RichiestaConvenzioneControl</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>RichiestaTirocinioControl</servlet-name>
-    <servlet-class>control.RichiestaTirocinioControl</servlet-class>
+    <servlet-class>control.gestioneTirocinio.RichiestaTirocinioControl</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ViewListaRichiesteControl</servlet-name>
+    <servlet-class>control.gestioneTirocinio.ViewListaRichiesteControl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ApprovaConvenzioneControl</servlet-name>
+    <url-pattern>/apprConv</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>ApprovaTirocinioControl</servlet-name>
+    <url-pattern>/apprTir</url-pattern>
+  </servlet-mapping>
+  
   <servlet-mapping>
     <servlet-name>RichiestaConvenzioneControl</servlet-name>
     <url-pattern>/rConv</url-pattern>
@@ -93,6 +170,89 @@
     <servlet-name>ViewListaRichiesteControl</servlet-name>
     <url-pattern>/richieste</url-pattern>
   </servlet-mapping>
+  
+  <!-- *********************** -->
+  
+  <!-- Mapping gestione feedback -->
+  
+   <servlet>
+    <servlet-name>CompilaRegistroControl</servlet-name>
+    <servlet-class>control.gestioneFeedback.CompilaRegistroControl</servlet-class>
+  </servlet>
+  
+   <servlet>
+    <servlet-name>ConsultazioneRegistroControl</servlet-name>
+    <servlet-class>control.gestioneFeedback.ConsultazioneRegistroControl</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>FeedBackAziendaControl</servlet-name>
+    <servlet-class>control.gestioneFeedback.FeedBackAziendaControl</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>FeedBackStudenteControl</servlet-name>
+    <servlet-class>control.gestioneFeedback.FeedBackStudenteControl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>CompilaRegistroControl</servlet-name>
+    <url-pattern>/compReg</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>ConsultazioneRegistroControl</servlet-name>
+    <url-pattern>/consReg</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>FeedBackAziendaControl</servlet-name>
+    <url-pattern>/feedAz</url-pattern>
+  </servlet-mapping>
+  
+   <servlet-mapping>
+    <servlet-name>FeedBackStudenteControl</servlet-name>
+    <url-pattern>/feedStud</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  <!-- *********************** -->
+  
+  <!-- Mapping util servlets -->
+  <servlet>
+    <servlet-name>CheckConvenzione</servlet-name>
+    <servlet-class>util.CheckConvenzione</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CheckTirocinio</servlet-name>
+    <servlet-class>util.CheckTirocinio</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CheckValutazione</servlet-name>
+    <servlet-class>util.CheckValutazione</servlet-class>
+  </servlet>
+ 
+  
+ 
+  <servlet>
+    <servlet-name>ControlloEmailAzienda</servlet-name>
+    <servlet-class>util.ControlloEmailAzienda</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ControlloEmailStudente</servlet-name>
+    <servlet-class>util.ControlloEmailStudente</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ControlloMatricolaStudente</servlet-name>
+    <servlet-class>util.ControlloMatricolaStudente</servlet-class>
+  </servlet>
+ 
+  <servlet>
+    <servlet-name>ControlloP_IvaAzienda</servlet-name>
+    <servlet-class>util.ControlloP_IvaAzienda</servlet-class>
+  </servlet>
+ 
   <servlet-mapping>
     <servlet-name>CheckConvenzione</servlet-name>
     <url-pattern>/checkConv</url-pattern>
@@ -105,18 +265,12 @@
     <servlet-name>CheckValutazione</servlet-name>
     <url-pattern>/checkVal</url-pattern>
   </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>ViewUtentiControl</servlet-name>
-    <url-pattern>/utenti</url-pattern>
-  </servlet-mapping>
+  
   <servlet-mapping>
     <servlet-name>ControlloP_IvaAzienda</servlet-name>
     <url-pattern>/checkpiva</url-pattern>
   </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>TirocinantiViewControl</servlet-name>
-    <url-pattern>/tirocinanti</url-pattern>
-  </servlet-mapping>
+  
   <servlet-mapping>
     <servlet-name>ControlloEmailStudente</servlet-name>
     <url-pattern>/checkEmailStudente</url-pattern>
@@ -129,30 +283,9 @@
     <servlet-name>ControlloEmailAzienda</servlet-name>
     <url-pattern>/checkEmailAzienda</url-pattern>
   </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>DocumentsViewControl</servlet-name>
-    <url-pattern>/documents</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>DetailsAziendaControl</servlet-name>
-    <url-pattern>/detailsAz</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>RegistrazioneControl</servlet-name>
-    <url-pattern>/registration</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>LogoutControl</servlet-name>
-    <url-pattern>/logout</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>ViewProfileControl</servlet-name>
-    <url-pattern>/profile</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>AziendeViewControl</servlet-name>
-    <url-pattern>/aziende</url-pattern>
-  </servlet-mapping>
+  
+  <!-- *********************** -->
+  
   <context-param>
     <param-name>fsroot</param-name>
     <param-value>C:\TirocinioSmartFiles</param-value>

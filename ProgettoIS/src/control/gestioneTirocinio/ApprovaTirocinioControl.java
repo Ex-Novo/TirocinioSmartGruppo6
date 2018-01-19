@@ -1,4 +1,4 @@
-package control;
+package control.gestioneTirocinio;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,24 +9,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.Convenzione;
+import bean.RichiestaTirocinio;
 import bean.Tirocinio;
-import dao.ConvenzioneDaoImpl;
-import dao.ConvenzioneDaoInterface;
+import dao.RegistroDaoImpl;
+import dao.RegistroDaoInterface;
+import dao.RichiestaTirocinioDaoImpl;
+import dao.RichiestaTirocinioDaoInterface;
 import dao.TirocinioDaoImpl;
 import dao.TirocinioDaoInterface;
 
 /**
- * Servlet implementation class ApprovaConvenzioneControl
+ * Servlet implementation class ApprovaTirocinioControl
  */
-@WebServlet("/ApprovaConvenzioneControl")
-public class ApprovaConvenzioneControl extends HttpServlet {
+@WebServlet("/ApprovaTirocinioControl")
+public class ApprovaTirocinioControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ApprovaConvenzioneControl() {
+    public ApprovaTirocinioControl() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,44 +37,44 @@ public class ApprovaConvenzioneControl extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		doPost(request, response);
+		doPost(request,response);
 	}
 
 	/**
-	 * Il metodo richiama i metodi dao per cambiare lo stato della convenzione nel database a seconda del tipo (accettata o rifiutata)
+	 * Il metodo richiama i metodi dao per cambiare lo stato della richiesta di tirocinio nel database a seconda del tipo (accettata o rifiutata)
 	 * 
 	 * @author Mario Procida
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String tipo = request.getParameter("tipo");
-		String piva = request.getParameter("piva");
+		String matricola = request.getParameter("matricola");
 		
-		ConvenzioneDaoInterface convDao = new ConvenzioneDaoImpl();
-		Convenzione conv = convDao.getConvenzione(piva);
+		RichiestaTirocinioDaoInterface rTirDao = new RichiestaTirocinioDaoImpl();
+		
+		//Recupero idTirocinio della richiesta
+		RichiestaTirocinio rTir = rTirDao.getRichTirocinio(matricola);
+		int idTirocinio = rTir.getIdTirocinio();
+		
+		//Recupero partita iva azienda rispetto al tirocinio offerto
+		TirocinioDaoInterface tirDao = new TirocinioDaoImpl();
+		Tirocinio tir = tirDao.getPivaByIdTirocinio(idTirocinio);
+		String piva = tir.getP_iva();
+		
+		RegistroDaoInterface regDao = new RegistroDaoImpl();
 		
 		PrintWriter out = response.getWriter();
 		
 		// L'utente didattica ha premuto sul pulsate accetta e la convenzione viene approvata
 		if(tipo.equals("accetta")) {
 			
-			convDao.approvazioneRichiestaConvenzione(piva);
-			
-			TirocinioDaoInterface tirDao = new TirocinioDaoImpl();
-			
-			Tirocinio tirocinio = new Tirocinio();
-			tirocinio.setDescrizione(conv.getDescrizione());
-			tirocinio.setNumPosti(conv.getNumPosti());
-			tirocinio.setP_iva(piva);
-			
-			//crea il tirocinio nel database e in caso di successo ritorna true nella variabile "result"
-			boolean result = tirDao.creaTirocinio(tirocinio);
+			boolean result = rTirDao.approvazioneRichiestaTirocinio(matricola); //approvazione richiesta
+		    result = regDao.inserisciRegistro(matricola, piva); //creazione registro studente
 			
 			
 			if(result) {
 				out.println("<script>");
-				out.println("alert('Richiesta convenzione approvata')");
+				out.println("alert('Richiesta tirocinio approvata')");
 				out.println("window.open('index.jsp','_self')");
 				out.println("</script>");
 			}else {
@@ -87,11 +89,11 @@ public class ApprovaConvenzioneControl extends HttpServlet {
 		
 		if(tipo.equals("rifiuta")) {
 			
-			boolean result = convDao.rifiutoRichiestaConvenzione(piva);
+			boolean result = rTirDao.rifiutoRichiestaTirocinio(matricola);
 			
 			if(result) {
 				out.println("<script>");
-				out.println("alert('Richiesta convenzione rifiutata')");
+				out.println("alert('Richiesta tirocinio rifiutata')");
 				out.println("window.open('index.jsp','_self')");
 				out.println("</script>");
 			}else {

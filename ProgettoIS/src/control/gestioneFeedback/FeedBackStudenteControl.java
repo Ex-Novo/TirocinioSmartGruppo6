@@ -1,4 +1,4 @@
-package control;
+package control.gestioneFeedback;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,30 +13,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import bean.Azienda;
 import bean.Feedback;
-import bean.RichiestaTirocinio;
 import bean.Tirocinio;
-import dao.AziendaDaoImpl;
-import dao.AziendaDaoInterface;
 import dao.FeedBackDaoImpl;
 import dao.FeedBackDaoInterface;
-import dao.RichiestaTirocinioDaoImpl;
-import dao.RichiestaTirocinioDaoInterface;
 import dao.TirocinioDaoImpl;
 import dao.TirocinioDaoInterface;
 
 /**
- * Servlet implementation class FeedBackStudenteControl
+ * Servlet implementation class FeedBackAziendaControl
  */
-@WebServlet("/FeedBackAziendaControl")
-public class FeedBackAziendaControl extends HttpServlet {
+@WebServlet("/FeedBackStudenteControl")
+public class FeedBackStudenteControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FeedBackAziendaControl() {
+    public FeedBackStudenteControl() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -45,31 +39,26 @@ public class FeedBackAziendaControl extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request,response);
+		// TODO Auto-generated method stub
+		doPost(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * Il metodo prende le valutazioni dell'utente e fa la media. Infine chiama i metodi dao per salvare il feedback nel database.
+	 * @author Mario Procida, Luca Lamberti
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		HttpSession session = request.getSession();
 		
-		String matricola = (String) session.getAttribute("matricola");
+		String piva = (String) session.getAttribute("piva");
 		String tipo = request.getParameter("tipo");
 		
 		if(tipo.equals("sendValutazione")) {
 			
-			
-			RichiestaTirocinioDaoInterface rTirDao = new RichiestaTirocinioDaoImpl();
-			RichiestaTirocinio rTir = rTirDao.getRichTirocinio(matricola);
-			
-			int idTirocinio = rTir.getIdTirocinio();
-			
-			TirocinioDaoInterface tirDao = new TirocinioDaoImpl();
-			Tirocinio t = tirDao.getPivaByIdTirocinio(idTirocinio);
-			
-			session.setAttribute("pivaAzienda", t.getP_iva());
-			session.setAttribute("tipoVal", "fbAzienda");
+			String matricola = request.getParameter("matricola");
+			session.setAttribute("matricolaStudente", matricola);
+			session.setAttribute("tipoVal", "fbStudente");
 			
 			getServletConfig().getServletContext().getRequestDispatcher("/checkVal").forward(request, response);
 		}
@@ -79,33 +68,30 @@ public class FeedBackAziendaControl extends HttpServlet {
 			double rating1 = Double.parseDouble(request.getParameter("rating1"));
 			double rating2 = Double.parseDouble(request.getParameter("rating2"));
 			double rating3 = Double.parseDouble(request.getParameter("rating3"));
-			double rating4 = Double.parseDouble(request.getParameter("rating4"));
-			double rating5 = Double.parseDouble(request.getParameter("rating5"));
-			double rating6 = Double.parseDouble(request.getParameter("rating6"));
 			
-			double finalRating = (rating1 + rating2 + rating3 + rating4 + rating5 + rating6) / 6; //calcolo media valutazione
+			double finalRating = (rating1 + rating2 + rating3) / 3; //calcolo media valutazione
 			
-			RichiestaTirocinioDaoInterface rTirDao = new RichiestaTirocinioDaoImpl();
-			RichiestaTirocinio rTir = rTirDao.getRichTirocinio(matricola);
+			TirocinioDaoInterface tirDao = new TirocinioDaoImpl();
+			Tirocinio tir = tirDao.getDettagliAziendeConvenzionate(piva);
 			
 			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 			Date date = new Date();
 			
 			Feedback fb = new Feedback();
-			fb.setMatricola(matricola);
-			fb.setPiva((String)session.getAttribute("pivaAzienda"));
-			fb.setValutazioneAzienda(finalRating);
-			fb.setIdTirocinio(rTir.getIdTirocinio());
+			fb.setPiva(piva);
+			fb.setMatricola((String)session.getAttribute("matricolaStudente"));
+			fb.setValutazioneStudente(finalRating);
+			fb.setIdTirocinio(tir.getIdTirocinio());
 			fb.setData(dateFormat.format(date));
 			
 			FeedBackDaoInterface fbDao = new FeedBackDaoImpl();
-			boolean result = fbDao.inviaFeedBackAzienda(fb);
+			boolean result = fbDao.inviaFeedBackStudente(fb);
 			
 			PrintWriter out = response.getWriter();
 			//se la query è andata a buon fine
 			if(result){
 					
-				session.removeAttribute("pivaAzienda");
+				session.removeAttribute("matricolaStudente");
 				session.setAttribute("canFeed", false);
 				out.println("<script>");
 				out.println("alert('Valutazione inviata con successo')");
@@ -122,6 +108,8 @@ public class FeedBackAziendaControl extends HttpServlet {
 				
 			}
 		}
+		
+		
 	}
 
 }

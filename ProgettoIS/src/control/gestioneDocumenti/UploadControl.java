@@ -1,4 +1,4 @@
-package control;
+package control.gestioneDocumenti;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package control;
+package control.gestioneTirocinio;
 
 import java.io.IOException;
 import java.io.PrintWriter;

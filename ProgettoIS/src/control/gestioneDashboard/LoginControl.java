@@ -1,4 +1,4 @@
-package control;
+package control.gestioneDashboard;
 
 import java.io.IOException;
 import java.io.PrintWriter;
