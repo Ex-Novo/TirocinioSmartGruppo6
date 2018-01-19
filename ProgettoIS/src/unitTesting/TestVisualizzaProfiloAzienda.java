@@ -57,10 +57,10 @@ public class TestVisualizzaProfiloAzienda {
 
 	@Test
 	public void testGetAziendaByPivaEsistente () {
-		String piva =  "0983732387";
+		String piva =  "2586";
 		AziendaDaoImpl aziendaDao = new AziendaDaoImpl ();
 
-		assertEquals (piva, aziendaDao.getAziendaByEmail(piva).getP_iva());
+		assertEquals(piva, aziendaDao.getAziendaBypiva(piva).getP_iva());
 	}
 
 
