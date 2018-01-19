@@ -4,7 +4,7 @@ import bean.Azienda;
 import bean.Convenzione;
 import bean.RichiestaTirocinio;
 import bean.Studente;
-
+/*
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -13,13 +13,16 @@ import com.itextpdf.text.Font.FontFamily;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.pdf.PdfWriter;*/
 
 import dao.AziendaDaoImpl;
 import dao.AziendaDaoInterface;
 import dao.StudenteDaoImpl;
 import dao.StudenteDaoInterface;
+import util.PdfCreator;
+import util.PdfCreatorAdapter;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -169,7 +172,20 @@ public class DownloadControl extends HttpServlet {
           + azienda.getNomeAzienda() + ".pdf");
        
       OutputStream out = response.getOutputStream();
-       
+      
+      PdfCreatorAdapter pdfCreator = new PdfCreator();
+      
+      ByteArrayOutputStream baos = pdfCreator.creaPdfConv(azienda.getNomeAzienda(), azienda.getP_iva(),
+            conv.getDescrizione(), "" + conv.getNumPosti(), conv.getData(), logo);
+      
+      response.setContentLength(baos.size());
+      
+      
+      baos.writeTo(out);
+      out.flush();
+      out.close();
+      
+      /* 
       //font da utilizzare
       Font bfBold18 = new Font(FontFamily.TIMES_ROMAN, 18, Font.BOLD,
           new BaseColor(0, 0, 0)); 
@@ -231,9 +247,9 @@ public class DownloadControl extends HttpServlet {
         e.printStackTrace();
       }
        
-      
+      */
     }
-     
+    
     //per generare il pdf dalle informazioni della form di richiesta convenzione
     if (tipo.equals("firmaTirocinio")) {
        
@@ -251,7 +267,19 @@ public class DownloadControl extends HttpServlet {
           + studente.getNome() + studente.getCognome() + ".pdf");
        
       OutputStream out = response.getOutputStream();
-       
+      
+      PdfCreatorAdapter pdfCreator = new PdfCreator();
+      
+      ByteArrayOutputStream baos = pdfCreator.creaPdfTir(studente.getNome(), studente.getCognome(),
+          studente.getMatricola(), nomeAzienda,rTirocinio.getNomeTutorAccademico(), rTirocinio.getData(), logo);
+      
+      response.setContentLength(baos.size());
+      
+      baos.writeTo(out);
+      out.flush();
+      out.close();
+      
+      /* 
       //font da utilizzare
       Font bfBold18 = new Font(FontFamily.TIMES_ROMAN, 18, Font.BOLD,
             new BaseColor(0, 0, 0));
@@ -310,7 +338,7 @@ public class DownloadControl extends HttpServlet {
         // TODO Auto-generated catch block
         e.printStackTrace();
       }
-       
+       */
       
     }
 
