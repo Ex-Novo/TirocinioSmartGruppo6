@@ -87,9 +87,9 @@ autori: Mario Procida
 										<input type="radio" name="tipo" value="Azienda">Azienda 
 										<input type="radio" name="tipo" value="Didattica">Didattica/Direttore
 										<br> <br> <label name="email">Email</label>
-										<input type="email" name="email" required /> 
+										<input type="email" name="email"maxlength="20"  required /> 
 											<label name="password">Password</label>
-										<input type="password" name="password" required /> 
+										<input type="password" name="password" maxlength="20" required /> 
 										<input type="submit" value="Login" />
 									</form>
 								</fieldset>
@@ -106,24 +106,24 @@ autori: Mario Procida
 
 									<form action="registration"onSubmit="return regValidation(this);" method="post" id="A"style="position: relative">
 										<input type="hidden" name="tipo" value="Studente" /> 
-										<input  type="nome" name="nome" placeholder="Nome" pattern="^([a-zA-Z ']*)$" title="Il nome può contenere solo lettere" required autofocus />
-										<input type="cognome" name="cognome" placeholder="Cognome" pattern="^([a-zA-Z ']*)$" title="Il cognome può contenere solo lettere" required /> 
-										<input type="email" name="email" placeholder="Email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" title="Formato email rossi@mail.com" onblur="checkEmailStudente(this.value)" required /> 
+										<input  type="nome" name="nome" placeholder="Nome" pattern="^([a-zA-Z ']*)$" title="Il nome può contenere solo lettere" maxlength="20" required autofocus />
+										<input type="cognome" name="cognome" placeholder="Cognome" pattern="^([a-zA-Z ']*)$" title="Il cognome può contenere solo lettere" maxlength="20" required /> 
+										<input type="email" name="email" placeholder="Email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" title="Formato email rossi@mail.com" maxlength="20" onblur="checkEmailStudente(this.value)" required /> 
 										<input type="password" name="password" placeholder="Password" maxlength="15" minlength="4" required /> 
 										<input type="password" name="confermaPsw" placeholder="Conferma Password" required /> 
-										<input type="nome" name="codiceFiscale" placeholder="Codice Fiscale" pattern="[A-Za-z0-9]+" required /> 
-										<input type="matricola" name="matricola" placeholder="Matricola" pattern="^[0-9]+$" title="La matricola può contenere solo numeri" onblur="checkMatricolaStudente(this.value)" required /> 
+										<input type="nome" name="codiceFiscale" placeholder="Codice Fiscale" maxlength="20" pattern="[A-Za-z0-9]+" required /> 
+										<input type="matricola" name="matricola" placeholder="Matricola" maxlength="15" pattern="^[0-9]+$" title="La matricola può contenere solo numeri" onblur="checkMatricolaStudente(this.value)" required /> 
 										<input type="date" name="dataNascita" required /> 
-										<input type="nome" name="luogoNascita"placeholder="Luogo di Nascita" pattern="^([a-zA-Z ']*)$" title="Il luogo può contenere solo lettere" required /> 
+										<input type="nome" name="luogoNascita"placeholder="Luogo di Nascita" maxlength="20" pattern="^([a-zA-Z ']*)$" title="Il luogo può contenere solo lettere" required /> 
 										<input type="submit" value="Registrati" />
 									</form>
 									<form action="registration" onSubmit="return regValidation(this);" method="post" id="B" style="visibility: hidden; position: absolute; top: -1px">
 										<input type="hidden" name="tipo" value="Azienda" /> 
-										<input type="nome" name="nomeAzienda" placeholder="Nome Azienda" pattern="^([a-zA-Z ']*)$" title="Il nome può contenere solo lettere" required autofocus />
-										<input type="sede" name="sede" placeholder="Sede"pattern="[a-zA-Z\\s']+"title="La sede può contenere solo lettere" required /> 
-										<input type="email" name="email" placeholder="Email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" title="Formato email rossi@mail.com" onblur="checkEmailAzienda(this.value)" required /> 
-										<input type="piva" name="partitaIva" placeholder="Partita Iva" pattern="^[0-9]+$" title="Solo numeri consentiti"onblur="checkP_IvaAzienda(this.value)" required /> 
-										<input type="telefono" name="telefono" placeholder="Numero di telefono" pattern="^[0-9]+$" title="Solo numeri consentiti" required /> 
+										<input type="nome" name="nomeAzienda" placeholder="Nome Azienda" maxlength="20" pattern="^([a-zA-Z ']*)$" title="Il nome può contenere solo lettere" required autofocus />
+										<input type="sede" name="sede" placeholder="Sede" pattern="[a-zA-Z\\s']+" maxlength="20" title="La sede può contenere solo lettere" required /> 
+										<input type="email" name="email" placeholder="Email" maxlength="20" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" title="Formato email rossi@mail.com" onblur="checkEmailAzienda(this.value)" required /> 
+										<input type="piva" name="partitaIva" placeholder="Partita Iva" maxlength="20" pattern="^[0-9]+$" title="Solo numeri consentiti"onblur="checkP_IvaAzienda(this.value)" required /> 
+										<input type="telefono" name="telefono" placeholder="Numero di telefono" maxlength="20" pattern="^[0-9]+$" title="Solo numeri consentiti" required /> 
 										<input type="password" name="password" placeholder="Password" maxlength="15" minlength="4" required /> 
 										<input type="password" name="confermaPsw" placeholder="Conferma Password" required /> 
 										<input type="submit" value="Registrati" />

@@ -40,13 +40,13 @@ autori: Mario Procida
 						<h4>Richiesta Convenzione</h4>
 						
 						<label>Tutor Aziendale</label> <br>
-						<input type="text" name="tutorAziendale" pattern="^([a-zA-Z ']*)$" required /> <br>
+						<input type="text" name="tutorAziendale" maxlength="20" pattern="^([a-zA-Z ']*)$" required /> <br>
 					
 						<label>Numero posti offerti</label> <br>
-						<input type="number" min="0" name="numPosti" required /> <br>
+						<input type="number" min="0" max="150" maxlength="3" name="numPosti" required /> <br>
 							
 						<label>Descrizione tirocinio</label> <br>
-						<textarea type="text" name="descrizione" cols="30" rows="10"></textarea>
+						<textarea type="text" name="descrizione" maxlength="200" cols="30" rows="10"></textarea>
 						<br>
 						
 						<input id="submit" type="submit" name="submit" class="btn btn-info" value="Conferma form" />
