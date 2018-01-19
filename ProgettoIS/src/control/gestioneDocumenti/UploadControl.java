@@ -29,92 +29,96 @@ import dao.StudenteDaoInterface;
 /*
  * Dimensioni file da caricare
  */
-@MultipartConfig( fileSizeThreshold = 1024 * 1024 * 2, maxFileSize = 1024 * 1024 * 10, maxRequestSize = 1024 * 1024	 * 50 )
+
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2,
+    maxFileSize = 1024 * 1024 * 10, maxRequestSize = 1024 * 1024  * 50)
 public class UploadControl extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+  private static final long serialVersionUID = 1L;
        
     
-    public UploadControl() {
-        super();
+  public UploadControl() {
+        super();        
+  }
+
+  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    
+    doPost(request,response);
+  }
+
+  /**
+   * Il metodo prende in input il nome del file da caricare
+   * e il file stesso e lo carica nella directory associata all'utente
+   * tramite il suo unique ID
+   * preso dalla sessione. Inoltre salva alcune info del file caricato nel DB.
+   * @author Mario Procida
+   */
+  
+  protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    
+    
+    HttpSession session = request.getSession();
+    String email = (String) session.getAttribute("email");
+    String tipoUtente = (String) session.getAttribute("tipoUtente");
+    String uniqueID = (String) session.getAttribute("uniqueID");
+    
+    String rootPath = getServletContext().getInitParameter("fsroot");
+    String userPath = rootPath + File.separator + uniqueID;
+    String fileName = null;
+    
+    
+    
+    for (Part part : request.getParts()) {
+      fileName = extractFileName(part);
+      if (fileName != null && !fileName.equals("")) {
+        part.write(userPath + File.separator + fileName);
         
+        /* per far comparire il tasto di conferma richiesta
+        nel caso in cui l'utente carica il documento firmato*/
+        
+        session.setAttribute("fileUploaded", true);
+        PrintWriter out = response.getWriter();
+        out.println("<script>");
+        out.println("alert('File caricato')");
+        out.println("window.history.back()");
+        out.println("</script>");
+         
+        out.close();
+      }
     }
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		doPost(request,response);
-	}
-
-	/**
-	 * Il metodo prende in input il nome del file da caricare e il file stesso e lo carica nella directory associata all'utente tramite il suo unique ID
-	 * preso dalla sessione. Inoltre salva alcune info del file caricato nel DB.
-	 * @author Mario Procida
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		HttpSession session = request.getSession();
-		String email = (String) session.getAttribute("email");
-		String tipoUtente = (String) session.getAttribute("tipoUtente");
-		String uniqueID = (String) session.getAttribute("uniqueID");
-		
-		String rootPath = getServletContext().getInitParameter("fsroot");
-		String userPath = rootPath + File.separator + uniqueID;
-		String fileName = null;
-		
-		
-		
-		for(Part part : request.getParts()) {
-			fileName = extractFileName(part);
-			if (fileName != null && !fileName.equals("")) {
-				part.write(userPath + File.separator + fileName);
-				
-				session.setAttribute("fileUploaded", true); //per far comparire il tasto di conferma richiesta nel caso in cui l'utente carica il documento firmato
-				
-				PrintWriter out =response.getWriter();
-				out.println("<script>");
-				out.println("alert('File caricato')");
-				out.println("window.history.back()");
-				out.println("</script>");
-				 
-				out.close();
-			}
-		}
-		
-		/*
-		 * Salva le info del documento nel db
-		 */
-		
-		DocumentoDaoInterface dDao = new DocumentoDaoImpl();
-		
-		if(tipoUtente.equals("Studente")) {
-			StudenteDaoInterface sDao = new StudenteDaoImpl();
-			Studente s = sDao.getStudenteByEmail(email);
-			
-			
-			dDao.saveFile(fileName, s.getMatricola(), tipoUtente);
-		}
-		
-		else if (tipoUtente.equals("Azienda")){
-			AziendaDaoInterface aDao = new AziendaDaoImpl();
-			Azienda a = aDao.getAziendaByEmail(email);
-			
-			dDao.saveFile(fileName, a.getP_iva(), tipoUtente);
-		}
-		
-		
-		
-		
-	}
-	
-	private String extractFileName(Part part) {
-		String contentDisp = part.getHeader("content-disposition");
-		String[] items = contentDisp.split(";");
-		for(String s : items) {
-			if(s.trim().startsWith("filename")) {
-				return s.substring(s.indexOf("=") + 2 , s.length() -1);
-			}
-		}
-		return "";
-	}
+    
+    /*
+     * Salva le info del documento nel db
+     */
+    
+    DocumentoDaoInterface dDao = new DocumentoDaoImpl();
+    
+    if (tipoUtente.equals("Studente")) {
+      StudenteDaoInterface sDao = new StudenteDaoImpl();
+      Studente s = sDao.getStudenteByEmail(email);
+      
+      
+      dDao.saveFile(fileName, s.getMatricola(), tipoUtente);
+    } else if (tipoUtente.equals("Azienda")) {
+      AziendaDaoInterface aDao = new AziendaDaoImpl();
+      Azienda a = aDao.getAziendaByEmail(email);
+      
+      dDao.saveFile(fileName, a.getP_iva(), tipoUtente);
+    }
+    
+    
+    
+    
+  }
+  
+  private String extractFileName(Part part) {
+    String contentDisp = part.getHeader("content-disposition");
+    String[] items = contentDisp.split(";");
+    for (String s : items) {
+      if (s.trim().startsWith("filename")) {
+        return s.substring(s.indexOf("=") + 2, s.length() - 1);
+      }
+    }
+    return "";
+  }
 
 }
