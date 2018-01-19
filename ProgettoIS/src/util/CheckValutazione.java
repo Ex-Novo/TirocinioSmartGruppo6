@@ -81,12 +81,17 @@ public class CheckValutazione extends HttpServlet {
 				}
 			}
 			
-			if(!rTir.getStatus().equals("approvata")) {
-				session.setAttribute("canFeed", false);
-				out.println("<script>");
-				out.println("alert('Non hai effettuato un tirocinio. Effettua una richiesta di tirocinio ')");
-				out.println("window.history.back()");
-				out.println("</script>");
+			if(rTir.getStatus()== null){
+				
+				
+					session.setAttribute("canFeed", false);
+					out.println("<script>");
+					out.println("alert('Non hai effettuato un tirocinio. Effettua una richiesta di tirocinio ')");
+					out.println("window.history.back()");
+					out.println("</script>");
+					
+				
+				
 			}
 			
 			if(result) {
