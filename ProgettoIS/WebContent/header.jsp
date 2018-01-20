@@ -108,7 +108,7 @@ autori: Mario Procida
 										<input type="hidden" name="tipo" value="Studente" /> 
 										<input  type="nome" name="nome" placeholder="Nome" pattern="^([a-zA-Z ']*)$" title="Il nome può contenere solo lettere" maxlength="20" required autofocus />
 										<input type="cognome" name="cognome" placeholder="Cognome" pattern="^([a-zA-Z ']*)$" title="Il cognome può contenere solo lettere" maxlength="20" required /> 
-										<input type="email" name="email" placeholder="Email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" title="Formato email rossi@mail.com" maxlength="20" onblur="checkEmailStudente(this.value)" required /> 
+										<input type="email" name="email" placeholder="Email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" title="Formato email rossi@mail.com" maxlength="40" onblur="checkEmailStudente(this.value)" required /> 
 										<input type="password" name="password" placeholder="Password" maxlength="15" minlength="4" required /> 
 										<input type="password" name="confermaPsw" placeholder="Conferma Password" required /> 
 										<input type="nome" name="codiceFiscale" placeholder="Codice Fiscale" maxlength="20" pattern="[A-Za-z0-9]+" required /> 
@@ -121,7 +121,7 @@ autori: Mario Procida
 										<input type="hidden" name="tipo" value="Azienda" /> 
 										<input type="nome" name="nomeAzienda" placeholder="Nome Azienda" maxlength="20" pattern="^([a-zA-Z ']*)$" title="Il nome può contenere solo lettere" required autofocus />
 										<input type="sede" name="sede" placeholder="Sede" pattern="[a-zA-Z\\s']+" maxlength="20" title="La sede può contenere solo lettere" required /> 
-										<input type="email" name="email" placeholder="Email" maxlength="20" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" title="Formato email rossi@mail.com" onblur="checkEmailAzienda(this.value)" required /> 
+										<input type="email" name="email" placeholder="Email" maxlength="40" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" title="Formato email rossi@mail.com" onblur="checkEmailAzienda(this.value)" required /> 
 										<input type="piva" name="partitaIva" placeholder="Partita Iva" maxlength="20" pattern="^[0-9]+$" title="Solo numeri consentiti"onblur="checkP_IvaAzienda(this.value)" required /> 
 										<input type="telefono" name="telefono" placeholder="Numero di telefono" maxlength="20" pattern="^[0-9]+$" title="Solo numeri consentiti" required /> 
 										<input type="password" name="password" placeholder="Password" maxlength="15" minlength="4" required /> 
