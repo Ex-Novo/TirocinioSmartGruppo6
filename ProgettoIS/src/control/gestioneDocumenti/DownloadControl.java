@@ -34,6 +34,7 @@ import javax.servlet.http.HttpSession;
 
 import util.PdfCreator;
 import util.PdfCreatorAdapter;
+import util.PdfCreator;
 
 /**
  * La servlet gestisce i vari tipi di download dei documenti,
@@ -172,7 +173,7 @@ public class DownloadControl extends HttpServlet {
        
       OutputStream out = response.getOutputStream();
       
-      PdfCreatorAdapter pdfCreator = new PdfCreator();
+      PdfCreator pdfCreator = new PdfCreatorAdapter();
       
       ByteArrayOutputStream baos = pdfCreator.creaPdfConv(azienda.getNomeAzienda(), azienda.getP_iva(),
             conv.getDescrizione(), "" + conv.getNumPosti(), conv.getData(), logo);
@@ -267,7 +268,7 @@ public class DownloadControl extends HttpServlet {
        
       OutputStream out = response.getOutputStream();
       
-      PdfCreatorAdapter pdfCreator = new PdfCreator();
+      PdfCreator pdfCreator = new PdfCreatorAdapter();
       
       ByteArrayOutputStream baos = pdfCreator.creaPdfTir(studente.getNome(), studente.getCognome(),
           studente.getMatricola(), nomeAzienda,rTirocinio.getNomeTutorAccademico(), rTirocinio.getData(), logo);

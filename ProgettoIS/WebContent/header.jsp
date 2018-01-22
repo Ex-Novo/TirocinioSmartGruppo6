@@ -87,7 +87,7 @@ autori: Mario Procida
 										<input type="radio" name="tipo" value="Azienda">Azienda 
 										<input type="radio" name="tipo" value="Didattica">Didattica/Direttore
 										<br> <br> <label name="email">Email</label>
-										<input type="email" name="email"maxlength="20"  required /> 
+										<input type="email" name="email"maxlength="40"  required /> 
 											<label name="password">Password</label>
 										<input type="password" name="password" maxlength="20" required /> 
 										<input type="submit" value="Login" />
