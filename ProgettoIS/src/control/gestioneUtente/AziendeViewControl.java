@@ -4,7 +4,6 @@ import bean.Azienda;
 import dao.AziendaDaoImpl;
 import dao.AziendaDaoInterface;
 
-
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;

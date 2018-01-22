@@ -19,8 +19,6 @@ import dao.AziendaDaoImpl;
 import dao.AziendaDaoInterface;
 import dao.StudenteDaoImpl;
 import dao.StudenteDaoInterface;
-import util.PdfCreator;
-import util.PdfCreatorAdapter;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -34,7 +32,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+import util.PdfCreator;
+import util.PdfCreatorAdapter;
 
 /**
  * La servlet gestisce i vari tipi di download dei documenti,

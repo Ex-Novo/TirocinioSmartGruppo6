@@ -7,7 +7,6 @@ import dao.RichiestaTirocinioDaoInterface;
 import dao.StudenteDaoImpl;
 import dao.StudenteDaoInterface;
 
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
@@ -22,8 +21,9 @@ import javax.servlet.http.HttpSession;
 
 
 /**
- * Servlet implementation class RichiestaTirocinioControl
+ * Servlet implementation class RichiestaTirocinioControl.
  */
+
 @WebServlet("/RichiestaTirocinioControl")
 public class RichiestaTirocinioControl extends HttpServlet {
   private static final long serialVersionUID = 1L;
