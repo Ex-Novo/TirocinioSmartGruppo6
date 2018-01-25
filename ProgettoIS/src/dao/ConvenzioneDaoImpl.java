@@ -32,7 +32,8 @@ public class ConvenzioneDaoImpl implements ConvenzioneDaoInterface {
     try {
       
       con = DBConnection.createConnection();
-      String query = "UPDATE convenzione SET stato= 'approvata' WHERE p_iva= ?";
+      String query = "UPDATE convenzione SET stato= 'approvata' "
+          + "WHERE p_iva= ? AND stato='in attesa'";
       preparedStatement = con.prepareStatement(query);
       
       preparedStatement.setString(1, piva);

@@ -85,7 +85,8 @@ public class RichiestaTirocinioDaoImpl implements RichiestaTirocinioDaoInterface
     try {
 
       con = DBConnection.createConnection();
-      String query = "UPDATE richiestatirocinio SET status='approvata' WHERE matricola = ?";
+      String query = "UPDATE richiestatirocinio SET status='approvata' "
+          + "WHERE matricola = ? AND status='in attesa'";
       preparedStatement = con.prepareStatement(query);
 
       preparedStatement.setString(1, matricola);
@@ -214,7 +215,8 @@ public class RichiestaTirocinioDaoImpl implements RichiestaTirocinioDaoInterface
   
     try {
       con = DBConnection.createConnection();
-      String query = "SELECT * FROM richiestatirocinio WHERE matricola = ?";
+      String query = "SELECT * FROM richiestatirocinio WHERE matricola = ? "
+          + "ORDER BY idRichiestaTirocinio DESC LIMIT 0,1";
       preparedStatement = con.prepareStatement(query);
       
       preparedStatement.setString(1, matricola);

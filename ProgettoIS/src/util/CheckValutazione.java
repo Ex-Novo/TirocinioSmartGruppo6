@@ -94,6 +94,20 @@ public class CheckValutazione extends HttpServlet {
         
       }
       
+      if (rTir.getStatus() != null) {
+        if (rTir.getStatus().equals("in attesa") || rTir.getStatus().equals("rifiutata")) {
+          
+          session.setAttribute("canFeed", false);
+          out.println("<script>");
+          out.println("alert('Richiesta tirocinio in attesa o rifiutata."
+              + "Impossibile inviare il feedback')");
+          out.println("window.history.back()");
+          out.println("</script>");
+        }
+
+       
+      }
+      
       if (result) {
         
         session.setAttribute("canFeed", false);
