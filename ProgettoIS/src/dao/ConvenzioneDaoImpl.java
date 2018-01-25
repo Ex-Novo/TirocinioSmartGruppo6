@@ -200,7 +200,8 @@ public class ConvenzioneDaoImpl implements ConvenzioneDaoInterface {
       con = DBConnection.createConnection();
       String query = 
           "SELECT dataConvenzione, stato, dettaglioConvenzione"
-          + ", tutorAziendale, numPosti,p_iva,nomeFile FROM convenzione WHERE p_iva = ? ";
+          + ", tutorAziendale, numPosti,p_iva,nomeFile FROM convenzione WHERE p_iva = ? "
+          + "ORDER BY idConvenzione DESC LIMIT 0,1";
       preparedStatement = con.prepareStatement(query);
       
       preparedStatement.setString(1, piva);
